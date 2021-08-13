@@ -1,6 +1,7 @@
 #!/usr/bin/python3 -u
 
 from datetime import datetime
+from re import T
 from urllib.request import urlopen
 from time import sleep
 from json import load
@@ -45,8 +46,9 @@ REGISTRY.register(FakeCollector())
 
 timestamp = 0
 
-def quickset(gauge: GaugeMetricFamily, data: float, labels=[]):
-    gauge.samples = []
+def quickset(gauge: GaugeMetricFamily, data: float, labels=[], reset=True):
+    if reset:
+        gauge.samples = []
     gauge.add_metric(labels, data, timestamp)
 
 def load_station():
@@ -64,8 +66,9 @@ def load_station():
     quickset(gauge_wind_speed, data['wind']['speed'])
     quickset(gauge_wind_direction, data['wind']['direction'])
 
+    gauge_air_ug_per_m3.samples = []
     for pollutant in data['pollutants']:
-        quickset(gauge_air_ug_per_m3, pollutant['concentration'], [POLLUTANT_MAP[pollutant['pollutantName']], 'outside'])
+        quickset(gauge_air_ug_per_m3, pollutant['concentration'], labels=[POLLUTANT_MAP[pollutant['pollutantName']], 'outside'], reset=False)
 
 start_http_server(8003, registry=REGISTRY)
 
