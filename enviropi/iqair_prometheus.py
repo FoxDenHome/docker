@@ -45,4 +45,4 @@ while True:
         load_station()
     except Exception as e:
         print(e)
-    sleep(60000)
+    sleep(60)
