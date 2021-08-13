@@ -43,22 +43,29 @@ class FakeCollector():
 
 REGISTRY.register(FakeCollector())
 
+timestamp = 0
+
+def quickset(gauge: GaugeMetricFamily, data: float, labels=[]):
+    gauge.samples = []
+    gauge.add_metric(labels, data, timestamp)
+
 def load_station():
+    global timestamp
     data = load(urlopen("%s?%s" % (URL, PARAMS)))['current']
 
     dt = datetime.strptime(data['ts'], '%Y-%m-%dT%H:%M:%S.%fZ')
     timestamp = dt.timestamp()
 
-    gauge_aqi.add_metric([], data['aqi'], timestamp)
-    gauge_pressure.add_metric([], data['pressure'], timestamp)
-    gauge_humidity.add_metric([], data['humidity'], timestamp)
-    gauge_temperature.add_metric([],data['temperature'], timestamp)
+    quickset(gauge_aqi, data['aqi'])
+    quickset(gauge_pressure, data['pressure'])
+    quickset(gauge_humidity, data['humidity'])
+    quickset(gauge_temperature, data['temperature'])
 
-    gauge_wind_speed.add_metric([], data['wind']['speed'], timestamp)
-    gauge_wind_direction.add_metric([], data['wind']['direction'], timestamp)
+    quickset(gauge_wind_speed, data['wind']['speed'])
+    quickset(gauge_wind_direction, data['wind']['direction'])
 
     for pollutant in data['pollutants']:
-        gauge_air_ug_per_m3.add_metric([POLLUTANT_MAP[pollutant['pollutantName']], 'outside'], pollutant['concentration'], timestamp)
+        quickset(gauge_air_ug_per_m3, pollutant['concentration'], [POLLUTANT_MAP[pollutant['pollutantName']], 'outside'])
 
 start_http_server(8003, registry=REGISTRY)
 
