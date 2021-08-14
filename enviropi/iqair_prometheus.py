@@ -68,7 +68,12 @@ def load_station():
 
     gauge_air_ug_per_m3.samples = []
     for pollutant in data['pollutants']:
-        quickset(gauge_air_ug_per_m3, pollutant['concentration'], labels=[POLLUTANT_MAP[pollutant['pollutantName']], 'outside'], reset=False)
+        quickset(
+            gauge_air_ug_per_m3,
+            pollutant['concentration'],
+            labels=[POLLUTANT_MAP[pollutant['pollutantName']], 'outside'],
+            reset=False
+        )
 
 start_http_server(8003, registry=REGISTRY)
 
