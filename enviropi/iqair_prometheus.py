@@ -53,7 +53,7 @@ def quickset(gauge: GaugeMetricFamily, data: float, labels=[], reset=True):
 
 def load_station():
     global timestamp
-    data = load(urlopen("%s?%s" % (URL, PARAMS)))['current']
+    data = load(urlopen("%s?%s" % (URL, PARAMS), timeout=30))['current']
 
     dt = datetime.strptime(data['ts'], '%Y-%m-%dT%H:%M:%S.%fZ')
     timestamp = dt.timestamp()
