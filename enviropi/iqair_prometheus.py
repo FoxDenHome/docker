@@ -8,7 +8,8 @@ from json import load
 from prometheus_client import CollectorRegistry, REGISTRY, start_http_server
 from prometheus_client.core import GaugeMetricFamily
 
-URL = "https://website-api.airvisual.com/v1/stations/4d785ca890fb488c3bee"
+#URL = "https://website-api.airvisual.com/v1/stations/4d785ca890fb488c3bee" # 151st Avenue NE
+URL = "https://website-api.airvisual.com/v1/stations/4949b9aee93829861e15" # Westside Park
 PARAMS = "units.temperature=celsius&units.distance=km&units.pressure=millibar&AQI=US&language=en-US"
 
 POLLUTANT_MAP = {
