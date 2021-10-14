@@ -1,0 +1,14 @@
+version: "2.1"
+services:
+  samba:
+    image: ghcr.io/doridian/docker-samba/samba:latest
+    networks:
+      vlan3:
+        ipv4_address: 192.168.3.20
+    volumes:
+      - plex_data:/config
+      - /mnt/zhdd/nas:/media
+
+volumes:
+  plex_data:
+    external: true
