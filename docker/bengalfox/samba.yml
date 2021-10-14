@@ -2,6 +2,7 @@ version: "2.1"
 services:
   samba:
     image: ghcr.io/doridian/docker-samba/samba:latest
+    restart: always
     networks:
       vlan4:
         ipv4_address: 192.168.4.20

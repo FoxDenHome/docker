@@ -2,6 +2,7 @@ version: "2.1"
 services:
   plex:
     image: binhex/arch-plexpass:latest
+    restart: always
     networks:
       vlan3:
         ipv4_address: 192.168.3.20

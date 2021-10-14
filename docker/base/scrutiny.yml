@@ -2,6 +2,7 @@ version: "3"
 services:
   scrutiny-web:
     image: analogj/scrutiny:web
+    restart: always
     ports:
       - 8080:8080
     volumes:
