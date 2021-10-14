@@ -10,6 +10,11 @@ services:
       monitoring_net: {}
       vlan3:
         ipv4_address: 192.168.3.34
+    links:
+      - telegraf:telegraf
+      - telegraf:telegraf.foxden.network
+    extra_hosts:
+      - "ntp.foxden.network 192.168.3.10"
   grafana:
     image: grafana/grafana:latest
     environment:
