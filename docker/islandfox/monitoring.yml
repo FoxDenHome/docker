@@ -26,6 +26,14 @@ services:
     image: grafana/grafana-image-renderer:latest
     networks:
       monitoring_net: {}
+  telegraf:
+    image: telegraf/telegraf
+    volumes:
+      - telegraf_config:/etc/telegraf
+    networks:
+      monitoring_net: {}
+      vlan1:
+        ipv4_address: 192.168.1.33
 
 networks:
   monitoring_net: {}
@@ -38,4 +46,6 @@ volumes:
   grafana_config:
     external: true
   grafana_data:
+    external: true
+  telegraf_config:
     external: true
