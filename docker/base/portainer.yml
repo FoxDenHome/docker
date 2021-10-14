@@ -1,6 +1,7 @@
 version: "3.9"
 services:
   portainer:
+    name: portainer
     image: "portainer/portainer-ce:latest"
     ports:
       - "8000:8000"
