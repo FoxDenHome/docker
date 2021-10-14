@@ -4,8 +4,8 @@ services:
     image: prom/prometheus:latest
     command: --storage.tsdb.retention.time=1y --config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/prometheus --web.console.libraries=/usr/share/prometheus/console_libraries --web.console.templates=/usr/share/prometheus/consoles
     volumes:
-      prometheus_config:/etc/prometheus
-      prometheus_data:/data
+      - prometheus_config:/etc/prometheus
+      - prometheus_data:/data
     networks:
       monitoring_net: {}
       vlan3:
@@ -16,8 +16,8 @@ services:
       GF_RENDERING_SERVER_URL: http://grafana-renderer:8081/render
       GF_RENDERING_CALLBACK_URL: http://grafana:3000/
     volumes:
-      grafana_config:/etc/grafana
-      grafana_data:/var/lib/grafana
+      - grafana_config:/etc/grafana
+      - grafana_data:/var/lib/grafana
     networks:
       monitoring_net: {}
       vlan3:
