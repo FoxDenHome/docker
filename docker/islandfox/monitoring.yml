@@ -38,8 +38,10 @@ services:
       monitoring_net: {}
   telegraf:
     image: telegraf:latest
+    command: --config-directory /etc/telegraf/telegraf.d
     volumes:
       - telegraf_config:/etc/telegraf
+      - /var/lib/mibs:/usr/share/snmp/mibs:ro
     networks:
       monitoring_net: {}
       vlan1:
