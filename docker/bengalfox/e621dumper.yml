@@ -1,6 +1,6 @@
 version: "2.1"
 services:
-  foxcaves:
+  e621dumper:
     image: ghcr.io/doridian/e621dumper/e621dumper:latest
     restart: always
     volumes:
