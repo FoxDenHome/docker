@@ -1,0 +1,9 @@
+version: "2.4"
+services:
+  minico2:
+    image: ghcr.io/doridian/docker-minico2/minico2:latest
+    restart: always
+    devices:
+      - /dev/minico2:/dev/minico2
+    networks:
+      monitoring_net: {}

@@ -1,0 +1,17 @@
+version: "2.4"
+services:
+  telegraf:
+    image: telegraf:latest
+    restart: always
+    command: --config-directory /etc/telegraf/telegraf.d
+    volumes:
+      - telegraf_config:/etc/telegraf
+      - /var/lib/mibs:/usr/share/snmp/mibs:ro
+    networks:
+      monitoring_net: {}
+      vlan1:
+        ipv4_address: 192.168.1.33
+
+volumes:
+  telegraf_config:
+    external: true
