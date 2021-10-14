@@ -7,6 +7,8 @@ services:
         ipv4_address: 192.168.4.20
     volumes:
       - samba_config:/var/lib/samba
+      - /mnt/zhdd/nas:/mnt/nas
+      - /mnt/zhdd/nashome:/home
 
 volumes:
   samba_config:
