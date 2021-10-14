@@ -5,6 +5,9 @@ services:
     networks:
       vlan3:
         ipv4_address: 192.168.3.20
+    environment:
+      PUID: 10001
+      PGID: 1001
     volumes:
       - plex_data:/config
       - /mnt/zhdd/nas:/media
