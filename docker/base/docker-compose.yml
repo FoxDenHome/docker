@@ -11,4 +11,5 @@ services:
       - "portainer_data:/data"
 volumes:
   portainer_data:
-    name: portainer_data
+    external: true
+
