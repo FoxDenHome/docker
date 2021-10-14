@@ -1,10 +1,10 @@
 version: "2.1"
 services:
   samba:
-    image: binhex/arch-delugevpn:latest
+    image: ghcr.io/doridian/docker-samba/samba:latest
     networks:
-      vlan2:
-        ipv4_address: 192.168.2.22
+      vlan4:
+        ipv4_address: 192.168.4.20
     volumes:
       - samba_config:/var/lib/samba
       - /mnt/zhdd/nas:/mnt/nas
