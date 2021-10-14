@@ -5,10 +5,18 @@ cd "$(dirname "$0")"
 
 CONFIGS=""
 
-load_config() {
-    CFG="$1"
-    find 
+load_role() {
+    DIR="$1"
+    for file in `find "$DIR" -type f -name '*.yml'`
+    do
+        CONFIGS="$CONFIGS -f $file"
+    done
 }
 
-load_config base
-load_config "$(hostname)"
+HN="$(hostname)"
+for role in `cat "${HN}.roles"`
+do
+    load_role "$role"
+done
+
+echo docker-compose $CONFIGS up -d
