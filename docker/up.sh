@@ -19,4 +19,4 @@ do
     load_role "$role"
 done
 
-echo docker-compose $CONFIGS up -d
+docker-compose $CONFIGS up -d
