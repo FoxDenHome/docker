@@ -2,6 +2,8 @@ version: "2.1"
 services:
   dldr:
     image: binhex/arch-delugevpn:latest
+    cap_add:
+      - NET_ADMIN
     networks:
       vlan2:
         ipv4_address: 192.168.2.22
