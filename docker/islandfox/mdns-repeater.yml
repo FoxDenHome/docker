@@ -1,7 +1,7 @@
 version: "2"
 services:
   mdns-repeater:
-    image: "ghcr.io/doridian/docker-mdns-repeater/mdns-repeater:latest"
+    image: ghcr.io/doridian/docker-mdns-repeater/mdns-repeater:latest
     command: eth0 eth1 eth2
     networks:
       vlan3:
