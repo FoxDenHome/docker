@@ -1,4 +1,4 @@
-version: "2.1"
+version: "2.4"
 services:
   samba:
     image: ghcr.io/doridian/docker-samba/samba:latest

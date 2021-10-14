@@ -1,4 +1,4 @@
-version: "2.1"
+version: "2.4"
 services:
   kiwix:
     image: ghcr.io/doridian/e621dumper/e621dumper:latest
