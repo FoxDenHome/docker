@@ -1,0 +1,13 @@
+version: "2"
+services:
+  samba:
+    image: ghcr.io/doridian/docker-samba/samba:latest
+    networks:
+      vlan4:
+        ipv4_address: 192.168.4.20
+    volumes:
+      samba_config:/var/lib/samba
+
+volumes:
+  samba_config:
+    external: true

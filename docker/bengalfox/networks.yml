@@ -1,0 +1,47 @@
+version: "2"
+networks:
+  vlan1:
+    driver: macvlan
+    driver_opts:
+      parent: br1
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.1.0/24
+          gateway: 192.168.1.6
+  vlan2:
+    driver: macvlan
+    driver_opts:
+      parent: br2
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.2.0/24
+          gateway: 192.168.2.6
+  vlan3:
+    driver: macvlan
+    driver_opts:
+      parent: br3
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.3.0/24
+          gateway: 192.168.3.6
+  vlan4:
+    driver: macvlan
+    driver_opts:
+      parent: br4
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.4.0/24
+          gateway: 192.168.4.6
+  vlan5:
+    driver: macvlan
+    driver_opts:
+      parent: br5
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.5.0/24
+          gateway: 192.168.5.6
