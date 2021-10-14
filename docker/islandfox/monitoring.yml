@@ -34,9 +34,6 @@ services:
         ipv4_address: 192.168.3.35
   grafana-renderer:
     image: grafana/grafana-image-renderer:latest
-    links:
-      - grafana:grafana
-      - grafana:grafana.foxden.network
     networks:
       monitoring_net: {}
   telegraf:
