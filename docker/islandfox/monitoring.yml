@@ -23,12 +23,20 @@ services:
     volumes:
       - grafana_config:/etc/grafana
       - grafana_data:/var/lib/grafana
+    links:
+      - prometheus:prometheus
+      - prometheus:prometheus.foxden.network
+      - grafana-renderer:grafana-renderer
+      - grafana-renderer:grafana-renderer.foxden.network
     networks:
       monitoring_net: {}
       vlan3:
         ipv4_address: 192.168.3.35
   grafana-renderer:
     image: grafana/grafana-image-renderer:latest
+    links:
+      - grafana:grafana
+      - grafana:grafana.foxden.network
     networks:
       monitoring_net: {}
   telegraf:
