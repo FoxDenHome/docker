@@ -1,0 +1,13 @@
+version: "2.1"
+services:
+  foxcaves:
+    image: ghcr.io/doridian/e621dumper/e621dumper:latest
+    restart: always
+    volumes:
+      - e621dumper_config:/config
+      - /mnt/zhdd/e621/data:/data
+      - /mnt/zssd/e621/db:/usr/share/elasticsearch/data
+
+volumes:
+  e621dumper_config:
+    external: true
