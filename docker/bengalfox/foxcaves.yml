@@ -14,10 +14,13 @@ services:
     volumes:
       - foxcaves_config:/var/www/foxcaves/config
       - foxcaves_postgres:/var/lib/postgresql
+      - foxcaves_redis:/var/lib/redis
       - /mnt/zhdd/foxcaves/storage:/var/www/foxcaves/storage
 
 volumes:
   foxcaves_config:
     external: true
   foxcaves_postgres:
+    external: true
+  foxcaves_redis:
     external: true
