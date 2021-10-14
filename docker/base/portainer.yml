@@ -9,15 +9,6 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "portainer_data:/data"
-  scrutiny-web:
-    image: "analogj/scrutiny:web"
-    ports:
-      - "8080:8080"
-    volumes:
-      - "scrutiny_config:/scrutiny/config"
 volumes:
   portainer_data:
     external: true
-  scrutiny_config:
-    external: true
-

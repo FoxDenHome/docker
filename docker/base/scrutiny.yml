@@ -1,0 +1,11 @@
+version: "3"
+services:
+  scrutiny-web:
+    image: "analogj/scrutiny:web"
+    ports:
+      - "8080:8080"
+    volumes:
+      - "scrutiny_config:/scrutiny/config"
+volumes:
+  scrutiny_config:
+    external: true
