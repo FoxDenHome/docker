@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 services:
   mdns-repeater:
     image: "ghcr.io/doridian/docker-mdns-repeater/mdns-repeater:latest"
