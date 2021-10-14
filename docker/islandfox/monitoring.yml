@@ -42,6 +42,13 @@ services:
       vlan1:
         ipv4_address: 192.168.1.33
 
+  minico2: # Temporary, until sensor arrives
+    image: ghcr.io/doridian/docker-minico2/minico2:latest
+    devices:
+      - /dev/minico2:/dev/minico2
+    networks:
+      monitoring_net: {}
+
 networks:
   monitoring_net: {}
 
