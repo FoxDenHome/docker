@@ -5,7 +5,7 @@ services:
     ports:
       - "8000:8000"
       - "9000:9000"
-    userns: host
+    userns_mode: host
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "portainer_data:/data"
