@@ -8,7 +8,7 @@ services:
       - telegraf_config:/etc/telegraf
       - /var/lib/mibs:/usr/share/snmp/mibs:ro
     networks:
-      monitoring_net: {}
+      default: {}
       vlan1:
         ipv4_address: 192.168.1.33
 

@@ -5,5 +5,3 @@ services:
     restart: always
     devices:
       - /dev/minico2:/dev/minico2
-    networks:
-      monitoring_net: {}

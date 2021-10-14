@@ -10,14 +10,12 @@ services:
       - grafana_config:/etc/grafana
       - grafana_data:/var/lib/grafana
     networks:
-      monitoring_net: {}
+      default: {}
       vlan3:
         ipv4_address: 192.168.3.35
   grafana-renderer:
     image: grafana/grafana-image-renderer:latest
     restart: always
-    networks:
-      monitoring_net: {}
 
 volumes:
   grafana_config:
