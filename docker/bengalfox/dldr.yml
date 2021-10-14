@@ -1,0 +1,21 @@
+version: "2.1"
+services:
+  dldr:
+    image: binhex/arch-plexpass:latest
+    networks:
+      vlan3:
+        ipv4_address: 192.168.3.20
+    environment:
+      VPN_CLIENT: wireguard
+      VPN_PROV: custom
+      VPN_ENABLED: 'yes'
+      LAN_NETWORK: 192.168.4.0/24
+      PUID: 1001
+      PGID: 1001
+    volumes:
+      - deluge_config:/config
+      - /mnt/zssd/nas/torrent:/data
+
+volumes:
+  deluge_config:
+    external: true
