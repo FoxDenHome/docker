@@ -2,4 +2,4 @@ version: "2"
 services:
   mdns-repeater:
     image: "ghcr.io/doridian/docker-mdns-repeater/mdns-repeater:latest"
-    args: eth0 eth1 eth2
+    command: eth0 eth1 eth2
