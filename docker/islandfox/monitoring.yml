@@ -10,9 +10,6 @@ services:
       monitoring_net: {}
       vlan3:
         ipv4_address: 192.168.3.34
-    links:
-      - telegraf:telegraf
-      - telegraf:telegraf.foxden.network
     extra_hosts:
       - ntp.foxden.network:192.168.3.10
   grafana:
@@ -23,11 +20,6 @@ services:
     volumes:
       - grafana_config:/etc/grafana
       - grafana_data:/var/lib/grafana
-    links:
-      - prometheus:prometheus
-      - prometheus:prometheus.foxden.network
-      - grafana-renderer:grafana-renderer
-      - grafana-renderer:grafana-renderer.foxden.network
     networks:
       monitoring_net: {}
       vlan3:
