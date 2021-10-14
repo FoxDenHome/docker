@@ -1,7 +1,7 @@
 version: "2.1"
 services:
-  samba:
-    image: ghcr.io/doridian/docker-samba/samba:latest
+  plex:
+    image: binhex/arch-plexpass:latest
     networks:
       vlan3:
         ipv4_address: 192.168.3.20
