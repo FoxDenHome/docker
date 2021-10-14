@@ -27,7 +27,7 @@ services:
     networks:
       monitoring_net: {}
   telegraf:
-    image: telegraf/telegraf
+    image: telegraf:latest
     volumes:
       - telegraf_config:/etc/telegraf
     networks:
