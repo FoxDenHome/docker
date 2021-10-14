@@ -1,0 +1,12 @@
+version: "2.1"
+services:
+  kiwix:
+    image: ghcr.io/doridian/e621dumper/e621dumper:latest
+    restart: always
+    init: yes
+    command: '*.zim'
+    networks:
+      vlan2:
+        ipv4_address: 192.168.2.20
+    volumes:
+      - /mnt/zhdd/kiwix:/data
