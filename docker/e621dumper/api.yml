@@ -1,16 +1,13 @@
 version: "2.4"
 services:
-  e621dumper:
+  api:
     image: ghcr.io/doridian/e621dumper/e621dumper:latest
     restart: always
-    environment:
-      discovery.type: single-node
-      network.host: _local_
-      network.bind_host: _local_
+    links:
+      - elasticsearch:elasticsearch
     volumes:
       - e621dumper_config:/config
       - /mnt/zhdd/e621/data:/data
-      - /mnt/zssd/e621/db:/usr/share/elasticsearch/data
 
 volumes:
   e621dumper_config:
