@@ -10,7 +10,9 @@ load_role() {
     do
         CONFIGS="$CONFIGS -f $file"
     done
-    docker-compose -p "$DIR" $CONFIGS -f networks.yml up -d --remove-orphans
+    ARGS="-p $DIR $CONFIGS -f networks.yml"
+    docker-compose $ARGS pull
+    docker-compose $ARGS up -d --remove-orphans
 }
 
 HN="$(hostname)"
@@ -18,3 +20,5 @@ for role in `cat "${HN}.roles"`
 do
     load_role "$role"
 done
+
+docker image prune -f -a
