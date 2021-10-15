@@ -10,7 +10,7 @@ load_role() {
     do
         CONFIGS="$CONFIGS -f $file"
     done
-    docker-compose $CONFIGS -f networks.yml up -d
+    docker-compose $CONFIGS -f networks.yml up -d --remove-orphans
 }
 
 HN="$(hostname)"
