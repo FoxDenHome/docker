@@ -1,0 +1,13 @@
+version: "2.4"
+services:
+  site:
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${FOXCAVES_POSTGRES_PASSWORD}
+    volumes:
+      - foxcaves_postgres:/var/lib/postgresql/data
+
+volumes:
+  foxcaves_postgres:
+    external: true

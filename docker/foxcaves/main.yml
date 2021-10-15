@@ -1,6 +1,6 @@
 version: "2.4"
 services:
-  foxcaves:
+  site:
     image: ghcr.io/foxcaves/site/foxcaves-site:latest
     restart: always
     sysctls:
@@ -9,18 +9,16 @@ services:
       ENVIRONMENT: production
       DDNS_URL_IPV6: ${FOXCAVES_DDNS_URL_IPV6}
     networks:
+      default: {}
       vlan2:
         ipv4_address: 192.168.2.25
+    links:
+      - postgres:postgres
+      - redis:redis
     volumes:
       - foxcaves_config:/var/www/foxcaves/config
-      - foxcaves_postgres:/var/lib/postgresql
-      - foxcaves_redis:/var/lib/redis
       - /mnt/zhdd/foxcaves/storage:/var/www/foxcaves/storage
 
 volumes:
   foxcaves_config:
-    external: true
-  foxcaves_postgres:
-    external: true
-  foxcaves_redis:
     external: true

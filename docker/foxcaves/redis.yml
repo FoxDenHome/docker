@@ -1,0 +1,11 @@
+version: "2.4"
+services:
+  site:
+    image: redis:alpine
+    restart: always
+    volumes:
+      - foxcaves_redis:/data
+
+volumes:
+  foxcaves_redis:
+    external: true
