@@ -1,0 +1,17 @@
+version: "2.4"
+services:
+  syncthing:
+    image: ubuntu:latest
+    restart: always
+    user: 1000:1000
+    init: true
+    entrypoint: /home/server/run.sh
+    networks:
+      vlan2:
+        ipv4_address: 192.168.2.27
+    volumes:
+      - ut2004_home:/home/server
+
+volumes:
+  syncthing_config:
+    external: true
