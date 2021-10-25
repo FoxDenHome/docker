@@ -17,7 +17,7 @@ services:
       VPN_CLIENT: wireguard
       VPN_PROV: custom
       VPN_ENABLED: 'yes'
-      LAN_NETWORK: 192.168.4.0/24
+      LAN_NETWORK: 192.168.0.0/16
       PUID: 1001
       PGID: 1001
     volumes:
