@@ -14,8 +14,6 @@ services:
     links:
       - telegraf:telegraf
       - telegraf:telegraf.foxden.network
-      - minico2:minico2
-      - minico2:minico2.foxden.network
     extra_hosts:
       - ntp.foxden.network:192.168.3.10
 
