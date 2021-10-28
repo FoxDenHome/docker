@@ -6,6 +6,7 @@ services:
     environment:
       GF_RENDERING_SERVER_URL: http://grafana-renderer:8081/render
       GF_RENDERING_CALLBACK_URL: http://grafana:3000/
+      GF_SERVER_ROOT_URL: http://grafana.foxden.network:3000/
     volumes:
       - grafana_config:/etc/grafana
       - grafana_data:/var/lib/grafana
