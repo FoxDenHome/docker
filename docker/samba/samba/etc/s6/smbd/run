@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec smbd -F --no-process-group -S -s /var/lib/samba/smb.conf
