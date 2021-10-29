@@ -73,7 +73,7 @@ class ComposeProject():
             compose_args.append(file)
         
         run(compose_args + ["pull"], cwd=self.project_dir)
-        run(compose_args + ["up", "-d", "--remove-orphans"], cwd=self.project_dir)
+        run(compose_args + ["up", "--build", "-d", "--remove-orphans"], cwd=self.project_dir)
 
 GLOBAL_NETWORKS = yaml_loadfile("networks.yml")["networks"]
 
