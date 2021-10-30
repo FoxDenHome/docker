@@ -11,6 +11,7 @@ services:
       - /mnt/zhdd/nas:/mnt/nas
       - /mnt/zssd/nas/torrent:/mnt/nas/torrent
       - /mnt/zhdd/nashome:/home
+      - /mnt/zhdd/timemachine:/mnt/timemachine
 
 volumes:
   samba_config:
