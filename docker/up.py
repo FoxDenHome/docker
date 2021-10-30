@@ -19,10 +19,11 @@ def yaml_loadfile(file):
     return data
 
 class ComposeProject():
-    def __init__(self, name):
+    def __init__(self, name, project_dir):
         self.used_networks = set()
         self.provided_networks = set()
         self.name = name
+        self.project_dir = project_dir
         self.files = set()
 
     def load_dir(self, dir):
@@ -33,6 +34,7 @@ class ComposeProject():
             self.add_yaml(file)
 
     def add_yaml(self, file):
+        file = abspath(file)
         if file in self.files:
             return
 
@@ -70,8 +72,8 @@ class ComposeProject():
             compose_args.append("-f")
             compose_args.append(file)
         
-        run(compose_args + ["pull"])
-        run(compose_args + ["up", "--build", "-d", "--remove-orphans"])
+        run(compose_args + ["pull"], cwd=self.project_dir)
+        run(compose_args + ["up", "--build", "-d", "--remove-orphans"], cwd=self.project_dir)
 
 GLOBAL_NETWORKS = yaml_loadfile("networks.yml")["networks"]
 
@@ -80,7 +82,7 @@ def load_role(role):
         return
     print("Loading role", role)
 
-    project = ComposeProject(role)
+    project = ComposeProject(role, role)
     project.load_dir(role)
 
     temp_file = None
