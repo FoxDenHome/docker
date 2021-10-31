@@ -3,6 +3,7 @@ services:
   samba:
     build: samba
     restart: always
+    hostname: nas.foxden.network
     networks:
       vlan4:
         ipv4_address: 192.168.4.20

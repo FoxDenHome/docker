@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN apk update && apk add samba s6 ethtool nginx
+RUN apk update && apk add samba s6 ethtool nginx avahi
 
 RUN ln -sf /var/lib/samba/passwd /etc/passwd
 RUN ln -sf /var/lib/samba/group /etc/group
