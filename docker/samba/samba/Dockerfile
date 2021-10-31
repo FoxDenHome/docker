@@ -7,7 +7,7 @@ RUN ln -sf /var/lib/samba/group /etc/group
 
 RUN sed -i 's~#enable-dbus=yes~enable-dbus=no~' /etc/avahi/avahi-daemon.conf
 
-COPY etc/s6 /etc/s6
+COPY etc /etc
 
 VOLUME /var/lib/samba
 
