@@ -14,6 +14,6 @@
  <service>
    <type>_adisk._tcp</type>
    <txt-record>sys=waMa=0,adVF=0x100</txt-record>
-   <txt-record>dk0=adVN=timemachine_capefox,adVF=0x82</txt-record>
+   <txt-record>dk0=adVN=timemachine,adVF=0x82</txt-record>
  </service>
 </service-group>
