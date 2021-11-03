@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec nginx -c '/var/lib/samba/nginx.conf' -g 'daemon off;'
+exec nginx -c '/etc/nginx/nginx.conf' -g 'daemon off;'
