@@ -7,3 +7,4 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY conf/ /etc/telegraf/
+COPY mibs/ /usr/share/snmp/mibs/
