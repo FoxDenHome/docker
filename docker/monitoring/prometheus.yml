@@ -1,12 +1,13 @@
 version: "2.4"
 services:
   prometheus:
-    image: prom/prometheus:latest
+    build: prometheus
     restart: always
     command: --storage.tsdb.retention.time=1y --config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/prometheus --web.console.libraries=/usr/share/prometheus/console_libraries --web.console.templates=/usr/share/prometheus/consoles
     volumes:
-      - prometheus_config:/etc/prometheus
       - prometheus_data:/prometheus
+    environment:
+      TZ: America/Los_Angeles
     networks:
       default: {}
       vlan3:
@@ -18,7 +19,5 @@ services:
       - ntp.foxden.network:192.168.3.10
 
 volumes:
-  prometheus_config:
-    external: true
   prometheus_data:
     external: true

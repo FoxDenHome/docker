@@ -7,8 +7,8 @@ services:
       GF_RENDERING_SERVER_URL: http://grafana-renderer:8081/render
       GF_RENDERING_CALLBACK_URL: http://grafana:3000/
       GF_SERVER_ROOT_URL: http://grafana.foxden.network:3000/
+      TZ: America/Los_Angeles
     volumes:
-      - grafana_config:/etc/grafana
       - grafana_data:/var/lib/grafana
     networks:
       default: {}
@@ -17,9 +17,9 @@ services:
   grafana-renderer:
     image: grafana/grafana-image-renderer:latest
     restart: always
+    environment:
+      TZ: America/Los_Angeles
 
 volumes:
-  grafana_config:
-    external: true
   grafana_data:
     external: true
