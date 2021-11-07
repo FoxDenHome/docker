@@ -3,8 +3,9 @@ global:
   evaluation_interval: 15s
 
   external_labels:
-      monitor: 'prometheus.foxden.network'
+    monitor: 'prometheus.foxden.network'
 
+scrape_configs:
   - job_name: node
     static_configs:
       - targets: ['bengalfox.foxden.network:9100', 'islandfox.foxden.network:9100', 'ntp.foxden.network:9100']
