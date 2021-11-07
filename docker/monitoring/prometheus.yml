@@ -8,6 +8,7 @@ services:
       - prometheus_data:/prometheus
     environment:
       TZ: America/Los_Angeles
+      HOMEASSISTANT_API_TOKEN: ${PROMETHEUS_HOMEASSISTANT_API_TOKEN}
     networks:
       default: {}
       vlan3:
