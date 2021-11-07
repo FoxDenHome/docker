@@ -1,7 +1,7 @@
 version: "2.4"
 services:
   telegraf:
-    image: telegraf:latest
+    build: telegraf
     restart: always
     command: --config-directory /etc/telegraf/includes
     environment:
