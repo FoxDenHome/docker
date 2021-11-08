@@ -95,7 +95,7 @@ def load_role(role):
                 for network in missing_networks
             }
         }
-        temp_file = NamedTemporaryFile(mode="w+", suffix=".yml")
+        temp_file = NamedTemporaryFile(mode="w+", suffix=".yml", dir=project.project_dir)
         yaml_dump(used_global_nets, temp_file)
         temp_file.flush()
         project.add_yaml(temp_file.name)
