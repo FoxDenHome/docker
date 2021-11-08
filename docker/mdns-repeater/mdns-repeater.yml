@@ -1,7 +1,7 @@
 version: "2.4"
 services:
   mdns-repeater:
-    build: mdns-repeater
+    build: image
     restart: always
     command: eth0 eth1 eth2
     networks:
