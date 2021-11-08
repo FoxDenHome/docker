@@ -67,13 +67,13 @@ class ComposeProject():
         if self.get_missing_networks():
             raise Exception(f"Missing network definitions for: {','.join(self.get_missing_networks())}")
 
-        compose_args = ["docker-compose", "-p", self.name]
+        compose_args = ["docker-compose", "-p", self.name, "--project-directory", self.project_dir]
         for file in self.files:
             compose_args.append("-f")
             compose_args.append(file)
         
-        run(compose_args + ["pull"], cwd=self.project_dir)
-        run(compose_args + ["up", "--build", "-d", "--remove-orphans"], cwd=self.project_dir)
+        run(compose_args + ["pull"])
+        run(compose_args + ["up", "--build", "-d", "--remove-orphans"])
 
 GLOBAL_NETWORKS = yaml_loadfile("networks.yml")["networks"]
 
@@ -95,7 +95,7 @@ def load_role(role):
                 for network in missing_networks
             }
         }
-        temp_file = NamedTemporaryFile(mode="w+", suffix=".yml", dir=project.project_dir)
+        temp_file = NamedTemporaryFile(mode="w+", suffix=".yml")
         yaml_dump(used_global_nets, temp_file)
         temp_file.flush()
         project.add_yaml(temp_file.name)
