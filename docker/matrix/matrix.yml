@@ -10,7 +10,7 @@ services:
       CONDUIT_TRUSTED_SERVERS: '["matrix.org"]'
       CONDUIT_ALLOW_REGISTRATION : 'true'
       CONDUIT_ADDRESS: 0.0.0.0
-      CONDUIT_PORT: 443
+      CONDUIT_PORT: 8008
       CONDUIT_CONFIG: ''  # if you want to configure purely by env vars, set this to an empty string ''
       # Available levels are: error, warn, info, debug, trace - more info at: https://docs.rs/env_logger/*/env_logger/#enabling-logging
       CONDUIT_LOG: info
