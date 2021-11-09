@@ -2,7 +2,7 @@
 (
     while :
     do
-        sleep 6h & wait $${!}
+        sleep 6h
         nginx -s reload
     done
 ) &

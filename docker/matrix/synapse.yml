@@ -7,6 +7,7 @@ services:
       - "synapse_data:/data"
   nginx:
     build: nginx
+    init: true
     networks:
       default: {}
       vlan2:
