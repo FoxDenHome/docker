@@ -1,0 +1,24 @@
+version: "2.4"
+services:
+  synapse:
+    image: matrixdotorg/synapse:latest
+    restart: always
+    volumes:
+      - "synapse_data:/data"
+  nginx:
+    build: nginx
+    networks:
+      default: {}
+      vlan2:
+        ipv4_address: 192.168.2.30
+    links:
+      - synapse:synapse
+  certbot:
+    image: certbot/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+volumes:
+  synapse_data:
+    external: true
+  certbot_www: {}
+  certbot_certs: {}
