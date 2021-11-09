@@ -8,7 +8,7 @@ services:
     environment:
       CONDUIT_SERVER_NAME: doridian.net
       CONDUIT_TRUSTED_SERVERS: '["matrix.org"]'
-      CONDUIT_ALLOW_REGISTRATION : 'true'
+      CONDUIT_ALLOW_REGISTRATION : 'false'
       CONDUIT_ADDRESS: 0.0.0.0
       CONDUIT_PORT: 8008
       CONDUIT_CONFIG: ''  # if you want to configure purely by env vars, set this to an empty string ''
