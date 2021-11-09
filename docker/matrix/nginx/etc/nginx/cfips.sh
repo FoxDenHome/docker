@@ -1,5 +1,5 @@
 #!/bin/sh
-set -euo pipefail
+set -e
 
 echo "# Cloudflare IPs" > /etc/nginx/cfips.conf
 
