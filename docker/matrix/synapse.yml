@@ -8,6 +8,8 @@ services:
   nginx:
     build: nginx
     init: true
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
     networks:
       default: {}
       vlan2:
