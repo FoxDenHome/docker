@@ -1,13 +1,23 @@
 version: "2.4"
 services:
+  postgres:
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${MATRIX_POSTGRES_PASSWORD}
+    volumes:
+      - postgres:/var/lib/postgresql/data
   synapse:
     image: matrixdotorg/synapse:latest
     restart: always
+    links:
+      - postgres:postgres
     volumes:
       - synapse_data:/data
   nginx:
     build: nginx
     init: true
+    restart: always
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
     networks:
@@ -21,6 +31,7 @@ services:
       - certbot_certs:/etc/letsencrypt:ro
   certbot:
     image: certbot/certbot
+    restart: always
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
     volumes:
       - certbot_www:/var/www/certbot
@@ -29,5 +40,6 @@ services:
 volumes:
   synapse_data:
     external: true
+  postgres: {}
   certbot_www: {}
   certbot_certs: {}
