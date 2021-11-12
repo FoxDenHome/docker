@@ -70,22 +70,10 @@ void *pkt_data = NULL;
 
 int shutdown_flag = 0;
 
-void log_message(int loglevel, char *fmt_str, ...) {
-	va_list ap;
-	char buf[2048];
-
-	va_start(ap, fmt_str);
-	vsnprintf(buf, 2047, fmt_str, ap);
-	va_end(ap);
-	buf[2047] = 0;
-
-	fprintf(stderr, "%s: %s\n", PACKAGE, buf);
-}
-
 static int create_recv_sock() {
 	int sd = socket(AF_INET, SOCK_DGRAM, 0);
 	if (sd < 0) {
-		log_message(LOG_ERR, "recv socket(): %s", strerror(errno));
+		fprintf(stderr, "recv socket(): %s\n", strerror(errno));
 		return sd;
 	}
 
@@ -93,7 +81,7 @@ static int create_recv_sock() {
 
 	int on = 1;
 	if ((r = setsockopt(sd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on))) < 0) {
-		log_message(LOG_ERR, "recv setsockopt(SO_REUSEADDR): %s", strerror(errno));
+		fprintf(stderr, "recv setsockopt(SO_REUSEADDR): %s\n", strerror(errno));
 		return r;
 	}
 
@@ -104,18 +92,18 @@ static int create_recv_sock() {
 	serveraddr.sin_port = htons(MDNS_PORT);
 	serveraddr.sin_addr.s_addr = htonl(INADDR_ANY);	/* receive multicast */
 	if ((r = bind(sd, (struct sockaddr *)&serveraddr, sizeof(serveraddr))) < 0) {
-		log_message(LOG_ERR, "recv bind(): %s", strerror(errno));
+		fprintf(stderr, "recv bind(): %s\n", strerror(errno));
 	}
 
 	// enable loopback in case someone else needs the data
 	if ((r = setsockopt(sd, IPPROTO_IP, IP_MULTICAST_LOOP, &on, sizeof(on))) < 0) {
-		log_message(LOG_ERR, "recv setsockopt(IP_MULTICAST_LOOP): %s", strerror(errno));
+		fprintf(stderr, "recv setsockopt(IP_MULTICAST_LOOP): %s\n", strerror(errno));
 		return r;
 	}
 
 #ifdef IP_PKTINFO
 	if ((r = setsockopt(sd, SOL_IP, IP_PKTINFO, &on, sizeof(on))) < 0) {
-		log_message(LOG_ERR, "recv setsockopt(IP_PKTINFO): %s", strerror(errno));
+		fprintf(stderr, "recv setsockopt(IP_PKTINFO): %s\n", strerror(errno));
 		return r;
 	}
 #endif
@@ -126,7 +114,7 @@ static int create_recv_sock() {
 static int create_send_sock(int recv_sockfd, const char *ifname, struct if_sock *sockdata) {
 	int sd = socket(AF_INET, SOCK_DGRAM, 0);
 	if (sd < 0) {
-		log_message(LOG_ERR, "send socket(): %s", strerror(errno));
+		fprintf(stderr, "send socket(): %s\n", strerror(errno));
 		return sd;
 	}
 
@@ -142,7 +130,7 @@ static int create_send_sock(int recv_sockfd, const char *ifname, struct if_sock 
 
 #ifdef SO_BINDTODEVICE
 	if ((r = setsockopt(sd, SOL_SOCKET, SO_BINDTODEVICE, &ifr, sizeof(struct ifreq))) < 0) {
-		log_message(LOG_ERR, "send setsockopt(SO_BINDTODEVICE): %s", strerror(errno));
+		fprintf(stderr, "send setsockopt(SO_BINDTODEVICE): %s\n", strerror(errno));
 		return r;
 	}
 #endif
@@ -162,7 +150,7 @@ static int create_send_sock(int recv_sockfd, const char *ifname, struct if_sock 
 
 	int on = 1;
 	if ((r = setsockopt(sd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on))) < 0) {
-		log_message(LOG_ERR, "send setsockopt(SO_REUSEADDR): %s", strerror(errno));
+		fprintf(stderr, "send setsockopt(SO_REUSEADDR): %s\n", strerror(errno));
 		return r;
 	}
 
@@ -173,12 +161,12 @@ static int create_send_sock(int recv_sockfd, const char *ifname, struct if_sock 
 	serveraddr.sin_port = htons(MDNS_PORT);
 	serveraddr.sin_addr.s_addr = if_addr->s_addr;
 	if ((r = bind(sd, (struct sockaddr *)&serveraddr, sizeof(serveraddr))) < 0) {
-		log_message(LOG_ERR, "send bind(): %s", strerror(errno));
+		fprintf(stderr, "send bind(): %s\n", strerror(errno));
 	}
 
 #if __FreeBSD__
 	if((r = setsockopt(sd, IPPROTO_IP, IP_MULTICAST_IF, &serveraddr.sin_addr, sizeof(serveraddr.sin_addr))) < 0) {
-		log_message(LOG_ERR, "send ip_multicast_if(): errno %d: %s", errno, strerror(errno));
+		fprintf(stderr, "send ip_multicast_if(): errno %d: %s\n", errno, strerror(errno));
 	}
 #endif
 
@@ -188,20 +176,20 @@ static int create_send_sock(int recv_sockfd, const char *ifname, struct if_sock 
 	mreq.imr_interface.s_addr = if_addr->s_addr;
 	mreq.imr_multiaddr.s_addr = inet_addr(MDNS_ADDR);
 	if ((r = setsockopt(recv_sockfd, IPPROTO_IP, IP_ADD_MEMBERSHIP, &mreq, sizeof(mreq))) < 0) {
-		log_message(LOG_ERR, "recv setsockopt(IP_ADD_MEMBERSHIP): %s", strerror(errno));
+		fprintf(stderr, "recv setsockopt(IP_ADD_MEMBERSHIP): %s\n", strerror(errno));
 		return r;
 	}
 
 	// enable loopback in case someone else needs the data
 	if ((r = setsockopt(sd, IPPROTO_IP, IP_MULTICAST_LOOP, &on, sizeof(on))) < 0) {
-		log_message(LOG_ERR, "send setsockopt(IP_MULTICAST_LOOP): %s", strerror(errno));
+		fprintf(stderr, "send setsockopt(IP_MULTICAST_LOOP): %s\n", strerror(errno));
 		return r;
 	}
 
 	char *addr_str = strdup(inet_ntoa(sockdata->addr));
 	char *mask_str = strdup(inet_ntoa(sockdata->mask));
 	char *net_str  = strdup(inet_ntoa(sockdata->net));
-	log_message(LOG_INFO, "dev %s addr %s mask %s net %s", ifr.ifr_name, addr_str, mask_str, net_str);
+	fprintf(stderr, "dev %s addr %s mask %s net %s\n", ifr.ifr_name, addr_str, mask_str, net_str);
 	free(addr_str);
 	free(mask_str);
 	free(net_str);
@@ -287,7 +275,7 @@ int main(int argc, char *argv[]) {
 	int r = 0;
 
 	if ((argc - optind) <= 1) {
-		log_message(LOG_ERR, "error: at least 2 interfaces must be specified");
+		fprintf(stderr, "error: at least 2 interfaces must be specified\n");
 		exit(2);
 	}
 
@@ -296,7 +284,7 @@ int main(int argc, char *argv[]) {
 	// create receiving socket
 	server_sockfd = create_recv_sock();
 	if (server_sockfd < 0) {
-		log_message(LOG_ERR, "unable to create server socket");
+		fprintf(stderr, "unable to create server socket\n");
 		r = 1;
 		goto end_main;
 	}
@@ -305,13 +293,13 @@ int main(int argc, char *argv[]) {
 	int i;
 	for (i = optind; i < argc; i++) {
 		if (num_socks >= MAX_SOCKS) {
-			log_message(LOG_ERR, "too many sockets (maximum is %d)", MAX_SOCKS);
+			fprintf(stderr, "too many sockets (maximum is %d)\n", MAX_SOCKS);
 			exit(2);
 		}
 
 		int sockfd = create_send_sock(server_sockfd, argv[i], &socks[num_socks]);
 		if (sockfd < 0) {
-			log_message(LOG_ERR, "unable to create socket for interface %s", argv[i]);
+			fprintf(stderr, "unable to create socket for interface %s\n", argv[i]);
 			r = 1;
 			goto end_main;
 		}
@@ -320,7 +308,7 @@ int main(int argc, char *argv[]) {
 
 	pkt_data = malloc(PACKET_SIZE);
 	if (pkt_data == NULL) {
-		log_message(LOG_ERR, "cannot malloc() packet buffer: %s", strerror(errno));
+		fprintf(stderr, "cannot malloc() packet buffer: %s\n", strerror(errno));
 		r = 1;
 		goto end_main;
 	}
@@ -344,7 +332,7 @@ int main(int argc, char *argv[]) {
 			ssize_t recvsize = recvfrom(server_sockfd, pkt_data, PACKET_SIZE, 0,
 				(struct sockaddr *) &fromaddr, &sockaddr_size);
 			if (recvsize < 0) {
-				log_message(LOG_ERR, "recv(): %s", strerror(errno));
+				fprintf(stderr, "recv(): %s\n", strerror(errno));
 			}
 
 			int j;
@@ -399,16 +387,16 @@ int main(int argc, char *argv[]) {
 				ssize_t sentsize = send_packet(socks[j].sockfd, pkt_data, (size_t) recvsize);
 				if (sentsize != recvsize) {
 					if (sentsize < 0)
-						log_message(LOG_ERR, "send(): %s", strerror(errno));
+						fprintf(stderr, "send(): %s\n", strerror(errno));
 					else
-						log_message(LOG_ERR, "send_packet size differs: sent=%zd actual=%zd",
+						fprintf(stderr, "send_packet size differs: sent=%zd actual=%zd\n",
 							recvsize, sentsize);
 				}
 			}
 		}
 	}
 
-	log_message(LOG_INFO, "shutting down...");
+	fprintf(stderr, "shutting down...\n");
 
 end_main:
 
@@ -424,7 +412,7 @@ end_main:
 		close(socks[i].sockfd);
 	}
 
-	log_message(LOG_INFO, "exit.");
+	fprintf(stderr, "exit.\n");
 
 	return r;
 }
