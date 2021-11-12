@@ -16,5 +16,5 @@ COPY --from=builder /mdns-repeater /mdns-repeater
 
 USER daemon
 
-ENTRYPOINT ["/mdns-repeater", "-f"]
+ENTRYPOINT ["/mdns-repeater"]
 CMD ["eth0", "docker0"]
