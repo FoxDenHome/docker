@@ -291,7 +291,6 @@ int main(int argc, char *argv[]) {
 		exit(2);
 	}
 
-	openlog(PACKAGE, LOG_PID | LOG_CONS, LOG_DAEMON);
 	register_signals();
 
 	// create receiving socket
@@ -373,8 +372,6 @@ int main(int argc, char *argv[]) {
 				}
 
 				if (!whitelisted_packet) {
-					if (foreground && debug)
-						printf("skipping packet from=%s size=%zd\n", inet_ntoa(fromaddr.sin_addr), recvsize);
 					continue;
 				}
 			} else {
@@ -388,19 +385,15 @@ int main(int argc, char *argv[]) {
 				}
 
 				if (blacklisted_packet) {
-					if (foreground && debug)
-						printf("skipping packet from=%s size=%zd\n", inet_ntoa(fromaddr.sin_addr), recvsize);
 					continue;
 				}
 			}
 
 			for (j = 0; j < num_socks; j++) {
 				// do not repeat packet back to the same network from which it originated
-				if ((fromaddr.sin_addr.s_addr & socks[j].mask.s_addr) == socks[j].net.s_addr)
+				if ((fromaddr.sin_addr.s_addr & socks[j].mask.s_addr) == socks[j].net.s_addr) {
 					continue;
-
-				if (foreground && debug)
-					printf("%s (%zd bytes) -> %s\n", inet_ntoa(fromaddr.sin_addr), recvsize, socks[j].ifname);
+				}
 
 				// repeat data
 				ssize_t sentsize = send_packet(socks[j].sockfd, pkt_data, (size_t) recvsize);
@@ -419,18 +412,17 @@ int main(int argc, char *argv[]) {
 
 end_main:
 
-	if (pkt_data != NULL)
+	if (pkt_data != NULL) {
 		free(pkt_data);
+	}
 
-	if (server_sockfd >= 0)
+	if (server_sockfd >= 0) {
 		close(server_sockfd);
+	}
 
-	for (i = 0; i < num_socks; i++)
+	for (i = 0; i < num_socks; i++) {
 		close(socks[i].sockfd);
-
-	// remove pid file if it belongs to us
-	if (already_running() == getpid())
-		unlink(pid_file);
+	}
 
 	log_message(LOG_INFO, "exit.");
 
