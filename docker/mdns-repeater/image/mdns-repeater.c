@@ -27,7 +27,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#include <syslog.h>
 #include <unistd.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -37,10 +36,6 @@
 #define PACKAGE "mdns-repeater"
 #define MDNS_ADDR "224.0.0.251"
 #define MDNS_PORT 5353
-
-#ifndef PIDFILE
-#define PIDFILE "/var/run/" PACKAGE ".pid"
-#endif
 
 #define MAX_SOCKS 16
 #define MAX_SUBNETS 16
@@ -73,11 +68,7 @@ struct subnet whitelisted_subnets[MAX_SUBNETS];
 #define PACKET_SIZE 65536
 void *pkt_data = NULL;
 
-int foreground = 0;
-int debug = 0;
 int shutdown_flag = 0;
-
-char *pid_file = PIDFILE;
 
 void log_message(int loglevel, char *fmt_str, ...) {
 	va_list ap;
@@ -88,11 +79,7 @@ void log_message(int loglevel, char *fmt_str, ...) {
 	va_end(ap);
 	buf[2047] = 0;
 
-	if (foreground) {
-		fprintf(stderr, "%s: %s\n", PACKAGE, buf);
-	} else {
-		syslog(loglevel, "%s", buf);
-	}
+	fprintf(stderr, "%s: %s\n", PACKAGE, buf);
 }
 
 static int create_recv_sock() {
@@ -238,104 +225,11 @@ static void mdns_repeater_shutdown(int sig) {
 	shutdown_flag = 1;
 }
 
-
 static void register_signals() {
 	signal(SIGCHLD, SIG_IGN);
 	signal(SIGHUP, SIG_IGN);
 	signal(SIGINT, mdns_repeater_shutdown);
 	signal(SIGTERM, mdns_repeater_shutdown);
-}
-
-static pid_t already_running() {
-	FILE *f;
-	int count;
-	pid_t pid;
-
-	f = fopen(pid_file, "r");
-	if (f != NULL) {
-		count = fscanf(f, "%d", &pid);
-		fclose(f);
-		if (count == 1) {
-			if (kill(pid, 0) == 0)
-				return pid;
-		}
-	}
-
-	return -1;
-}
-
-static int write_pidfile() {
-	FILE *f;
-	int r;
-
-	f = fopen(pid_file, "w");
-	if (f != NULL) {
-		r = fprintf(f, "%d", getpid());
-		fclose(f);
-		return (r > 0);
-	}
-
-	return 0;
-}
-
-static void daemonize() {
-	pid_t running_pid;
-	pid_t pid = fork();
-	if (pid < 0) {
-		log_message(LOG_ERR, "fork(): %s", strerror(errno));
-		exit(1);
-	}
-
-	// exit parent process
-	if (pid > 0) {
-		exit(0);
-	}
-
-	register_signals();
-
-	setsid();
-	umask(0027);
-	chdir("/");
-
-	// close all std fd and reopen /dev/null for them
-	int i;
-	for (i = 0; i < 3; i++) {
-		close(i);
-		if (open("/dev/null", O_RDWR) != i) {
-			log_message(LOG_ERR, "unable to open /dev/null for fd %d", i);
-			exit(1);
-		}
-	}
-
-	// check for pid file
-	running_pid = already_running();
-	if (running_pid != -1) {
-		log_message(LOG_ERR, "already running as pid %d", running_pid);
-		exit(1);
-	} else if (! write_pidfile()) {
-		log_message(LOG_ERR, "unable to write pid file %s", pid_file);
-		exit(1);
-	}
-}
-
-static void show_help(const char *progname) {
-	fprintf(stderr, "mDNS repeater (version " MDNS_REPEATER_VERSION ")\n");
-	fprintf(stderr, "Copyright (C) 2011 Darell Tan\n\n");
-	fprintf(stderr, "usage: %s [ -f ] <ifdev> ...\n", progname);
-	fprintf(stderr, "\n"
-					"<ifdev> specifies an interface like \"eth0\"\n"
-					"packets received on an interface is repeated across all other specified interfaces\n"
-					"maximum number of interfaces is 5\n"
-					"\n"
-					" flags:\n"
-					"	-f	runs in foreground\n"
-					"	-d	log debug messages when runs in foreground\n"
-					"	-b	blacklist subnet (eg. 192.168.1.1/24)\n"
-					"	-w	whitelist subnet (eg. 192.168.1.1/24)\n"
-					"	-p	specifies the pid file path (default: " PIDFILE ")\n"
-					"	-h	shows this help\n"
-					"\n"
-		);
 }
 
 int parse(char *input, struct subnet *s) {
@@ -388,133 +282,17 @@ int tostring(struct subnet *s, char* buf, int len) {
 	return l;
 }
 
-static int parse_opts(int argc, char *argv[]) {
-	int c, res;
-	int help = 0;
-	struct subnet *ss;
-	char *msg;
-	while ((c = getopt(argc, argv, "hfdp:b:w:")) != -1) {
-		switch (c) {
-			case 'h': help = 1; break;
-			case 'f': foreground = 1; break;
-			case 'd': debug = 1; break;
-			case 'p':
-				if (optarg[0] != '/')
-					log_message(LOG_ERR, "pid file path must be absolute");
-				else
-					pid_file = optarg;
-				break;
-
-			case 'b':
-				if (num_blacklisted_subnets >= MAX_SUBNETS) {
-					log_message(LOG_ERR, "too many blacklisted subnets (maximum is %d)", MAX_SUBNETS);
-					exit(2);
-				}
-
-				if (num_whitelisted_subnets != 0) {
-					log_message(LOG_ERR, "simultaneous whitelisting and blacklisting does not make sense");
-					exit(2);
-				}
-
-				ss = &blacklisted_subnets[num_blacklisted_subnets];
-				res = parse(optarg, ss);
-				switch (res) {
-					case -1:
-						log_message(LOG_ERR, "invalid blacklist argument");
-						exit(2);
-					case -2:
-						log_message(LOG_ERR, "could not parse netmask");
-						exit(2);
-					case -3:
-						log_message(LOG_ERR, "invalid netmask");
-						exit(2);
-				}
-
-				num_blacklisted_subnets++;
-
-				msg = malloc(128);
-				memset(msg, 0, 128);
-				tostring(ss, msg, 128);
-				log_message(LOG_INFO, "blacklist %s", msg);
-				free(msg);
-				break;
-			case 'w':
-				if (num_whitelisted_subnets >= MAX_SUBNETS) {
-					log_message(LOG_ERR, "too many whitelisted subnets (maximum is %d)", MAX_SUBNETS);
-					exit(2);
-				}
-
-				if (num_blacklisted_subnets != 0) {
-					log_message(LOG_ERR, "simultaneous whitelisting and blacklisting does not make sense");
-					exit(2);
-				}
-
-				ss = &whitelisted_subnets[num_whitelisted_subnets];
-				res = parse(optarg, ss);
-				switch (res) {
-					case -1:
-						log_message(LOG_ERR, "invalid whitelist argument");
-						exit(2);
-					case -2:
-						log_message(LOG_ERR, "could not parse netmask");
-						exit(2);
-					case -3:
-						log_message(LOG_ERR, "invalid netmask");
-						exit(2);
-				}
-
-				num_whitelisted_subnets++;
-
-				msg = malloc(128);
-				memset(msg, 0, 128);
-				tostring(ss, msg, 128);
-				log_message(LOG_INFO, "whitelist %s", msg);
-				free(msg);
-				break;
-			case '?':
-			case ':':
-				fputs("\n", stderr);
-				break;
-
-			default:
-				log_message(LOG_ERR, "unknown option %c", optopt);
-				exit(2);
-		}
-	}
-
-	if (help) {
-		show_help(argv[0]);
-		exit(0);
-	}
-
-	return optind;
-}
-
 int main(int argc, char *argv[]) {
-	pid_t running_pid;
 	fd_set sockfd_set;
 	int r = 0;
 
-	parse_opts(argc, argv);
-
 	if ((argc - optind) <= 1) {
-		show_help(argv[0]);
 		log_message(LOG_ERR, "error: at least 2 interfaces must be specified");
 		exit(2);
 	}
 
 	openlog(PACKAGE, LOG_PID | LOG_CONS, LOG_DAEMON);
-	if (! foreground)
-		daemonize();
-	else {
-		// check for pid file when running in foreground
-		running_pid = already_running();
-		if (running_pid != -1) {
-			log_message(LOG_ERR, "already running as pid %d", running_pid);
-			exit(1);
-		}
-		register_signals();
-	}
+	register_signals();
 
 	// create receiving socket
 	server_sockfd = create_recv_sock();
@@ -580,8 +358,9 @@ int main(int argc, char *argv[]) {
 				}
 			}
 
-			if (self_generated_packet)
+			if (self_generated_packet) {
 				continue;
+			}
 
 			if (num_whitelisted_subnets != 0) {
 				char whitelisted_packet = 0;
