@@ -1,6 +1,6 @@
 #!/bin/sh
 
 mkdir -p /var/lib/samba/sshkeys
-ssh-keygen -A
+ssh-keygen -A -f /etc/ssh/hostkeys
 
 exec /usr/sbin/sshd -D
