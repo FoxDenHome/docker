@@ -1,9 +1,10 @@
 FROM alpine
 
-RUN apk update && apk add samba s6 ethtool nginx avahi
+RUN apk update && apk add samba s6 ethtool nginx avahi openssh
 
 RUN ln -sf /var/lib/samba/passwd /etc/passwd
 RUN ln -sf /var/lib/samba/group /etc/group
+RUN ln -sf /var/lib/samba/sshkeys /etc/ssh/hostkeys
 
 RUN sed -i 's~#enable-dbus=yes~enable-dbus=no~' /etc/avahi/avahi-daemon.conf
 

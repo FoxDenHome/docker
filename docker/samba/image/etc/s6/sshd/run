@@ -1,0 +1,6 @@
+#!/bin/sh
+
+mkdir -p /var/lib/samba/sshkeys
+ssh-keygen -A
+
+exec /usr/sbin/sshd -D
