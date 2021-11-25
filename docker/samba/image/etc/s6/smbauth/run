@@ -68,6 +68,10 @@ class AuthHTTPRequestHandler(BaseHTTPRequestHandler):
     def log_message(self, format, *args):
         return
 
-srv = ThreadingHTTPServer(("127.0.0.1", 1042), AuthHTTPRequestHandler)
-print("HTTP server listening!")
-srv.serve_forever()
+def start_smbauth_server():
+    srv = ThreadingHTTPServer(("127.0.0.1", 1042), AuthHTTPRequestHandler)
+    print("HTTP server listening!")
+    srv.serve_forever()
+
+if __name__ == "__main__":
+    start_smbauth_server()
