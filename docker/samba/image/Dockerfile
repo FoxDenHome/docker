@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN apk update && apk add samba s6 ethtool nginx avahi openssh
+RUN apk update && apk add samba s6 ethtool nginx avahi openssh python3
 
 RUN ln -sf /var/lib/samba/sshkeys /etc/ssh/hostkeys
 
