@@ -1,6 +1,6 @@
 local ngx_pipe = require("ngx.pipe")
 
-local is_nil_or_empty(str)
+local function is_nil_or_empty(str)
     return (not str) or str == ""
 end
 
