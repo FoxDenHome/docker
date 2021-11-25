@@ -16,16 +16,12 @@ def check_password(username, password):
     if cache_result is not None:
         return cache_result
 
-    print("A")
-
     proc = run([
         'smbclient',
         '-U', username,
         '-L',
         '\\127.0.0.1',
-    ], input=(password + b"\n"))
-
-    print(proc)
+    ], stdout=DEVNULL, stderr=DEVNULL, input=(password + b"\n"))
 
     success = proc.returncode == 0
     set_auth_cache(username, password, success)
