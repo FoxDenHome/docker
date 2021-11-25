@@ -5,15 +5,28 @@ from base64 import b64decode
 from binascii import Error as BinasciiError
 from subprocess import run, DEVNULL
 
+def get_auth_cache(username, password):
+    return None
+
+def set_auth_cache(username, password, success):
+    pass
+
 def check_password(username, password):
+    cache_result = get_auth_cache(username, password)
+    if cache_result is not None:
+        return cache_result
+
     proc = run([
         'smbclient',
         '-U', username,
         '--password', password,
         '-L',
         '\\127.0.0.1',
-    ], stdout=DEVNULL, stderr=DEVNULL)
-    return proc.returncode == 0
+    ], stdout=DEVNULL, stderr=DEVNULL, text=True, input=f"{password}\n")
+
+    success = proc.returncode == 0
+    set_auth_cache(username, password, success)
+    return success
 
 def check_auth_header(auth_header):
     if not auth_header:
