@@ -3,7 +3,7 @@
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from base64 import b64decode
 from binascii import Error as BinasciiError
-from subprocess import run
+from subprocess import run, DEVNULL
 
 def check_password(username, password):
     proc = run([
@@ -12,7 +12,7 @@ def check_password(username, password):
         '--password', password,
         '-L',
         '\\127.0.0.1',
-    ])
+    ], stdout=DEVNULL, stderr=DEVNULL)
     return proc.returncode == 0
 
 def check_auth_header(auth_header):
