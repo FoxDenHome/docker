@@ -21,7 +21,7 @@ def check_password(username, password):
         '-U', username,
         '-L',
         '\\127.0.0.1',
-    ], stdout=DEVNULL, stderr=DEVNULL, text=True, input=f"{password}\n")
+    ], encoding="utf8", input=f"{password}\n")
 
     success = proc.returncode == 0
     set_auth_cache(username, password, success)
