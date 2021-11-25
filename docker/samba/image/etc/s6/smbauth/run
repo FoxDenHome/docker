@@ -19,7 +19,6 @@ def check_password(username, password):
     proc = run([
         'smbclient',
         '-U', username,
-        '--password', password,
         '-L',
         '\\127.0.0.1',
     ], stdout=DEVNULL, stderr=DEVNULL, text=True, input=f"{password}\n")
