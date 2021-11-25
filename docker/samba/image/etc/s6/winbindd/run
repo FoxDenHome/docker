@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec winbindd -F --no-process-group -s /etc/samba/smb.conf
