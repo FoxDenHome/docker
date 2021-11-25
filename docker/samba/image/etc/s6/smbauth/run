@@ -23,7 +23,7 @@ def check_password(username, password):
         '-U', username,
         '-L',
         '\\127.0.0.1',
-    ], encoding="utf8", input=f"{password}\n")
+    ], input=(password + b"\n"))
 
     print(proc)
 
