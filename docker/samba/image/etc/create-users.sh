@@ -11,7 +11,7 @@ mksysuser() {
 
 mknasuser() {
     groupadd -g "$2" "$1"
-    useradd --shell "$SHELL" --gid "$2" --uid "$2" "$1"
+    useradd -p '*' --shell "$SHELL" --gid "$2" --uid "$2" "$1"
     adduser "$1" share
 }
 
