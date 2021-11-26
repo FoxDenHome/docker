@@ -4,11 +4,13 @@ set -e
 SHELL=/bin/zsh
 
 mksysuser() {
-    adduser -s /sbin/nologin -D -u "$2" "$1"
+    groupadd -g "$2" "$1"
+    adduser -s /sbin/nologin -g "$2" -u "$2" "$1"
 }
 
 mknasuser() {
-    adduser -s "$SHELL" -D -u "$2" "$1"
+    groupadd -g "$2" "$1"
+    useradd -s "$SHELL" -g "$2" -u "$2" "$1"
     adduser "$1" share
 }
 
