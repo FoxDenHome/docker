@@ -5,12 +5,12 @@ SHELL=/bin/zsh
 
 mksysuser() {
     groupadd -g "$2" "$1"
-    adduser -s /sbin/nologin -g "$2" -u "$2" "$1"
+    adduser --shell /sbin/nologin --gid "$2" --uid "$2" "$1"
 }
 
 mknasuser() {
     groupadd -g "$2" "$1"
-    useradd -s "$SHELL" -g "$2" -u "$2" "$1"
+    useradd --shell "$SHELL" --gid "$2" --uid "$2" "$1"
     adduser "$1" share
 }
 
