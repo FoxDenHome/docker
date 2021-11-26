@@ -19,7 +19,7 @@ PasswordAuthentication no
 ChallengeResponseAuthentication no
 KerberosAuthentication no
 GSSAPIAuthentication no
-*sePAM no
+UsePAM no
 
 AllowAgentForwarding no
 AllowTcpForwarding no
