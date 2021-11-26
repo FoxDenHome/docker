@@ -1,3 +1,5 @@
 name: "share"
 fs:
   url: "/mnt/nas"
+elasticsearch:
+  nodes: 'http://elasticsearch:9200'
