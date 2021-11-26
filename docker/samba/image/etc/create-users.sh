@@ -20,5 +20,3 @@ mksysuser guest    403
 mksysuser share    1000
 mknasuser doridian 1001
 mknasuser wizzy    1002
-
-printf 'guest\nguest\n' | smbpasswd -a guest
