@@ -1,6 +1,9 @@
 root:x:0:
-doridian:x:1000:
+
 share:x:1001:doridian,wizzy
+doridian:x:1000:
 wizzy:x:1002:
-avahi:x:995:
+
 sshd:x:993:
+avahi:x:995:
+smbauth:x:996:
