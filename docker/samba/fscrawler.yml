@@ -1,0 +1,14 @@
+version: "2.4"
+services:
+  samba:
+    build: fscrawler
+    restart: always
+    links:
+      - elasticsearch:elasticsearch
+    volumes:
+      - /mnt/zhdd/nas:/mnt/nas
+      - /mnt/zssd/nas/torrent:/mnt/nas/torrent
+      - /mnt/zhdd/nashome:/home
+
+volumes:
+  fscrawler_logs: {}
