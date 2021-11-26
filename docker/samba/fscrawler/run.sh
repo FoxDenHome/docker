@@ -3,4 +3,4 @@
 fscrawler share &
 fscrawler homes &
 
-wait -n || exit 1
+wait
