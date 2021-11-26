@@ -16,6 +16,9 @@ def set_auth_cache(username, password, success):
     pass
 
 def check_password(username, password):
+    if username == 'guest':
+        return False
+
     cache_result = get_auth_cache(username, password)
     if cache_result is not None:
         return cache_result
