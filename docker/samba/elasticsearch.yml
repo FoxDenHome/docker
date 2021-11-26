@@ -7,6 +7,7 @@ services:
       discovery.type: single-node
       network.host: _site_
       network.bind_host: _site_
+      xpack.security.enabled: 'false'
     volumes:
     - elasticsearch:/usr/share/elasticsearch/data
 
