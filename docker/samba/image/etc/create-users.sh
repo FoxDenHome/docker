@@ -4,7 +4,7 @@ set -e
 SHELL=/bin/zsh
 
 mksysuser() {
-    adduser -s /bin/false -D -u "$2" "$1"
+    adduser -s /sbin/nologin -D -u "$2" "$1"
 }
 
 mknasuser() {
@@ -13,6 +13,7 @@ mknasuser() {
 }
 
 mksysuser smbauth  401
+mksysuser smbguest 403
 mksysuser share    1000
 mknasuser doridian 1001
 mknasuser wizzy    1002
