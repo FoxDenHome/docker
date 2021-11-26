@@ -7,4 +7,7 @@ then
     mv /etc/ssh/ssh_host_*_key* /var/lib/samba/sshkeys/
 fi
 
+mkdir -p /run/sshd
+chmod +t /run/sshd
+
 exec /usr/sbin/sshd -D -e
