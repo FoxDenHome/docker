@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 from os import setregid, setreuid
-setregid(996, 996)
-setreuid(996, 996)
+setregid(401, 401)
+setreuid(401, 401)
 
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 from base64 import b64decode

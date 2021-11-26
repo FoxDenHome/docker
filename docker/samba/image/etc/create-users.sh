@@ -3,12 +3,16 @@ set -e
 
 SHELL=/bin/zsh
 
-adduser -s /bin/false -D -u 1000 share
+mksysuser() {
+    adduser -s /bin/false -D -u "$2" "$1"
+}
 
-mkuser() {
+mknasuser() {
     adduser -s "$SHELL" -D -u "$2" "$1"
     adduser "$1" share
 }
 
-mkuser doridian 1001
-mkuser wizzy    1002
+mksysuser smbauth  401
+mksysuser share    1000
+mknasuser doridian 1001
+mknasuser wizzy    1002
