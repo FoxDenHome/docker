@@ -18,8 +18,8 @@ services:
       VPN_PROV: custom
       VPN_ENABLED: 'yes'
       LAN_NETWORK: 192.168.0.0/16
-      PUID: 1001
-      PGID: 1001
+      PUID: 1000
+      PGID: 1000
     volumes:
       - deluge_config:/config
       - /mnt/zssd/nas/torrent:/data
