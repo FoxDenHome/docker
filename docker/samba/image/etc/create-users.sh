@@ -1,11 +1,12 @@
 #!/bin/sh
 set -e
 
-SHELL=/bin/zsh
+SHELL=/usr/bin/zsh
+NOLOGIN=/usr/sbin/nologin
 
 mksysuser() {
     groupadd -g "$2" "$1"
-    useradd --shell /sbin/nologin --gid "$2" --uid "$2" "$1"
+    useradd --shell "$NOLOGIN" --gid "$2" --uid "$2" "$1"
 }
 
 mknasuser() {
