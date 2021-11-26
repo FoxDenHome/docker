@@ -2,4 +2,5 @@ name: "share"
 fs:
   url: "/mnt/nas"
 elasticsearch:
-  nodes: 'http://elasticsearch:9200'
+  nodes:
+  - url: 'http://elasticsearch:9200'

@@ -2,4 +2,5 @@ name: "homes"
 fs:
   url: "/home"
 elasticsearch:
-  nodes: 'http://elasticsearch:9200'
+  nodes:
+  - url: 'http://elasticsearch:9200'
