@@ -1,2 +1,3 @@
+name: "share"
 fs:
   url: "/mnt/nas"
