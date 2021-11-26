@@ -1,6 +1,6 @@
 FROM debian:stable-slim
 
-RUN apt update && apt -y --no-install-recommends install samba-server s6 ethtool nginx avahi-server openssh-server python3 zsh
+RUN apt update && apt -y --no-install-recommends install samba s6 ethtool nginx avahi-daemon openssh-server python3 zsh
 
 RUN rm -f /etc/ssh/ssh_host_* && ln -sf /var/lib/samba/sshkeys /etc/ssh/hostkeys
 
