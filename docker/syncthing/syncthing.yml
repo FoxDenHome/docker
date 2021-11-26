@@ -13,8 +13,10 @@ services:
       PGID: 1000
     volumes:
       - syncthing_config:/config
-      - /mnt/zhdd/syncthing:/data1
+      - syncthing_data:/data1
 
 volumes:
   syncthing_config:
+    external: true
+  syncthing_data:
     external: true
