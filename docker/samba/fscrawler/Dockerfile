@@ -1,6 +1,6 @@
 FROM dadoonet/fscrawler
 
 COPY conf /root/.fscrawler
+COPY run.sh /run.sh
 
-#CMD [ "fscrawler", "--rest", "nas" ]
-CMD [ "sleep", "Infinity" ]
+CMD [ "/run.sh" ]
