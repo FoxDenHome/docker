@@ -6,7 +6,7 @@ NOLOGIN=/usr/sbin/nologin
 
 mksysuser() {
     groupadd -g "$2" "$1"
-    useradd --shell "$NOLOGIN" --gid "$2" --uid "$2" "$1"
+    useradd -p '*' --shell "$NOLOGIN" --gid "$2" --uid "$2" "$1"
 }
 
 mknasuser() {
