@@ -3,6 +3,7 @@ services:
   fscrawler:
     build: fscrawler
     restart: always
+    init: true
     links:
       - elasticsearch:elasticsearch
     volumes:
