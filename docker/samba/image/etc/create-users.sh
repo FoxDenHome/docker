@@ -4,14 +4,17 @@ set -e
 SHELL=/usr/bin/zsh
 NOLOGIN=/usr/sbin/nologin
 
-mksysuser() {
+mktpluser() {
     groupadd -g "$2" "$1"
-    useradd -p '*' --shell "$NOLOGIN" --gid "$2" --uid "$2" "$1"
+    useradd -p '*' --shell "$3" --gid "$2" --uid "$2" "$1"
+}
+
+mksysuser() {
+    mktpluser "$1" "$2" "$NOLOGIN"
 }
 
 mknasuser() {
-    groupadd -g "$2" "$1"
-    useradd -p '*' --shell "$SHELL" --gid "$2" --uid "$2" "$1"
+    mktpluser "$1" "$2" "$SHELL"
     adduser "$1" share
 }
 
