@@ -16,6 +16,7 @@ mksysuser() {
 mknasuser() {
     mktpluser "$1" "$2" "$SHELL"
     adduser "$1" share
+    chown "$1:$1" "/etc/ssh/keys/$1"
 }
 
 mksysuser smbauth  401
