@@ -20,7 +20,7 @@ mknasuser() {
     mkdir -p "/etc/ssh/keys/$1"
 
     chown -R "$1:$1" "/etc/ssh/keys/$1"
-    wget "https://raw.githubusercontent.com/Doridian/home-scripts/master/sshkeys/$1" -O "/etc/ssh/keys/$1/list"
+    wget "https://raw.githubusercontent.com/Doridian/home-scripts/master/sshkeys/$1" -qO "/etc/ssh/keys/$1/list"
     chmod 700 "/etc/ssh/keys/$1"
     chmod 600 "/etc/ssh/keys/$1/list"
 }
