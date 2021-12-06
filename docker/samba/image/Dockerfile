@@ -10,8 +10,8 @@ RUN rm -f /etc/avahi/services/*
 COPY etc /etc
 
 RUN mkdir -p /etc/ssh/keys && \
-        curl https://raw.githubusercontent.com/Doridian/home-scripts/master/sshkeys/doridian > /etc/ssh/keys/doridian \
-        curl https://raw.githubusercontent.com/Doridian/home-scripts/master/sshkeys/wizzy > /etc/ssh/keys/wizzy
+        wget https://raw.githubusercontent.com/Doridian/home-scripts/master/sshkeys/doridian -O /etc/ssh/keys/doridian \
+        wget https://raw.githubusercontent.com/Doridian/home-scripts/master/sshkeys/wizzy -O /etc/ssh/keys/wizzy
 
 RUN /etc/create-users.sh && rm -f /etc/create-users.sh
 
