@@ -9,6 +9,10 @@ RUN sed -i 's~#enable-dbus=yes~enable-dbus=no~' /etc/avahi/avahi-daemon.conf
 RUN rm -f /etc/avahi/services/*
 COPY etc /etc
 
+RUN mkdir /etc/ssh/keys \
+        curl https://raw.githubusercontent.com/Doridian/home-scripts/master/sshkeys/doridian > /etc/ssh/keys/doridian \
+        curl https://raw.githubusercontent.com/Doridian/home-scripts/master/sshkeys/wizzy > /etc/ssh/keys/wizzy
+
 RUN /etc/create-users.sh && rm -f /etc/create-users.sh
 
 VOLUME /var/lib/samba
