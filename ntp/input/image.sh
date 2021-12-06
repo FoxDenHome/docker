@@ -34,7 +34,7 @@ echo >> "$ROOTFS_PATH/etc/fstab"
 add_tmpfs() {
     TMP_PATH="$1"
     mkdir -p "$ROOTFS_PATH/$TMP_PATH"
-    echo 'tmpfs $TMP_PATH tmpfs defaults 0 0' >> "$ROOTFS_PATH/etc/fstab"
+    echo "tmpfs $TMP_PATH tmpfs defaults 0 0" >> "$ROOTFS_PATH/etc/fstab"
 }
 add_tmpfs '/var/log'
 
