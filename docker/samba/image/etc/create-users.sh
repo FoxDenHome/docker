@@ -18,9 +18,8 @@ mknasuser() {
     adduser "$1" share
 
     mkdir -p "/etc/ssh/keys/$1"
-
-    chown -R "$1:$1" "/etc/ssh/keys/$1"
     wget "https://raw.githubusercontent.com/Doridian/home-scripts/master/sshkeys/$1" -qO "/etc/ssh/keys/$1/list"
+    chown -R "$1:$1" "/etc/ssh/keys/$1"
     chmod 700 "/etc/ssh/keys/$1"
     chmod 600 "/etc/ssh/keys/$1/list"
 }
