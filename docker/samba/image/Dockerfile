@@ -9,7 +9,7 @@ RUN sed -i 's~#enable-dbus=yes~enable-dbus=no~' /etc/avahi/avahi-daemon.conf
 RUN rm -f /etc/avahi/services/*
 COPY etc /etc
 
-RUN mkdir /etc/ssh/keys \
+RUN mkdir -p /etc/ssh/keys && \
         curl https://raw.githubusercontent.com/Doridian/home-scripts/master/sshkeys/doridian > /etc/ssh/keys/doridian \
         curl https://raw.githubusercontent.com/Doridian/home-scripts/master/sshkeys/wizzy > /etc/ssh/keys/wizzy
 
