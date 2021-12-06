@@ -1,0 +1,14 @@
+dtparam=audio=off
+
+enable_uart=1
+init_uart_baud=115200
+
+dtoverlay=pps-gpio,gpiopin=18
+
+dtoverlay=disable-bt
+dtoverlay=disable-wifi
+
+dtoverlay=dwc2,dr_mode=host
+
+dtparam=i2c_vc=on
+dtoverlay=i2c-rtc,pcf85063a,i2c_csi_dsi

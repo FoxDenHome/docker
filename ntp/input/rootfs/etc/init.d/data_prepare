@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+# shellcheck shell=ash
+
+depend()
+{
+    need localmount
+}
+
+start()
+{
+    ebegin Preparing persistent data
+    /sbin/ab_resizedata
+    # make sure /data is mounted
+    mount -a
+
+    if [ ! -L /data/etc/resolv.conf ]
+    then
+        ln -sf /tmp/resolv.conf /data/etc/resolv.conf
+    fi
+
+    echo 'nameserver 192.168.1.5' > /tmp/resolv.conf
+
+    mkdir -p /data/chrony && chown -R chrony:chrony /data/chrony
+
+    eend 0
+}
