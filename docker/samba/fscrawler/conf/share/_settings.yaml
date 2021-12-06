@@ -1,6 +1,0 @@
-name: "share"
-fs:
-  url: "/mnt/nas"
-elasticsearch:
-  nodes:
-  - url: 'http://elasticsearch:9200'

@@ -1,6 +1,0 @@
-name: "homes"
-fs:
-  url: "/home"
-elasticsearch:
-  nodes:
-  - url: 'http://elasticsearch:9200'
