@@ -11,7 +11,7 @@ PermitRootLogin no
 
 PubkeyAuthentication yes
 
-AuthorizedKeysFile	/etc/ssh/keys/%u
+AuthorizedKeysFile	/etc/ssh/keys/%u/list
 
 
 HostbasedAuthentication no

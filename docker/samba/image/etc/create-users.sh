@@ -16,7 +16,13 @@ mksysuser() {
 mknasuser() {
     mktpluser "$1" "$2" "$SHELL"
     adduser "$1" share
-    chown "$1:$1" "/etc/ssh/keys/$1"
+
+    mkdir -p "/etc/ssh/keys/$1"
+
+    chown -R "$1:$1" "/etc/ssh/keys/$1"
+    wget "https://raw.githubusercontent.com/Doridian/home-scripts/master/sshkeys/$1" -O "/etc/ssh/keys/$1/list"
+    chmod 700 "/etc/ssh/keys/$1"
+    chmod 600 "/etc/ssh/keys/$1/list"
 }
 
 mksysuser smbauth  401

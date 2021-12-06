@@ -10,10 +10,6 @@ RUN rm -f /etc/avahi/services/*
 COPY etc /etc
 
 RUN mkdir -p /etc/ssh/keys
-ADD https://raw.githubusercontent.com/Doridian/home-scripts/master/sshkeys/doridian /etc/ssh/keys/doridian
-ADD https://raw.githubusercontent.com/Doridian/home-scripts/master/sshkeys/wizzy /etc/ssh/keys/wizzy
-RUN chmod 700 /etc/ssh/keys && chmod 600 /etc/ssh/keys/*
-
 RUN /etc/create-users.sh && rm -f /etc/create-users.sh
 
 VOLUME /var/lib/samba
