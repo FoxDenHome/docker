@@ -44,6 +44,11 @@ revert_data_ln() {
     rm -f "$ROOTFS_PATH/$LN_PATH" || rmdir "$ROOTFS_PATH/$LN_PATH"
     mv "$DATAFS_PATH/$LN_PATH" "$ROOTFS_PATH/$LN_PATH"
 }
+revert_data_override() {
+    LN_PATH="$1"
+    rm -f "$ROOTFS_PATH/$LN_PATH" || rmdir "$ROOTFS_PATH/$LN_PATH"
+    mv "$ROOTFS_PATH/${LN_PATH}_org" "$ROOTFS_PATH/$LN_PATH"
+}
 revert_data_ln '/etc/hostname'
 revert_data_ln '/etc/network/interfaces'
 sed 's~/data/etc/~/tmp/~g' -i "$ROOTFS_PATH/etc/udhcpc/udhcpc.conf"
@@ -51,6 +56,7 @@ revert_data_ln '/etc/localtime'
 revert_data_ln '/etc/timezone'
 revert_data_ln '/etc/shadow'
 revert_data_ln '/root'
+revert_data_override '/etc/conf.d/dropbear'
 
 # Copy our rootfs additions
 cp -rp "$INPUT_PATH/rootfs/"* "$ROOTFS_PATH"
@@ -71,3 +77,4 @@ add_user() {
 }
 
 add_user doridian
+add_user wizzy
