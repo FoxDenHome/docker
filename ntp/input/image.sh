@@ -9,7 +9,7 @@ echo 'include usercfg.txt' >> "$BOOTFS_PATH/config.txt"
 # Install packages
 chroot_exec apk update
 chroot_exec apk upgrade
-chroot_exec apk add bridge-utils curl screen prometheus-node-exporter gpsd gpsd-clients chrony bridge wget sudo tcpdump nano openssh-sftp-server
+chroot_exec apk add bridge-utils curl screen prometheus-node-exporter gpsd gpsd-clients chrony bridge wget sudo tcpdump nano openssh-sftp-server ethtool
 
 # Configure services
 chroot_exec rc-update del ntpd default

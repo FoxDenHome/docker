@@ -1,3 +1,4 @@
 .DS_Store
 /output
 /testimg
+/input/rootfs/etc/image_commit
