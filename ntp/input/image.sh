@@ -61,6 +61,9 @@ revert_data_override '/etc/conf.d/dropbear'
 # Copy our rootfs additions
 cp -rp "$INPUT_PATH/rootfs/"* "$ROOTFS_PATH"
 
+IMAGE_COMMIT="$(cat "$ROOTFS_PATH/etc/image_commit")"
+sed "s/__IMAGE_COMMIT__/$IMAGE_COMMIT/" -i "$ROOTFS_PATH/etc/motd"
+
 # Add users
 chroot_exec addgroup sudo
 

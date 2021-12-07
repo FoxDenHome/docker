@@ -2,3 +2,5 @@ Welcome to NTP!
 
 chronyc and cgps are going to be the most common commands here.
 
+OS image commit: __IMAGE_COMMIT__
+
