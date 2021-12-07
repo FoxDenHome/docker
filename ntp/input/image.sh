@@ -62,7 +62,9 @@ revert_data_override '/etc/conf.d/dropbear'
 cp -rp "$INPUT_PATH/rootfs/"* "$ROOTFS_PATH"
 
 IMAGE_COMMIT="$(cat "$ROOTFS_PATH/etc/image_commit")"
+IMAGE_DATE="$(cat "$ROOTFS_PATH/etc/image_date")"
 sed "s/__IMAGE_COMMIT__/$IMAGE_COMMIT/" -i "$ROOTFS_PATH/etc/motd"
+sed "s/__IMAGE_DATE__/$IMAGE_DATE/" -i "$ROOTFS_PATH/etc/motd"
 
 # Add users
 chroot_exec addgroup sudo

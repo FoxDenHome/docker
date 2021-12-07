@@ -9,6 +9,7 @@ export DEFAULT_KERNEL_MODULES="8021q af_packet bridge dwc2 garp i2c-mux i2c-mux-
 export CMDLINE="console=tty1 root=/dev/root rootfstype=ext4 fsck.repair=yes ro rootwait"
 
 git rev-parse HEAD > input/rootfs/etc/image_commit
+date > input/rootfs/etc/image_date
 
 IMG="ghcr.io/doridian/raspi-alpine-builder"
 docker pull "$IMG"
