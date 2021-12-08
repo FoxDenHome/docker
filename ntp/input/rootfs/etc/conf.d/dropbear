@@ -1,0 +1,1 @@
+DROPBEAR_OPTS="-j -k -g -w -s"
