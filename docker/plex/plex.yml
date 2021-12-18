@@ -13,7 +13,7 @@ services:
       - plex_data:/config
       - /mnt/zhdd/nas:/media
     healthcheck:
-      test: 'curl -s -f "http://`hostname`:32400/" >/dev/null || exit 1'
+      test: 'curl -s -f "http://$HOSTNAME:32400/" >/dev/null || exit 1'
       interval: 5s
       timeout: 3s
 

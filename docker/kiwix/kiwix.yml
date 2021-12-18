@@ -9,7 +9,7 @@ services:
       vlan2:
         ipv4_address: 192.168.2.20
     healthcheck:
-      test: 'curl -s -f "http://`hostname`/" >/dev/null || exit 1'
+      test: 'curl -s -f "http://$HOSTNAME/" >/dev/null || exit 1'
       interval: 5s
       timeout: 3s
     volumes:
