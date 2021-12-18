@@ -278,8 +278,6 @@ IMPORTS
    TRAP-TYPE                                            FROM RFC-1215;
 -- IMPORTS End
 
-lolthisisallinvalid
-
 apc                            OBJECT IDENTIFIER ::=  { enterprises 318 }
 
 products                       OBJECT IDENTIFIER ::=  { apc 1 }
