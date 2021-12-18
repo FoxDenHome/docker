@@ -19,7 +19,7 @@ services:
     extra_hosts:
       - ntp.foxden.network:192.168.3.10
     healthcheck:
-      test: curl -s -f "http://$(hostname):9090/-/healthy" >/dev/null || exit 1
+      test: 'curl -s -f "http://$(hostname):9090/-/healthy" >/dev/null || exit 1'
       interval: 5s
       timeout: 3s
 

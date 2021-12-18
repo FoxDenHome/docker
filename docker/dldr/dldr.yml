@@ -24,7 +24,7 @@ services:
       - deluge_config:/config
       - /mnt/zssd/nas/torrent:/data
     healthcheck:
-      test: curl -s -f "http://$(hostname):8112/" >/dev/null || exit 1
+      test: 'curl -s -f "http://$(hostname):8112/" >/dev/null || exit 1'
       interval: 5s
       timeout: 3s
 

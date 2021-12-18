@@ -11,7 +11,7 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "portainer_data:/data"
     healthcheck:
-      test: curl -s -f "http://$(hostname):9000/" >/dev/null || exit 1
+      test: 'curl -s -f "http://$(hostname):9000/" >/dev/null || exit 1'
       interval: 5s
       timeout: 3s
 volumes:
