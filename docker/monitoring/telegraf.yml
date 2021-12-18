@@ -4,7 +4,6 @@ services:
     build: telegraf
     restart: always
     command: --config-directory /etc/telegraf/includes
-    hostname: telegraf.foxden.network
     environment:
       TZ: America/Los_Angeles
     networks:
