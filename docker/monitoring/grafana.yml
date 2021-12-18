@@ -23,6 +23,10 @@ services:
     restart: always
     environment:
       TZ: America/Los_Angeles
+    healthcheck:
+      test: 'wget --spider -q "http://$${HOSTNAME}:8081/" >/dev/null || exit 1'
+      interval: 5s
+      timeout: 3s
 
 volumes:
   grafana_data:
