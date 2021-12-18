@@ -8,6 +8,10 @@ services:
     volumes:
       - e621dumper_config:/config
       - /mnt/zhdd/e621/data:/data
+    healthcheck:
+      test: curl -s -f http://api:8001/api/v1/healthcheck >/dev/null || exit 1
+      interval: 5s
+      timeout: 3s
 
 volumes:
   e621dumper_config:

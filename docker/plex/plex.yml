@@ -12,6 +12,10 @@ services:
     volumes:
       - plex_data:/config
       - /mnt/zhdd/nas:/media
+    healthcheck:
+      test: curl -s -f http://plex:32400/ >/dev/null || exit 1
+      interval: 5s
+      timeout: 3s
 
 volumes:
   plex_data:

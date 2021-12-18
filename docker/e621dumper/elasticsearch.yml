@@ -8,5 +8,9 @@ services:
       network.host: _site_
       network.bind_host: _site_
       xpack.security.enabled: 'false'
+    healthcheck:
+      test: curl -s -f http://elasticsearch:9200/_cat/health >/dev/null || exit 1
+      interval: 5s
+      timeout: 3s
     volumes:
     - /mnt/zssd/e621/db:/usr/share/elasticsearch/data

@@ -14,6 +14,10 @@ services:
     volumes:
       - syncthing_config:/config
       - syncthing_data:/data1
+    healthcheck:
+      test: curl -s -f http://syncthing:8384/ >/dev/null || exit 1
+      interval: 5s
+      timeout: 3s
 
 volumes:
   syncthing_config:

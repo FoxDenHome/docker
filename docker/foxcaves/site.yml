@@ -18,6 +18,10 @@ services:
     volumes:
       - foxcaves_config:/var/www/foxcaves/config
       - /mnt/zhdd/foxcaves/storage:/var/www/foxcaves/storage
+    healthcheck:
+      test: curl -s -f http://site/api/v1/system/info >/dev/null || exit 1
+      interval: 5s
+      timeout: 3s
 
 volumes:
   foxcaves_config:

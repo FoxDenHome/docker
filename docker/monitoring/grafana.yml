@@ -14,6 +14,10 @@ services:
       default: {}
       vlan3:
         ipv4_address: 192.168.3.35
+    healthcheck:
+      test: curl -s -f http://grafana:3000/ >/dev/null || exit 1
+      interval: 5s
+      timeout: 3s
   grafana-renderer:
     image: grafana/grafana-image-renderer:latest
     restart: always

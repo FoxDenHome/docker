@@ -18,6 +18,10 @@ services:
       - telegraf:telegraf.foxden.network
     extra_hosts:
       - ntp.foxden.network:192.168.3.10
+    healthcheck:
+      test: curl -s -f http://prometheus:9090/-/healthy >/dev/null || exit 1
+      interval: 5s
+      timeout: 3s
 
 volumes:
   prometheus_data:

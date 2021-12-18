@@ -23,6 +23,10 @@ services:
     volumes:
       - deluge_config:/config
       - /mnt/zssd/nas/torrent:/data
+    healthcheck:
+      test: curl -s -f http://dldr:8112/ >/dev/null || exit 1
+      interval: 5s
+      timeout: 3s
 
 volumes:
   deluge_config:
