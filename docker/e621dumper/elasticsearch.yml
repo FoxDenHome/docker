@@ -9,7 +9,7 @@ services:
       network.bind_host: _site_
       xpack.security.enabled: 'false'
     healthcheck:
-      test: 'curl -s -f "http://$(hostname):9200/_cat/health" >/dev/null || exit 1'
+      test: 'curl -s -f "http://`hostname`:9200/_cat/health" >/dev/null || exit 1'
       interval: 5s
       timeout: 3s
     volumes:
