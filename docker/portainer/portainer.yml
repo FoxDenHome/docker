@@ -10,10 +10,6 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "portainer_data:/data"
-    healthcheck:
-      test: 'curl -s -f "http://$${HOSTNAME}:9000/" >/dev/null || exit 1'
-      interval: 5s
-      timeout: 3s
 volumes:
   portainer_data:
     external: true
