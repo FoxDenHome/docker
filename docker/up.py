@@ -4,6 +4,7 @@ from os import chdir, listdir
 from os.path import dirname, abspath
 from socket import gethostname
 from subprocess import run
+from sys import argv
 from yaml import load as yaml_load, dump as yaml_dump
 from yaml.loader import SafeLoader
 from tempfile import NamedTemporaryFile
@@ -104,12 +105,18 @@ def load_role(role):
     if temp_file:
         temp_file.close()
 
-ROLES_FILE = f"{gethostname().lower()}.roles"
+def load_roles_by_hostname():
+    ROLES_FILE = f"{gethostname().lower()}.roles"
 
-fh = open(ROLES_FILE, "r")
-roles = fh.readlines()
-fh.close()
-for role in roles:
-    load_role(role.strip())
+    fh = open(ROLES_FILE, "r")
+    roles = fh.readlines()
+    fh.close()
+    for role in roles:
+        load_role(role.strip())
 
-run(["docker", "image", "prune", "-f", "-a"])
+    run(["docker", "image", "prune", "-f", "-a"])
+
+if len(argv) > 1:
+    load_role(argv[1].strip())
+else:
+    load_roles_by_hostname()
