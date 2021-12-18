@@ -10,3 +10,7 @@ services:
       default: {}
       vlan1:
         ipv4_address: 192.168.1.33
+    healthcheck:
+      test: 'curl -s -f "http://$${HOSTNAME}:9273/" >/dev/null || exit 1'
+      interval: 5s
+      timeout: 3s
