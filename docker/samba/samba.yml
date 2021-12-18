@@ -13,6 +13,10 @@ services:
       - /mnt/zssd/nas/torrent:/mnt/nas/torrent
       - /mnt/zhdd/nashome:/home
       - /mnt/zhdd/timemachine:/mnt/timemachine
+    healthcheck:
+      test: '/etc/healthcheck.sh >/dev/null || exit 1'
+      interval: 60s
+      timeout: 10s
 
 volumes:
   samba_config:
