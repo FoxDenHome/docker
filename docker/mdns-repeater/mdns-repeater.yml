@@ -11,4 +11,3 @@ services:
         ipv4_address: 192.168.4.4
       vlan5:
         ipv4_address: 192.168.5.4
-# TODO: Healthcheck
