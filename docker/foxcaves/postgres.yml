@@ -7,6 +7,10 @@ services:
       POSTGRES_PASSWORD: ${FOXCAVES_POSTGRES_PASSWORD}
     volumes:
       - foxcaves_postgres:/var/lib/postgresql/data
+  healthcheck:
+    test: pg_isready
+    interval: 5s
+    timeout: 3s
 
 volumes:
   foxcaves_postgres:
