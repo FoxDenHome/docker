@@ -1,14 +1,15 @@
 version: "2.4"
 services:
   plex:
-    image: binhex/arch-plexpass:latest
+    image: plexinc/pms-docker:latest
     restart: always
     networks:
       vlan3:
         ipv4_address: 192.168.3.20
     environment:
-      PUID: 10001
-      PGID: 1001
+      PLEX_UID: 10001
+      PLEX_GID: 1001
+      ALLOWED_NETWORKS: 192.168.0.0/16
     volumes:
       - plex_data:/config
       - /mnt/zhdd/nas:/media
