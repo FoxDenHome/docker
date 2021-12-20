@@ -12,6 +12,7 @@ services:
       ALLOWED_NETWORKS: 192.168.0.0/16
     volumes:
       - plex_data:/config
+      - /mnt/zssd/docker/plex/transcode:/transcode
       - /mnt/zhdd/nas:/media
     healthcheck:
       test: 'curl -s -f "http://$${HOSTNAME}:32400/web/index.html" >/dev/null || exit 1'
