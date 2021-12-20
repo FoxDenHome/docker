@@ -1,18 +1,20 @@
 version: "2.4"
 services:
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin
+    image: jellyfin/jellyfin
     restart: always
+    user: 10001:1001
     environment:
-      PUID: 10001
-      PGID: 1001
+      JELLYFIN_PublishedServerUrl: http://jellyfin.foxden.network
       TZ: America/Los_Angeles
     volumes:
       - jellyfin_config:/config
-      - /mnt/zhdd/nas:/data
+      - jellyfin_cache:/cache
+      - /mnt/zhdd/nas:/media
     networks:
       vlan3:
         ipv4_address: 192.168.3.20
 
 volumes:
   jellyfin_config: {}
+  jellyfin_cache: {}
