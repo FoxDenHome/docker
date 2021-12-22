@@ -3,7 +3,7 @@ services:
   plex:
     image: plexinc/pms-docker:latest
     restart: always
-    runtime: nvidia
+    #runtime: nvidia
     networks:
       vlan3:
         ipv4_address: 192.168.3.20
