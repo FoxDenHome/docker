@@ -12,6 +12,7 @@ services:
       PLEX_GID: 1001
       ALLOWED_NETWORKS: 192.168.0.0/16
       NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility,video
     volumes:
       - plex_data:/config
       - /mnt/zssd/docker/plex/transcode:/transcode
