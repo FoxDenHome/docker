@@ -1,6 +1,7 @@
 /*
  * mdns-repeater.c - mDNS repeater daemon
  * Copyright (C) 2011 Darell Tan
+ * Copyright (C) 2021 Mark "Doridian" Dietzer
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
