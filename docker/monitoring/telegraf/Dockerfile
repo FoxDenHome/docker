@@ -6,4 +6,3 @@ RUN echo "deb http://ftp.us.debian.org/debian stretch main non-free" >> /etc/apt
     rm -rf /var/lib/apt/lists/*
 
 COPY conf/ /etc/telegraf/
-COPY mibs/ /usr/share/snmp/mibs/
