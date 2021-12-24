@@ -10,6 +10,11 @@ services:
       default: {}
       vlan1:
         ipv4_address: 192.168.1.33
+    extra_hosts:
+      wired: 192.168.42.10
+      lte: 192.168.42.11
+      internet: 8.8.8.8
+      router: 192.168.1.1
     healthcheck:
       test: 'curl -s -f "http://$${HOSTNAME}:9273/" >/dev/null || exit 1'
       interval: 5s
