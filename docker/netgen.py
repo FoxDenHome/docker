@@ -3,12 +3,14 @@ def generate_driver_opts(id, driver):
         return {
             "parent": f"br{id}",
         }
+    else:
+        raise ValueError(f"Invalid net_driver ${driver}")
 
 def generate_network_for_vlan(id, driver='macvlan'):
     return {
         "name": f"vlan{id}",
         "driver": driver,
-        "driver_opts": generate_driver_opts(driver, id),\
+        "driver_opts": generate_driver_opts(driver, id),
         "ipam": {
             "driver": "default",
             "config": [
