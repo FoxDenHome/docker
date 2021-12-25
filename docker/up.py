@@ -48,7 +48,7 @@ class ComposeProject():
         if "networks" not in data:
             return
         for network in data["networks"]:
-            if network == "default" or network == "host":
+            if network == "default":
                 continue
             self.used_networks.add(network)
 
