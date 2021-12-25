@@ -2,31 +2,14 @@
 
 from os import chdir, listdir
 from os.path import dirname, abspath
-from socket import gethostname
 from subprocess import run
 from sys import argv
-from yaml import load as yaml_load, dump as yaml_dump
-from yaml.loader import SafeLoader
+from yaml import dump as yaml_dump
 from tempfile import NamedTemporaryFile
-from netgen import generate_network_for_vlan
+from config import yaml_loadfile, DOCKER_COMPOSE_VERSION, HOST_CONFIG
+from netgen import GLOBAL_NETWORKS
 
 chdir(dirname(abspath(__file__)))
-
-def yaml_loadfile(file):
-    fh = open(file, "r")
-    data = yaml_load(fh, Loader=SafeLoader)
-    fh.close()
-    return data
-
-DOCKER_COMPOSE_VERSION = "2.4"
-HOST_CONFIG = yaml_loadfile(f"_config/{gethostname().lower()}.yml")
-NET_DRIVER = 'macvlan'
-if 'net_driver' in HOST_CONFIG:
-    NET_DRIVER = HOST_CONFIG['net_driver']
-GLOBAL_NETWORKS = {}
-for id in range(1, 9):
-    net = generate_network_for_vlan(id, NET_DRIVER)
-    GLOBAL_NETWORKS[net["name"]] = net
 class ComposeProject():
     def __init__(self, name, project_dir):
         self.used_networks = set()

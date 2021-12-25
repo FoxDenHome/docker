@@ -5,3 +5,7 @@ roles:
 - foxcaves
 - kiwix
 - syncthing
+network:
+  driver: macvlan
+  pvid: 1
+  netdevice: enp131s0f0np0

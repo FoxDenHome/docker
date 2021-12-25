@@ -3,3 +3,7 @@ roles:
 - mdns-repeater
 - monitoring
 - ut2004
+network:
+  driver: macvlan
+  pvid: 1
+  netdevice: eno1
