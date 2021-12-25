@@ -8,10 +8,9 @@ from sys import argv
 from yaml import load as yaml_load, dump as yaml_dump
 from yaml.loader import SafeLoader
 from tempfile import NamedTemporaryFile
+from netgen import generate_network_for_vlan
 
 chdir(dirname(abspath(__file__)))
-
-DOCKER_COMPOSE_VERSION = "2.4"
 
 def yaml_loadfile(file):
     fh = open(file, "r")
@@ -19,6 +18,14 @@ def yaml_loadfile(file):
     fh.close()
     return data
 
+DOCKER_COMPOSE_VERSION = "2.4"
+HOST_CONFIG = yaml_loadfile(f"_config/{gethostname().lower()}.yml")
+NET_DRIVER = 'macvlan'
+if 'net_driver' in HOST_CONFIG:
+    NET_DRIVER = HOST_CONFIG['net_driver']
+GLOBAL_NETWORKS = {}
+for id in range(1, 9):
+    generate_network_for_vlan(id, NET_DRIVER)
 class ComposeProject():
     def __init__(self, name, project_dir):
         self.used_networks = set()
@@ -75,9 +82,6 @@ class ComposeProject():
         
         run(compose_args + ["pull"])
         run(compose_args + ["up", "--build", "-d", "--remove-orphans"])
-
-GLOBAL_NETWORKS = yaml_loadfile("_config/networks.yml")["networks"]
-HOST_CONFIG = yaml_loadfile(f"_config/{gethostname().lower()}.yml")
 
 def load_role(role):
     if role == "":
