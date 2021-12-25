@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-VERSION="v1.0.1"
+VERSION="v1.1.0"
 
 rm -f /usr/local/bin/docker-sriov-plugin /usr/local/bin/ibdev2netdev /etc/systemd/system/docker-sriov-plugin.service
 wget "https://raw.githubusercontent.com/Doridian/docker-sriov-plugin/$VERSION/ibdev2netdev" -O /usr/local/bin/ibdev2netdev
