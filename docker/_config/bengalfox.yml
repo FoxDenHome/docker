@@ -5,6 +5,7 @@ roles:
 - foxcaves
 - kiwix
 - syncthing
+- net_sriov
 network:
   driver: macvlan
   pvid: 1
