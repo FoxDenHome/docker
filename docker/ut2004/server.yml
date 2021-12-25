@@ -12,8 +12,7 @@ services:
       vlan2:
         ipv4_address: 192.168.2.27
     volumes:
-      - ut2004_home:/home/server
+      - home:/home/server
 
 volumes:
-  ut2004_home:
-    external: true
+  home: {}

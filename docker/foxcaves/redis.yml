@@ -4,12 +4,11 @@ services:
     image: redis:alpine
     restart: always
     volumes:
-      - foxcaves_redis:/data
+      - redis:/data
     healthcheck:
       test: redis-cli PING
       interval: 60s
       timeout: 10s
 
 volumes:
-  foxcaves_redis:
-    external: true
+  redis: {}

@@ -6,7 +6,7 @@ services:
     links:
       - elasticsearch:elasticsearch
     volumes:
-      - e621dumper_config:/config
+      - config:/config
       - /mnt/zhdd/e621/data:/data
     healthcheck:
       test: 'curl -s -f "http://$${HOSTNAME}:8001/api/v1/healthcheck" >/dev/null || exit 1'
@@ -14,5 +14,4 @@ services:
       timeout: 10s
 
 volumes:
-  e621dumper_config:
-    external: true
+  config: {}

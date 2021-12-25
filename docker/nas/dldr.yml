@@ -29,5 +29,4 @@ services:
       timeout: 10s
 
 volumes:
-  deluge_config:
-    external: true
+  deluge_config: {}

@@ -29,5 +29,4 @@ services:
       timeout: 10s
 
 volumes:
-  grafana_data:
-    external: true
+  grafana_data: {}

@@ -23,5 +23,4 @@ services:
       timeout: 10s
 
 volumes:
-  plex_data:
-    external: true
+  plex_data: {}

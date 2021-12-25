@@ -16,7 +16,7 @@ services:
       - postgres:postgres
       - redis:redis
     volumes:
-      - foxcaves_config:/var/www/foxcaves/config
+      - config:/var/www/foxcaves/config
       - /mnt/zhdd/foxcaves/storage:/var/www/foxcaves/storage
     healthcheck:
       test: 'curl -s -f --insecure "https://$${HOSTNAME}/api/v1/system/info" >/dev/null || exit 1'
@@ -24,5 +24,4 @@ services:
       timeout: 10s
 
 volumes:
-  foxcaves_config:
-    external: true
+  config: {}

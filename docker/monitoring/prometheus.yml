@@ -24,5 +24,4 @@ services:
       timeout: 10s
 
 volumes:
-  prometheus_data:
-    external: true
+  prometheus_data: {}
