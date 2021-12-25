@@ -76,7 +76,8 @@ class ComposeProject():
         run(compose_args + ["pull"])
         run(compose_args + ["up", "--build", "-d", "--remove-orphans"])
 
-GLOBAL_NETWORKS = yaml_loadfile("networks.yml")["networks"]
+GLOBAL_NETWORKS = yaml_loadfile("_config/networks.yml")["networks"]
+HOST_CONFIG = yaml_loadfile(f"_config/{gethostname().lower()}.yml")
 
 def load_role(role):
     if role == "":
@@ -106,11 +107,7 @@ def load_role(role):
         temp_file.close()
 
 def load_roles_by_hostname():
-    ROLES_FILE = f"{gethostname().lower()}.roles"
-
-    fh = open(ROLES_FILE, "r")
-    roles = fh.readlines()
-    fh.close()
+    roles = HOST_CONFIG['roles']
     for role in roles:
         load_role(role.strip())
 
