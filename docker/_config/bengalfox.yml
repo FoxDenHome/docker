@@ -6,6 +6,6 @@ roles:
 - kiwix
 - syncthing
 network:
-  driver: macvlan
+  driver: sriov
   pvid: 1
   device: enp131s0f0np0
