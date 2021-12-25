@@ -8,6 +8,7 @@ def generate_driver_opts(id, driver):
     elif driver == "sriov":
         cfg = {
             "netdevice": HOST_CONFIG["network"]["device"],
+            "prefix": "eth",
         }
         if id != HOST_CONFIG["network"]["pvid"]:
             cfg["vlan"] = f"{id}"
