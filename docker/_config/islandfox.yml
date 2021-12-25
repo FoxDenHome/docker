@@ -6,4 +6,4 @@ roles:
 network:
   driver: macvlan
   pvid: 1
-  netdevice: eno1
+  device: eno1
