@@ -1,12 +1,6 @@
-from os import chdir, listdir
-from os.path import dirname, abspath
 from socket import gethostname
-from subprocess import run
-from sys import argv
-from yaml import load as yaml_load, dump as yaml_dump
+from yaml import load as yaml_load
 from yaml.loader import SafeLoader
-from tempfile import NamedTemporaryFile
-from netgen import generate_network_for_vlan
 
 def yaml_loadfile(file):
     fh = open(file, "r")
