@@ -25,7 +25,8 @@ if 'net_driver' in HOST_CONFIG:
     NET_DRIVER = HOST_CONFIG['net_driver']
 GLOBAL_NETWORKS = {}
 for id in range(1, 9):
-    generate_network_for_vlan(id, NET_DRIVER)
+    net = generate_network_for_vlan(id, NET_DRIVER)
+    GLOBAL_NETWORKS[net["name"]] = net
 class ComposeProject():
     def __init__(self, name, project_dir):
         self.used_networks = set()
