@@ -7,8 +7,8 @@ services:
       - foxcaves_redis:/data
     healthcheck:
       test: redis-cli PING
-      interval: 5s
-      timeout: 3s
+      interval: 60s
+      timeout: 10s
 
 volumes:
   foxcaves_redis:

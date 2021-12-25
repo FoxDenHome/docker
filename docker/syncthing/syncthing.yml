@@ -16,8 +16,8 @@ services:
       - syncthing_data:/data1
     healthcheck:
       test: 'nc -z "$${HOSTNAME}" 8384 || exit 1'
-      interval: 5s
-      timeout: 3s
+      interval: 60s
+      timeout: 10s
 
 volumes:
   syncthing_config:

@@ -9,8 +9,8 @@ services:
       - foxcaves_postgres:/var/lib/postgresql/data
     healthcheck:
       test: pg_isready
-      interval: 5s
-      timeout: 3s
+      interval: 60s
+      timeout: 10s
 
 volumes:
   foxcaves_postgres:

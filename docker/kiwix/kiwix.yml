@@ -10,7 +10,7 @@ services:
         ipv4_address: 192.168.2.20
     healthcheck:
       test: 'wget --spider -q "http://$${HOSTNAME}/" >/dev/null || exit 1'
-      interval: 5s
-      timeout: 3s
+      interval: 60s
+      timeout: 10s
     volumes:
       - /mnt/zhdd/kiwix:/data

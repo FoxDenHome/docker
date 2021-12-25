@@ -10,7 +10,7 @@ services:
       xpack.security.enabled: 'false'
     healthcheck:
       test: 'curl -s -f "http://$${HOSTNAME}:9200/_cat/health" >/dev/null || exit 1'
-      interval: 5s
-      timeout: 3s
+      interval: 60s
+      timeout: 10s
     volumes:
     - /mnt/zssd/e621/db:/usr/share/elasticsearch/data

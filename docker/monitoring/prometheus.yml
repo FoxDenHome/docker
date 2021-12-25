@@ -20,8 +20,8 @@ services:
       - ntp.foxden.network:192.168.3.10
     healthcheck:
       test: 'wget --spider -q "http://$${HOSTNAME}:9090/-/healthy" >/dev/null || exit 1'
-      interval: 5s
-      timeout: 3s
+      interval: 60s
+      timeout: 10s
 
 volumes:
   prometheus_data:

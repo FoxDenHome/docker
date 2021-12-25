@@ -20,8 +20,8 @@ services:
       - /mnt/zhdd/foxcaves/storage:/var/www/foxcaves/storage
     healthcheck:
       test: 'curl -s -f --insecure "https://$${HOSTNAME}/api/v1/system/info" >/dev/null || exit 1'
-      interval: 5s
-      timeout: 3s
+      interval: 60s
+      timeout: 10s
 
 volumes:
   foxcaves_config:
