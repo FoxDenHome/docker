@@ -8,8 +8,6 @@ services:
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
       - net.ipv4.conf.default.src_valid_mark=1
-      - net.ipv4.conf.eth0.src_valid_mark=1
-      - net.ipv4.conf.lo.src_valid_mark=1
     networks:
       vlan2:
         ipv4_address: 192.168.2.22
