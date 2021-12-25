@@ -95,10 +95,11 @@ def load_role(role):
         temp_file.close()
 
 def load_roles_by_hostname():
-    roles = HOST_CONFIG['roles']
+    roles = set(HOST_CONFIG['roles'])
 
     if HOST_CONFIG['network']['driver'] == 'sriov':
         load_role('net_sriov')
+        roles.discard('net_sriov')
 
     for role in roles:
         load_role(role.strip())
