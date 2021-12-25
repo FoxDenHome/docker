@@ -5,7 +5,7 @@ def generate_driver_opts(id, driver):
         return {
             "parent": f"br{id}",
         }
-    elif driver == "driver":
+    elif driver == "sriov":
         cfg = {
             "netdevice": HOST_CONFIG["network"]["device"],
         }
