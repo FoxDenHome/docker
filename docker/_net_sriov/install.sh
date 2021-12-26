@@ -18,7 +18,7 @@ mvf() {
 }
 
 mvf /usr/local/bin/docker-sriov-plugin
-mvf /usr/local/bin/ibdev2netde
+mvf /usr/local/bin/ibdev2netdev
 mvf /etc/systemd/system/docker-sriov-plugin.service
 
 cd /
