@@ -27,6 +27,7 @@ mknasuser() {
 deluser guest || true
 delgroup guest || true
 
+mksysuser www-data 400
 mksysuser smbauth  401
 mksysuser guest    403
 mksysuser share    1000
