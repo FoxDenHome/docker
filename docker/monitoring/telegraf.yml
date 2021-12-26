@@ -6,6 +6,7 @@ services:
     command: --config-directory /etc/telegraf/includes
     environment:
       TZ: America/Los_Angeles
+      SNMP_COMMUNITY: ${SNMP_COMMUNITY}
     networks:
       default:
         priority: 1
