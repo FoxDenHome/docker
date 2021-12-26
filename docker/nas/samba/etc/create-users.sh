@@ -22,6 +22,9 @@ mknasuser() {
     chown -R "$1:$1" "/etc/ssh/keys/$1"
     chmod 700 "/etc/ssh/keys/$1"
     chmod 600 "/etc/ssh/keys/$1/list"
+
+    # Unlock account (! as PW hash means locked, * is invalid but not locked)
+    sed "s~$1:!:~$1:*:~" -i /etc/passwd
 }
 
 deluser guest || true
