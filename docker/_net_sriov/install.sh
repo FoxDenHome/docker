@@ -7,8 +7,17 @@ ARCH="amd64"
 DIR="$(mktemp -d)"
 cd "$DIR"
 
-wget "https://github.com/Doridian/docker-sriov-plugin/releases/download/$VERSION/docker-sriov-plugin-linux-$ARCH.tar.gz" -O artifact.tar.gz
-tar -xvf artifact.tar.gz
+purge() {
+    cd /
+    rm -rf "$DIR"
+}
+purge_fail() {
+    purge
+    exit 1
+}
+
+wget "https://github.com/Doridian/docker-sriov-plugin/releases/download/$VERSION/docker-sriov-plugin-linux-$ARCH.tar.gz" -O artifact.tar.gz || purge_fail
+tar -xvf artifact.tar.gz || purge_fail
 
 mvf() {
     DST="$1"
@@ -16,18 +25,17 @@ mvf() {
     if [ ! -f "$SRC" ]
     then
         echo "Could not find: $SRC"
-        exit 1
+        purge_fail
     fi
-    rm -f "$DST"
-    mv "$SRC" "$DST"
+    rm -f "$DST" || purge_fail
+    mv "$SRC" "$DST" || purge_fail
 }
 
 mvf /usr/local/bin/docker-sriov-plugin
 mvf /usr/local/bin/ibdev2netdev
 mvf /etc/systemd/system/docker-sriov-plugin.service
 
-cd /
-rm -rf "$DIR"
+purge
 
 systemctl daemon-reload
 systemctl enable docker-sriov-plugin
