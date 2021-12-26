@@ -6,7 +6,7 @@ Before=docker.service libvirtd.service network-online.target docker-sriov-plugin
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/opt/sriov-enable.sh
+ExecStart=/opt/home-scripts/docker/_net_sriov/sriov-enable.sh
 
 [Install]
 WantedBy=multi-user.target

@@ -11,7 +11,7 @@ echo 1 > "/sys/class/net/$DEV/device/sriov_drivers_autoprobe"
 echo "$NUM_VFS" > "/sys/class/net/$DEV/device/sriov_numvfs"
 for i in `seq 0 $((NUM_VFS - 1))`
 do
-	MAC="$MAC_PREFIX:$(printf "%02d" "$i")"
+	MAC="$MAC_PREFIX:$(printf "%02x" "$i")"
 	echo "Configuring VF $i ($MAC)"
 	ip link set dev "$DEV" vf "$i" mac "$MAC" mtu 9000
 	ip link set dev "${DEVB}v${i}" address "$MAC" mtu 9000 || true
