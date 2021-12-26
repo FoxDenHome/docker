@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-SHELL=/usr/bin/zsh
-NOLOGIN=/usr/sbin/nologin
+SHELL="$(which zsh)"
+NOLOGIN="$(which nologin)"
 
 mktpluser() {
     addgroup -g "$2" "$1"
