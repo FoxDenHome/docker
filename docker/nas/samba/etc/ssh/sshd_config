@@ -17,9 +17,9 @@ AuthorizedKeysFile	/etc/ssh/keys/%u/list
 HostbasedAuthentication no
 PasswordAuthentication no
 ChallengeResponseAuthentication no
-KerberosAuthentication no
-GSSAPIAuthentication no
-UsePAM no
+#KerberosAuthentication no
+#GSSAPIAuthentication no
+#UsePAM no
 
 AllowAgentForwarding no
 AllowTcpForwarding no

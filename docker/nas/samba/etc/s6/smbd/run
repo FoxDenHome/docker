@@ -2,4 +2,6 @@
 
 printf 'guest\nguest\n' | smbpasswd -a guest
 
+mkdir -p /usr/local/samba/var/cores
+
 exec smbd -F --no-process-group --debug-stdout -s /etc/samba/smb.conf
