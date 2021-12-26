@@ -5,8 +5,8 @@ SHELL=/usr/bin/zsh
 NOLOGIN=/usr/sbin/nologin
 
 mktpluser() {
-    groupadd -g "$2" "$1"
-    useradd -p '*' --shell "$3" --gid "$2" --uid "$2" "$1"
+    addgroup -g "$2" "$1"
+    adduser -p '*' --shell "$3" --gid "$2" --uid "$2" "$1"
 }
 
 mksysuser() {
