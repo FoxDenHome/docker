@@ -1,5 +1,5 @@
 [Unit]
-Description=sriov enable
+Description=SRIOV enable and configure
 After=network.target
 Before=docker.service libvirtd.service network-online.target docker-sriov-plugin.service
 
