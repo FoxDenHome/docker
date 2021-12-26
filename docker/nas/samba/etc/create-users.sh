@@ -24,6 +24,9 @@ mknasuser() {
     chmod 600 "/etc/ssh/keys/$1/list"
 }
 
+deluser guest || true
+delgroup guest || true
+
 mksysuser smbauth  401
 mksysuser guest    403
 mksysuser share    1000
