@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --no-cache ca-certificates wget curl samba s6 ethtool nginx avahi openssh-server python3 zsh samba-vfs-modules
+RUN apk add --no-cache ca-certificates wget curl samba s6 ethtool nginx avahi openssh-server python3 zsh
 
 RUN rm -f /etc/ssh/ssh_host_* && ln -sf /var/lib/samba/sshkeys /etc/ssh/hostkeys
 
