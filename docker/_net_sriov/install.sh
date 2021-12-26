@@ -13,6 +13,11 @@ tar -xvf artifact.tar.gz
 mvf() {
     DST="$1"
     SRC="$(basename "$DST")"
+    if [ ! -f "$SRC" ]
+    then
+        echo "Could not find: $SRC"
+        exit 1
+    fi
     rm -f "$DST"
     mv "$SRC" "$DST"
 }
