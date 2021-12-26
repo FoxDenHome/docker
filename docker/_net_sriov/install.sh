@@ -40,3 +40,4 @@ purge
 systemctl daemon-reload
 systemctl enable docker-sriov-plugin
 systemctl restart docker-sriov-plugin
+systemctl restart docker
