@@ -24,7 +24,7 @@ mknasuser() {
     chmod 600 "/etc/ssh/keys/$1/list"
 
     # Unlock account (! as PW hash means locked, * is invalid but not locked)
-    sed "s~$1:!:~$1:*:~" -i /etc/passwd
+    sed "s~$1:!:~$1:*:~" -i /etc/shadow
 }
 
 deluser guest || true
