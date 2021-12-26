@@ -2,4 +2,4 @@
 
 printf 'guest\nguest\n' | smbpasswd -a guest
 
-exec smbd -F --no-process-group --log-stdout -s /etc/samba/smb.conf
+exec smbd -F --no-process-group --debug-stdout -s /etc/samba/smb.conf
