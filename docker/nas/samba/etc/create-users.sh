@@ -6,7 +6,7 @@ NOLOGIN=/usr/sbin/nologin
 
 mktpluser() {
     addgroup -g "$2" "$1"
-    adduser -D -s "$3" -G "$2" -u "$2" "$1"
+    adduser -D -s "$3" -G "$1" -u "$2" "$1"
 }
 
 mksysuser() {
