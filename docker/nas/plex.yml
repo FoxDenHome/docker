@@ -6,7 +6,9 @@ services:
     runtime: nvidia
     networks:
       vlan3:
+        priority: 100
         ipv4_address: 192.168.3.20
+    mac_address: 00:16:3E:CA:7E:03
     environment:
       PLEX_UID: 10001
       PLEX_GID: 1001

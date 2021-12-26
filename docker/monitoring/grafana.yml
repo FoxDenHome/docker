@@ -11,8 +11,10 @@ services:
     volumes:
       - grafana_data:/var/lib/grafana
     networks:
-      default: {}
+      default:
+        priority: 1
       vlan3:
+        priority: 100
         ipv4_address: 192.168.3.35
     healthcheck:
       test: 'wget --spider -q "http://$${HOSTNAME}:3000/" >/dev/null || exit 1'

@@ -9,9 +9,12 @@ services:
       ENVIRONMENT: production
       DDNS_URL_IPV6: ${FOXCAVES_DDNS_URL_IPV6}
     networks:
-      default: {}
+      default:
+        priority: 1
       vlan2:
+        priority: 100
         ipv4_address: 192.168.2.25
+    mac_address: 00:16:3E:CA:7E:00
     links:
       - postgres:postgres
       - redis:redis

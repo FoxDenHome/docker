@@ -10,8 +10,10 @@ services:
       TZ: America/Los_Angeles
       HOMEASSISTANT_API_TOKEN: ${PROMETHEUS_HOMEASSISTANT_API_TOKEN}
     networks:
-      default: {}
+      default:
+        priority: 1
       vlan3:
+        priority: 100
         ipv4_address: 192.168.3.34
     links:
       - telegraf:telegraf

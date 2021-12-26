@@ -12,7 +12,9 @@ services:
       - net.ipv4.conf.eth0.src_valid_mark=1
     networks:
       vlan2:
+        priority: 1
         ipv4_address: 192.168.2.22
+    mac_address: 00:16:3E:CA:7E:02
     environment:
       VPN_CLIENT: wireguard
       VPN_PROV: custom
