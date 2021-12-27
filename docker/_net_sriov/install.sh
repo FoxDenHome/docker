@@ -1,7 +1,7 @@
 #!/bin/sh
 set -ex
 
-VERSION="1.4.0"
+VERSION="1.4.1"
 ARCH="amd64"
 
 DIR="$(mktemp -d)"
