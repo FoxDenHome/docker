@@ -16,5 +16,5 @@ def check_ct(id: str):
     if not test_nvidia_ct(id):
         check_call(["docker", "restart", id])
 
-for ct in check_output(["docker", "ps", "-f", "label=net.doridian.nvidia-check", "-f", "state=running", "--format", "{{.ID}}"]).strip().split("\n"):
+for ct in check_output(["docker", "ps", "-f", "label=net.doridian.nvidia-check", "-f", "status=running", "--format", "{{.ID}}"]).strip().split("\n"):
     check_ct(ct)
