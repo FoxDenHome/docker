@@ -17,5 +17,5 @@ def check_ct(id: str):
         print(f"Check failed on {id}. Restarting!")
         check_call(["docker", "restart", id])
 
-for ct in check_output(["docker", "ps", "-f", "label=net.doridian.nvidia-check", "-f", "status=running" "-f", "health=healthy", "--format", "{{.ID}}"]).decode("utf8").strip().split("\n"):
+for ct in check_output(["docker", "ps", "-f", "label=net.doridian.nvidia-check", "-f", "status=running", "-f", "health=healthy", "--format", "{{.ID}}"]).decode("utf8").strip().split("\n"):
     check_ct(ct)
