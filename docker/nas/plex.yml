@@ -4,6 +4,8 @@ services:
     image: plexinc/pms-docker:latest
     restart: always
     runtime: nvidia
+    labels:
+      net.doridian.nvidia-check: true
     networks:
       vlan3:
         priority: 100
