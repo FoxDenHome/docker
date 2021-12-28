@@ -1,7 +1,7 @@
 version: "2.4"
 services:
   dldr:
-    image: binhex/arch-delugevpn:latest
+    build: dldr
     restart: always
     cap_add:
       - NET_ADMIN
