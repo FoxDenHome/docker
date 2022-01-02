@@ -19,7 +19,7 @@ services:
       - telegraf:telegraf
       - telegraf:telegraf.foxden.network
     extra_hosts:
-      - ntp.foxden.network:192.168.3.10
+      - ntp.foxden.network:192.168.4.10
     healthcheck:
       test: 'wget --spider -q "http://$${HOSTNAME}:9090/-/healthy" >/dev/null || exit 1'
       interval: 60s
