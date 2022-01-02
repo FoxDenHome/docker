@@ -7,9 +7,9 @@ services:
     labels:
       net.doridian.nvidia-check: true
     networks:
-      vlan3:
+      vlan4:
         priority: 100
-        ipv4_address: 192.168.3.20
+        ipv4_address: 192.168.4.52
     mac_address: 00:16:3E:CA:7E:03
     environment:
       PLEX_UID: 10001
