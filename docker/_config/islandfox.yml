@@ -1,6 +1,5 @@
 roles:
 - portainer
-- mdns-repeater
 - monitoring
 - ut2004
 network:
