@@ -5,9 +5,9 @@ services:
     restart: always
     hostname: nas.foxden.network
     networks:
-      vlan4:
+      vlan2:
         priority: 100
-        ipv4_address: 192.168.4.20
+        ipv4_address: 10.2.11.1
     mac_address: 00:16:3E:CA:7E:04
     volumes:
       - samba_config:/var/lib/samba

@@ -18,7 +18,7 @@ start()
         ln -sf /tmp/resolv.conf /data/etc/resolv.conf
     fi
 
-    echo 'nameserver 192.168.1.5' > /tmp/resolv.conf
+    echo 'nameserver 10.1.0.53' > /tmp/resolv.conf
 
     mkdir -p /data/chrony && chown -R chrony:chrony /data/chrony
 

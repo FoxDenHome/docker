@@ -26,8 +26,8 @@ def generate_network_for_vlan(id):
             "driver": "default",
             "config": [
                 {
-                    "subnet": f"192.168.{id}.0/24",
-                    "gateway": f"192.168.{id}.6",
+                    "subnet": f"10.{id}.0.0/16",
+                    "gateway": f"10.{id}.0.1",
                 },
             ],
         }

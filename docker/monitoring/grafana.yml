@@ -13,9 +13,9 @@ services:
     networks:
       default:
         priority: 1
-      vlan4:
+      vlan2:
         priority: 100
-        ipv4_address: 192.168.4.50
+        ipv4_address: 10.2.11.5
     healthcheck:
       test: 'wget --spider -q "http://$${HOSTNAME}:3000/" >/dev/null || exit 1'
       interval: 60s

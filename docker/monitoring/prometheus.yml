@@ -12,14 +12,14 @@ services:
     networks:
       default:
         priority: 1
-      vlan4:
+      vlan2:
         priority: 100
-        ipv4_address: 192.168.4.51
+        ipv4_address: 10.2.11.4
     links:
       - telegraf:telegraf
       - telegraf:telegraf.foxden.network
     extra_hosts:
-      - ntp.foxden.network:192.168.4.10
+      - ntp.foxden.network:10.2.1.2
     healthcheck:
       test: 'wget --spider -q "http://$${HOSTNAME}:9090/-/healthy" >/dev/null || exit 1'
       interval: 60s

@@ -11,9 +11,9 @@ services:
     networks:
       default:
         priority: 1
-      vlan2:
+      vlan3:
         priority: 100
-        ipv4_address: 192.168.2.25
+        ipv4_address: 10.3.10.1
     mac_address: 00:16:3E:CA:7E:00
     links:
       - postgres:postgres

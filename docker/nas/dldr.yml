@@ -13,13 +13,13 @@ services:
     networks:
       vlan2:
         priority: 100
-        ipv4_address: 192.168.2.22
+        ipv4_address: 10.2.11.7
     mac_address: 00:16:3E:CA:7E:02
     environment:
       VPN_CLIENT: wireguard
       VPN_PROV: custom
       VPN_ENABLED: 'yes'
-      LAN_NETWORK: 192.168.0.0/16
+      LAN_NETWORK: 10.0.0.0/8
       PUID: 1000
       PGID: 1000
     volumes:

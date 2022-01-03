@@ -8,7 +8,7 @@ services:
     networks:
       vlan2:
         priority: 100
-        ipv4_address: 192.168.2.20
+        ipv4_address: 10.2.11.6
     mac_address: 00:16:3E:CA:7E:01
     healthcheck:
       test: 'wget --spider -q "http://$${HOSTNAME}/" >/dev/null || exit 1'
