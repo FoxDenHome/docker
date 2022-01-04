@@ -12,7 +12,7 @@ services:
     networks:
       default:
         priority: 1
-      vlan2:
+      vlan4:
         priority: 100
         ipv4_address: 10.2.11.4
     links:

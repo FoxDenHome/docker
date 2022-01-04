@@ -11,7 +11,7 @@ services:
       - net.ipv4.conf.lo.src_valid_mark=1
       - net.ipv4.conf.eth0.src_valid_mark=1
     networks:
-      vlan2:
+      vlan4:
         priority: 100
         ipv4_address: 10.2.11.7
     mac_address: 00:16:3E:CA:7E:02
