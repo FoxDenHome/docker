@@ -8,28 +8,23 @@ iface eth0 inet static
 	gateway 10.1.0.1
 	dns-nameservers 10.1.0.53
 	hostname ntp
-	up ip addr add 10.1.0.123 dev eth0
 
 auto eth0.2
 iface eth0.2 inet static
 	address 10.2.1.2
 	netmask 255.255.0.0
-	up ip addr add 10.2.0.123 dev eth0.2
 
 auto eth0.3
 iface eth0.3 inet static
 	address 10.3.1.2
 	netmask 255.255.0.0
-	up ip addr add 10.3.0.123 dev eth0.3
 
 auto eth0.4
 iface eth0.4 inet static
 	address 10.4.1.2
 	netmask 255.255.0.0
-	up ip addr add 10.4.0.123 dev eth0.4
 
 auto eth0.5
 iface eth0.5 inet static
 	address 10.5.1.2
 	netmask 255.255.0.0
-	up ip addr add 10.5.0.123 dev eth0.5
