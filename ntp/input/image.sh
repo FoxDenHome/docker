@@ -9,7 +9,7 @@ echo 'include usercfg.txt' >> "$BOOTFS_PATH/config.txt"
 # Install packages
 chroot_exec apk update
 chroot_exec apk upgrade
-chroot_exec apk add bridge-utils curl screen prometheus-node-exporter gpsd gpsd-clients chrony bridge wget sudo tcpdump nano openssh-sftp-server ethtool
+chroot_exec apk add bridge-utils curl screen prometheus-node-exporter gpsd gpsd-clients chrony bridge wget sudo tcpdump nano openssh-sftp-server ethtool keepalived keepalived-openrc
 
 # Configure services
 chroot_exec rc-update del ntpd default
@@ -18,6 +18,7 @@ chroot_exec rc-update add gpsd
 chroot_exec rc-update add chronyd
 chroot_exec rc-update add node-exporter
 chroot_exec rc-update add hwclock
+chroot_exec rc-update add keepalived
 
 # Configure kernel modules
 echo -n > "$ROOTFS_PATH/etc/modules"
