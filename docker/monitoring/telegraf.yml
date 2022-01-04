@@ -14,8 +14,8 @@ services:
         priority: 100
         ipv4_address: 10.1.13.1
     extra_hosts:
-      wired: 192.168.42.10
-      lte: 192.168.42.11
+      wired: 10.101.11.1
+      lte: 10.101.11.2
       internet: 8.8.8.8
       router: 10.1.1.1
     healthcheck:
