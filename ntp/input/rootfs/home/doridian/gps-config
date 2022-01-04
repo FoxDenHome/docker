@@ -1,0 +1,11 @@
+# Append --device=/dev/ttyAMA0 to all
+
+# Examples for correct ubxtool config (might need -s BAUDRATE override)
+ubxtool -S 460800
+ubxtool -e BINARY
+ubxtool -d NMEA
+ubxtool -p SAVE
+
+# Survey for accurate time at constant location
+ubxtool -p SURVEYIN
+ubxtool -p SAVE
