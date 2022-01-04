@@ -9,7 +9,7 @@ services:
     init: true
     entrypoint: /home/server/run.sh
     networks:
-      vlan2:
+      vlan3:
         ipv4_address: 10.3.10.3
     volumes:
       - home:/home/server
