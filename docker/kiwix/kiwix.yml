@@ -6,7 +6,7 @@ services:
     init: yes
     command: '*.zim'
     networks:
-      vlan4:
+      vlan2:
         priority: 100
         ipv4_address: 10.2.11.6
     mac_address: 00:16:3E:CA:7E:01

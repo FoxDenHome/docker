@@ -13,7 +13,7 @@ services:
     networks:
       default:
         priority: 1
-      vlan4:
+      vlan2:
         priority: 100
         ipv4_address: 10.2.11.5
     healthcheck:
