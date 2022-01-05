@@ -8,4 +8,7 @@ ssh router '/export file=router.rsc show-sensitive'
 scp router:/router.rsc ./
 ssh router '/file/remove router.rsc'
 
-
+if [ ! -z "$1" ]
+then
+    cp router.backup router.rsc "$1"
+fi
