@@ -61,7 +61,7 @@ class ComposeProject():
         for file in self.files:
             compose_args.append("-f")
             compose_args.append(file)
-        
+
         run(compose_args + ["pull"])
         run(compose_args + ["up", "--build", "-d", "--remove-orphans"])
 
