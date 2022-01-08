@@ -1,5 +1,4 @@
 roles:
-- portainer
 - monitoring
 - ut2004
 - syncthing

@@ -1,6 +1,5 @@
 roles:
 - nas
-- portainer
 - e621dumper
 - foxcaves
 - kiwix
