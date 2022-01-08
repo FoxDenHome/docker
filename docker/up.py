@@ -6,7 +6,7 @@ from subprocess import run
 from sys import argv
 from yaml import dump as yaml_dump
 from tempfile import NamedTemporaryFile
-from config import yaml_loadfile, DOCKER_COMPOSE_VERSION, HOST_CONFIG
+from config import yaml_loadfile, HOST_CONFIG
 from netgen import GLOBAL_NETWORKS
 
 chdir(dirname(abspath(__file__)))
@@ -31,8 +31,6 @@ class ComposeProject():
             return
 
         data = yaml_loadfile(file)
-        if data["version"] != DOCKER_COMPOSE_VERSION:
-            raise Exception(f"Unsupported compose file version: {data['version']}")
 
         if "services" in data:
             for service in data["services"]:
@@ -79,7 +77,6 @@ def load_role(role):
     missing_networks = project.get_missing_networks()
     if missing_networks:
         used_global_nets = {
-            "version": DOCKER_COMPOSE_VERSION,
             "networks": {
                 network: GLOBAL_NETWORKS[network]
                 for network in missing_networks

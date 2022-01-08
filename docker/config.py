@@ -8,5 +8,4 @@ def yaml_loadfile(file):
     fh.close()
     return data
 
-DOCKER_COMPOSE_VERSION = "2.4"
 HOST_CONFIG = yaml_loadfile(f"_config/{gethostname().lower()}.yml")
