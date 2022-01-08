@@ -2,6 +2,7 @@ roles:
 - portainer
 - monitoring
 - ut2004
+- syncthing
 network:
   driver: macvlan
   pvid: 1

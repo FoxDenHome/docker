@@ -4,7 +4,6 @@ roles:
 - e621dumper
 - foxcaves
 - kiwix
-- syncthing
 network:
   driver: sriov
   pvid: 1
