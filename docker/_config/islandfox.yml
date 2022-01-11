@@ -2,6 +2,7 @@ roles:
 - monitoring
 - ut2004
 - syncthing
+- rfcat-mqtt
 network:
   driver: macvlan
   pvid: 1

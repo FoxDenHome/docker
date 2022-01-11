@@ -1,0 +1,10 @@
+services:
+  rfcat-mqtt:
+    image: ghcr.io/doridian/rfcat-mqtt/rfcat-mqtt:latest
+    restart: always
+    init: yes
+    environment:
+      RFCAT_MQTT_USERNAME: ${RFCAT_MQTT_USERNAME}
+      RFCAT_MQTT_PASSWORD: ${RFCAT_MQTT_PASSWORD}
+      RFCAT_MQTT_BROKER: homeassistant.foxden.network
+      RFCAT_MQTT_TOPIC: rfcat_mqtt/control
