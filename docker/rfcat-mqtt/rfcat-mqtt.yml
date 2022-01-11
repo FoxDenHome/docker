@@ -5,6 +5,8 @@ services:
     init: yes
     devices:
       - /dev/RFCAT3:/dev/RFCAT3:rwm
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
     environment:
       RFCAT_MQTT_USERNAME: ${RFCAT_MQTT_USERNAME}
       RFCAT_MQTT_PASSWORD: ${RFCAT_MQTT_PASSWORD}
