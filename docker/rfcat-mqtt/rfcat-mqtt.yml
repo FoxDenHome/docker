@@ -3,6 +3,8 @@ services:
     image: ghcr.io/doridian/rfcat-mqtt/rfcat-mqtt:latest
     restart: always
     init: yes
+    devices:
+      - /dev/RFCAT3:/dev/RFCAT3:rwm
     environment:
       RFCAT_MQTT_USERNAME: ${RFCAT_MQTT_USERNAME}
       RFCAT_MQTT_PASSWORD: ${RFCAT_MQTT_PASSWORD}
