@@ -5,30 +5,35 @@ defaults:
   ports:
     http: 80
     https: 443
+aliases:
+  nas: 10.2.11.1
+  homeassistant: 10.2.12.2
+  gmod-nginx: 10.3.10.5
+  foxcaves: 10.3.10.1
 hosts:
   nas.foxden.network:
-    target: 10.2.11.1
+    target: nas
   homeassistant.foxden.network:
-    target: 10.2.12.2
+    target: homeassistant
   syncthing.doridian.net:
     target: webdav
   api.spaceage.mp:
-    target: 10.3.10.5
+    target: gmod-nginx
   spaceage.mp:
-    target: 10.3.10.5
+    target: gmod-nginx
   static.spaceage.mp:
-    target: 10.3.10.5
+    target: gmod-nginx
   tts.spaceage.mp:
-    target: 10.3.10.5
+    target: gmod-nginx
   www.spaceage.mp:
-    target: 10.3.10.5
+    target: gmod-nginx
   forums.spaceage.mp:
-    target: 10.3.10.5
+    target: gmod-nginx
   foxcav.es:
-    target: 10.3.10.1
+    target: foxcaves
   www.foxcav.es:
-    target: 10.3.10.1
+    target: foxcaves
   f0x.es:
-    target: 10.3.10.1
+    target: foxcaves
   www.f0x.es:
-    target: 10.3.10.1
+    target: foxcaves
