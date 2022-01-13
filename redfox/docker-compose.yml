@@ -24,6 +24,7 @@ services:
   webdav:
     build: webdav
     restart: always
+    init: true
     environment:
       WEBDAV_PASSWORD_DORIDIAN: ${WEBDAV_PASSWORD_DORIDIAN}
 
