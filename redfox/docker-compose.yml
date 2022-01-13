@@ -34,7 +34,7 @@ services:
      - webdav_data:/data
   autoheal:
     restart: always
-    userns-mode: host
+    userns_mode: host
     image: willfarrell/autoheal
     environment:
       - AUTOHEAL_CONTAINER_LABEL=all
