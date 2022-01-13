@@ -2,7 +2,6 @@ services:
   ssh:
     build: ssh
     restart: always
-    hostname: nas.foxden.network
     network_mode: "service:samba"
     volumes:
       - /mnt/zhdd/nas:/mnt/nas
