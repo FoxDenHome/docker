@@ -1,0 +1,6 @@
+roles:
+- lan-tunnel-proxy
+network:
+  driver: macvlan
+  pvid: 1
+  device: invalid0
