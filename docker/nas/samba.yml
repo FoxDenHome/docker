@@ -9,6 +9,7 @@ services:
         ipv4_address: 10.2.11.1
     mac_address: 00:16:3E:CA:7E:04
     volumes:
+      - ssl:/etc/letsencrypt
       - samba_config:/var/lib/samba
       - /mnt/zhdd/nas:/mnt/nas
       - /mnt/zssd/nas/torrent:/mnt/nas/torrent
@@ -21,3 +22,4 @@ services:
 
 volumes:
   samba_config: {}
+  ssl: {}
