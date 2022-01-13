@@ -1,15 +1,12 @@
 FROM alpine:latest
 
-RUN apk add --no-cache ca-certificates wget curl samba s6 ethtool nginx avahi openssh-server python3 zsh certbot certbot-nginx
-
-RUN rm -f /etc/ssh/ssh_host_* && ln -sf /var/lib/samba/sshkeys /etc/ssh/hostkeys
+RUN apk add --no-cache ca-certificates wget curl samba s6 ethtool nginx avahi python3 certbot certbot-nginx
 
 RUN sed -i 's~#enable-dbus=yes~enable-dbus=no~' /etc/avahi/avahi-daemon.conf
 
 RUN rm -f /etc/avahi/services/*
 COPY etc /etc
 
-RUN mkdir -p /etc/ssh/keys
 RUN /etc/create-users.sh && rm -f /etc/create-users.sh
 
 VOLUME /var/lib/samba

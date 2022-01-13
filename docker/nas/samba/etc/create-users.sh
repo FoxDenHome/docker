@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-SHELL="$(which zsh)"
+SHELL="$(which nologin)"
 NOLOGIN="$(which nologin)"
 
 mktpluser() {
@@ -16,24 +16,11 @@ mksysuser() {
 mknasuser() {
     mktpluser "$1" "$2" "$SHELL"
     adduser "$1" share
-
-    mkdir -p "/etc/ssh/keys/$1"
-    wget "https://raw.githubusercontent.com/Doridian/home-scripts/master/sshkeys/$1" -qO "/etc/ssh/keys/$1/list"
-    chown -R "$1:$1" "/etc/ssh/keys/$1"
-    chmod 700 "/etc/ssh/keys/$1"
-    chmod 600 "/etc/ssh/keys/$1/list"
-
-    # Unlock account (! as PW hash means locked, * is invalid but not locked)
-    sed "s~$1:!:~$1:*:~" -i /etc/shadow
 }
 
 deluser guest || true
 delgroup guest || true
-deluser www-data || true
-delgroup www-data || true
 
-mksysuser www-data 400
-mksysuser smbauth  401
 mksysuser guest    403
 mksysuser share    1000
 mknasuser doridian 1001
