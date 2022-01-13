@@ -7,6 +7,10 @@ services:
       - ssl:/etc/letsencrypt
       - /mnt/zhdd/nas:/mnt/nas
       - /mnt/zssd/nas/torrent:/mnt/nas/torrent
+    healthcheck:
+      test: 'curl -s -f "http://${HOSTNAME}/__/healthcheck"'
+      interval: 60s
+      timeout: 10s
 
 volumes:
   ssl: {}
