@@ -1,0 +1,18 @@
+{
+	order webdav before file_server
+}
+
+syncthing.doridian.net {
+	root * /mnt/storage/syncthing
+	file_server {
+		browse
+		hide .stfolder
+	}
+	rewrite /dav /dav/
+	webdav /dav/* {
+		prefix /dav
+	}
+	basicauth {
+		doridian ${WEBDAV_PASSWORD_DORIDIAN}
+	}
+}

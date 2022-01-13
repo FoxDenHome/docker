@@ -1,7 +1,0 @@
-roles:
-- lan-tunnel-proxy
-- syncthing-defaultnet
-network:
-  driver: macvlan
-  pvid: 1
-  device: invalid0

@@ -1,8 +1,0 @@
-services:
-  router:
-    build: router
-    restart: always
-    init: yes
-    ports:
-    - 80:80
-    - 443:443
