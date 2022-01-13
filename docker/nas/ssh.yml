@@ -4,6 +4,7 @@ services:
     restart: always
     network_mode: "service:samba"
     volumes:
-      - /mnt/zhdd/nas:/mnt/nas
-      - /mnt/zssd/nas/torrent:/mnt/nas/torrent
-      - /mnt/zhdd/nashome:/home
+      - hostkeys:/etc/ssh/hostkeys
+
+volumes:
+  hostkeys: {}
