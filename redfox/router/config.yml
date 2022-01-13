@@ -24,4 +24,11 @@ hosts:
     target: 10.3.10.5
   forums.spaceage.mp:
     target: 10.3.10.5
-  
+  foxcav.es:
+    target: 10.3.10.1
+  www.foxcav.es:
+    target: 10.3.10.1
+  f0x.es:
+    target: 10.3.10.1
+  www.f0x.es:
+    target: 10.3.10.1

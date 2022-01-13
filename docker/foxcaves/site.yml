@@ -2,11 +2,8 @@ services:
   site:
     image: ghcr.io/foxcaves/site/foxcaves-site:latest
     restart: always
-    sysctls:
-      - net.ipv6.conf.all.disable_ipv6=0
     environment:
       ENVIRONMENT: production
-      DDNS_URL_IPV6: ${FOXCAVES_DDNS_URL_IPV6}
     networks:
       default:
         priority: 1
