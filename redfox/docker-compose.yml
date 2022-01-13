@@ -29,7 +29,12 @@ services:
     init: true
     environment:
       WEBDAV_PASSWORD_DORIDIAN: ${WEBDAV_PASSWORD_DORIDIAN}
+    volumes:
+     - webdav_config:/config
+     - webdav_data:/data
 
 volumes:
   syncthing_config: {}
   syncthing_data: {}
+  webdav_config: {}
+  webdav_data: {}
