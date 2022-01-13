@@ -1,4 +1,5 @@
 roles:
+- autoheal
 - monitoring
 - ut2004
 - syncthing

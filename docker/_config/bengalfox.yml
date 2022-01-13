@@ -1,8 +1,9 @@
 roles:
+- autoheal
 - nas
+- kiwix
 - e621dumper
 - foxcaves
-- kiwix
 network:
   driver: sriov
   pvid: 1
