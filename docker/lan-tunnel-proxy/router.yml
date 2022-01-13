@@ -6,7 +6,3 @@ services:
     ports:
     - 80:80
     - 443:443
-    links:
-    - redis:redis
-    environment:
-      REDIS_HOST: redis:6379
