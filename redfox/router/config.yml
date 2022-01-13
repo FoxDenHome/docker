@@ -12,3 +12,13 @@ hosts:
     target: 10.2.12.2
   syncthing.doridian.net:
     target: webdav
+  api.spaceage.mp:
+    target: 10.3.10.5
+  spaceage.mp:
+    target: 10.3.10.5
+  static.spaceage.mp:
+    target: 10.3.10.5
+  tts.spaceage.mp:
+    target: 10.3.10.5
+  www.spaceage.mp:
+    target: 10.3.10.5
