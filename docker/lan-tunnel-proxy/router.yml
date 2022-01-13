@@ -1,6 +1,6 @@
 services:
   router:
-    image: ghcr.io/doridian/lan-tunnel-proxy/lan-tunnel-proxy:latest
+    build: router
     restart: always
     init: yes
     ports:
