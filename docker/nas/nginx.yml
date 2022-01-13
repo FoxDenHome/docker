@@ -1,0 +1,12 @@
+services:
+  nginx:
+    build: nginx
+    restart: always
+    network_mode: "service:samba"
+    volumes:
+      - ssl:/etc/letsencrypt
+      - /mnt/zhdd/nas:/mnt/nas
+      - /mnt/zssd/nas/torrent:/mnt/nas/torrent
+
+volumes:
+  ssl: {}
