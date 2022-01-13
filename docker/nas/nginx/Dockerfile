@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --no-cache nginx s6 certbot certbot-nginx
+RUN apk add --no-cache nginx s6 certbot certbot-nginx samba-client
 
 COPY etc /etc
 
