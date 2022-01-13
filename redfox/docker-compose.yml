@@ -22,7 +22,7 @@ services:
       interval: 60s
       timeout: 10s
   webdav:
-    builder: webdav
+    build: webdav
     restart: always
     environment:
       WEBDAV_PASSWORD_DORIDIAN: ${WEBDAV_PASSWORD_DORIDIAN}
