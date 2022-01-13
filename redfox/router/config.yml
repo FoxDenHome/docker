@@ -10,3 +10,5 @@ hosts:
     target: 10.2.11.1
   homeassistant.foxden.network:
     target: 10.2.12.2
+  syncthing.doridian.net:
+    target: webdav
