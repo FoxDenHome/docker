@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --no-cache ca-certificates wget curl samba s6 ethtool nginx avahi python3 certbot certbot-nginx
+RUN apk add --no-cache ca-certificates samba s6 avahi
 
 RUN sed -i 's~#enable-dbus=yes~enable-dbus=no~' /etc/avahi/avahi-daemon.conf
 
@@ -10,7 +10,5 @@ COPY etc /etc
 RUN /etc/create-users.sh && rm -f /etc/create-users.sh
 
 VOLUME /var/lib/samba
-
-RUN mkdir -p /mnt/nas
 
 ENTRYPOINT ["s6-svscan", "/etc/s6"]

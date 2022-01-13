@@ -9,8 +9,6 @@ COPY etc /etc
 RUN mkdir -p /etc/ssh/keys
 RUN /etc/create-users.sh && rm -f /etc/create-users.sh
 
-RUN mkdir -p /mnt/nas
-
 VOLUME /etc/ssh/hostkeys
 
 ENTRYPOINT ["/etc/run.sh"]
