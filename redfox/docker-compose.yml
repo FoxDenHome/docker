@@ -15,8 +15,8 @@ services:
       PUID: 1000
       PGID: 1000
     volumes:
-      - config:/config
-      - data:/data1
+      - syncthing_config:/config
+      - syncthing_data:/data1
     healthcheck:
       test: 'nc -z "$${HOSTNAME}" 8384 || exit 1'
       interval: 60s
@@ -29,5 +29,5 @@ services:
       WEBDAV_PASSWORD_DORIDIAN: ${WEBDAV_PASSWORD_DORIDIAN}
 
 volumes:
-  config: {}
-  data: {}
+  syncthing_config: {}
+  syncthing_data: {}
