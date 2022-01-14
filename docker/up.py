@@ -8,8 +8,10 @@ from yaml import dump as yaml_dump
 from tempfile import NamedTemporaryFile
 from config import yaml_loadfile, HOST_CONFIG
 from netgen import GLOBAL_NETWORKS
+from dockermgr import restart_failed_containers, prune_images
 
 chdir(dirname(abspath(__file__)))
+
 class ComposeProject():
     def __init__(self, name, project_dir):
         self.used_networks = set()
@@ -55,15 +57,18 @@ class ComposeProject():
 
     def deploy(self):
         if self.get_missing_networks():
-            raise Exception(f"Missing network definitions for: {','.join(self.get_missing_networks())}")
+            raise Exception(
+                f"Missing network definitions for: {','.join(self.get_missing_networks())}")
 
-        compose_args = ["docker-compose", "-p", self.name, "--project-directory", self.project_dir]
+        compose_args = ["docker-compose", "-p", self.name,
+                        "--project-directory", self.project_dir]
         for file in self.files:
             compose_args.append("-f")
             compose_args.append(file)
 
         run(compose_args + ["pull"])
         run(compose_args + ["up", "--build", "-d", "--remove-orphans"])
+
 
 def load_role(role):
     if role == "":
@@ -97,9 +102,14 @@ def load_roles_by_hostname():
     for role in roles:
         load_role(role.strip())
 
-    run(["docker", "image", "prune", "-f", "-a"])
+def main():
+    if len(argv) > 1:
+        load_role(argv[1].strip())
+    else:
+        load_roles_by_hostname()
 
-if len(argv) > 1:
-    load_role(argv[1].strip())
-else:
-    load_roles_by_hostname()
+    restart_failed_containers()
+    prune_images()
+
+if __name__ == "__main__":
+    main()
