@@ -8,7 +8,7 @@ defaults:
 aliases:
   nas: 10.2.11.1
   homeassistant: 10.2.12.2
-  gmod-nginx: 10.3.10.5
+  spaceage-web: 10.3.10.5
   foxcaves: 10.3.10.1
 hosts:
   nas.foxden.network:
@@ -18,17 +18,17 @@ hosts:
   syncthing.doridian.net:
     target: webdav
   api.spaceage.mp:
-    target: gmod-nginx
+    target: spaceage-web
   spaceage.mp:
-    target: gmod-nginx
+    target: spaceage-web
   static.spaceage.mp:
-    target: gmod-nginx
+    target: spaceage-web
   tts.spaceage.mp:
-    target: gmod-nginx
+    target: spaceage-web
   www.spaceage.mp:
-    target: gmod-nginx
+    target: spaceage-web
   forums.spaceage.mp:
-    target: gmod-nginx
+    target: spaceage-web
   foxcav.es:
     target: foxcaves
   www.foxcav.es:
