@@ -36,6 +36,7 @@ services:
     volumes:
      - webdav_config:/config
      - webdav_data:/data
+     - syncthing_data:/syncthing
     healthcheck:
       test: 'nc -z "$${HOSTNAME}" 443 || exit 1'
       interval: 60s

@@ -3,7 +3,7 @@
 }
 
 syncthing.doridian.net {
-	root * /mnt/storage/syncthing
+	root * /syncthing
 	file_server {
 		browse
 		hide .stfolder
