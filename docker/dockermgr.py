@@ -1,4 +1,4 @@
-from subprocess import check_output, check_call, run
+from subprocess import PIPE, check_output, check_call, run
 
 class Container():
     def __init__(self, id):
@@ -6,7 +6,7 @@ class Container():
 
     def check(self):
         check_call(["docker", "exec", "-i", self.id,
-                   "ls", "/sys/class/net/eth0"])
+                   "ls", "/sys/class/net/eth0"], stdout=PIPE)
         return True
 
     def restart(self):
