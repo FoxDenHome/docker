@@ -74,7 +74,7 @@ class ComposeProject():
         run(compose_args + ["up", "--build", "-d", "--remove-orphans"])
 
         for ct in self.checked_containers:
-            print("Checking container {ct} in {self.name}")
+            print(f"Checking container {ct} in {self.name}")
             Container(f"{self.name}_{ct}_1").restart_if_failed()
 
 def load_role(role):
