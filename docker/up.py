@@ -4,11 +4,12 @@ from os import chdir, listdir
 from os.path import dirname, abspath
 from subprocess import run
 from sys import argv
+from typing import Container
 from yaml import dump as yaml_dump
 from tempfile import NamedTemporaryFile
 from config import yaml_loadfile, HOST_CONFIG
 from netgen import GLOBAL_NETWORKS
-from dockermgr import restart_failed_containers, prune_images
+from dockermgr import Container, prune_images
 
 chdir(dirname(abspath(__file__)))
 
@@ -16,6 +17,7 @@ class ComposeProject():
     def __init__(self, name, project_dir):
         self.used_networks = set()
         self.provided_networks = set()
+        self.checked_containers = set()
         self.name = name
         self.project_dir = project_dir
         self.files = set()
@@ -44,13 +46,15 @@ class ComposeProject():
 
         self.files.add(file)
 
-    def add_service(self, _, data):
-        if "networks" not in data:
-            return
-        for network in data["networks"]:
-            if network == "default":
-                continue
-            self.used_networks.add(network)
+    def add_service(self, name, data):
+        if "networks" in data:
+            for network in data["networks"]:
+                if network == "default":
+                    continue
+                self.used_networks.add(network)
+
+        if "network_mode" in data:
+            self.checked_containers.add(name)
 
     def get_missing_networks(self):
         return self.used_networks - self.provided_networks
@@ -69,6 +73,9 @@ class ComposeProject():
         run(compose_args + ["pull"])
         run(compose_args + ["up", "--build", "-d", "--remove-orphans"])
 
+        for ct in self.checked_containers:
+            print("Checking container {ct} in {self.name}")
+            Container(f"{self.name}_{ct}_1").restart_if_failed()
 
 def load_role(role):
     if role == "":
@@ -108,7 +115,6 @@ def main():
     else:
         load_roles_by_hostname()
 
-    restart_failed_containers()
     prune_images()
 
 if __name__ == "__main__":
