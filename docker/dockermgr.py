@@ -5,20 +5,20 @@ class Container():
         self.id = id
 
     def check(self):
-        check_call(["docker", "exec", "-i", self.name,
+        check_call(["docker", "exec", "-i", self.id,
                    "ls", "/sys/class/net/eth0"])
         return True
 
     def restart(self):
-        print(f"Restarting {self.name}")
-        run(["docker", "restart", self.name]) # If this fails, not much we can do...
+        print(f"Restarting {self.id}")
+        run(["docker", "restart", self.id]) # If this fails, not much we can do...
 
     def restart_if_failed(self):
         try:
             if self.check_container():
                 return  # Will throw or return false on error, so this exits the func on success
         except Exception as e:
-            print(f"Error on check {self.name}: {e}")
+            print(f"Error on check {self.id}: {e}")
         
         self.restart()
 
