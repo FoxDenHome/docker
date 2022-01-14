@@ -23,7 +23,7 @@ class Container():
         self.restart()
 
 def list_containers():
-    ids = check_output(["docker", "ps", "--format", "{{.ID}}"]).decode("utf8").strip().split("\n")
+    ids = check_output(["docker", "ps", "--format", "{{.ID}}"], encoding="utf8").strip().split("\n")
     return [Container(id.strip()) for id in ids]
 
 def restart_failed_containers():
