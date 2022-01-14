@@ -15,7 +15,7 @@ services:
       NVIDIA_VISIBLE_DEVICES: all
       NVIDIA_DRIVER_CAPABILITIES: all
     volumes:
-      - plex_data:/config
+      - plex_config:/config
       - /mnt/zssd/docker/plex/transcode:/transcode
       - /mnt/zhdd/nas:/data
     healthcheck:
@@ -24,4 +24,4 @@ services:
       timeout: 10s
 
 volumes:
-  plex_data: {}
+  plex_config: {}
