@@ -1,6 +1,6 @@
 services:
   rfcat-mqtt:
-    image: ghcr.io/doridian/rfcat-mqtt/rfcat-mqtt:latest
+    image: ghcr.io/foxdenhome/rfcat-mqtt/rfcat-mqtt:latest
     restart: always
     init: yes
     devices:

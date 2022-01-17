@@ -17,8 +17,8 @@ purge_fail() {
     exit 1
 }
 
-wget "https://github.com/Doridian/docker-sriov-plugin/releases/download/$VERSION/docker-sriov-plugin-linux-$ARCH.tar.gz" -O artifact.tar.gz || purge_fail 'Downloading archive failed'
-wget "https://github.com/Doridian/docker-sriov-plugin/releases/download/$VERSION/docker-sriov-plugin-linux-$ARCH.tar.gz.sha256" -O artifact.tar.gz.sha256 || purge_fail 'Downloading checksum file failed'
+wget "https://github.com/FoxDenHome/docker-sriov-plugin/releases/download/$VERSION/docker-sriov-plugin-linux-$ARCH.tar.gz" -O artifact.tar.gz || purge_fail 'Downloading archive failed'
+wget "https://github.com/FoxDenHome/docker-sriov-plugin/releases/download/$VERSION/docker-sriov-plugin-linux-$ARCH.tar.gz.sha256" -O artifact.tar.gz.sha256 || purge_fail 'Downloading checksum file failed'
 (echo "$(cat artifact.tar.gz.sha256) artifact.tar.gz" | sha256sum -c) || purge_fail 'Checksum wrong'
 tar -xvf artifact.tar.gz || purge_fail 'Could not unpack archive'
 

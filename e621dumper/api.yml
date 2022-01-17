@@ -1,6 +1,6 @@
 services:
   api:
-    image: ghcr.io/doridian/e621dumper/e621dumper:latest
+    image: ghcr.io/foxdenhome/e621dumper/e621dumper:latest
     restart: always
     links:
       - elasticsearch:elasticsearch
