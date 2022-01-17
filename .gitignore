@@ -2,5 +2,3 @@
 .env
 __pycache__
 *.pyc
-/router/router.rsc
-/router/router.backup
