@@ -5,7 +5,7 @@ SELF="$0"
 
 if [ -z "$1" ]
 then
-    for container in docker ps --format '{{.Names}}'
+    for container in `docker ps --format '{{.Names}}'`
     do
         "$SELF" "$container"
     done
