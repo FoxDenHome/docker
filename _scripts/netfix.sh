@@ -41,7 +41,7 @@ fi
 LAN_GW="$(echo "$LAN_ROUTE" | sed s~.0/16~.1~)"
 
 CURRENT_ROUTE="$(ip route get 8.8.8.8 | head -1)"
-if "$CURRENT_ROUTE" | grep -vq 'dev eth'
+if echo "$CURRENT_ROUTE" | grep -vq 'dev eth'
 then
     echo 'Route not via eth*, skipping'
     exit 0
