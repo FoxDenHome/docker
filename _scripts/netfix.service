@@ -1,0 +1,13 @@
+[Unit]
+Description=Docker network route fixer
+StartLimitIntervalSec=0
+After=docker.service network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/opt/docker/_scripts/netfix.sh
+
+[Install]
+WantedBy=multi-user.target
