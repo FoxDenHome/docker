@@ -19,7 +19,7 @@ ID="$1"
 
 if [ "$2" != "NSENTER" ]
 then
-    nsenter -n -t "$(docker inspect --format {{.State.Pid}} "$container")" "$SELF" "$container" "NSENTER"
+    nsenter -n -t "$(docker inspect --format {{.State.Pid}} "$ID")" "$SELF" "$ID" "NSENTER"
 fi
 
 LAN_ROUTE="$(ip -4 route | grep '10\..*\.0\.0/16' | cut -d ' ' -f 1)"
