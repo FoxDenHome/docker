@@ -8,12 +8,6 @@ services:
     environment:
       TZ: America/Los_Angeles
       HOMEASSISTANT_API_TOKEN: ${PROMETHEUS_HOMEASSISTANT_API_TOKEN}
-    networks:
-      default:
-        priority: 1
-      vlan2:
-        priority: 100
-        ipv4_address: 10.2.11.4
     links:
       - telegraf:telegraf
       - telegraf:telegraf.foxden.network

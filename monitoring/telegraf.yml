@@ -6,12 +6,6 @@ services:
     environment:
       TZ: America/Los_Angeles
       SNMP_COMMUNITY: ${SNMP_COMMUNITY}
-    networks:
-      default:
-        priority: 1
-      vlan1:
-        priority: 100
-        ipv4_address: 10.1.13.1
     extra_hosts:
       wired: 10.101.11.1
       lte: 10.101.11.2
