@@ -47,7 +47,7 @@ then
     exit 0
 fi
 
-CURRENT_GW="$("$CURRENT_ROUTE" | cut -d' ' -f3)"
+CURRENT_GW="$(echo "$CURRENT_ROUTE" | cut -d' ' -f3)"
 if [ "$CURRENT_GW" = "$LAN_GW" ]
 then
     echo 'Route already correct'
