@@ -1,5 +1,6 @@
 services:
   site:
+    build: site
     image: ghcr.io/foxcaves/site/foxcaves-site:latest
     restart: always
     environment:
