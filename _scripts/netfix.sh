@@ -40,7 +40,14 @@ fi
 
 LAN_GW="$(echo "$LAN_ROUTE" | sed s~.0/16~.1~)"
 
-CURRENT_GW="$(ip route get 8.8.8.8 | head -1 | cut -d' ' -f3)"
+CURRENT_ROUTE="$(ip route get 8.8.8.8 | head -1)"
+if "$CURRENT_ROUTE" | grep -vq 'dev eth'
+then
+    echo 'Route not via eth*, skipping'
+    exit 0
+fi
+
+CURRENT_GW="$("$CURRENT_ROUTE" | cut -d' ' -f3)"
 if [ "$CURRENT_GW" = "$LAN_GW" ]
 then
     echo 'Route already correct'
