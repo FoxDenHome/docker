@@ -5,29 +5,31 @@ SELF="$0"
 
 if [ -z "$1" ]
 then
-    for container in `docker ps --format '{{.Names}}'`
+    echo 'Checking all already running containers...'
+    for CONTAINER in `docker ps --format '{{.Names}}'`
     do
-        "$SELF" "$container"
+        "$SELF" "$CONTAINER" || echo "Error checking $CONTAINER"
     done
 
+    echo 'Hooking into docker events'
     docker events --filter 'event=start' --format '{{.Actor.Attributes.name}}' | 
-    while read -r container
+    while read -r CONTAINER
     do
-        "$SELF" "$container"
+        "$SELF" "$CONTAINER" || echo "Error checking $CONTAINER"
     done
 
     exit 0
 fi
 
-ID="$1"
+CONTAINER="$1"
 
 if [ "$2" != "NSENTER" ]
 then
-    nsenter -n -t "$(docker inspect --format {{.State.Pid}} "$ID")" "$SELF" "$ID" "NSENTER" || echo "Skipping $ID: No network namespace"
+    nsenter -n -t "$(docker inspect --format {{.State.Pid}} "$CONTAINER")" "$SELF" "$CONTAINER" "NSENTER"
     exit 0
 fi
 
-echo -n "Checking $ID: "
+echo -n "Checking $CONTAINER: "
 
 LAN_ROUTE="$(ip -4 route | grep '10\..*\.0\.0/16' | cut -d ' ' -f 1)"
 if [ -z "$LAN_ROUTE" ]
@@ -37,6 +39,13 @@ then
 fi
 
 LAN_GW="$(echo "$LAN_ROUTE" | sed s~.0/16~.1~)"
+
+CURRENT_GW="$(ip route get 8.8.8.8 | head -1 | cut -d' ' -f3)"
+if [ "$CURRENT_GW" = "$LAN_GW" ]
+then
+    echo 'Route already correct'
+    exit 0
+fi
 
 ip -4 route del default
 ip -4 route add default via "$LAN_GW"
