@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euo pipefail
+set -eo pipefail
 
 if [ -z "$1" ]
 then
@@ -9,10 +9,12 @@ then
     docker events --filter 'event=start' --format '{{.Actor.Attributes.name}}' | 
     while read -r container
     do
-        $SELF "$container"
+        nsenter -n -t "$(docker inspect --format {{.State.Pid}} "$container")" "$SELF" "$container"
     done
+
     exit 0
 fi
 
 ID="$1"
 
+ip route
