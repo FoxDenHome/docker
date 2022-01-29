@@ -17,4 +17,13 @@ fi
 
 ID="$1"
 
-ip route
+LAN_ROUTE="$(ip -4 route | grep '10\..*\.0\.0/16' | cut -d ' ' -f 1)"
+if [ -z "$LAN_ROUTE"]
+then
+    exit 0
+fi
+
+LAN_GW="$(echo "$LAN_ROUTE" | sed s~.0/16~.1~)"
+
+ip -4 route del default
+ip -4 route add default via "$LAN_GW"
