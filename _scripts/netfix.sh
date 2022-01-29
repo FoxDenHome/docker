@@ -23,20 +23,15 @@ fi
 
 CONTAINER="$1"
 
-nsenter_container() {
-    nsenter -n -t "$(docker inspect --format {{.State.Pid}} "$CONTAINER")" "$@"
-}
-
 if [ "$2" != "NSENTER" ]
 then
-    nsenter_container true || (echo "Skipping $CONTAINER: No network namespace" && exit 0)
-    nsenter_container "$SELF" "$CONTAINER" "NSENTER"
+    nsenter -n -t "$(docker inspect --format {{.State.Pid}} "$CONTAINER")" "$SELF" "$CONTAINER" "NSENTER"
     exit 0
 fi
 
 echo -n "Checking $CONTAINER: "
 
-LAN_ROUTE="$(ip -4 route | grep '10\..*\.0\.0/16' | cut -d ' ' -f 1)"
+LAN_ROUTE="$(ip -4 route | grep '10\..*\.0\.0/16' | cut -d' ' -f1 || true)"
 if [ -z "$LAN_ROUTE" ]
 then
     echo 'No LAN route found'
