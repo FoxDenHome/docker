@@ -22,7 +22,7 @@ then
 fi
 
 LAN_ROUTE="$(ip -4 route | grep '10\..*\.0\.0/16' | cut -d ' ' -f 1)"
-if [ -z "$LAN_ROUTE"]
+if [ -z "$LAN_ROUTE" ]
 then
     exit 0
 fi
