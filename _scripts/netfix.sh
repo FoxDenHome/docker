@@ -23,7 +23,8 @@ ID="$1"
 
 if [ "$2" != "NSENTER" ]
 then
-    nsenter -n -t "$(docker inspect --format {{.State.Pid}} "$ID")" "$SELF" "$ID" "NSENTER"
+    nsenter -n -t "$(docker inspect --format {{.State.Pid}} "$ID")" "$SELF" "$ID" "NSENTER" || echo "Skipping $ID: No network namespace"
+    exit 0
 fi
 
 echo -n "Checking $ID: "
