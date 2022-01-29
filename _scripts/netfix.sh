@@ -26,7 +26,7 @@ then
     nsenter -n -t "$(docker inspect --format {{.State.Pid}} "$ID")" "$SELF" "$ID" "NSENTER"
 fi
 
-echo -n "Checking $container: "
+echo -n "Checking $ID: "
 
 LAN_ROUTE="$(ip -4 route | grep '10\..*\.0\.0/16' | cut -d ' ' -f 1)"
 if [ -z "$LAN_ROUTE" ]
