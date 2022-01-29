@@ -9,13 +9,18 @@ then
     docker events --filter 'event=start' --format '{{.Actor.Attributes.name}}' | 
     while read -r container
     do
-        nsenter -n -t "$(docker inspect --format {{.State.Pid}} "$container")" "$SELF" "$container"
+        "$SELF" "$container"
     done
 
     exit 0
 fi
 
 ID="$1"
+
+if [ "$2" != "NSENTER" ]
+then
+    nsenter -n -t "$(docker inspect --format {{.State.Pid}} "$container")" "$SELF" "$container" "NSENTER"
+fi
 
 LAN_ROUTE="$(ip -4 route | grep '10\..*\.0\.0/16' | cut -d ' ' -f 1)"
 if [ -z "$LAN_ROUTE"]
