@@ -23,9 +23,14 @@ fi
 
 CONTAINER="$1"
 
+nsenter_container() {
+    nsenter -n -t "$(docker inspect --format {{.State.Pid}} "$CONTAINER")" "$@"
+}
+
 if [ "$2" != "NSENTER" ]
 then
-    nsenter -n -t "$(docker inspect --format {{.State.Pid}} "$CONTAINER")" "$SELF" "$CONTAINER" "NSENTER"
+    nsenter_container true || (echo "Skipping $CONTAINER: No network namespace" && exit 0)
+    nsenter_container "$SELF" "$CONTAINER" "NSENTER"
     exit 0
 fi
 
