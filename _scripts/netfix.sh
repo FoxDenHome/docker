@@ -1,11 +1,10 @@
 #!/bin/bash
 
 set -eo pipefail
+SELF="$0"
 
 if [ -z "$1" ]
 then
-    SELF="$0"
-
     docker events --filter 'event=start' --format '{{.Actor.Attributes.name}}' | 
     while read -r container
     do
