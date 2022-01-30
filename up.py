@@ -106,7 +106,7 @@ def load_role(role):
 
     if project.needs_default_network:
         ula_base = HOST_CONFIG["network"]["ula_base"]
-        ula_id = '{:x}'.format(crc32(role.encode()))
+        ula_id = '{:x}'.format(crc32(role.encode()) & 0xFFFF)
         ula_subnet = f'{ula_base}{ula_id}:'
 
         additional_config["networks"]["default"] = {
