@@ -13,6 +13,7 @@ services:
       - telegraf:telegraf.foxden.network
     extra_hosts:
       - ntp.foxden.network:10.6.1.2
+      - islandfox.foxden.network:host-gateway
     networks:
       default:
         priority: 1
