@@ -111,7 +111,7 @@ def load_role(role):
                 "config": [
                     {
                         "subnet": ula_base + ":/64",
-                        "gateway": ula_base + "1:/64"
+                        "gateway": ula_base + ":1/64"
                     }
                 ]
             }
