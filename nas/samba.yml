@@ -3,6 +3,8 @@ services:
     build: samba
     restart: always
     hostname: nas.foxden.network
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
     networks:
       vlan2:
         priority: 100
