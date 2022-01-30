@@ -20,6 +20,7 @@ class ComposeProject():
         self.checked_containers = set()
         self.name = name
         self.project_dir = project_dir
+        self.needs_default_network = False
         self.files = set()
 
     def load_dir(self, dir):
@@ -47,14 +48,22 @@ class ComposeProject():
         self.files.add(file)
 
     def add_service(self, name, data):
+        overrides_network = False
+
         if "networks" in data:
+            overrides_network = True
             for network in data["networks"]:
                 if network == "default":
+                    self.needs_default_network = True
                     continue
                 self.used_networks.add(network)
 
         if "network_mode" in data:
+            overrides_network = True
             self.checked_containers.add(name)
+
+        if not overrides_network:
+            self.needs_default_network = True
 
     def get_missing_networks(self):
         return self.used_networks - self.provided_networks
@@ -85,23 +94,28 @@ def load_role(role):
     project = ComposeProject(role, role)
     project.load_dir(role)
 
-    temp_file = None
     missing_networks = project.get_missing_networks()
+    additional_config = {
+        "networks": {}
+    }
+
     if missing_networks:
-        used_global_nets = {
-            "networks": {
-                network: GLOBAL_NETWORKS[network]
-                for network in missing_networks
-            }
+        for network in missing_networks:
+            additional_config["networks"][network] = GLOBAL_NETWORKS[network]
+
+    if project.needs_default_network:
+        additional_config["networks"]["default"] = {
+            "enable_ipv6": True,
         }
-        temp_file = NamedTemporaryFile(mode="w+", suffix=".yml")
-        yaml_dump(used_global_nets, temp_file)
-        temp_file.flush()
-        project.add_yaml(temp_file.name)
+
+    temp_file = NamedTemporaryFile(mode="w+", suffix=".yml")
+    yaml_dump(additional_config, temp_file)
+    temp_file.flush()
+    project.add_yaml(temp_file.name)
 
     project.deploy()
-    if temp_file:
-        temp_file.close()
+
+    temp_file.close()
 
 def load_roles_by_hostname():
     roles = set(HOST_CONFIG['roles'])
