@@ -11,6 +11,12 @@ services:
       lte: 10.101.11.2
       internet: 8.8.8.8
       router: 10.1.1.1
+    networks:
+      default:
+        priority: 1
+      vlan6:
+        priority: 100
+        ipv4_address: 10.6.11.2
     healthcheck:
       test: 'curl -s -f "http://$${HOSTNAME}:9273/" >/dev/null || exit 1'
       interval: 60s

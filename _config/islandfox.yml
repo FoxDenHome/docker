@@ -5,6 +5,6 @@ roles:
 - syncthing
 network:
   driver: macvlan
-  pvid: 1
+  pvid: 6
   device: eno1
   ula_base: 'fdd8:2357:cb1a:'
