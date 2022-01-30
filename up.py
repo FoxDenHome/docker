@@ -104,8 +104,17 @@ def load_role(role):
             additional_config["networks"][network] = GLOBAL_NETWORKS[network]
 
     if project.needs_default_network:
+        ula_base = HOST_CONFIG["network"]["ula_base"]
         additional_config["networks"]["default"] = {
             "enable_ipv6": True,
+            "ipam": {
+                "config": [
+                    {
+                        "subnet": ula_base + "::/64",
+                        "gateway": ula_base + "1::/64"
+                    }
+                ]
+            }
         }
 
     temp_file = NamedTemporaryFile(mode="w+", suffix=".yml")
@@ -129,7 +138,7 @@ def main():
     else:
         load_roles_by_hostname()
 
-    prune_images()
+    #prune_images()
 
 if __name__ == "__main__":
     main()
