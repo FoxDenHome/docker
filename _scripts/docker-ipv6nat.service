@@ -1,0 +1,13 @@
+[Unit]
+Description=Docker IPv6NAT service
+StartLimitIntervalSec=0
+After=docker.service network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/usr/local/sbin/docker-ipv6nat
+
+[Install]
+WantedBy=multi-user.target
