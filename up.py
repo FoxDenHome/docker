@@ -110,8 +110,8 @@ def load_role(role):
             "ipam": {
                 "config": [
                     {
-                        "subnet": ula_base + "::/64",
-                        "gateway": ula_base + "1::/64"
+                        "subnet": ula_base + ":/64",
+                        "gateway": ula_base + "1:/64"
                     }
                 ]
             }
