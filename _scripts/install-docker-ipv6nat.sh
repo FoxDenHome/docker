@@ -4,11 +4,7 @@ set -e
 VERSION="v0.4.4"
 ARCH="amd64"
 
-cp "$(dirname "$0")"/docker-ipv6nat.service /etc/systemd/system/docker-ipv6nat.service || purge_fail 'Error copying systemd service'
-
 DIR="$(mktemp -d)"
-cd "$DIR"
-
 purge() {
     cd /
     rm -rf "$DIR"
@@ -18,6 +14,10 @@ purge_fail() {
     purge
     exit 1
 }
+
+cp "$(dirname "$0")"/docker-ipv6nat.service /etc/systemd/system/docker-ipv6nat.service || purge_fail 'Error copying systemd service'
+
+cd "$DIR"
 
 wget "https://github.com/robbertkl/docker-ipv6nat/releases/download/$VERSION/docker-ipv6nat.$ARCH" -O docker-ipv6nat || purge_fail 'Error downloading binary'
 chmod +x docker-ipv6nat || purge_fail 'Error setting permissions'
