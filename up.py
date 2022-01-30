@@ -142,7 +142,7 @@ def main():
     else:
         load_roles_by_hostname()
 
-    #prune_images()
+    prune_images()
 
 if __name__ == "__main__":
     main()
