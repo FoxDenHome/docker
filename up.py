@@ -10,6 +10,7 @@ from tempfile import NamedTemporaryFile
 from config import yaml_loadfile, HOST_CONFIG
 from netgen import GLOBAL_NETWORKS
 from dockermgr import Container, prune_images
+from zlib import crc32
 
 chdir(dirname(abspath(__file__)))
 
@@ -105,13 +106,16 @@ def load_role(role):
 
     if project.needs_default_network:
         ula_base = HOST_CONFIG["network"]["ula_base"]
+        ula_id = '{:x}'.format(crc32(role.encode()))
+        ula_subnet = f'{ula_base}{ula_id}:'
+
         additional_config["networks"]["default"] = {
             "enable_ipv6": True,
             "ipam": {
                 "config": [
                     {
-                        "subnet": ula_base + ":/64",
-                        "gateway": ula_base + ":1"
+                        "subnet": ula_subnet + "/64",
+                        "gateway": ula_subnet + "1"
                     }
                 ]
             }
