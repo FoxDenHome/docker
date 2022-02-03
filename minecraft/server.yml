@@ -10,7 +10,4 @@ services:
         ipv4_address: 10.3.10.2
     mac_address: 00:16:3e:ca:7e:05
     volumes:
-      - data:/data
-
-volumes:
-  data: {}
+      - /mnt/zssd/docker/minecraft:/data
