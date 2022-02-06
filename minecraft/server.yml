@@ -5,6 +5,7 @@ services:
     environment:
       EULA: 'TRUE'
       TYPE: 'PAPER'
+      MEMORY: '4G'
     networks:
       vlan3:
         priority: 100
