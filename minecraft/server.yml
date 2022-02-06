@@ -4,6 +4,7 @@ services:
     restart: always
     environment:
       EULA: 'TRUE'
+      TYPE: 'PAPER'
     networks:
       vlan3:
         priority: 100
