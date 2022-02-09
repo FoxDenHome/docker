@@ -22,7 +22,7 @@ services:
       interval: 60s
       timeout: 10s
   grafana-web:
-    image: caddy:latest
+    build: grafana-web    
     restart: always
     network_mode: service:grafana
     volumes:
