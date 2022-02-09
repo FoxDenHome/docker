@@ -21,7 +21,7 @@ class Container():
     def restart_if_failed(self):
         try:
             if self.check():
-                return  # Will throw or return false on error, so this exits the func on success
+                return True # Will throw or return false on error, so this exits the func on success
         except Exception as e:
             print(f"Error on check {self.id}: {e}")
         
