@@ -8,6 +8,7 @@ services:
       GF_SERVER_ROOT_URL: https://grafana.foxden.network/
       GF_AUTH_ANONYMOUS_ENABLED: 'true'
       GF_AUTH_ANONYMOUS_ORG_NAME: FoxDen
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
       TZ: America/Los_Angeles
     volumes:
       - grafana_data:/var/lib/grafana
