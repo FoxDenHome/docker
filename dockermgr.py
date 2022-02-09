@@ -1,4 +1,4 @@
-from subprocess import PIPE, check_output, check_call, run
+from subprocess import PIPE, CalledProcessError, check_output, check_call, run
 
 class Container():
     def __init__(self, id):
@@ -11,7 +11,12 @@ class Container():
 
     def restart(self):
         print(f"Restarting {self.id}")
-        run(["docker", "restart", self.id]) # If this fails, not much we can do...
+        try:
+            check_call(["docker", "restart", self.id])
+            return True
+        except CalledProcessError:
+            check_call(["docker", "rm", self.id])
+        return False
 
     def restart_if_failed(self):
         try:
@@ -20,7 +25,7 @@ class Container():
         except Exception as e:
             print(f"Error on check {self.id}: {e}")
         
-        self.restart()
+        return self.restart()
 
 def list_containers():
     ids = check_output(["docker", "ps", "--format", "{{.ID}}"], encoding="utf8").strip().split("\n")

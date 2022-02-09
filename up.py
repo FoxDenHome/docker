@@ -85,7 +85,8 @@ class ComposeProject():
 
         for ct in self.checked_containers:
             print(f"Checking container {ct} in {self.name}")
-            Container(f"{self.name}_{ct}_1").restart_if_failed()
+            if not Container(f"{self.name}_{ct}_1").restart_if_failed():
+                return self.deploy()
 
 def load_role(role):
     if role == "":
