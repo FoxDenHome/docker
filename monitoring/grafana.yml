@@ -6,6 +6,8 @@ services:
       GF_RENDERING_SERVER_URL: http://grafana-renderer:8081/render
       GF_RENDERING_CALLBACK_URL: http://grafana:3000/
       GF_SERVER_ROOT_URL: https://grafana.foxden.network/
+      GF_AUTH_ANONYMOUS_ENABLED: true
+      GF_AUTH_ANONYMOUS_ORG_NAME: FoxDen
       TZ: America/Los_Angeles
     volumes:
       - grafana_data:/var/lib/grafana
