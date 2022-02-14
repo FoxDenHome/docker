@@ -6,11 +6,6 @@ services:
     environment:
       TZ: America/Los_Angeles
       SNMP_COMMUNITY: ${SNMP_COMMUNITY}
-    extra_hosts:
-      wired: 10.101.11.1
-      lte: 10.101.11.2
-      internet: 8.8.8.8
-      router: 10.6.1.1
     networks:
       default:
         priority: 1

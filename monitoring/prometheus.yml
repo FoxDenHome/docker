@@ -28,6 +28,7 @@ services:
       - node-exporter:islandfox.foxden.network
     extra_hosts:
       - ntp.foxden.network:10.6.1.2
+      - router.foxden.netwotk:10.6.1.1
     networks:
       default:
         priority: 1
