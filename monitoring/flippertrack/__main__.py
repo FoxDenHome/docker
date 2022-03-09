@@ -4,6 +4,7 @@ from requests import get
 from time import sleep
 from re import compile as re_compile, escape as re_escape
 from dateutil.parser import parse as dateutil_parse
+from sys import stderr
 
 URL = "https://ship.flipp.dev/"
 TEMPLATE_URL = "https://raw.githubusercontent.com/flipperdevices/ship-flipp/main/index.tmpl"
@@ -31,6 +32,10 @@ DELIVERED_FLIPPERS_REGEX = None
 DATE_REGEX = None
 
 
+def eprint(*args, **kwargs):
+    print(*args, file=stderr, **kwargs)
+
+
 def extractRegexFromLine(line, match):
     if match not in line:
         return None
@@ -42,7 +47,7 @@ def extractRegexFromLine(line, match):
     regex = regex.replace("___VARIABLE___", "([^<>]+)")
 
     regex_compiled = re_compile(f"^{regex}$")
-    print(regex_compiled)
+    eprint(regex_compiled)
     return regex_compiled
 
 
@@ -106,7 +111,8 @@ def checkStats():
         ['in_transit'], query_shipped - query_delivered, timestamp)
     FLIPPER_GAUGE.add_metric(['delivered'], query_delivered, timestamp)
 
-    print("Q", query_date, "S", query_shipped, "D", query_delivered)
+    eprint("Q", query_date, "S", query_shipped, "D", query_delivered)
+
 
 if __name__ == "__main__":
     extractRegexFromTemplate()
@@ -115,5 +121,5 @@ if __name__ == "__main__":
         try:
             checkStats()
         except Exception as e:
-            print(e)
+            eprint(e)
         sleep(QUERY_PERIOD)
