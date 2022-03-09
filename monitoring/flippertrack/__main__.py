@@ -106,15 +106,14 @@ def checkStats():
         ['in_transit'], query_shipped - query_delivered, timestamp)
     FLIPPER_GAUGE.add_metric(['delivered'], query_delivered, timestamp)
 
+    print("Q", query_date, "S", query_shipped, "D", query_delivered)
 
 if __name__ == "__main__":
     extractRegexFromTemplate()
     start_http_server(8888, registry=REGISTRY)
     while True:
-        print("Querying...")
         try:
             checkStats()
         except Exception as e:
             print(e)
-        print("Query done!")
         sleep(QUERY_PERIOD)
