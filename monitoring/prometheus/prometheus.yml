@@ -23,3 +23,7 @@ scrape_configs:
     static_configs:
       - targets: ['homeassistant.foxden.network:443']
   
+  - job_name: flippertrack
+    scrape_interval: 60s
+    static_configs:
+      - targets: ['flippertrack:8888']
