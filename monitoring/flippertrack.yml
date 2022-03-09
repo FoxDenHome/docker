@@ -1,0 +1,9 @@
+services:
+  flippertrack:
+    build: flippertrack
+    restart: always
+    user: 1000:1000
+    init: true
+    networks:
+      default:
+        priority: 1
