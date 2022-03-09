@@ -1,6 +1,5 @@
 from prometheus_client import CollectorRegistry, REGISTRY, start_http_server
 from prometheus_client.core import GaugeMetricFamily
-
 from requests import get
 from time import sleep
 from re import compile as re_compile, escape as re_escape
@@ -11,7 +10,10 @@ TEMPLATE_URL = "https://raw.githubusercontent.com/flipperdevices/ship-flipp/main
 QUERY_PERIOD = 60
 
 REGISTRY = CollectorRegistry()
-FLIPPER_GAUGE = GaugeMetricFamily('flipper_shipping', 'Number of shipping flippers', labels=['state'])
+FLIPPER_GAUGE = GaugeMetricFamily(
+    'flipper_shipping', 'Number of shipping flippers', labels=['state'])
+
+
 class FakeCollector():
     def __init__(self):
         pass
@@ -20,11 +22,14 @@ class FakeCollector():
         return [
             FLIPPER_GAUGE,
         ]
+
+
 REGISTRY.register(FakeCollector())
 
 SHIPPED_FLIPPERS_REGEX = None
 DELIVERED_FLIPPERS_REGEX = None
 DATE_REGEX = None
+
 
 def extractRegexFromLine(line, match):
     if match not in line:
@@ -40,6 +45,7 @@ def extractRegexFromLine(line, match):
     print(regex_compiled)
     return regex_compiled
 
+
 def extractRegexFromTemplate():
     global SHIPPED_FLIPPERS_REGEX
     global DELIVERED_FLIPPERS_REGEX
@@ -53,9 +59,11 @@ def extractRegexFromTemplate():
         regex = extractRegexFromLine(line, "{{ .status.Delivered }}")
         if regex is not None:
             DELIVERED_FLIPPERS_REGEX = regex
-        regex = extractRegexFromLine(line, "{{ .status.Date.Format \"January 02 15:04 MST\" }}")
+        regex = extractRegexFromLine(
+            line, "{{ .status.Date.Format \"January 02 15:04 MST\" }}")
         if regex is not None:
             DATE_REGEX = regex
+
 
 def returnIfMatch(line, regex):
     match = regex.match(line)
@@ -63,8 +71,10 @@ def returnIfMatch(line, regex):
         return match[1]
     return None
 
+
 def setGauge(state, value):
     FLIPPER_GAUGE.labels(state=state).set(value)
+
 
 def checkStats():
     query_date = None
@@ -89,11 +99,13 @@ def checkStats():
         return
 
     timestamp = query_date.timestamp()
-    
+
     FLIPPER_GAUGE.samples = []
     FLIPPER_GAUGE.add_metric(['shipped'], query_shipped, timestamp)
-    FLIPPER_GAUGE.add_metric(['in_transit'], query_shipped - query_delivered, timestamp)
+    FLIPPER_GAUGE.add_metric(
+        ['in_transit'], query_shipped - query_delivered, timestamp)
     FLIPPER_GAUGE.add_metric(['delivered'], query_delivered, timestamp)
+
 
 if __name__ == "__main__":
     extractRegexFromTemplate()
