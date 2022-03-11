@@ -101,7 +101,7 @@ def checkStats():
             query_date = dateutil_parse(match)
 
     if not query_date or not query_shipped or not query_delivered:
-        return
+        raise ValueError("Invalid response")
 
     timestamp = query_date.timestamp()
 
@@ -114,12 +114,20 @@ def checkStats():
     eprint("Q", query_date, "S", query_shipped, "D", query_delivered)
 
 
-if __name__ == "__main__":
-    extractRegexFromTemplate()
+def main():
+    got_regex = False
     start_http_server(8888, registry=REGISTRY)
     while True:
+        if not got_regex:
+            extractRegexFromTemplate()
+            got_regex = True
+
         try:
             checkStats()
         except Exception as e:
+            got_regex = False
             eprint(e)
         sleep(QUERY_PERIOD)
+
+if __name__ == "__main__":
+    main()
