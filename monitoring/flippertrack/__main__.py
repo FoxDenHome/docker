@@ -56,7 +56,7 @@ def extractRegexFromTemplate():
     global DELIVERED_FLIPPERS_REGEX
     global DATE_REGEX
 
-    tpl = get(TEMPLATE_URL).text
+    tpl = get(TEMPLATE_URL, timeout=5).text
     for line in tpl.splitlines():
         regex = extractRegexFromLine(line, "{{ .status.Total }}")
         if regex is not None:
@@ -86,7 +86,7 @@ def checkStats():
     query_shipped = None
     query_delivered = None
 
-    stats = get(URL).text
+    stats = get(URL, timeout=5).text
     for line in stats.splitlines():
         line = line.strip()
 
