@@ -5,10 +5,12 @@ from time import sleep
 from re import compile as re_compile, escape as re_escape
 from dateutil.parser import parse as dateutil_parse
 from sys import stderr
+from datetime import datetime
 
 URL = "https://ship.flipp.dev/"
 TEMPLATE_URL = "https://raw.githubusercontent.com/flipperdevices/ship-flipp/main/index.tmpl"
 QUERY_PERIOD = 60
+REGEX_PERIOD = 60 * 60
 
 REGISTRY = CollectorRegistry()
 FLIPPER_GAUGE = GaugeMetricFamily(
@@ -115,12 +117,13 @@ def checkStats():
 
 
 def main():
-    got_regex = False
+    got_regex = None
     start_http_server(8888, registry=REGISTRY)
     while True:
-        if not got_regex:
+        now = datetime.now()
+        if got_regex is None or (now - got_regex).total_seconds() >= REGEX_PERIOD:
             extractRegexFromTemplate()
-            got_regex = True
+            got_regex = now
 
         try:
             checkStats()
