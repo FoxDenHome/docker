@@ -1,6 +1,6 @@
 services:
   server:
-    image: factoriotools/factorio:latest
+    image: factoriotools/factorio:stable
     restart: always
     networks:
       vlan3:
