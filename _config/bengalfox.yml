@@ -5,7 +5,6 @@ roles:
 - e621dumper
 - foxcaves
 - minecraft
-- factorio
 network:
   driver: sriov
   pvid: 6
