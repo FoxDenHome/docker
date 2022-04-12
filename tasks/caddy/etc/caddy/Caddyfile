@@ -1,3 +1,3 @@
 tasks.foxden.network {
-	reverse_proxy wekan:8000
+	reverse_proxy wekan:8080
 }
