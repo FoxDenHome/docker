@@ -3,6 +3,7 @@ roles:
 - monitoring
 - ut2004
 - syncthing
+- tasks
 network:
   driver: macvlan
   pvid: 6
