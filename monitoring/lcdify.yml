@@ -1,0 +1,9 @@
+services:
+  lcdify:
+    image: ghcr.io/doridian/lcdify/lcdify:latest
+    restart: always
+    environment:
+      TZ: America/Los_Angeles
+    networks:
+      default:
+        priority: 1
