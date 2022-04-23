@@ -8,5 +8,5 @@ services:
       default:
         priority: 1
     devices:
-      - /dev/serial/by-id/usb-Crystalfontz_Crystalfontz_CFA635-USB_LCD_CF104085-if00-port0:/dev/serial/by-id/usb-Crystalfontz_Crystalfontz_CFA635-USB_LCD_CF104085-if00-port0
-      - /dev/serial/by-id/usb-Crystalfontz_Crystalfontz_CFA635-USB_LCD_CF104088-if00-port0:/dev/serial/by-id/usb-Crystalfontz_Crystalfontz_CFA635-USB_LCD_CF104088-if00-port0
+      - /dev/serial/by-id/usb-Crystalfontz_Crystalfontz_CFA635-USB_LCD_CF104085-if00-port0:/dev/ttyUSB0
+      - /dev/serial/by-id/usb-Crystalfontz_Crystalfontz_CFA635-USB_LCD_CF104088-if00-port0:/dev/ttyUSB1
