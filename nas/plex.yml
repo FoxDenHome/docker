@@ -20,8 +20,7 @@ services:
       PLEX_UID: 10001
       PLEX_GID: 1001
       ALLOWED_NETWORKS: 10.0.0.0/8
-      NVIDIA_VISIBLE_DEVICES: all
-      NVIDIA_DRIVER_CAPABILITIES: all
+      TZ: America/Los_Angeles
     volumes:
       - plex_config:/config
       - /mnt/zssd/docker/plex/transcode:/transcode
