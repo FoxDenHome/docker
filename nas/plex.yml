@@ -2,7 +2,13 @@ services:
   plex:
     image: plexinc/pms-docker:latest
     restart: always
-    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
     networks:
