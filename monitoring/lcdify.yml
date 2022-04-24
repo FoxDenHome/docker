@@ -2,6 +2,7 @@ services:
   lcdify:
     image: ghcr.io/doridian/lcdify/lcdify:latest
     restart: always
+    init: true
     environment:
       TZ: America/Los_Angeles
     networks:
