@@ -10,6 +10,8 @@ services:
       vlan3:
         priority: 100
         ipv4_address: 10.3.10.2
-    mac_address: 00:16:3E:CA:7E:05
     volumes:
-      - /mnt/zssd/docker/minecraft:/data
+      - data:/data
+
+volumes:
+  data: {}

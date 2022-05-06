@@ -3,8 +3,6 @@ roles:
 - nas
 - kiwix
 - e621dumper
-- foxcaves
-- minecraft
 network:
   driver: sriov
   pvid: 6

@@ -4,6 +4,8 @@ roles:
 - ut2004
 - syncthing
 - tasks
+- foxcaves
+- minecraft
 network:
   driver: macvlan
   pvid: 6

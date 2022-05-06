@@ -12,14 +12,13 @@ services:
       vlan3:
         priority: 100
         ipv4_address: 10.3.10.1
-    mac_address: 00:16:3E:CA:7E:00
     links:
       - postgres:postgres
       - redis:redis
     volumes:
       - config:/var/www/foxcaves/config
       - ssl:/etc/letsencrypt
-      - /mnt/zhdd/foxcaves/storage:/var/www/foxcaves/storage
+      - storage:/var/www/foxcaves/storage
     healthcheck:
       test: 'curl -s -f --resolve "foxcav.es:443:127.0.0.1" "https://foxcav.es/api/v1/system/info" >/dev/null || exit 1'
       interval: 60s
@@ -28,3 +27,4 @@ services:
 volumes:
   config: {}
   ssl: {}
+  storage: {}
