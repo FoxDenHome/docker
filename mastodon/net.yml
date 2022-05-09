@@ -1,0 +1,3 @@
+networks:
+  internal_network:
+    internal: true

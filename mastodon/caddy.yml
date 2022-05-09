@@ -1,0 +1,21 @@
+services:
+  caddy:
+    build: caddy
+    restart: always
+    networks:
+      internal_network:
+        priority: 1
+      vlan3:
+        priority: 100
+        #ipv4_address: 10.3.10.1
+    depends_on:
+      - web
+      - static
+      - streaming
+    volumes:
+      - caddy_config:/config
+      - caddy_data:/data
+
+volumes:
+  caddy_data: {}
+  caddy_config: {}

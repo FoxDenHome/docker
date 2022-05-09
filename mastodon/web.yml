@@ -1,0 +1,16 @@
+services:
+  web:
+    image: ghcr.io/doridian/mastodon-docker/mastodon-docker
+    restart: always
+    command: bash -c "rm -f /mastodon/tmp/pids/server.pid; bundle exec rails s -p 3000"
+    networks:
+      internal_network:
+        priority: 1
+      vlan3:
+        priority: 100
+        #ipv4_address: 10.3.10.1
+    healthcheck:
+      test: ['CMD-SHELL', 'wget -q --spider --proxy=off localhost:3000/health || exit 1']
+    depends_on:
+      - db
+      - redis

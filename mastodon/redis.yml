@@ -1,0 +1,14 @@
+services:
+  redis:
+    restart: always
+    image: redis:6-alpine
+    networks:
+      internal_network:
+        priority: 1
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data: {}

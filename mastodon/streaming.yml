@@ -1,0 +1,19 @@
+services:
+  streaming:
+    image: ghcr.io/doridian/mastodon-docker/mastodon-docker
+    restart: always
+    command: node ./streaming
+    networks:
+      internal_network:
+        priority: 1
+      vlan3:
+        priority: 100
+        #ipv4_address: 10.3.10.1
+    healthcheck:
+      # prettier-ignore
+      test: ['CMD-SHELL', 'wget -q --spider --proxy=off localhost:4000/api/v1/streaming/health || exit 1']
+    ports:
+      - '127.0.0.1:4000:4000'
+    depends_on:
+      - db
+      - redis

@@ -1,0 +1,10 @@
+services:
+  static:
+    image: ghcr.io/doridian/mastodon-docker/mastodon-docker
+    restart: always
+    command: nginx -g 'daemon off;'
+    networks:
+      internal_network:
+        priority: 1
+    healthcheck:
+      test: ['CMD-SHELL', 'wget -q --spider --proxy=off localhost:3131 || exit 1']

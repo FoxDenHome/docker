@@ -1,0 +1,16 @@
+services:
+  sidekiq:
+    image: ghcr.io/doridian/mastodon-docker/mastodon-docker
+    restart: always
+    command: bundle exec sidekiq
+    depends_on:
+      - db
+      - redis
+    networks:
+      internal_network:
+        priority: 1
+      vlan3:
+        priority: 100
+        #ipv4_address: 10.3.10.1
+    healthcheck:
+      test: ['CMD-SHELL', "ps aux | grep '[s]idekiq\ 6' || false"]

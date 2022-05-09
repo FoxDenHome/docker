@@ -6,6 +6,7 @@ roles:
 - tasks
 - foxcaves
 - minecraft
+- mastodon
 network:
   driver: macvlan
   pvid: 6

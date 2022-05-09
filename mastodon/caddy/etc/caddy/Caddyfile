@@ -1,0 +1,11 @@
+f0x.es {
+	reverse_proxy web:3000
+}
+
+streaming.f0x.es {
+	reverse_proxy streaming:4000
+}
+
+assets.f0x.es {
+	reverse_proxy static:3131
+}
