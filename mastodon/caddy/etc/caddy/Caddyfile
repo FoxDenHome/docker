@@ -1,9 +1,11 @@
 (hsts) {
-    header       XStrict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 }
 
 f0x.es {
-	reverse_proxy web:3000
+	reverse_proxy web:3000 {
+		header_down -Strict-Transport-Security
+	}
     import hsts
 }
 
