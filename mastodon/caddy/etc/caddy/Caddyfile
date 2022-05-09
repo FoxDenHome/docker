@@ -8,9 +8,7 @@ streaming.f0x.es {
 
 assets.f0x.es {
 	reverse_proxy static:3131
-	headers / {
-		Access-Control-Allow-Origin https://f0x.es
-	}
+	header Access-Control-Allow-Origin https://f0x.es
 }
 
 mastodon.f0x.es {
