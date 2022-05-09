@@ -9,3 +9,11 @@ streaming.f0x.es {
 assets.f0x.es {
 	reverse_proxy static:3131
 }
+
+mastodon.f0x.es {
+	reverse_proxy web:3000
+}
+
+crossposter.f0x.es {
+	reverse_proxy web:3999
+}

@@ -9,8 +9,7 @@ services:
     networks:
       internal_network:
         priority: 1
-      vlan3:
+      default:
         priority: 100
-        #ipv4_address: 10.3.10.1
     healthcheck:
       test: ['CMD-SHELL', "ps aux | grep '[s]idekiq\ 6' || false"]
