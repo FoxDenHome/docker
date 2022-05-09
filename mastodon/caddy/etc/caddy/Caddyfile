@@ -1,5 +1,5 @@
 (hsts) {
-    header       Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    header       XStrict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 }
 
 f0x.es {
