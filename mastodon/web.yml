@@ -8,6 +8,7 @@ services:
         priority: 1
       default:
         priority: 100
+    env_file: .env.mastodon
     healthcheck:
       test: ['CMD-SHELL', 'wget -q --spider --proxy=off localhost:3000/health || exit 1']
     depends_on:

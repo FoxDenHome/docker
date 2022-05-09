@@ -11,5 +11,6 @@ services:
         priority: 1
       default:
         priority: 100
+    env_file: .env.mastodon
     healthcheck:
       test: ['CMD-SHELL', "ps aux | grep '[s]idekiq\ 6' || false"]

@@ -8,6 +8,7 @@ services:
         priority: 1
       default:
         priority: 100
+    env_file: .env.mastodon
     healthcheck:
       # prettier-ignore
       test: ['CMD-SHELL', 'wget -q --spider --proxy=off localhost:4000/api/v1/streaming/health || exit 1']
