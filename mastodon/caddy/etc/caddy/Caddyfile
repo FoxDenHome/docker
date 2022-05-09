@@ -26,6 +26,8 @@ mastodon.f0x.es {
 }
 
 crossposter.f0x.es {
-	reverse_proxy web:3999
+	reverse_proxy crossposter-web:3000 {
+		header_down -Strict-Transport-Security
+	}
     import hsts
 }

@@ -12,10 +12,12 @@ services:
       - web
       - static
       - streaming
+      - crossposter-web
     links:
       - web:web
       - static:static
       - streaming:streaming
+      - crossposter-web:crossposter-web
     volumes:
       - caddy_config:/config
       - caddy_data:/data

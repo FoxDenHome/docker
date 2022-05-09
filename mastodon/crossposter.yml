@@ -1,0 +1,28 @@
+services:
+  crossposter-web:
+    restart: always
+    image: ghcr.io/doridian/mastodon-twitter-poster/mastodon-twitter-poster:latest
+    env_file: .env.crossposter
+    networks:
+      internal_network:
+        priority: 1
+      default:
+        priority: 100
+    ports:
+      - "1081:3000"
+    depends_on:
+      - db
+
+  crossposter-sidekiq:
+    restart: always
+    image: ghcr.io/doridian/mastodon-twitter-poster/mastodon-twitter-poster:latest
+    env_file: .env.crossposter
+    command: bundle exec sidekiq -c 5 -q default
+    networks:
+      internal_network:
+        priority: 1
+      default:
+        priority: 100
+    depends_on:
+      - db
+      - redis
