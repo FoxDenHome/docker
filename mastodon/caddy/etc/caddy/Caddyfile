@@ -9,6 +9,11 @@ f0x.es {
     import hsts
 }
 
+www.f0x.es {
+	import hsts
+	redir https://f0x.es
+}
+
 streaming.f0x.es {
 	reverse_proxy streaming:4000
     import hsts
