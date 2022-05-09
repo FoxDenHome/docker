@@ -7,7 +7,7 @@ services:
         priority: 1
       vlan3:
         priority: 100
-        ipv4_address: 10.3.10.8
+        ipv4_address: 10.3.10.9
     depends_on:
       - web
       - static
