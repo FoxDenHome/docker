@@ -31,7 +31,6 @@ services:
       timeout: 10s
   nzbget:
     image: lscr.io/linuxserver/nzbget:latest
-    container_name: nzbget
     environment:
       PUID: 1000
       PGID: 1000
