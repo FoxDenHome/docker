@@ -8,4 +8,4 @@ services:
       internal_network:
         priority: 1
     healthcheck:
-      test: ['CMD-SHELL', 'wget -q --spider --proxy=off localhost:3131 || exit 1']
+      test: ['CMD-SHELL', 'wget -q --spider --proxy=off localhost:3131/favicon.ico || exit 1']
