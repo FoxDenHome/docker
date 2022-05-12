@@ -10,7 +10,7 @@ services:
         priority: 100
     env_file: .env.mastodon
     healthcheck:
-      test: ['CMD-SHELL', 'wget -q --spider --proxy=off localhost:3000/health || exit 1']
+      test: ['CMD-SHELL', 'wget -q --spider --proxy=off 127.0.0.1:3000/health || exit 1']
     depends_on:
       - db
       - redis
