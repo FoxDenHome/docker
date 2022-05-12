@@ -15,6 +15,7 @@ services:
       - samba_config:/var/lib/samba
       - /mnt/zhdd/nas:/mnt/nas
       - /mnt/zssd/nas/torrent:/mnt/nas/torrent
+      - /mnt/zssd/nas/usenet:/mnt/nas/usenet
       - /mnt/zhdd/nashome:/home
       - /mnt/zhdd/timemachine:/mnt/timemachine
     healthcheck:
