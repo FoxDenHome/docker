@@ -1,0 +1,15 @@
+services:
+  server:
+    image: factoriotools/factorio:stable
+    restart: always
+    environment:
+      UPDATE_MODS_ON_START: true
+    networks:
+      vlan3:
+        priority: 100
+        ipv4_address: 10.3.10.7
+    volumes:
+      - data:/factorio
+
+volumes:
+  data: {}

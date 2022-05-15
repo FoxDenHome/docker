@@ -7,6 +7,7 @@ roles:
 - foxcaves
 - minecraft
 - mastodon
+- factorio
 network:
   driver: macvlan
   pvid: 6
