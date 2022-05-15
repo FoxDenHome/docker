@@ -3,7 +3,8 @@ services:
     image: factoriotools/factorio:stable
     restart: always
     environment:
-      UPDATE_MODS_ON_START: true
+      UPDATE_MODS_ON_START: 'true'
+    stop_grace_period: 2m
     networks:
       vlan3:
         priority: 100
