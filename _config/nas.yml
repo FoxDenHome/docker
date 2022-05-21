@@ -4,7 +4,6 @@ roles:
 - kiwix
 - e621dumper
 network:
-  driver: sriov
   pvid: 6
   device: enp131s0f0np0
   ula_base: 'fdd8:2357:cb19:'
