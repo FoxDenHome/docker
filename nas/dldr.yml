@@ -18,8 +18,8 @@ services:
       VPN_PROV: custom
       VPN_ENABLED: 'yes'
       LAN_NETWORK: 10.0.0.0/8
-      PUID: 1000
-      PGID: 1000
+      PUID: 1001
+      PGID: 1001
       TZ: America/Los_Angeles
     volumes:
       - deluge_config:/config
@@ -31,8 +31,8 @@ services:
   nzbget:
     image: lscr.io/linuxserver/nzbget:latest
     environment:
-      PUID: 1000
-      PGID: 1000
+      PUID: 1001
+      PGID: 1001
       TZ: America/Los_Angeles
       NZBGET_USER: nzbget
       NZBGET_PASS: ${NZBGET_PASSWORD}
