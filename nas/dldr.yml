@@ -10,10 +10,9 @@ services:
       - net.ipv4.conf.lo.src_valid_mark=1
       - net.ipv4.conf.eth0.src_valid_mark=1
     networks:
-      vlan3:
+      vlan2:
         priority: 100
-        ipv4_address: 10.3.10.6
-    mac_address: 00:16:3E:CA:7E:02
+        ipv4_address: 10.2.11.8
     environment:
       VPN_CLIENT: wireguard
       VPN_PROV: custom
@@ -38,10 +37,9 @@ services:
       NZBGET_USER: nzbget
       NZBGET_PASS: ${NZBGET_PASSWORD}
     networks:
-      vlan3:
+      vlan2:
         priority: 100
-        ipv4_address: 10.3.10.10
-    mac_address: 00:16:3E:CA:7E:05
+        ipv4_address: 10.2.11.9
     volumes:
       - nzbget_config:/config
       - /mnt/zssd/nas/usenet:/downloads
