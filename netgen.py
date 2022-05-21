@@ -4,7 +4,7 @@ def generate_driver_opts(id, driver):
     if driver == "macvlan":
         host_dev = HOST_CONFIG["network"]["device"]
         if host_dev:
-            if id == HOST_CONFIG["network"]["pvid"]
+            if id == HOST_CONFIG["network"]["pvid"]:
                 return {
                     "parent": f"{host_dev}",
                 }
