@@ -11,6 +11,7 @@ services:
         ipv4_address: 10.3.10.7
     volumes:
       - data:/factorio
+      - /mnt/tmpfs/factorio-script-output:/factorio/script-output
 
 volumes:
   data: {}
