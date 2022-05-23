@@ -1,0 +1,9 @@
+services:
+  factorio:
+    image: nginx:alpine
+    restart: always
+    networks:
+      default:
+        priority: 1
+    volumes:
+      - /mnt/tmpfs/factorio-script-output:/var/www/prometheus:ro
