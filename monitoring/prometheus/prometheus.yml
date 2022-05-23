@@ -28,7 +28,7 @@ scrape_configs:
     static_configs:
       - targets: ['flippertrack:8888']
 
-  - job_name: prometheus
+  - job_name: factorio
     scrape_interval: 60s
     metrics_path: '/graftorio2/game.prom'
     static_configs:
