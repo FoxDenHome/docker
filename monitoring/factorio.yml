@@ -6,4 +6,4 @@ services:
       default:
         priority: 1
     volumes:
-      - /mnt/tmpfs/factorio-script-output:/var/www/prometheus:ro
+      - /mnt/tmpfs/factorio-script-output/graftorio2:/usr/share/nginx/html/graftorio2:ro
