@@ -27,6 +27,7 @@ services:
       - telegraf:telegraf.foxden.network
       - node-exporter:islandfox.foxden.network
       - flippertrack:flippertrack
+      - factorio:factorio
     extra_hosts:
       - ntp.foxden.network:10.6.1.2
       - router.foxden.network:10.6.1.1
