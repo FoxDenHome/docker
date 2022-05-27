@@ -1,3 +1,0 @@
-python-dateutil
-prometheus_client
-requests
