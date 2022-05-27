@@ -1,0 +1,17 @@
+{
+    "yaml.schemas": {
+        "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json": [
+            "autoheal/*.yml",
+            "e621dumper/*.yml",
+            "factorio/*.yml",
+            "foxcaves/*.yml",
+            "kiwix/*.yml",
+            "mastodon/*.yml",
+            "monitoring/*.yml",
+            "nas/*.yml",
+            "syncthing/*.yml",
+            "tasks/*.yml",
+            "ut2004/*.yml"
+        ]
+    }
+}
