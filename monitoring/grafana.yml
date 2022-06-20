@@ -6,6 +6,7 @@ services:
       GF_RENDERING_SERVER_URL: http://grafana-renderer:8081/render
       GF_RENDERING_CALLBACK_URL: http://grafana:3000/
       GF_SERVER_ROOT_URL: https://grafana.foxden.network/
+      GF_UNIFIED_ALERTING_SCREENSHOTS_CAPTURE: 'true'
       #GF_AUTH_ANONYMOUS_ENABLED: 'true'
       #GF_AUTH_ANONYMOUS_ORG_NAME: FoxDen
       #GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
