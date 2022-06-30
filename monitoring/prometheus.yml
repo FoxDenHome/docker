@@ -6,6 +6,7 @@ services:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /:/rootfs:ro
+      - /var/lib/prometheus/node-exporter:/var/lib/prometheus/node-exporter:ro
     command:
       - '--path.procfs=/host/proc'
       - '--path.rootfs=/rootfs'
