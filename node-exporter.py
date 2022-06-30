@@ -27,13 +27,15 @@ def get_container_status(ct):
 
     state = ct.attrs["State"]
     status = None
+
+    base_status = state["Status"].lower()
     
-    if "Health" in state:
-        health_status = state["Health"]["Status"]
+    if base_status == "running" and "Health" in state:
+        health_status = state["Health"]["Status"].lower()
         status = DOCKER_HEALTH_STATUS_MAP.get(health_status, None)
 
     if not status:
-        status = DOCKER_STATUS_MAP.get(state["Status"], DOCKER_STATUS_MAP["unknown"])
+        status = DOCKER_STATUS_MAP.get(base_status, DOCKER_STATUS_MAP["unknown"])
 
     return status
 
