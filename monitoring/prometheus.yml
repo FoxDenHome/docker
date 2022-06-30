@@ -6,12 +6,13 @@ services:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /:/rootfs:ro
+      - /var/lib/prometheus/node-exporter:/var/lib/prometheus/node-exporter:ro
     command:
       - '--path.procfs=/host/proc'
       - '--path.rootfs=/rootfs'
       - '--path.sysfs=/host/sys'
       - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
-      - '--collector.textfile.directory=/host/var/lib/prometheus/node-exporter'
+      - '--collector.textfile.directory=/var/lib/prometheus/node-exporter'
     userns_mode: host
     privileged: true
   prometheus:
