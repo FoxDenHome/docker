@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# * * * * * /opt/docker/node-exporter.py > /var/lib/prometheus/node-exporter/docker-custom.prom
+
 from docker import DockerClient
 
 DOCKER_STATUS_MAP = {
@@ -39,8 +41,12 @@ def get_prometheus_line(ct):
     status = get_container_status(ct)
     return "docker_container_status{container=\"%s\"} %s" % (ct.name, status)
 
+def get_prometheus_header():
+    return "# TYPE docker_container_status gauge"
+
 def main():
     client = DockerClient(base_url="unix://var/run/docker.sock")
+    print(get_prometheus_header())
     for ct in client.containers.list():
         print(get_prometheus_line(ct))
 
