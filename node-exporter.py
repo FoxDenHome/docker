@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
-# * * * * * /opt/docker/node-exporter.py > /var/lib/prometheus/node-exporter/docker-custom.prom
+# * * * * * /opt/docker/node-exporter.py /var/lib/prometheus/node-exporter/docker-custom.prom
 
 from docker import DockerClient
+from sys import argv
+from os import rename, unlink
 
 DOCKER_STATUS_MAP = {
     "unknown": -2,
@@ -47,10 +49,23 @@ def get_prometheus_header():
     return "# TYPE docker_container_status gauge"
 
 def main():
+    outfile = argv[1]
+    tmpfile = f"{outfile}.tmp"
+
     client = DockerClient(base_url="unix://var/run/docker.sock")
-    print(get_prometheus_header())
-    for ct in client.containers.list():
-        print(get_prometheus_line(ct))
+
+    with open(tmpfile, "w") as fh:
+        fh.write(get_prometheus_header())
+        fh.write("\n")
+        for ct in client.containers.list():
+            fh.write(get_prometheus_line(ct))
+            fh.write("\n")
+
+    try:
+        unlink(outfile)
+    except:
+        pass
+    rename(tmpfile, outfile)
 
 if __name__ == "__main__":
     main()
