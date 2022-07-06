@@ -4,6 +4,7 @@ services:
     restart: always
     environment:
       UPDATE_MODS_ON_START: 'true'
+      PAUSE_DURING_JOIN: 'true;'
     stop_grace_period: 2m
     networks:
       vlan3:
