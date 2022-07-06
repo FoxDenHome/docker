@@ -61,6 +61,8 @@ def main():
             fh.write(get_prometheus_line(ct))
             fh.write("\n")
 
+    client.close()
+
     try:
         unlink(outfile)
     except:
