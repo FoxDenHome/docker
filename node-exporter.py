@@ -57,7 +57,7 @@ def main():
     with open(tmpfile, "w") as fh:
         fh.write(get_prometheus_header())
         fh.write("\n")
-        for ct in client.containers.list():
+        for ct in client.containers.list(all=true, ignore_removed=true):
             fh.write(get_prometheus_line(ct))
             fh.write("\n")
 
