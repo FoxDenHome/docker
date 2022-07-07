@@ -5,7 +5,6 @@ roles:
 - syncthing
 - tasks
 - foxcaves
-- mastodon
 - factorio
 network:
   driver: macvlan
