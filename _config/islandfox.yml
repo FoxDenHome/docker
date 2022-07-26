@@ -6,6 +6,7 @@ roles:
 - tasks
 - foxcaves
 - factorio
+- nas2
 network:
   driver: macvlan
   device: ''
