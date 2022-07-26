@@ -22,6 +22,6 @@ deluser guest || true
 delgroup guest || true
 
 mksysuser guest    403
-mksysuser share    1000
+mksysuser share    1003
 mknasuser doridian 1001
 mknasuser wizzy    1002
