@@ -15,8 +15,6 @@ services:
       - samba_config:/var/lib/samba
       - /mnt/nas/zhdd_dec/nashome:/home
       - /mnt/nas/zhdd_dec/nas:/mnt/nas
-      - /mnt/nas/zssd_dec/nas/torrent:/mnt/nas/torrent
-      - /mnt/nas/zssd_dec/nas/usenet:/mnt/nas/usenet
     healthcheck:
       test: 'smbstatus -S -f'
       interval: 60s
