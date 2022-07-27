@@ -1,0 +1,17 @@
+services:
+  nginx:
+    build: nginx
+    userns_mode: host
+    restart: always
+    network_mode: "service:samba"
+    volumes:
+      - ssl:/etc/letsencrypt
+      - /mnt/nas/zhdd_dec/nas:/mnt/nas
+    healthcheck:
+      test: 'curl -s -f "http://$${HOSTNAME}/__/healthcheck"'
+      interval: 60s
+      timeout: 10s
+
+volumes:
+  ssl: {}
+
