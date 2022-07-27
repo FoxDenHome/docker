@@ -9,7 +9,8 @@ services:
       - net.ipv4.conf.default.src_valid_mark=1
       - net.ipv4.conf.lo.src_valid_mark=1
       - net.ipv4.conf.eth0.src_valid_mark=1
-    ports: 8080:80
+    ports:
+      - 8080:80
     environment:
       VPN_CLIENT: wireguard
       VPN_PROV: custom
@@ -27,7 +28,8 @@ services:
       timeout: 10s
   nzbget:
     image: lscr.io/linuxserver/nzbget:latest
-    ports: 8081:80
+    ports:
+      - 8081:80
     environment:
       PUID: 1003
       PGID: 1003
