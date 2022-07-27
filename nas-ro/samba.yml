@@ -2,19 +2,15 @@ services:
   samba:
     build: samba
     restart: always
-    hostname: nas2.foxden.network
+    hostname: nas-ro.foxden.network
     userns_mode: host
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
-    networks:
-      vlan2:
-        priority: 100
-        ipv4_address: 10.2.11.10
     volumes:
       - ssl:/etc/letsencrypt
       - samba_config:/var/lib/samba
-      - /mnt/nas/zhdd/nashome:/home
-      - /mnt/nas/zhdd/nas:/mnt/nas
+      - /mnt/ephemeral/nas/zhdd/nashome:/home
+      - /mnt/ephemeral/nas/zhdd/nas:/mnt/nas
     healthcheck:
       test: 'smbstatus -S -f'
       interval: 60s

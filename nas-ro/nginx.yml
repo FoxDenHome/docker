@@ -7,6 +7,9 @@ services:
     volumes:
       - ssl:/etc/letsencrypt
       - /mnt/nas/zhdd/nas:/mnt/nas
+    ports:
+      - 80:80
+      - 443:443
     healthcheck:
       test: 'curl -s -f "http://$${HOSTNAME}/__/healthcheck"'
       interval: 60s
