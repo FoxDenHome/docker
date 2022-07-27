@@ -13,8 +13,8 @@ services:
     volumes:
       - ssl:/etc/letsencrypt
       - samba_config:/var/lib/samba
-      - /mnt/nas/zhdd_dec/nashome:/home
-      - /mnt/nas/zhdd_dec/nas:/mnt/nas
+      - /mnt/nas/zhdd/nashome:/home
+      - /mnt/nas/zhdd/nas:/mnt/nas
     healthcheck:
       test: 'smbstatus -S -f'
       interval: 60s
