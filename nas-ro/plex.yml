@@ -16,7 +16,7 @@ services:
       - plex_transcode:/transcode
       - /mnt/ephemeral/nas/zhdd/nas:/data
     healthcheck:
-      test: '(curl -s -f "http://$${HOSTNAME}:32400/web/index.html" >/dev/null && (nvidia-smi -L | grep -qF "GPU 0")) || exit 1'
+      test: 'curl -s -f "http://$${HOSTNAME}:32400/web/index.html" >/dev/null'
       interval: 60s
       timeout: 10s
 
