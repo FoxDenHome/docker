@@ -16,6 +16,7 @@ services:
       - samba_config:/var/lib/samba
       - /mnt/ephemeral/nas/zhdd/nashome:/home
       - /mnt/ephemeral/nas/zhdd/nas:/mnt/nas
+      - /mnt/ephemeral/nas/tmp:/mnt/tmp
     healthcheck:
       test: 'smbstatus -S -f'
       interval: 60s
