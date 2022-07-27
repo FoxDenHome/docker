@@ -27,7 +27,7 @@ def check_password(username, password):
         'smbclient',
         '-U', username,
         '-L',
-        '\\127.0.0.1',
+        '\\samba',
     ], stdout=DEVNULL, stderr=DEVNULL, input=(password + b"\n"))
 
     success = proc.returncode == 0
