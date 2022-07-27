@@ -10,7 +10,7 @@ services:
       - net.ipv4.conf.lo.src_valid_mark=1
       - net.ipv4.conf.eth0.src_valid_mark=1
     ports:
-      - 8112:8112
+      - 0.0.0.0:8112:8112
     environment:
       VPN_CLIENT: wireguard
       VPN_PROV: custom

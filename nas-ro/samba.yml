@@ -5,10 +5,10 @@ services:
     hostname: nas-ro.foxden.network
     userns_mode: host
     ports:
-      - 137:137
-      - 138:138
-      - 139:139
-      - 445:445
+      - 0.0.0.0:137:137
+      - 0.0.0.0:138:138
+      - 0.0.0.0:139:139
+      - 0.0.0.0:445:445
     volumes:
       - ssl:/etc/letsencrypt
       - samba_config:/var/lib/samba
