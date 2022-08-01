@@ -31,6 +31,8 @@ services:
     extra_hosts:
       - ntp.foxden.network:10.6.1.2
       - router.foxden.network:10.6.1.1
+      - redfox.doridian.net:10.99.10.1
+      - icefox.doridian.net:10.99.10.2
     networks:
       default:
         priority: 1
