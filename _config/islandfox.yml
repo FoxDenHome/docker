@@ -3,7 +3,6 @@ roles:
 - monitoring
 - ut2004
 - syncthing
-- tasks
 - foxcaves
 - factorio
 network:
