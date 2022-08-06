@@ -15,6 +15,7 @@ DOCKER_STATUS_MAP = {
     "restarting": 3,
     "oomkilled": 4,
     "dead": 5,
+    "exited": 6,
 }
 
 DOCKER_HEALTH_STATUS_MAP = {
@@ -31,13 +32,17 @@ def get_container_status(ct):
     status = None
 
     base_status = state["Status"].lower()
-    
+
     if base_status == "running" and "Health" in state:
         health_status = state["Health"]["Status"].lower()
         status = DOCKER_HEALTH_STATUS_MAP.get(health_status, None)
+        if not status:
+            print(f"Unknown health status: {state['Health']['Status'].lower()}")
 
     if not status:
         status = DOCKER_STATUS_MAP.get(base_status, DOCKER_STATUS_MAP["unknown"])
+        if status == DOCKER_STATUS_MAP["unknown"]:
+            print(f"Unknown status: {state['Status'].lower()}")
 
     return status
 
