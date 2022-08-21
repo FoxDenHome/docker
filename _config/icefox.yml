@@ -6,3 +6,6 @@ network:
   device: ''
   pvid: 0
   ula_base: 'fdd8:2357:cbff:'
+  dns:
+  - 8.8.8.8
+  - 8.8.4.4

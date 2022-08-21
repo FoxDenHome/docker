@@ -67,6 +67,9 @@ class ComposeProject():
         if not overrides_network:
             self.needs_default_network = True
 
+        if self.needs_default_network and "dns" not in data:
+            data["dns"] = HOST_CONFIG["network"]["dns"]
+
     def get_missing_networks(self):
         return self.used_networks - self.provided_networks
 
@@ -110,6 +113,24 @@ def load_role(role):
         additional_config_needed = True
         for network in missing_networks:
             additional_config["networks"][network] = GLOBAL_NETWORKS[network]
+
+    if project.needs_default_network:
+        additional_config_needed = True
+        ula_base = HOST_CONFIG["network"]["ula_base"]
+        ula_id = '{:x}'.format(crc32(role.encode()) & 0xFFFF)
+        ula_subnet = f'{ula_base}{ula_id}:'
+
+        additional_config["networks"]["default"] = {
+            "enable_ipv6": True,
+            "ipam": {
+                "config": [
+                    {
+                        "subnet": f'{ula_subnet}:/64',
+                        "gateway": f'{ula_subnet}:1'
+                    }
+                ]
+            }
+        }
 
     with NamedTemporaryFile(mode="w+", suffix=".yml") as temp_file:
         if additional_config_needed:
