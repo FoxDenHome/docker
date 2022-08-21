@@ -74,6 +74,7 @@ class ComposeProject():
 
         if "network_mode" in data:
             overrides_network = True
+            has_dns = True
             self.checked_containers.add(name)
 
         if not has_dns:
