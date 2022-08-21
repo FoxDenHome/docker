@@ -15,7 +15,7 @@ from zlib import crc32
 chdir(dirname(abspath(__file__)))
 
 class ComposeProject():
-    def __init__(self, name, project_dir, nopull):
+    def __init__(self, name, project_dir, nopull, additional_config):
         self.used_networks = set()
         self.provided_networks = set()
         self.checked_containers = set()
@@ -24,6 +24,8 @@ class ComposeProject():
         self.nopull = nopull
         self.needs_default_network = False
         self.files = set()
+        self.additional_config = additional_config
+        self.needs_additional_config = False
 
     def load_dir(self, dir):
         for filename in listdir(dir):
@@ -41,6 +43,7 @@ class ComposeProject():
 
         if "services" in data:
             for service in data["services"]:
+                self.additional_data["services"][service] = {}
                 self.add_service(service, data["services"][service])
 
         if "networks" in data:
@@ -74,9 +77,11 @@ class ComposeProject():
 
         if not has_dns:
             if highest_priority_network == "default":
-                data["dns"] = HOST_CONFIG["network"]["dns"]
+                self.additional_data["services"][name]["dns"] = HOST_CONFIG["network"]["dns"]
+                self.needs_additional_config = True
             elif highest_priority_network[:4] == "vlan":
-                data["dns"] = generate_dns_for_vlan(int(highest_priority_network[4:], 10))
+                self.additional_data["services"][name]["dns"] = generate_dns_for_vlan(int(highest_priority_network[4:], 10))
+                self.needs_additional_config = True
 
         if not overrides_network:
             self.needs_default_network = True
@@ -111,14 +116,19 @@ def load_role(role):
         return
     print("Loading role", role)
 
-    project = ComposeProject(name=role, project_dir=role, nopull=(getenv("NOPULL", "").lower() == "yes"))
-    project.load_dir(role)
-
-    missing_networks = project.get_missing_networks()
     additional_config = {
+        "services": {},
         "networks": {},
     }
     additional_config_needed = False
+
+    project = ComposeProject(name=role, project_dir=role, nopull=(getenv("NOPULL", "").lower() == "yes"), additional_config=additional_config)
+    project.load_dir(role)
+
+    missing_networks = project.get_missing_networks()
+
+    if project.needs_additional_config:
+        additional_config_needed = True
 
     if missing_networks:
         additional_config_needed = True
