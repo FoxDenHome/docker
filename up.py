@@ -8,7 +8,7 @@ from typing import Container
 from yaml import dump as yaml_dump
 from tempfile import NamedTemporaryFile
 from config import yaml_loadfile, HOST_CONFIG
-from netgen import GLOBAL_NETWORKS
+from netgen import GLOBAL_NETWORKS, generate_dns_for_vlan
 from dockermgr import Container, prune_images
 from zlib import crc32
 
@@ -51,10 +51,18 @@ class ComposeProject():
 
     def add_service(self, name, data):
         overrides_network = False
+        has_dns = "dns" in data
+        highest_priority_network = "default"
+        highest_priority_network_priority = -1
 
         if "networks" in data:
             overrides_network = True
             for network in data["networks"]:
+                net_priority = data["networks"].get("priority", 0)
+                if net_priority > highest_priority_network_priority:
+                    highest_priority_network = network
+                    highest_priority_network_priority = net_priority
+
                 if network == "default":
                     self.needs_default_network = True
                     continue
@@ -64,11 +72,14 @@ class ComposeProject():
             overrides_network = True
             self.checked_containers.add(name)
 
+        if not has_dns:
+            if highest_priority_network == "default":
+                data["dns"] = HOST_CONFIG["network"]["dns"]
+            elif highest_priority_network[:4] == "vlan":
+                data["dns"] = generate_dns_for_vlan(int(highest_priority_network[4:], 10))
+
         if not overrides_network:
             self.needs_default_network = True
-
-        if self.needs_default_network and "dns" not in data:
-            data["dns"] = HOST_CONFIG["network"]["dns"]
 
     def get_missing_networks(self):
         return self.used_networks - self.provided_networks

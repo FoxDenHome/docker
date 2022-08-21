@@ -42,6 +42,11 @@ def generate_network_for_vlan(id):
         }
     }
 
+def generate_dns_for_vlan(id):
+    return [
+        f"10.{id}.0.53"
+    ]
+
 GLOBAL_NETWORKS = {}
 def load():
     global GLOBAL_NETWORKS
