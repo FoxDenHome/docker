@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from os import chdir, listdir
+from os import chdir, getenv, listdir
 from os.path import dirname, abspath
 from subprocess import run
 from sys import argv
@@ -15,12 +15,13 @@ from zlib import crc32
 chdir(dirname(abspath(__file__)))
 
 class ComposeProject():
-    def __init__(self, name, project_dir):
+    def __init__(self, name, project_dir, nopull):
         self.used_networks = set()
         self.provided_networks = set()
         self.checked_containers = set()
         self.name = name
         self.project_dir = project_dir
+        self.nopull = nopull
         self.needs_default_network = False
         self.files = set()
 
@@ -80,7 +81,8 @@ class ComposeProject():
             compose_args.append("-f")
             compose_args.append(file)
 
-        run(compose_args + ["pull"])
+        if not self.nopull:
+            run(compose_args + ["pull"])
         run(compose_args + ["up", "--build", "-d", "--remove-orphans"])
 
         for ct in self.checked_containers:
@@ -93,7 +95,7 @@ def load_role(role):
         return
     print("Loading role", role)
 
-    project = ComposeProject(role, role)
+    project = ComposeProject(name=role, project_dir=role, nopull=(getenv("NOPULL", "").lower() == "yes"))
     project.load_dir(role)
 
     missing_networks = project.get_missing_networks()
