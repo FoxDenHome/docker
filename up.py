@@ -81,9 +81,11 @@ class ComposeProject():
             compose_args.append("-f")
             compose_args.append(file)
 
+        compose_up_args = ["up"]
         if not self.nopull:
             run(compose_args + ["pull"])
-        run(compose_args + ["up", "--build", "-d", "--remove-orphans"])
+            compose_up_args.append("--build")
+        run(compose_args + compose_up_args + ["-d", "--remove-orphans"])
 
         for ct in self.checked_containers:
             print(f"Checking container {ct} in {self.name}")
@@ -100,38 +102,22 @@ def load_role(role):
 
     missing_networks = project.get_missing_networks()
     additional_config = {
-        "networks": {}
+        "networks": {},
     }
+    additional_config_needed = False
 
     if missing_networks:
+        additional_config_needed = True
         for network in missing_networks:
             additional_config["networks"][network] = GLOBAL_NETWORKS[network]
 
-    if project.needs_default_network:
-        ula_base = HOST_CONFIG["network"]["ula_base"]
-        ula_id = '{:x}'.format(crc32(role.encode()) & 0xFFFF)
-        ula_subnet = f'{ula_base}{ula_id}:'
+    with NamedTemporaryFile(mode="w+", suffix=".yml") as temp_file:
+        if additional_config_needed:
+            yaml_dump(additional_config, temp_file)
+            temp_file.flush()
+            project.add_yaml(temp_file.name)
 
-        additional_config["networks"]["default"] = {
-            "enable_ipv6": True,
-            "ipam": {
-                "config": [
-                    {
-                        "subnet": f'{ula_subnet}:/64',
-                        "gateway": f'{ula_subnet}:1'
-                    }
-                ]
-            }
-        }
-
-    temp_file = NamedTemporaryFile(mode="w+", suffix=".yml")
-    yaml_dump(additional_config, temp_file)
-    temp_file.flush()
-    project.add_yaml(temp_file.name)
-
-    project.deploy()
-
-    temp_file.close()
+        project.deploy()
 
 def load_roles_by_hostname():
     roles = set(HOST_CONFIG['roles'])
