@@ -43,11 +43,12 @@ class ComposeProject():
 
         if "services" in data:
             for service in data["services"]:
-                self.additional_data["services"][service] = {}
+                self.additional_config["services"][service] = {}
                 self.add_service(service, data["services"][service])
 
         if "networks" in data:
             for network in data["networks"]:
+                self.additional_config["networks"][network] = {}
                 self.provided_networks.add(network)
 
         self.files.add(file)
@@ -77,10 +78,10 @@ class ComposeProject():
 
         if not has_dns:
             if highest_priority_network == "default":
-                self.additional_data["services"][name]["dns"] = HOST_CONFIG["network"]["dns"]
+                self.additional_config["services"][name]["dns"] = HOST_CONFIG["network"]["dns"]
                 self.needs_additional_config = True
             elif highest_priority_network[:4] == "vlan":
-                self.additional_data["services"][name]["dns"] = generate_dns_for_vlan(int(highest_priority_network[4:], 10))
+                self.additional_config["services"][name]["dns"] = generate_dns_for_vlan(int(highest_priority_network[4:], 10))
                 self.needs_additional_config = True
 
         if not overrides_network:
