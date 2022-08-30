@@ -32,12 +32,12 @@ services:
     image: tobbez/deluge_exporter:latest
     restart: always
     network_mode: service:dldr
-    user: 10001:10001
+    user: 1001:1001
     environment:
       DELUGE_HOST: 127.0.0.1
-      HOME: /home/dockernobody
+      HOME: /home/user
     volumes:
-      - deluge_config:/home/dockernobody/.config/deluge:ro
+      - deluge_config:/home/user/.config/deluge:ro
   nzbget:
     image: lscr.io/linuxserver/nzbget:latest
     environment:
