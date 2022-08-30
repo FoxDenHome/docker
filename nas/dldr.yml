@@ -31,14 +31,9 @@ services:
   dldr-prometheus:
     image: tobbez/deluge_exporter:latest
     restart: always
-    networks:
-      vlan2:
-        priority: 100
-        ipv4_address: 10.2.11.10
+    network_mode: service:dldr
     environment:
-      DELUGE_HOST: dldr
-    links:
-      - dldr:dldr
+      DELUGE_HOST: 127.0.0.1
     volumes:
       - deluge_config:/root/.config/deluge:ro
   nzbget:
