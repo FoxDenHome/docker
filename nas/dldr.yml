@@ -33,6 +33,7 @@ services:
     restart: always
     network_mode: service:dldr
     user: 1001:1001
+    init: true
     environment:
       DELUGE_HOST: 127.0.0.1
       HOME: /home/user
