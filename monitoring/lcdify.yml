@@ -1,6 +1,6 @@
 services:
   lcdify:
-    image: ghcr.io/doridian/lcdify/lcdify:latest
+    image: ghcr.io/foxdenhome/lcdify/lcdify:latest
     restart: always
     init: true
     environment:
