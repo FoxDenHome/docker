@@ -4,6 +4,9 @@ services:
     restart: always
     links:
       - elasticsearch:elasticsearch
+    environment:
+      PUID: 10000
+      PGID: 1001
     volumes:
       - config:/config
       - /mnt/zhdd/e621/data:/data
