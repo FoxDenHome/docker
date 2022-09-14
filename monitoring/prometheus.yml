@@ -16,7 +16,7 @@ services:
     userns_mode: host
     privileged: true
     healthcheck:
-      test: 'curl -s -f "http://$${HOSTNAME}:9100/" >/dev/null || exit 1'
+      test: 'wget --spider -q "http://$${HOSTNAME}:9100/" >/dev/null || exit 1'
       interval: 60s
       timeout: 10s
   prometheus:
