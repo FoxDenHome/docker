@@ -29,7 +29,7 @@ def check_password(username: bytes, password: bytes):
         'smbclient',
         '-U', username,
         '-L',
-        '\\samba',
+        '\\host.docker.internal',
     ], stdout=DEVNULL, stderr=DEVNULL, input=(password + b"\n"))
 
     success = proc.returncode == 0
