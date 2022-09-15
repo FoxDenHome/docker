@@ -3,6 +3,6 @@ nas-ro.foxden.network {
 	file_server
 
 	forward_auth {
-		url http://127.0.0.1:1042
+		uri http://127.0.0.1:1042
 	}
 }
