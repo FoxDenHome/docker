@@ -10,7 +10,6 @@ services:
       - 0.0.0.0:139:139
       - 0.0.0.0:445:445
     volumes:
-      - ssl:/etc/letsencrypt
       - samba_config:/var/lib/samba
       - /mnt/ephemeral/nas/zhdd/nashome:/home
       - /mnt/ephemeral/nas/zhdd/nas:/mnt/nas
