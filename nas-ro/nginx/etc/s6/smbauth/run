@@ -15,7 +15,9 @@ def get_auth_cache(username, password):
 def set_auth_cache(username, password, success):
     pass
 
-def check_password(username, password):
+def check_password(username: str, password: str):
+    username = username.strip().lower()
+
     if username == 'guest':
         return False
 
