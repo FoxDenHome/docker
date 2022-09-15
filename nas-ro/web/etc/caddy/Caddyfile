@@ -2,5 +2,7 @@ nas-ro.foxden.network {
 	root * /mnt/nas
 	file_server
 
-	forward_auth http://127.0.0.1:1042
+	forward_auth http://127.0.0.1:1042 {
+		uri /
+	}
 }
