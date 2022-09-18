@@ -3,6 +3,7 @@ roles:
 - nas
 - kiwix
 - e621dumper
+- gitbackup
 network:
   driver: macvlan
   pvid: 2

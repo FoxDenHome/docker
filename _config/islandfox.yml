@@ -5,6 +5,7 @@ roles:
 - syncthing
 - foxcaves
 - factorio
+- gitbackup
 network:
   driver: macvlan
   device: ''

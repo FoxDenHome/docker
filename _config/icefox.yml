@@ -1,6 +1,7 @@
 roles:
 - autoheal
 - nas-ro
+- gitbackup
 network:
   driver: macvlan
   device: ''

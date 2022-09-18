@@ -1,0 +1,12 @@
+services:
+  gitbackup:
+    restart: always
+    image: ghcr.io/doridian/gitbackup/gitbackup:latest
+    user: 11000:11000
+    environment:
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+    volumes:
+      - backups:/app/backups
+
+volumes:
+  backups: {}
