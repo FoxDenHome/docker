@@ -26,12 +26,19 @@ class ComposeProject():
         self.files = set()
         self.additional_config = additional_config
         self.needs_additional_config = False
+        self.deploy_blocker_script = None
 
     def load_dir(self, dir):
         for filename in listdir(dir):
+            file = f"{dir}/{filename}"
+
+            if filename == "deploy_blocker" or filename.startswith("deploy_blocker."):
+                self.deploy_blocker_script = file
+                continue
+
             if not filename.endswith(".yml"):
                 continue
-            file = f"{dir}/{filename}"
+
             self.add_yaml(file)
 
     def add_yaml(self, file):
@@ -91,6 +98,13 @@ class ComposeProject():
     def get_missing_networks(self):
         return self.used_networks - self.provided_networks
 
+    def deploy_allowed(self):
+        if self.deploy_blocker_script is None:
+            return True
+
+        res = run(self.deploy_blocker_script)
+        return res.returncode == 0
+
     def deploy(self):
         if self.get_missing_networks():
             raise Exception(
@@ -126,6 +140,10 @@ def load_role(role):
 
     project = ComposeProject(name=role, project_dir=role, nopull=(getenv("NOPULL", "").lower() == "yes"), additional_config=additional_config)
     project.load_dir(role)
+
+    if not project.deploy_allowed():
+        print("Deploy blocked for role", role)
+        return
 
     missing_networks = project.get_missing_networks()
 
@@ -164,7 +182,7 @@ def load_role(role):
         project.deploy()
 
 def load_roles_by_hostname():
-    roles = set(HOST_CONFIG['roles'])
+    roles = set(HOST_CONFIG["roles"])
 
     for role in roles:
         load_role(role.strip())
