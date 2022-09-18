@@ -2,6 +2,7 @@ roles:
 - autoheal
 - nas-ro
 - gitbackup
+- kiwix
 network:
   driver: macvlan
   device: ''
