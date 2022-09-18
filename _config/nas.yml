@@ -1,7 +1,6 @@
 roles:
 - autoheal
 - nas
-- kiwix
 - e621dumper
 - gitbackup
 network:
