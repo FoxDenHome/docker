@@ -6,6 +6,7 @@ roles:
 - foxcaves
 - factorio
 - gitbackup
+- query-finder
 network:
   driver: macvlan
   device: ''
