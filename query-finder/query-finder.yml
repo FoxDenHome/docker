@@ -2,6 +2,7 @@ services:
   query-finder:
     restart: always
     image: ghcr.io/doridian/query-finder/query-finder:latest
+    init: true
     networks:
       vlan2:
         priority: 100
