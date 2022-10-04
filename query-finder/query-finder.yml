@@ -7,5 +7,7 @@ services:
         priority: 100
         ipv4_address: 10.2.11.11
     volumes:
-      - /mnt/zssd/docker/query-finder/.env:/opt/app/.env:ro
-      - /mnt/zssd/docker/query-finder/status.jsom:/opt/app/status.json
+      - config:/config
+
+volumes:
+  config: {}
