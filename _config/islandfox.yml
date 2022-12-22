@@ -6,7 +6,7 @@ roles:
 - foxcaves
 - factorio
 - gitbackup
-- query-finder
+- git
 network:
   driver: macvlan
   device: ''
