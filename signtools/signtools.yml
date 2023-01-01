@@ -12,6 +12,7 @@ services:
         ipv4_address: 10.3.10.6
     volumes:
       - signtools_data:/data
+      - signtools_config/config:ro
     healthcheck:
       test: 'wget --spider -q "http://$${HOSTNAME}:8080/" >/dev/null || exit 1'
       interval: 60s
@@ -30,5 +31,6 @@ services:
 
 volumes:
   signtools_data: {}
+  signtools_config: {}
   web_data: {}
   web_config: {}
