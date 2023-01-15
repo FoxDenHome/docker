@@ -6,6 +6,7 @@ services:
     environment:
       TZ: America/Los_Angeles
       SNMP_COMMUNITY: ${SNMP_COMMUNITY}
+    mac_address: 42:fe:0c:c8:e0:f5
     networks:
       default:
         priority: 1

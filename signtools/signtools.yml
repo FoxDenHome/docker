@@ -10,6 +10,7 @@ services:
       vlan3:
         priority: 100
         ipv4_address: 10.3.10.6
+    mac_address: f2:fd:df:5c:04:a1
     volumes:
       - signtools_data:/data
       - signtools_config:/config

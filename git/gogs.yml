@@ -10,6 +10,7 @@ services:
       vlan3:
         priority: 100
         ipv4_address: 10.3.10.2
+    mac_address: 86:1f:5e:bc:b0:92
     environment:
       SOCAT_LINK: "false"
     volumes:

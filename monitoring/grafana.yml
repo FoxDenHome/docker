@@ -15,6 +15,7 @@ services:
       - grafana_data:/var/lib/grafana
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
+    mac_address: 7e:18:e9:41:a9:6c
     networks:
       default:
         priority: 1

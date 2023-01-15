@@ -10,6 +10,7 @@ services:
     networks:
       vlan3:
         ipv4_address: 10.3.10.3
+    mac_address: 02:43:39:4d:b6:aa
     volumes:
       - home:/home/server
 
