@@ -79,6 +79,9 @@ class ComposeProject():
                     continue
                 self.used_networks.add(network)
 
+                if not data.get("mac_address"):
+                    raise ValueError(f"Missing mac_address for networked container {name}")
+
         if "network_mode" in data:
             overrides_network = True
             has_dns = True
