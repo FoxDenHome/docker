@@ -13,6 +13,7 @@ services:
       vlan2:
         priority: 100
         ipv4_address: 10.2.11.8
+    mac_address: ca:1b:f1:2c:6c:b3
     environment:
       VPN_CLIENT: wireguard
       VPN_PROV: custom
@@ -56,6 +57,7 @@ services:
       vlan2:
         priority: 100
         ipv4_address: 10.2.11.9
+    mac_address: f2:73:89:cc:9e:e4
     healthcheck:
       test: 'nc -z "$${HOSTNAME}" 6789 || exit 1'
       interval: 60s
