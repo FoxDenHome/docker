@@ -35,8 +35,8 @@ services:
     extra_hosts:
       - ntp.foxden.network:10.6.1.2
       - router.foxden.network:10.6.1.1
-      - redfox.doridian.net:10.99.10.1
-      - icefox.doridian.net:10.99.10.2
+      - redfox.doridian.net:10.111.11.1
+      - icefox.doridian.net:10.111.11.2
     mac_address: 4a:97:18:7b:69:10
     networks:
       default:
