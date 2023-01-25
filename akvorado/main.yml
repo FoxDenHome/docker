@@ -16,8 +16,8 @@ services:
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_DELETE_TOPIC_ENABLE=true
     restart: unless-stopped
-    links:
-      - zookeeper:zookeeper
+    depends_on:
+      - zookeeper
     volumes:
       - akvorado-kafka:/bitnami/kafka
     healthcheck:
@@ -43,19 +43,11 @@ services:
     build: akvorado-orchestrator
     restart: unless-stopped
     command: orchestrator /etc/akvorado.yaml
-    links:
-    - redis:redis
-    - kafka:kafka
-    - clickhouse:clickhouse
-    - clickhouse:clickhouse.foxden.network
   akvorado-console:
     image: ghcr.io/akvorado/akvorado:latest
     restart: unless-stopped
-    links:
-    - redis:redis
-    - kafka:kafka
-    - clickhouse:clickhouse
-    - clickhouse:clickhouse.foxden.network
+    depends_on:
+    - redis
     command: console http://akvorado-orchestrator:8080
     volumes:
       - akvorado-console-db:/run/akvorado
@@ -68,11 +60,6 @@ services:
         priority: 100
         ipv4_address: 10.6.11.4
     mac_address: 9e:75:39:c3:13:b3
-    links:
-    - redis:redis
-    - kafka:kafka
-    - clickhouse:clickhouse
-    - clickhouse:clickhouse.foxden.network
     restart: unless-stopped
     command: inlet http://akvorado-orchestrator:8080
     volumes:
