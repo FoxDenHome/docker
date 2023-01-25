@@ -25,36 +25,13 @@ clickhouse:
     consumers: 4
   servers:
     - clickhouse:9000
-  asns: {}
-    #64501: ACME Corporation
-  networks: {}
-    # You should customize this section with your networks. This
-    # populates the Src/DstNetName/Role/Site/Region/Tenant fields.
-    #192.0.2.0/24:
-    #  name: ipv4-customers
-    #  role: customers
-    #203.0.113.0/24:
-    #  name: ipv4-servers
-    #  role: servers
-    #2a01:db8:cafe:1::/64:
-    #  name: ipv6-customers
-    #  role: customers
-    #2a01:db8:cafe:2::/64:
-    #  name: ipv6-servers
-    #  role: servers
-  network-sources: {}
-    # amazon:
-    #   url: https://ip-ranges.amazonaws.com/ip-ranges.json
-    #   interval: 6h
-    #   transform: |
-    #     (.prefixes + .ipv6_prefixes)[] |
-    #     { prefix: (.ip_prefix // .ipv6_prefix), tenant: "amazon", region: .region, role: .service|ascii_downcase }
-    # gcp:
-    #   url: https://www.gstatic.com/ipranges/cloud.json
-    #   interval: 6h
-    #   transform: |
-    #     .prefixes[] |
-    #     { prefix: (.ipv4Prefix // .ipv6Prefix), tenant: "google-cloud", region: .scope }
+  asns:
+  networks:
+    10.1.0.0/16:
+      name: mgmt
+      role: lan
+  network-sources:
+
 
 inlet:
   kafka:
@@ -88,7 +65,6 @@ inlet:
       # your exporters are named.
       - ClassifySiteRegex(Exporter.Name, "^([^-]+)-", "$1")
       - ClassifyRegion("europe")
-      - ClassifyTenant("acme")
       - ClassifyRole("edge")
     interface-classifiers:
       # This is an example. This must be customized depending on the
