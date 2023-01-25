@@ -96,7 +96,6 @@ services:
   clickhouse:
     build: clickhouse
     volumes:
-      - ./orchestrator/clickhouse/data/docker-entrypoint.sh:/docker-entrypoint-initdb.d/init-db.sh:ro
       - akvorado-clickhouse:/var/lib/clickhouse
     environment:
       - CLICKHOUSE_INIT_TIMEOUT=60
