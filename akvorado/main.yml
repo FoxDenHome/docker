@@ -67,20 +67,6 @@ services:
     volumes:
       - /usr/share/GeoIP:/usr/share/GeoIP:ro
       - akvorado-run:/run/akvorado
-    labels:
-      - akvorado.conntrack.fix=true
-  akvorado-conntrack-fixer:
-    image: ghcr.io/akvorado/akvorado:latest
-    cap_add:
-      - NET_ADMIN
-    command: conntrack-fixer
-    restart: unless-stopped
-    userns_mode: host
-    network_mode: host
-    healthcheck:
-      disable: true
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
 
   clickhouse:
     build: clickhouse
