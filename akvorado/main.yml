@@ -76,6 +76,7 @@ services:
       - NET_ADMIN
     command: conntrack-fixer
     restart: unless-stopped
+    userns: host
     network_mode: host
     healthcheck:
       disable: true
