@@ -43,6 +43,9 @@ services:
     build: akvorado-orchestrator
     restart: unless-stopped
     command: orchestrator /etc/akvorado.yaml
+    environment:
+      AKVORADO_ORCHESTRATOR_INLET_SNMP_COMMUNITIES_10.1.0.0/16: ${SNMP_COMMUNITY}
+      AKVORADO_ORCHESTRATOR_INLET_SNMP_COMMUNITIES_10.6.0.0/16: ${SNMP_COMMUNITY}
   akvorado-console:
     image: ghcr.io/akvorado/akvorado:latest
     restart: unless-stopped

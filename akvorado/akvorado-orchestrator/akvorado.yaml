@@ -25,24 +25,24 @@ clickhouse:
     consumers: 4
   servers:
     - clickhouse:9000
-  asns:
-    64501: ACME Corporation
-  networks:
+  asns: {}
+    #64501: ACME Corporation
+  networks: {}
     # You should customize this section with your networks. This
     # populates the Src/DstNetName/Role/Site/Region/Tenant fields.
-    192.0.2.0/24:
-      name: ipv4-customers
-      role: customers
-    203.0.113.0/24:
-      name: ipv4-servers
-      role: servers
-    2a01:db8:cafe:1::/64:
-      name: ipv6-customers
-      role: customers
-    2a01:db8:cafe:2::/64:
-      name: ipv6-servers
-      role: servers
-  network-sources: []
+    #192.0.2.0/24:
+    #  name: ipv4-customers
+    #  role: customers
+    #203.0.113.0/24:
+    #  name: ipv4-servers
+    #  role: servers
+    #2a01:db8:cafe:1::/64:
+    #  name: ipv6-customers
+    #  role: customers
+    #2a01:db8:cafe:2::/64:
+    #  name: ipv6-servers
+    #  role: servers
+  network-sources: {}
     # amazon:
     #   url: https://ip-ranges.amazonaws.com/ip-ranges.json
     #   interval: 6h
@@ -67,8 +67,8 @@ inlet:
     geo-database: /usr/share/GeoIP/GeoLite2-Country.mmdb
   snmp:
     workers: 10
-    communities:
-      ::/0: public
+    communities: {}
+      #::/0: public
   flow:
     inputs:
       - type: udp
