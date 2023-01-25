@@ -40,11 +40,9 @@ services:
     restart: unless-stopped
 
   akvorado-orchestrator:
-    image: ghcr.io/akvorado/akvorado:latest
+    build: akvorado-orchestrator
     restart: unless-stopped
     command: orchestrator /etc/akvorado.yaml
-    volumes:
-      - ./akvorado.yaml:/etc/akvorado.yaml:ro
 
   akvorado-console:
     image: ghcr.io/akvorado/akvorado:latest
