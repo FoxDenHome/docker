@@ -68,8 +68,7 @@ inlet:
   snmp:
     workers: 10
     communities:
-      10.1.0.0/16: public
-      10.6.0.0/16: public
+      ::/0: public
   flow:
     inputs:
       - type: udp
