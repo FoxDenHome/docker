@@ -1,5 +1,8 @@
 akvorado.foxden.network {
-	reverse_proxy /api/v0/inlet/* akvorado-inlet:8080
+	route /api/v0/inlet/* {
+		uri strip_prefix /api/v0/inlet
+		reverse_proxy akvorado-inlet:8080
+	}
 	reverse_proxy akvorado-console:8080
 }
 
