@@ -4,7 +4,9 @@ akvorado.foxden.network {
 }
 
 akvorado.foxden.network:8081 {
-	reverse_proxy /kafka-ui/* kafka-ui:80
-	reverse_proxy /clickhouse/* clickhouse:8123
+	reverse_proxy /kafka-ui/* kafka-ui:8080
+	reverse_proxy /clickhouse/* clickhouse:8123 {
+		uri strip_prefix /clickhouse
+	}
 	reverse_proxy /api/v0/orchestrator/* akvorado-orchestrator:8080
 }
