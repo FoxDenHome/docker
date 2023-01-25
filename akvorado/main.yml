@@ -47,6 +47,7 @@ services:
     - redis:redis
     - kafka:kafka
     - clickhouse:clickhouse
+    - clickhouse:clickhouse.foxden.network
   akvorado-console:
     image: ghcr.io/akvorado/akvorado:latest
     restart: unless-stopped
@@ -54,6 +55,7 @@ services:
     - redis:redis
     - kafka:kafka
     - clickhouse:clickhouse
+    - clickhouse:clickhouse.foxden.network
     command: console http://akvorado-orchestrator:8080
     volumes:
       - akvorado-console-db:/run/akvorado
@@ -70,6 +72,7 @@ services:
     - redis:redis
     - kafka:kafka
     - clickhouse:clickhouse
+    - clickhouse:clickhouse.foxden.network
     restart: unless-stopped
     command: inlet http://akvorado-orchestrator:8080
     volumes:
