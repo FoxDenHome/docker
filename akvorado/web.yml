@@ -1,6 +1,6 @@
 services:
-  grafana-web:
-    build: grafana-web
+  akvorado-web:
+    build: akvorado-web
     restart: always
     networks:
       default:
