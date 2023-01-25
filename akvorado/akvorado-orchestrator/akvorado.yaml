@@ -60,6 +60,7 @@ inlet:
         receive-buffer: 10485760
   core:
     workers: 6
+    default-sampling-rate: 1
     exporter-classifiers:
       # This is an example. This should be customized depending on how
       # your exporters are named.
