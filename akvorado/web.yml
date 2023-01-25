@@ -12,6 +12,12 @@ services:
     volumes:
       - web_data:/data
       - web_config:/config
+    links:
+      - akvorado-console:akvorado-console
+      - akvorado-inlet:akvorado-inlet
+      - kafka-ui:kafka-ui
+      - clickhouse:clickhouse
+      - akvorado-orchestrator:akvorado-orchestrator
     healthcheck:
       test: 'nc -z "$${HOSTNAME}" 443 || exit 1'
       interval: 60s

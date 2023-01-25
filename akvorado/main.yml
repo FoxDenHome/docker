@@ -16,8 +16,8 @@ services:
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_DELETE_TOPIC_ENABLE=true
     restart: unless-stopped
-    depends_on:
-      - zookeeper
+    links:
+      - zookeeper:zookeeper
     volumes:
       - akvorado-kafka:/bitnami/kafka
     healthcheck:
@@ -43,12 +43,15 @@ services:
     build: akvorado-orchestrator
     restart: unless-stopped
     command: orchestrator /etc/akvorado.yaml
-
+    links:
+    - redis:redis
+    - kafka:kafka
+    - clickhouse:clickhouse
   akvorado-console:
     image: ghcr.io/akvorado/akvorado:latest
     restart: unless-stopped
-    depends_on:
-      - redis
+    links:
+      - redis:redis
     command: console http://akvorado-orchestrator:8080
     volumes:
       - akvorado-console-db:/run/akvorado
