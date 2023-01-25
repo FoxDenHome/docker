@@ -51,7 +51,9 @@ services:
     image: ghcr.io/akvorado/akvorado:latest
     restart: unless-stopped
     links:
-      - redis:redis
+    - redis:redis
+    - kafka:kafka
+    - clickhouse:clickhouse
     command: console http://akvorado-orchestrator:8080
     volumes:
       - akvorado-console-db:/run/akvorado
@@ -63,6 +65,10 @@ services:
       vlan6:
         priority: 100
         ipv4_address: 10.6.11.4
+    links:
+    - redis:redis
+    - kafka:kafka
+    - clickhouse:clickhouse
     mac_address: 9e:75:39:c3:13:b3
     restart: unless-stopped
     command: inlet http://akvorado-orchestrator:8080
