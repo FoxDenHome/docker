@@ -1,9 +1,17 @@
 akvorado.foxden.network {
+	basicauth {
+		doridian $2a$14$faGOT3qDOLkby0MbdojACOsj/vz6C7gDBwXhPYGeq2tiseCB9aGZu
+	}
+
 	reverse_proxy /api/v0/inlet/* akvorado-inlet:8080
 	reverse_proxy akvorado-console:8080
 }
 
 akvorado.foxden.network:8081 {
+	basicauth {
+		doridian $2a$14$faGOT3qDOLkby0MbdojACOsj/vz6C7gDBwXhPYGeq2tiseCB9aGZu
+	}
+
 	reverse_proxy /kafka-ui/* kafka-ui:8080
 	route /clickhouse/* {
 		uri strip_prefix /clickhouse
