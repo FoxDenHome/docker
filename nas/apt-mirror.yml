@@ -1,7 +1,6 @@
 services:
   mirror:
     image: ghcr.io/doridian/apt-mirror-docker/apt-mirror:latest
-    restart: always
     command: bash -c "apt-mirror && bash /apt-mirror/postmirror.sh"
     volumes:
       - "/mnt/zhdd/mirror/apt:/var/spool/apt-mirror"
