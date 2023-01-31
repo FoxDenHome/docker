@@ -1,0 +1,13 @@
+services:
+  mirror:
+    image: ghcr.io/doridian/apt-mirror-docker/apt-mirror:latest
+    restart: always
+    command: bash -c "apt-mirror && bash /apt-mirror/postmirror.sh"
+    volumes:
+      - "/mnt/zhdd/mirror/apt:/var/spool/apt-mirror"
+  server:
+    image: ghcr.io/doridian/apt-mirror-docker/nginx:latest
+    restart: always
+    command: ["nginx", "-g", "daemon off;"]
+    volumes:
+      - "/mnt/zhdd/mirror/apt/mirror:/mirror:ro"
