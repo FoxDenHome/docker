@@ -2,6 +2,12 @@ from config import HOST_CONFIG
 
 def generate_driver_opts(id, driver):
     if driver == "macvlan":
+        vlan_dev = f"vlan{id}"
+        if vlan_dev in HOST_CONFIG["network"]:
+            return {
+                "parent": HOST_CONFIG["network"][vlan_dev],
+            }
+
         host_dev = HOST_CONFIG["network"]["device"]
         if host_dev:
             if id == HOST_CONFIG["network"]["pvid"]:
