@@ -10,3 +10,8 @@ services:
     command: ["nginx", "-g", "daemon off;"]
     volumes:
       - "/mnt/zhdd/mirror/apt/mirror:/mirror:ro"
+    networks:
+      vlan3:
+        priority: 100
+        ipv4_address: 10.3.10.8
+    mac_address: 7a:c9:51:e2:db:d7
