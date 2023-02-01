@@ -1,5 +1,5 @@
 nas.foxden.network {
-	route / {
+	route /* {
 		root * /mnt/nas
 		file_server {
 			browse
@@ -10,7 +10,7 @@ nas.foxden.network {
 		}
 	}
 
-	route /mirror/apt {
+	route /mirror/apt/* {
 		root * /mnt/mirror/apt/mirror
 		file_server {
 			browse
