@@ -1,12 +1,13 @@
 nas.foxden.network {
 	route /mirror/apt/* {
+		uri strip_prefix /mirror/apt
 		root * /mnt/mirror/apt/mirror
 		file_server {
 			browse
 		}
 	}
 
-	route * {
+	route {
 		root * /mnt/nas
 		file_server {
 			browse
