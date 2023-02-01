@@ -1,10 +1,19 @@
 nas.foxden.network {
-	root * /mnt/nas
-	file_server {
-		browse
+	route / {
+		root * /mnt/nas
+		file_server {
+			browse
+		}
+
+		forward_auth http://127.0.0.1:1042 {
+			uri /
+		}
 	}
 
-	forward_auth http://127.0.0.1:1042 {
-		uri /
+	route /mirror/apt {
+		root * /mnt/mirror/apt/mirror
+		file_server {
+			browse
+		}
 	}
 }
