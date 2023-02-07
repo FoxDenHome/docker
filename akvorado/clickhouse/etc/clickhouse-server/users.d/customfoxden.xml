@@ -1,0 +1,7 @@
+<clickhouse>
+    <profiles>
+        <default>
+            <allow_suspicious_low_cardinality_types>1</allow_suspicious_low_cardinality_types>
+        </default>
+    </profiles>
+</clickhouse>
