@@ -28,8 +28,29 @@ clickhouse:
   asns:
   networks:
     10.1.0.0/16:
-      name: mgmt
-      role: lan
+      name: MGMT
+      role: VLAN
+    10.2.0.0/16:
+      name: LAN
+      role: VLAN
+    10.3.0.0/16:
+      name: DMZ
+      role: VLAN
+    10.4.0.0/16:
+      name: LabNet
+      role: VLAN
+    10.5.0.0/16:
+      name: Security
+      role: VLAN
+    10.6.0.0/16:
+      name: Hypervisor
+      role: VLAN
+    10.99.0.0/16:
+      name: VPN-S2S
+      role: VPN
+    10.100.0.0/16:
+      name: VPN-Client
+      role: VPN
   network-sources:
 
 
@@ -62,21 +83,11 @@ inlet:
     workers: 6
     default-sampling-rate: 1
     exporter-classifiers:
-      # This is an example. This should be customized depending on how
-      # your exporters are named.
-      - ClassifySiteRegex(Exporter.Name, "^([^-]+)-", "$1")
-      - ClassifyRegion("europe")
       - ClassifyRole("edge")
     interface-classifiers:
-      # This is an example. This must be customized depending on the
-      # descriptions of your interfaces. In the following, we assume
-      # external interfaces are named "Transit: Cogent" Or "IX:
-      # FranceIX".
-      - |
-        ClassifyConnectivityRegex(Interface.Description, "^(?i)(transit|pni|ppni|ix):? ", "$1") &&
-        ClassifyProviderRegex(Interface.Description, "^\\S+?\\s(\\S+)", "$1") &&
-        ClassifyExternal()
-      - ClassifyInternal()
+      - Interface.Name == "wan" && ClassifyProvider("Ziply") && ClassifyConnectivity("direct") && ClassifyExternal()
+      - Interface.Name == "6to4-redfox" && ClassifyProvider("Vultr") && ClassifyConnectivity("6in4") && ClassifyExternal()
+      - ClassifyConnectivity("core") && ClassifyInternal()
 
 console:
   http:
