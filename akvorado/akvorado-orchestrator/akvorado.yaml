@@ -81,11 +81,15 @@ inlet:
     workers: 6
     default-sampling-rate: 1
     exporter-classifiers:
+      - ClassifySite("home")
+      - ClassifyRegion("home")
       - ClassifyRole("edge")
     interface-classifiers:
       - Interface.Name == "wan" && ClassifyProvider("Ziply") && ClassifyConnectivity("direct") && ClassifyExternal()
       - Interface.Name == "6to4-redfox" && ClassifyProvider("Vultr") && ClassifyConnectivity("6in4") && ClassifyExternal()
-      - ClassifyConnectivity("core") && ClassifyInternal()
+      - ClassifyConnectivity("core")
+      - ClassifyProvider("local")
+      - ClassifyInternal()
 
 console:
   http:
