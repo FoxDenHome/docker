@@ -4,11 +4,6 @@ RUN sed -i 's:sysctl -q net.ipv4.conf.all.src_valid_mark=1:echo skipping setting
 
 RUN echo 'ip link set wg0 mtu 1420' >> /root/wireguardup.sh
 
-RUN mv /root/iptable-init.sh /tmp/iptable-init.sh && \
-        echo "set -x" > /root/iptable-init.sh && \
-        cat /tmp/iptable-init.sh >> /root/iptable-init.sh && \
-        rm /tmp/iptable-init.sh
-
 RUN sed -i 's:incoming_ports_lan_array=():incoming_ports_lan_array=(9100):' /root/iptable.sh
 
-ENV DEBUG=true
+RUN rm -f /usr/sbin/ip6tables && ln -sf /bin/true /usr/sbin/ip6tables
