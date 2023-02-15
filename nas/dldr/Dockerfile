@@ -5,3 +5,5 @@ FROM binhex/arch-delugevpn:latest
 #RUN echo 'ip link set wg0 mtu 1420' >> /root/wireguardup.sh
 
 #RUN sed -i 's:incoming_ports_lan_array=():incoming_ports_lan_array=(9100):' /root/iptable.sh
+
+ENV DEBUG=true
