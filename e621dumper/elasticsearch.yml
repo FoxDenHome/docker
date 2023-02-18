@@ -12,4 +12,4 @@ services:
       interval: 60s
       timeout: 10s
     volumes:
-    - /mnt/zhdd/zssd/e621/db:/usr/share/elasticsearch/data
+    - /mnt/zhdd/e621/db:/usr/share/elasticsearch/data

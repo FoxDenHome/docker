@@ -24,7 +24,7 @@ services:
       TZ: America/Los_Angeles
     volumes:
       - deluge_config:/config
-      - /mnt/zhdd/zssd/nas/torrent:/data
+      - /mnt/zhdd/nas/torrent:/data
     healthcheck:
       test: 'curl -s -f "http://$${HOSTNAME}:8112/" >/dev/null || exit 1'
       interval: 60s
@@ -64,7 +64,7 @@ services:
       timeout: 10s
     volumes:
       - nzbget_config:/config
-      - /mnt/zhdd/zssd/nas/usenet:/downloads
+      - /mnt/zhdd/nas/usenet:/downloads
     restart: always
 volumes:
   deluge_config: {}
