@@ -1,0 +1,13 @@
+{
+    "syscalls": [
+        {
+            "names": [
+                "clone",
+                "unshare",
+                "arch_prctl",
+                "chroot",
+                "ptrace"
+            ]
+        }
+    ]
+}
