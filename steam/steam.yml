@@ -1,0 +1,25 @@
+services:
+  steam-headless:
+    image: josh5/steam-headless:latest
+    restart: unless-stopped
+    ulimits:
+      nofile:
+        soft: 1024
+        hard: 524288
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+    networks:
+      vlan2:
+        priority: 100
+        ipv4_address: 10.2.11.12
+    mac_address: 96:4a:9f:c8:c6:b9
+    volumes:
+      - /mnt/zhdd/steam/home:/home/default:rw
+      - /mnt/zhdd/steam/games:/mnt/games:rw
