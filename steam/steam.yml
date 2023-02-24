@@ -7,7 +7,7 @@ services:
         soft: 1024
         hard: 524288
     security_opt:
-      - seccomp=seccomp.json
+      - seccomp=steam/seccomp.json
     deploy:
       resources:
         reservations:
