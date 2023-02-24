@@ -41,3 +41,4 @@ services:
     volumes:
       - /mnt/zhdd/steam/home:/home/default:rw
       - /mnt/zhdd/steam/games:/mnt/games:rw
+      - /var/empty:/tmp/.udev-started:ro
