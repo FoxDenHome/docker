@@ -20,9 +20,9 @@ services:
       - net.ipv6.conf.all.disable_ipv6=0
     shm_size: 2G
     environment:
-      SIZEW: 3000
-      SIZEH: 1500
-      REFRESH: 60
+      SIZEW: 4000
+      SIZEH: 2000
+      REFRESH: 120
       DPI: 96
       CDEPTH: 24
       VIDEO_PORT: DP-0
