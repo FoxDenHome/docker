@@ -3,7 +3,7 @@
 pipewire &
 sleep 1
 
-gamescope -W 3840 -H 1600 -r 60 -e -- steam -gamepadui
+gamescope -W 3840 -H 1600 -r 60 -f -e -- steam -gamepadui
 
 echo "Session Running. Press [Return] to exit."
 read

@@ -13,6 +13,6 @@ RUN apt update && \
 
 COPY custom-entry.sh /etc/custom-entry.sh
 RUN chown root:root /etc/custom-entry.sh && chmod 755 /etc/custom-entry.sh
-RUN sed 's~export DISPLAY=":0"~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
+RUN sed 's~$KDE_START &~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
 
 USER user
