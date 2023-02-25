@@ -25,7 +25,7 @@ services:
       REFRESH: 120
       DPI: 96
       CDEPTH: 24
-      VIDEO_PORT: DP-0
+      VIDEO_PORT: None
       PASSWD: ${STEAM_USER_PASSWORD}
       BASIC_AUTH_PASSWORD: ${STEAM_USER_PASSWORD}
       WEBRTC_ENCODER: nvh264enc
