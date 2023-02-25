@@ -35,5 +35,5 @@ services:
         ipv4_address: 10.2.11.12
     mac_address: 96:4a:9f:c8:c6:b9
     volumes:
-      - /mnt/zhdd/steam/home:/home/default:rw
+      - /mnt/zhdd/steam/home:/home/user:rw
       - /mnt/zhdd/steam/games:/mnt/games:rw
