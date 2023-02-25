@@ -8,6 +8,7 @@ services:
         hard: 524288
     security_opt:
       - seccomp=steam/seccomp.json
+      - apparmor=docker-bwrap
     deploy:
       resources:
         reservations:
