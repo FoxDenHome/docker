@@ -13,6 +13,6 @@ RUN apt update && \
 
 COPY custom-entry.sh /etc/custom-entry.sh
 RUN chown root:root /etc/custom-entry.sh && chmod 755 /etc/custom-entry.sh
-RUN sed 's~$KDE_START &~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
+RUN sed 's~# Add custom processes right below this line, or within `supervisord.conf` to perform service management similar to systemd~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
 
 USER user
