@@ -34,7 +34,7 @@ services:
       CDEPTH: 24
       VIDEO_PORT: DP-0
       PASSWD: ${STEAM_USER_PASSWORD}
-      BASIC_AUTH_PASSWORD: ${STEAM_USER_PASSWORD}
+      BASIC_AUTH_PASSWORD: ${STEAM_WEB_PASSWORD}
       WEBRTC_ENCODER: nvh264enc
       TZ: America/Los_Angeles
     networks:
