@@ -17,26 +17,18 @@ services:
               capabilities: [gpu]
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
-    devices:
-      - /dev/tty7:/dev/tty7
     shm_size: 2G
     environment:
-      NAME: SteamHeadless
+      SIZEW: 1920
+      SIZEH: 1080
+      REFRESH: 60
+      DPI: 96
+      CDEPTH: 24
+      VIDEO_PORT: DFP -e PASSWD=mypasswd -e WEBRTC_ENCODER=nvh264enc -e BASIC_AUTH_PASSWORD=mypasswd -p 8080:8080 ghcr.io/selkies-project/nvidia-glx-desktop:latest
+      PASSWD: ${STEAM_USER_PASSWORD}
+      BASIC_AUTH_PASSWORD: ${STEAM_USER_PASSWORD}
+      WEBRTC_ENCODER: nvh264enc
       TZ: America/Los_Angeles
-      USER_LOCALES: en_US.UTF-8 UTF-8
-      DISPLAY: :55
-      SHM_SIZE: 2G
-      PUID: '1000'
-      PGID: '1000'
-      UMASK: '000'
-      USER_PASSWORD: ${STEAM_USER_PASSWORD}
-      MODE: primary
-      WEB_UI_MODE: vnc
-      ENABLE_VNC_AUDIO: 'true'
-      PORT_NOVNC_WEB: '8083'
-      NEKO_NAT1TO1: ''
-      ENABLE_SUNSHINE: 'false'
-      ENABLE_EVDEV_INPUTS: 'false'
     networks:
       vlan2:
         priority: 100
