@@ -417,7 +417,10 @@
                 "syslog",
                 "unshare",
                 "vhangup",
-                "setns"
+                "setns",
+                "mount",
+                "pivot_root",
+                "umount2"
 			],
 			"action": "SCMP_ACT_ALLOW"
 		},
