@@ -24,7 +24,7 @@ services:
       REFRESH: 60
       DPI: 96
       CDEPTH: 24
-      VIDEO_PORT: DFP -e PASSWD=mypasswd -e WEBRTC_ENCODER=nvh264enc -e BASIC_AUTH_PASSWORD=mypasswd -p 8080:8080 ghcr.io/selkies-project/nvidia-glx-desktop:latest
+      VIDEO_PORT: DP-0
       PASSWD: ${STEAM_USER_PASSWORD}
       BASIC_AUTH_PASSWORD: ${STEAM_USER_PASSWORD}
       WEBRTC_ENCODER: nvh264enc
