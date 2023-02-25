@@ -11,4 +11,8 @@ RUN apt update && \
         apt -y install steam pipewire gamescope /tmp/sunshine.deb && \
         rm -f /tmp/sunshine.deb
 
+COPY custom-entry.sh /etc/custom-entry.sh
+RUN chown root:root /etc/custom-entry.sh && chmod 755 /etc/custom-entry.sh
+RUN sed 's~export DISPLAY=":0"~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
+
 USER user
