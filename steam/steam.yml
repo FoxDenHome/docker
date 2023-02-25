@@ -19,6 +19,9 @@ services:
               capabilities: [gpu]
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/dri/card1:/dev/dri/card1
     shm_size: 2G
     environment:
       SIZEW: 4000
