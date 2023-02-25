@@ -1,6 +1,7 @@
 services:
   steam-headless:
     build: steam
+    hostname: steam-docker
     restart: unless-stopped
     ulimits:
       nofile:
