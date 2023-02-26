@@ -29,8 +29,8 @@ services:
       - /tmp:exec,nosuid,nodev,size=4G
     shm_size: 2G
     environment:
-      SIZEW: 3840
-      SIZEH: 1600
+      SIZEW: 4000
+      SIZEH: 2000
       REFRESH: 120
       DPI: 96
       CDEPTH: 24
