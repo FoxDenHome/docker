@@ -35,6 +35,7 @@ services:
       VIDEO_PORT: DP-0
       PASSWD: ${STEAM_USER_PASSWORD}
       BASIC_AUTH_PASSWORD: ${STEAM_WEB_PASSWORD}
+      NOVNC_ENABLE: "true"
       WEBRTC_ENCODER: nvh264enc
       TZ: America/Los_Angeles
     networks:
