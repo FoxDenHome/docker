@@ -3,6 +3,8 @@ services:
     build: steam
     hostname: steam-docker
     restart: unless-stopped
+    cap_add:
+        - SYS_NICE
     ulimits:
       nofile:
         soft: 1024
