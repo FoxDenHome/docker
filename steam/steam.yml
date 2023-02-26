@@ -29,7 +29,7 @@ services:
     environment:
       SIZEW: 4000
       SIZEH: 2000
-      REFRESH: 120
+      REFRESH: 60
       DPI: 96
       CDEPTH: 24
       VIDEO_PORT: DP-0
