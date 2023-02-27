@@ -3,6 +3,7 @@ FROM ghcr.io/selkies-project/nvidia-glx-desktop:latest
 USER root
 
 RUN adduser user render
+RUN groupmod -o -g 107 input
 RUN add-apt-repository -y ppa:ar-lex/gamescope
 
 RUN apt update && \
