@@ -25,7 +25,7 @@ services:
     tmpfs:
       - /run:exec,nosuid,nodev,size=512M
       - /tmp:exec,nosuid,nodev,size=4G
-    shm_size: 2G
+    shm_size: 4G
     environment:
       SIZEW: 4000
       SIZEH: 2000
