@@ -11,16 +11,16 @@ RUN apt update && \
         apt -y install steam pipewire pipewire-audio-client-libraries libspa-0.2-bluetooth libspa-0.2-jack wireplumber gamescope /tmp/sunshine.deb && \
         rm -f /tmp/sunshine.deb
 
-COPY custom-entry.sh /etc/custom-entry.sh
-RUN chown root:root /etc/custom-entry.sh && chmod 755 /etc/custom-entry.sh
-RUN sed 's~export DISPLAY=":0"~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
+# COPY custom-entry.sh /etc/custom-entry.sh
+# RUN chown root:root /etc/custom-entry.sh && chmod 755 /etc/custom-entry.sh
+# RUN sed 's~export DISPLAY=":0"~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
 
-COPY supervisord.conf /etc/supervisord.conf
+# COPY supervisord.conf /etc/supervisord.conf
 
 RUN rm -f /usr/lib/x86_64-linux-gnu/wireplumber-0.4/libwireplumber-module-logind.so
 
-ENV PULSE_SERVER=unix:/tmp/runtime-user/pulse/native
-ENV DISPLAY=
+# ENV PULSE_SERVER=unix:/tmp/runtime-user/pulse/native
+# ENV DISPLAY=
 ENV SEATD_VTBOUND=0
 ENV WLR_LIBINPUT_NO_DEVICES=1
 
