@@ -20,16 +20,7 @@ services:
               count: all
               capabilities: [gpu]
     device_cgroup_rules:
-      - 'c 13:0 rmw'
-      - 'c 13:1 rmw'
-      - 'c 13:2 rmw'
-      - 'c 13:3 rmw'
-      - 'c 13:4 rmw'
-      - 'c 13:5 rmw'
-      - 'c 13:6 rmw'
-      - 'c 13:7 rmw'
-      - 'c 13:8 rmw'
-      - 'c 13:9 rmw'
+      - 'c 13:* rmw'
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128
       - /dev/dri/card1:/dev/dri/card1
