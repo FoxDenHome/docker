@@ -17,6 +17,8 @@ RUN sed 's~export DISPLAY=":0"~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
 
 COPY supervisord.conf /etc/supervisord.conf
 
+RUN rm -f /usr/lib/x86_64-linux-gnu/wireplumber-0.4/libwireplumber-module-logind.so
+
 ENV PULSE_SERVER=unix:/tmp/runtime-user/pulse/native
 ENV DISPLAY=
 ENV SEATD_VTBOUND=0
