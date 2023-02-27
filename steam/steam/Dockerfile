@@ -5,7 +5,9 @@ USER root
 RUN adduser user render
 RUN add-apt-repository -y ppa:ar-lex/gamescope
 
-ENV PULSE_SERVER unix:/tmp/runtime-user/pulse/native
+ENV PULSE_SERVER=unix:/tmp/runtime-user/pulse/native
+ENV DISPLAY=
+ENV SEATD_VTBOUND=0
 
 RUN apt update && \
         apt -y dist-upgrade && \
