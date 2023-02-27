@@ -22,6 +22,7 @@ services:
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128
       - /dev/dri/card1:/dev/dri/card1
+      - /dev/uinput:/dev/uinput
     tmpfs:
       - /run:exec,nosuid,nodev,size=512M
       - /tmp:exec,nosuid,nodev,size=4G
