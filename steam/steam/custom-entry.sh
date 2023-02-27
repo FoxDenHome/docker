@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
 export SEATD_VTBOUND=0
+export WLR_LIBINPUT_NO_DEVICES=1
 unset DISPLAY
 
 eval "$(dbus-launch --auto-syntax)"
