@@ -5,10 +5,6 @@ USER root
 RUN adduser user render
 RUN add-apt-repository -y ppa:ar-lex/gamescope
 
-ENV PULSE_SERVER=unix:/tmp/runtime-user/pulse/native
-ENV DISPLAY=
-ENV SEATD_VTBOUND=0
-
 RUN apt update && \
         apt -y dist-upgrade && \
         wget https://github.com/LizardByte/Sunshine/releases/download/v0.18.4/sunshine-ubuntu-22.04-amd64.deb -O /tmp/sunshine.deb && \
@@ -20,5 +16,10 @@ RUN chown root:root /etc/custom-entry.sh && chmod 755 /etc/custom-entry.sh
 RUN sed 's~export DISPLAY=":0"~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
 
 COPY supervisord.conf /etc/supervisord.conf
+
+ENV PULSE_SERVER=unix:/tmp/runtime-user/pulse/native
+ENV DISPLAY=
+ENV SEATD_VTBOUND=0
+ENV WLR_LIBINPUT_NO_DEVICES=1
 
 USER user
