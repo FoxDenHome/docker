@@ -7,7 +7,7 @@ roles:
 network:
   driver: macvlan
   pvid: 2
-  device: enp132s0f0np0
+  device: ens1f0np0
   ula_base: 'fdd8:2357:cb19:'
   dns:
     - 10.2.0.53
