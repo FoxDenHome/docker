@@ -19,7 +19,7 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
-    device_cgroup_rules:
+    device_cgroup_rules: []
       #- 'c 13:* rmw'
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128
