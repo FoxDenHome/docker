@@ -30,8 +30,8 @@ services:
       - /tmp:exec,nosuid,nodev,size=4G
     shm_size: 4G
     environment:
-      SIZEW: 4000
-      SIZEH: 2000
+      SIZEW: 3840
+      SIZEH: 1600
       REFRESH: 60
       DPI: 96
       CDEPTH: 24
