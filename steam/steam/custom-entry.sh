@@ -4,7 +4,7 @@ export DISPLAY=":0"
 
 /etc/addmodes.py
 
-steam -tenfoot -steamos
+steam #-tenfoot -steamos
 
 echo "Session Running. Press [Return] to exit."
 read
