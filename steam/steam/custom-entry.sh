@@ -1,15 +1,10 @@
 #!/bin/bash -e
 
-export SEATD_VTBOUND=0
-export WLR_LIBINPUT_NO_DEVICES=1
-unset DISPLAY
+export DISPLAY=":0"
 
-eval "$(dbus-launch --auto-syntax)"
+/etc/addmodes.py
 
-pipewire &
-sleep 1
-
-gamescope -W 3840 -H 1600 -r 60 -e -- steam -tenfoot -steamos -pipewire-dmabuf
+steam -tenfoot -steamos
 
 echo "Session Running. Press [Return] to exit."
 read

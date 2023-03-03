@@ -17,18 +17,11 @@ COPY custom-entry.sh /etc/custom-entry.sh
 COPY addmodes.py /etc/addmodes.py
 RUN chown root:root /etc/custom-entry.sh && chmod 755 /etc/custom-entry.sh
 RUN chown root:root /etc/addmodes.py && chmod 755 /etc/addmodes.py
-RUN sed 's~$KDE_START &~/etc/addmodes.py ; $KDE_START &~' -i /etc/entrypoint.sh
 
 RUN rm -f /usr/lib/x86_64-linux-gnu/wireplumber-0.4/libwireplumber-module-logind.so
 
-ENV SEATD_VTBOUND=0
-ENV WLR_LIBINPUT_NO_DEVICES=1
-
-# Use these for gamescope
-RUN sed 's~export DISPLAY=":0"~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
+RUN sed 's~$KDE_START &~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
 COPY supervisord.conf /etc/supervisord.conf
 ENV PULSE_SERVER=unix:/tmp/runtime-user/pulse/native
-ENV DISPLAY=
-# END: Use these for gamescope
 
 USER user
