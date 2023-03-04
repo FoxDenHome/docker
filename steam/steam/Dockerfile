@@ -37,7 +37,7 @@ RUN sudo apt-get update && sudo apt-get -y install \
 
 RUN git clone https://github.com/Doridian/Sunshine && \
         cd Sunshine && \
-        git checkout 678a05217e02fbaf7baabebb4025d9ae8b20e8bc && \
+        git checkout e4a5880db46b1b8e37567db77f6d3012466377ba && \
         git submodule update --init --recursive && \
         npm install && \
         mkdir build && \
