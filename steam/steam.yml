@@ -45,3 +45,9 @@ services:
     volumes:
       - /mnt/zhdd/steam/home:/home/user:rw
       - /mnt/zhdd/steam/games:/mnt/games:rw
+    healthcheck:
+      test: 'nc -z "$${HOSTNAME}" 47990 || exit 1'
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5m
