@@ -58,7 +58,7 @@ RUN adduser user render && \
         groupmod -o -g 107 input && \
         usermod -s /bin/zsh user
 
-COPY --from=builder /home/user/Sunshine/build/cpack_artifacts/Sunshine.dev /tmp/sunshine.deb
+COPY --from=builder /home/user/Sunshine/build/cpack_artifacts/Sunshine.deb /tmp/sunshine.deb
 RUN apt -y install /tmp/sunshine.deb zsh && \
         rm -f /tmp/sunshine.deb
 
