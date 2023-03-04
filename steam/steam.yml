@@ -45,7 +45,3 @@ services:
     volumes:
       - /mnt/zhdd/steam/home:/home/user:rw
       - /mnt/zhdd/steam/games:/mnt/games:rw
-    healthcheck:
-      test: '(nvidia-smi -L | grep -qF "GPU 0") || exit 1'
-      interval: 30s
-      timeout: 10s

@@ -63,12 +63,15 @@ RUN apt -y install /tmp/sunshine.deb && \
         rm -f /tmp/sunshine.deb
 
 COPY custom-entry.sh /etc/custom-entry.sh
-COPY addmodes.py /etc/addmodes.py
 RUN chown root:root /etc/custom-entry.sh && chmod 755 /etc/custom-entry.sh
+COPY kill-all.sh /etc/kill-all.sh
+RUN chown root:root /etc/kill-all.sh && chmod 755 /etc/kill-all.sh
+COPY addmodes.py /etc/addmodes.py
 RUN chown root:root /etc/addmodes.py && chmod 755 /etc/addmodes.py
 
 RUN sed 's~sudo nvidia-xconfig~sudo nvidia-xconfig --cool-bits=28~' -i /etc/entrypoint.sh
 RUN sed 's~$KDE_START &~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
+RUN sed 's~exit 1~/etc/kill-all.sh~g' -i /etc/entrypoint.sh
 COPY supervisord.conf /etc/supervisord.conf
 
 USER user
