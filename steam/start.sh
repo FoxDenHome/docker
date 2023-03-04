@@ -8,8 +8,11 @@ export DISPLAY=':0'
 sleep 1
 
 nvidia-smi -pm 1
-nvidia-settings -a 'GPUMemoryTransferRateOffsetAllPerformanceLevels=1000' -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUCurrentFanSpeed=100'
-nvidia-settings -q 'GPUMemoryTransferRateOffsetAllPerformanceLevels' -q '[gpu:0]/GPUFanControlState' -q '[fan:0]/GPUCurrentFanSpeed'
+nvidia-settings -a 'GPUMemoryTransferRateOffsetAllPerformanceLevels=1000' -a 'GPUFanControlState=0' -a 'GPUTargetFanSpeed=0'
+sleep 1
+nvidia-settings -a 'GPUMemoryTransferRateOffsetAllPerformanceLevels=1000' -a 'GPUFanControlState=1' -a 'GPUTargetFanSpeed=100'
+sleep 1
+nvidia-settings -q 'GPUMemoryTransferRateOffsetAllPerformanceLevels' -q 'GPUFanControlState' -q 'GPUCurrentFanSpeed' -q 'GPUTargetFanSpeed'
 
 sleep 1
 
