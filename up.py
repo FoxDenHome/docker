@@ -2,7 +2,7 @@
 
 from os import chdir, getenv, listdir
 from os.path import dirname, abspath
-from subprocess import run
+from subprocess import run, check_call
 from sys import argv
 from typing import Container
 from yaml import dump as yaml_dump
@@ -121,9 +121,9 @@ class ComposeProject():
 
         compose_up_args = ["up"]
         if not self.nopull:
-            run(compose_args + ["pull"])
+            check_call(compose_args + ["pull"])
             compose_up_args.append("--build")
-        run(compose_args + compose_up_args + ["-d", "--remove-orphans"])
+        check_call(compose_args + compose_up_args + ["-d", "--remove-orphans"])
 
         for ct in self.checked_containers:
             print(f"Checking container {ct} in {self.name}")
@@ -197,6 +197,10 @@ def main():
         load_roles_by_hostname()
 
     prune_images()
+
+    if "post_scripts" in HOST_CONFIG:
+        for script in HOST_CONFIG["post_scripts"]:
+            check_call(script)
 
 if __name__ == "__main__":
     main()

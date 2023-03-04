@@ -3,7 +3,7 @@ roles:
 - nas
 - e621dumper
 - gitbackup
-#- steam
+- steam
 network:
   driver: macvlan
   pvid: 2
@@ -12,5 +12,7 @@ network:
   dns:
     - 10.2.0.53
   vlan3: br3
+post_scripts:
+  - docker update steam_steam-headless_1 --cpuset-mems=1
 
-# NVMe is IIO2 Slot2 (aka PortB) x4x4x8 (NIC is on the x8)
+# NVMe is IIO2 Slot2 (aka PortB) x8x4x4
