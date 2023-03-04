@@ -3,7 +3,7 @@ from subprocess import check_call, check_output
 from re import sub
 from os import environ
 
-REFRESH_RATES = [60, 75, 100, 120, 144]
+REFRESH_RATES = [60, 75, 90, 100, 120, 144]
 RESOLUTIONS = [
     (1920, 1080),
     (2560, 1440),
