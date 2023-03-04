@@ -1,37 +1,39 @@
 FROM ghcr.io/selkies-project/nvidia-glx-desktop:latest AS builder
 
 RUN sudo apt-get update && sudo apt-get -y install \
-    git \
-    build-essential \
-    cmake \
-    libavdevice-dev \
-    libboost-filesystem-dev \
-    libboost-log-dev \
-    libboost-thread-dev \
-    libboost-program-options-dev \
-    libcap-dev \
-    libdrm-dev \
-    libevdev-dev \
-    libmfx-dev \
-    libnuma-dev \
-    libopus-dev \
-    libpulse-dev \
-    libssl-dev \
-    libwayland-dev \
-    libx11-dev \
-    libxcb-shm0-dev \
-    libxcb-xfixes0-dev \
-    libxcb-xtest0-dev \
-    libxcb1-dev \
-    libxfixes-dev \
-    libxrandr-dev \
-    libxtst-dev \
-    nodejs \
-    npm \
-    nvidia-cuda-dev \
-    nvidia-cuda-toolkit
-
-RUN sudo apt-get -y install libcurl4-openssl-dev
+        git \
+        build-essential \
+        cmake \
+        libavdevice-dev \
+        libboost-filesystem-dev \
+        libboost-log-dev \
+        libboost-thread-dev \
+        libboost-program-options-dev \
+        libcap-dev \
+        libdrm-dev \
+        libevdev-dev \
+        libmfx-dev \
+        libnuma-dev \
+        libopus-dev \
+        libpulse-dev \
+        libssl-dev \
+        libwayland-dev \
+        libx11-dev \
+        libxcb-shm0-dev \
+        libxcb-xfixes0-dev \
+        libxcb-xtest0-dev \
+        libxcb1-dev \
+        libxfixes-dev \
+        libxrandr-dev \
+        libxtst-dev \
+        nodejs \
+        npm \
+        nvidia-cuda-dev \
+        nvidia-cuda-toolkit \
+        libcurl4-openssl-dev \
+        libva-dev \
+        libvdpau-dev \
+        wget
 
 RUN git clone https://github.com/Doridian/Sunshine && \
         cd Sunshine && \
