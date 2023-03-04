@@ -32,8 +32,8 @@ RUN sudo apt-get update && sudo apt-get -y install \
     nvidia-cuda-toolkit
 
 RUN git clone https://github.com/Doridian/Sunshine && \
-        git checkout 678a05217e02fbaf7baabebb4025d9ae8b20e8bc && \
         cd Sunshine && \
+        git checkout 678a05217e02fbaf7baabebb4025d9ae8b20e8bc && \
         git submodule update --init --recursive && \
         npm install && \
         mkdir build && \
@@ -54,7 +54,7 @@ RUN adduser user render && \
         groupmod -o -g 107 input && \
         usermod -s /bin/zsh user
 
-COPY --from=builder /home/user/sunshine/build/cpack_artifacts/Sunshine.dev /tmp/sunshine.deb
+COPY --from=builder /home/user/Sunshine/build/cpack_artifacts/Sunshine.dev /tmp/sunshine.deb
 RUN apt -y install /tmp/sunshine.deb zsh && \
         rm -f /tmp/sunshine.deb
 
