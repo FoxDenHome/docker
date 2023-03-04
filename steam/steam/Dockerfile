@@ -2,12 +2,12 @@ FROM ghcr.io/selkies-project/nvidia-glx-desktop:latest
 
 USER root
 
-RUN adduser user render
-RUN groupmod -o -g 107 input
-
 RUN apt update && \
         apt -y dist-upgrade && \
-        apt -y install steam zsh && \
+        apt -y install steam zsh
+
+RUN adduser user render && \
+        groupmod -o -g 107 input && \
         usermod -s /bin/zsh user
 
 COPY Sunshine.deb /tmp/sunshine.deb
