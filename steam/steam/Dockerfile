@@ -31,7 +31,7 @@ RUN sudo apt-get update && sudo apt-get -y install \
     nvidia-cuda-dev \
     nvidia-cuda-toolkit
 
-RUN apt-get -y install libcurl-dev
+RUN apt-get -y install libcurl4-openssl-dev
 
 RUN git clone https://github.com/Doridian/Sunshine && \
         cd Sunshine && \
