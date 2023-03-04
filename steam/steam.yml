@@ -19,6 +19,7 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
+    privileged: true
     device_cgroup_rules: []
       #- 'c 13:* rmw'
     devices:
