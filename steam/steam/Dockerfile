@@ -10,7 +10,7 @@ RUN apt update && \
         apt -y install steam zsh && \
         usermod -s /bin/zsh user
 
-COPY steam/Sunshine.deb /tmp/sunshine.deb
+COPY Sunshine.deb /tmp/sunshine.deb
 RUN apt -y install /tmp/sunshine.deb zsh && \
         rm -f /tmp/sunshine.deb
 
