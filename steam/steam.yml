@@ -12,6 +12,7 @@ services:
     security_opt:
       - seccomp=steam/seccomp.json
       - apparmor=docker-bwrap
+    cpuset: 14-27,42-55
     deploy:
       resources:
         reservations:
