@@ -19,3 +19,5 @@ sleep 0.1
 
 killall Xorg
 wait
+
+systemctl start superfan

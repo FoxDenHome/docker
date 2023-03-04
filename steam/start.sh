@@ -20,4 +20,6 @@ sleep 0.1
 killall Xorg
 wait
 
+systemctl stop superfan
+
 docker start steam_steam-headless_1 || true
