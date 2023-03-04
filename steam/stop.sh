@@ -8,6 +8,7 @@ export DISPLAY=':0'
 sleep 1
 
 nvidia-settings -a 'GPUMemoryTransferRateOffsetAllPerformanceLevels=0' -a '[gpu:0]/GPUFanControlState=0'
+nvidia-settings -q 'GPUMemoryTransferRateOffsetAllPerformanceLevels' -q '[gpu:0]/GPUFanControlState'
 nvidia-smi -pm 0
 
 sleep 1

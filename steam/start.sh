@@ -9,6 +9,7 @@ sleep 1
 
 nvidia-smi -pm 1
 nvidia-settings -a 'GPUMemoryTransferRateOffsetAllPerformanceLevels=1000' -a '[gpu:0]/GPUFanControlState=1' -a '[fan:0]/GPUCurrentFanSpeed=100'
+nvidia-settings -q 'GPUMemoryTransferRateOffsetAllPerformanceLevels' -q '[gpu:0]/GPUFanControlState' -q '[fan:0]/GPUCurrentFanSpeed'
 
 sleep 1
 
