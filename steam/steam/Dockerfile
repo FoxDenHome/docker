@@ -59,7 +59,7 @@ RUN adduser user render && \
         usermod -s /bin/zsh user
 
 COPY --from=builder /home/user/Sunshine/build/cpack_artifacts/Sunshine.deb /tmp/sunshine.deb
-RUN apt -y install /tmp/sunshine.deb zsh && \
+RUN apt -y install /tmp/sunshine.deb && \
         rm -f /tmp/sunshine.deb
 
 COPY custom-entry.sh /etc/custom-entry.sh
