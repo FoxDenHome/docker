@@ -10,8 +10,8 @@ RUN adduser user render && \
         groupmod -o -g 107 input && \
         usermod -s /bin/zsh user
 
-COPY Sunshine.deb /tmp/sunshine.deb
-RUN apt -y install /tmp/sunshine.deb zsh && \
+RUN wget https://github.com/Doridian/Sunshine/releases/download/xinput-dev/sunshine-22.04.deb -O /tmp/sunshine.deb && \
+        apt -y install /tmp/sunshine.deb zsh && \
         rm -f /tmp/sunshine.deb
 
 COPY custom-entry.sh /etc/custom-entry.sh
