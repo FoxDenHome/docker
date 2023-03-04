@@ -23,6 +23,6 @@ RUN rm -f /usr/lib/x86_64-linux-gnu/wireplumber-0.4/libwireplumber-module-logind
 RUN sed 's~sudo nvidia-xconfig~sudo nvidia-xconfig --cool-bits=24~' -i /etc/entrypoint.sh
 RUN sed 's~$KDE_START &~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
 #COPY supervisord.conf /etc/supervisord.conf
-ENV PULSE_SERVER=unix:/tmp/runtime-user/pulse/native
+#ENV PULSE_SERVER=unix:/tmp/runtime-user/pulse/native
 
 USER user
