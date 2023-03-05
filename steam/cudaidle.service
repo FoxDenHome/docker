@@ -1,0 +1,13 @@
+[Unit]
+Description=CUDA idle
+StartLimitIntervalSec=0
+
+[Service]
+User=nobody
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/opt/docker/steam/cudaidle
+
+[Install]
+WantedBy=multi-user.target
