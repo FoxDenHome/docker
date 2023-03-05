@@ -77,6 +77,8 @@ RUN sed 's~$KDE_START &~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
 RUN sed 's~exit 1~/etc/kill-all.sh~g' -i /etc/entrypoint.sh
 COPY supervisord.conf /etc/supervisord.conf
 
+RUN sed 's~selkies-gstreamer~exec selkies-gstreamer~g' -i /etc/selkies-gstreamer-entrypoint.sh
+
 COPY --from=builder /home/user/entry /entry
 RUN chown root:root /entry && chmod 755 /entry && chmod +s /entry
 
