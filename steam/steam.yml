@@ -18,9 +18,9 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
-    devices:
-      - /dev/dri/renderD128:/dev/dri/renderD128
-      - /dev/dri/card1:/dev/dri/card1
+    #devices:
+    #  - /dev/dri/renderD128:/dev/dri/renderD128
+    #  - /dev/dri/card1:/dev/dri/card1
     tmpfs:
       - /run:exec,nosuid,nodev,size=512M
       - /tmp:exec,nosuid,nodev,size=4G
