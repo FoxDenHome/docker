@@ -2,4 +2,4 @@
 
 /etc/addmodes.py
 
-$KDE_START &
+exec $KDE_START
