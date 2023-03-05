@@ -21,3 +21,4 @@ killall Xorg
 wait
 
 systemctl start superfan
+systemctl stop cudaidle
