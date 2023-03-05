@@ -73,5 +73,3 @@ RUN sed 's~sudo nvidia-xconfig~sudo nvidia-xconfig --cool-bits=28~' -i /etc/entr
 RUN sed 's~$KDE_START &~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
 RUN sed 's~exit 1~/etc/kill-all.sh~g' -i /etc/entrypoint.sh
 COPY supervisord.conf /etc/supervisord.conf
-
-USER user

@@ -1,5 +1,5 @@
 #!/bin/sh
 
-supervisorctl shutdown
+sudo supervisorctl shutdown
 
 exit 1
