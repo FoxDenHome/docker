@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -11,7 +12,7 @@ int main(int argc, char *argv[])
     setresgid(0, 0, 0);
     setresuid(0, 0, 0);
 
-    execl("/usr/bin/supervisord", NULL);
+    execl("/usr/bin/supervisord", "/usr/bin/supervisord", NULL);
     
     return 2;
 }
