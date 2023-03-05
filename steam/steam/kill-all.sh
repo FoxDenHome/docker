@@ -1,5 +1,5 @@
 #!/bin/sh
 
-kill -9 1
+supervisorctl shutdown
 
 exit 1
