@@ -46,6 +46,9 @@ RUN git clone https://github.com/Doridian/Sunshine && \
         make -j$(nproc) && \
         cpack -G DEB
 
+COPY entry.c /home/user/entry.c
+RUN gcc -o /home/user/entry /home/user/entry.c
+
 FROM ghcr.io/selkies-project/nvidia-glx-desktop:latest
 
 USER root
@@ -73,3 +76,9 @@ RUN sed 's~sudo nvidia-xconfig~sudo nvidia-xconfig --cool-bits=28~' -i /etc/entr
 RUN sed 's~$KDE_START &~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
 RUN sed 's~exit 1~/etc/kill-all.sh~g' -i /etc/entrypoint.sh
 COPY supervisord.conf /etc/supervisord.conf
+
+COPY --from=builder /home/user/entry /entry
+RUN chown root:root /entry && chmod 755 /entry && chmod +s /entry
+
+USER user
+ENTRYPOINT [ "/entry" ]
