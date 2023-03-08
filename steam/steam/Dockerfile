@@ -9,6 +9,7 @@ RUN sudo apt-get update && sudo apt-get -y install \
         libboost-log-dev \
         libboost-thread-dev \
         libboost-program-options-dev \
+        libboost-locale-dev \
         libcap-dev \
         libdrm-dev \
         libevdev-dev \
@@ -37,7 +38,7 @@ RUN sudo apt-get update && sudo apt-get -y install \
 
 RUN git clone https://github.com/Doridian/Sunshine && \
         cd Sunshine && \
-        git checkout 6b664dfad46fce6aee6c3de0d3a108f29e5dc60d && \
+        git checkout edafc7313008dae35f86f5aa5c31fbe3a1f02ee3 && \
         git submodule update --init --recursive && \
         npm install && \
         mkdir build && \
