@@ -1,5 +1,5 @@
 #!/bin/bash -e
 
-/usr/local/bin/modemgr.py --defaults
+/usr/local/bin/modemgr --defaults
 
 exec $KDE_START

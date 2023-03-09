@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 from subprocess import check_call, check_output, SubprocessError
 from re import sub
 from os import getenv

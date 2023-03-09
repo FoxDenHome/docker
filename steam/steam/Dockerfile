@@ -70,8 +70,8 @@ COPY custom-entry.sh /etc/custom-entry.sh
 RUN chown root:root /etc/custom-entry.sh && chmod 755 /etc/custom-entry.sh
 COPY kill-all.sh /etc/kill-all.sh
 RUN chown root:root /etc/kill-all.sh && chmod 755 /etc/kill-all.sh
-COPY modemgr.py /usr/local/bin/modemgr.py
-RUN chown root:root /usr/local/bin/modemgr.py && chmod 755 /usr/local/bin/modemgr.py
+COPY modemgr.py /usr/local/bin/modemgr
+RUN chown root:root /usr/local/bin/modemgr && chmod 755 /usr/local/bin/modemgr
 
 RUN sed 's~sudo nvidia-xconfig~sudo nvidia-xconfig --cool-bits=28~' -i /etc/entrypoint.sh
 RUN sed 's~$KDE_START &~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
