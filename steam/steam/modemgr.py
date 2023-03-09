@@ -31,6 +31,10 @@ class Mode:
     def name(self) -> str:
         return f"{self.width}x{self.height}_{self.refresh_rate}"
 
+    @property
+    def builtin_name(self) -> str:
+        return f"{self.width}x{self.height}"
+
     def add(self, port: str) -> None:
         print("Adding mode", self.name, "to port", port, flush=True)
         check_call(["xrandr", "--newmode"] + self.modeline)
@@ -44,13 +48,21 @@ class Mode:
                 pass
 
         print("Switching to mode", self.name, "on port", port, flush=True)
-        check_call(["xrandr", "--output", port, "--mode", self.name])
+        try:
+            check_call(["xrandr", "--output", port, "--mode", self.name])
+        except SubprocessError:
+            print("Failed to switch to mode, trying with a builtin", self.name, "on port", port, flush=True)
+            check_call(["xrandr", "--output", port, "--mode", self.builtin_name, "--refresh", str(self.refresh_rate)])
+            pass
 
 def add_defaults(port: str) -> None:
     for resolution in RESOLUTIONS:
         for refresh_rate in REFRESH_RATES:
             mode = Mode(width=resolution[0], height=resolution[1], refresh_rate=refresh_rate)
-            mode.add(port=port)
+            try:
+                mode.add(port=port)
+            except SubprocessError:
+                pass
 
 def main() -> None:
     parser = ArgumentParser(description="Add custom modes to xrandr and switch to them. Call with --defaults to add some defaults")
