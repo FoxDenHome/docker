@@ -29,6 +29,9 @@ services:
       SIZEW: 3840
       SIZEH: 1600
       REFRESH: 120
+      DEFAULT_SIZEW: 3840
+      DEFAULT_SIZEH: 1600
+      DEFAULT_REFRESH: 120
       DPI: 96
       CDEPTH: 24
       VIDEO_PORT: DP-0

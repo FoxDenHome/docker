@@ -66,6 +66,10 @@ COPY --from=builder /home/user/Sunshine/build/cpack_artifacts/Sunshine.deb /tmp/
 RUN apt -y install /tmp/sunshine.deb && \
         rm -f /tmp/sunshine.deb
 
+ENV DEFAULT_SIZEW=
+ENV DEFAULT_SIZEH=
+ENV DEFAULT_REFRESH=
+
 COPY custom-entry.sh /etc/custom-entry.sh
 RUN chown root:root /etc/custom-entry.sh && chmod 755 /etc/custom-entry.sh
 COPY kill-all.sh /etc/kill-all.sh
