@@ -53,7 +53,6 @@ class Mode:
         except SubprocessError:
             print("Failed to switch to mode, trying with a builtin", self.name, "on port", port, flush=True)
             check_call(["xrandr", "--output", port, "--mode", self.builtin_name, "--refresh", str(self.refresh_rate)])
-            pass
 
 def add_defaults(port: str) -> None:
     for resolution in RESOLUTIONS:
