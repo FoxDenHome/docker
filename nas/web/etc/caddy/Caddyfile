@@ -1,21 +1,11 @@
 nas.foxden.network {
-	route /mirror/apt/* {
-		uri strip_prefix /mirror/apt
-		root * /mnt/mirror/apt/mirror
-		file_server {
-			browse
-		}
+	root * /mnt/nas
+	file_server {
+		browse
 	}
 
-	route {
-		root * /mnt/nas
-		file_server {
-			browse
-		}
-
-		forward_auth http://127.0.0.1:1042 {
-			uri /
-		}
+	forward_auth http://127.0.0.1:1042 {
+		uri /
 	}
 }
 
@@ -28,6 +18,13 @@ archive.ubuntu.com:80, *.archive.ubuntu.com:80 {
 
 ports.ubuntu.com:80, *.ports.ubuntu.com:80 {
 	root * /mnt/mirror/apt/mirror/ports.ubuntu.com
+	file_server {
+		browse
+	}
+}
+
+apt.foxden.network:80 {
+	root * /mnt/mirror/apt/mirror
 	file_server {
 		browse
 	}
