@@ -18,3 +18,17 @@ nas.foxden.network {
 		}
 	}
 }
+
+archive.ubuntu.com:80, *.archive.ubuntu.com:80 {
+	root * /mnt/mirror/apt/mirror/archive.ubuntu.com
+	file_server {
+		browse
+	}
+}
+
+ports.ubuntu.com:80, *.ports.ubuntu.com:80 {
+	root * /mnt/mirror/apt/mirror/ports.ubuntu.com
+	file_server {
+		browse
+	}
+}
