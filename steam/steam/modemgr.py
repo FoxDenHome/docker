@@ -23,7 +23,13 @@ class Mode:
 
     @property
     def modeline(self) -> list[str]:
-        cvt_output = check_output(["cvt", str(self.width), str(self.height), str(self.refresh_rate)], encoding="utf-8").split("\n")[1].strip()
+        cvt_args = ["cvt"]
+        # Can only use reduced blanking for multiples of 60 Hz
+        if  self.refresh_rate % 60 == 0:
+            cvt_args.append("-r")
+        cvt_args += [str(self.width), str(self.height), str(self.refresh_rate)]
+        cvt_output = check_output(cvt_args, encoding="utf-8").split("\n")[1].strip()
+
         modeline_split = [x.strip("\r\n\t \"'") for x in sub("\\s+", " ",  cvt_output).split(" ")[1:]]
         return [self.name] + modeline_split[1:]
 
