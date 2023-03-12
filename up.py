@@ -11,8 +11,16 @@ from config import yaml_loadfile, HOST_CONFIG
 from netgen import GLOBAL_NETWORKS, generate_dns_for_vlan
 from dockermgr import Container, prune_images
 from zlib import crc32
+from re import sub as re_sub
 
 chdir(dirname(abspath(__file__)))
+
+NVIDIA_DRIVER_VERSION = ""
+try:
+    with open("/proc/driver/nvidia/version", "r") as f:
+        NVIDIA_DRIVER_VERSION = re_sub("\s+", " ", f.read()).split(" ")[7]
+except FileNotFoundError:
+    pass
 
 class ComposeProject():
     def __init__(self, name, project_dir, nopull, additional_config):

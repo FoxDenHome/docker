@@ -1,8 +1,7 @@
 #!/bin/bash -e
 
 if [ -z "$NVIDIA_DRIVER_VERSION" ]; then
-    # Driver version is provided by the kernel through the container toolkit
-    export NVIDIA_DRIVER_VERSION="$(head -n1 </proc/driver/nvidia/version | awk '{print $8}')"
+    exit 1
 fi
 
 cd /tmp
