@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from os import chdir, getenv, listdir
+from os import chdir, getenv, listdir, environ
 from os.path import dirname, abspath
 from subprocess import run, check_call
 from sys import argv
@@ -15,10 +15,9 @@ from re import sub as re_sub
 
 chdir(dirname(abspath(__file__)))
 
-NVIDIA_DRIVER_VERSION = ""
 try:
     with open("/proc/driver/nvidia/version", "r") as f:
-        NVIDIA_DRIVER_VERSION = re_sub("\s+", " ", f.read()).split(" ")[7]
+        environ["NVIDIA_DRIVER_VERSION"] = re_sub("\s+", " ", f.read()).split(" ")[7]
 except FileNotFoundError:
     pass
 
