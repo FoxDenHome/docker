@@ -90,5 +90,11 @@ RUN sed 's~selkies-gstreamer~exec selkies-gstreamer~g' -i /etc/selkies-gstreamer
 COPY --from=builder /home/user/entry /entry
 RUN chown root:root /entry && chmod 755 /entry && chmod +s /entry
 
+COPY nvidia-install.sh /etc/nvidia-install.sh
+RUN chown root:root /etc/nvidia-install.sh && chmod 755 /etc/nvidia-install.sh
+
+ARG NVIDIA_DRIVER_VERSION
+RUN /etc/nvidia-install.sh
+
 USER user
 ENTRYPOINT [ "/entry" ]

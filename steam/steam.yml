@@ -1,6 +1,9 @@
 services:
   steam-headless:
-    build: steam
+    build:
+      context: steam
+      args:
+        - NVIDIA_DRIVER_VERSION
     hostname: steam-docker
     restart: unless-stopped
     ulimits:
