@@ -5,6 +5,8 @@ if [ -z "$1" ]; then
 fi
 export NVIDIA_DRIVER_VERSION="$1"
 
+echo "$NVIDIA_DRIVER_VERSION" > /etc/NVIDIA_DRIVER_VERSION
+
 cd /tmp
 
 # If version is different, new installer will overwrite the existing components

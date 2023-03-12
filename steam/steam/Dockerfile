@@ -47,10 +47,10 @@ RUN git clone https://github.com/Doridian/Sunshine && \
         make -j$(nproc) && \
         cpack -G DEB
 
-COPY entry.c /home/user/entry.c
-COPY wait-for-x11.c /home/user/wait-for-x11.c
-RUN gcc -o /home/user/entry /home/user/entry.c
-RUN gcc -o /home/user/wait-for-x11 /home/user/wait-for-x11.c
+COPY apps /home/user/apps
+RUN gcc -o /home/user/apps/entry /home/user/apps/entry.c
+RUN gcc -o /home/user/apps/wait-for-x11 /home/user/apps/wait-for-x11.c
+RUN gcc -o /home/user/apps/nvidia-monitor /home/user/apps/nvidia-monitor.c
 
 FROM ghcr.io/selkies-project/nvidia-glx-desktop:latest
 
@@ -90,14 +90,13 @@ RUN chown root:root /usr/local/bin/modemgr && chmod 755 /usr/local/bin/modemgr
 RUN sed 's~sudo nvidia-xconfig~sudo nvidia-xconfig --cool-bits=28~' -i /etc/entrypoint.sh
 RUN sed 's~$KDE_START &~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
 RUN sed 's~exit 1~/etc/kill-all.sh~g' -i /etc/entrypoint.sh
+RUN sed 's~if ! command -v nvidia-xconfig &> /dev/null; then~if ! /etc/nvidia-install.sh "\$(head -n1 </proc/driver/nvidia/version | awk \'\{print \$8\}\')"; then~g' -i /etc/entrypoint.sh
 COPY supervisord.conf /etc/supervisord.conf
 
 RUN sed 's~selkies-gstreamer~exec selkies-gstreamer~g' -i /etc/selkies-gstreamer-entrypoint.sh
 
-COPY --from=builder /home/user/entry /opt/entry
-RUN chown root:root /opt/entry && chmod 755 /opt/entry && chmod +s /opt/entry
-COPY --from=builder /home/user/wait-for-x11 /opt/wait-for-x11
-RUN chown root:root /opt/wait-for-x11 && chmod 755 /opt/wait-for-x11
+COPY --from=builder /home/user/apps /apps
+RUN chown root:root /apps/* && chmod 755 /apps/* && chmod +s /apps/entry
 
 USER user
-ENTRYPOINT [ "/opt/entry" ]
+ENTRYPOINT [ "/apps/entry" ]
