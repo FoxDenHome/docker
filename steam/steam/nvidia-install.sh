@@ -5,6 +5,10 @@ if [ -z "$1" ]; then
 fi
 export NVIDIA_DRIVER_VERSION="$1"
 
+if [ "$(cat /etc/NVIDIA_DRIVER_VERSION 2>/dev/null)" = "$NVIDIA_DRIVER_VERSION" ]; then
+    exit 0
+fi
+
 echo "$NVIDIA_DRIVER_VERSION" > /etc/NVIDIA_DRIVER_VERSION
 
 cd /tmp
