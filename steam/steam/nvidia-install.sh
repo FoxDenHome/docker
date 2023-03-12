@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 if [ -z "$1" ]; then
-    export NVIDIA_DRIVER_VERSION=$(head -n1 </proc/driver/nvidia/version | awk '{print $8}')
+    export NVIDIA_DRIVER_VERSION="$(head -n1 </proc/driver/nvidia/version | awk '{print $8}')"
 else 
     export NVIDIA_DRIVER_VERSION="$1"
 fi
