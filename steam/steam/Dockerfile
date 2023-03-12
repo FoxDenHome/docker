@@ -48,7 +48,9 @@ RUN git clone https://github.com/Doridian/Sunshine && \
         cpack -G DEB
 
 COPY entry.c /home/user/entry.c
+COPY wait-for-x11.c /home/user/wait-for-x11.c
 RUN gcc -o /home/user/entry /home/user/entry.c
+RUN gcc -o /home/user/wait-for-x11 /home/user/wait-for-x11.c
 
 FROM ghcr.io/selkies-project/nvidia-glx-desktop:latest
 
@@ -92,8 +94,10 @@ COPY supervisord.conf /etc/supervisord.conf
 
 RUN sed 's~selkies-gstreamer~exec selkies-gstreamer~g' -i /etc/selkies-gstreamer-entrypoint.sh
 
-COPY --from=builder /home/user/entry /entry
-RUN chown root:root /entry && chmod 755 /entry && chmod +s /entry
+COPY --from=builder /home/user/entry /opt/entry
+RUN chown root:root /opt/entry && chmod 755 /opt/entry && chmod +s /opt/entry
+COPY --from=builder /home/user/wait-for-x11 /opt/wait-for-x11
+RUN chown root:root /opt/wait-for-x11 && chmod 755 /opt/wait-for-x11
 
 USER user
-ENTRYPOINT [ "/entry" ]
+ENTRYPOINT [ "/opt/entry" ]
