@@ -54,6 +54,9 @@ FROM ghcr.io/selkies-project/nvidia-glx-desktop:latest
 
 USER root
 
+RUN apt -y remove --purge akonadi-server && \
+        apt -y --purge autoremove
+
 RUN apt update && \
         apt -y dist-upgrade && \
         apt -y install steam zsh
