@@ -29,4 +29,7 @@ int main(int argc, char *argv[])
     while (check_nvidia()) {
         sleep(5);
     }
+
+    execl("/etc/kill-all.sh", "/etc/kill-all.sh", NULL);
+    return 1;
 }

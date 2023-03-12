@@ -51,7 +51,7 @@ COPY apps /home/user/apps
 RUN sudo chown -R user:user /home/user/apps
 RUN gcc -o /home/user/apps/entry /home/user/apps/entry.c
 RUN gcc -o /home/user/apps/wait-for-x11 /home/user/apps/wait-for-x11.c
-RUN gcc -o /home/user/apps/nvidia-monitor /home/user/apps/nvidia-monitor.c
+RUN gcc -o /home/user/apps/monitor-nvidia /home/user/apps/monitor-nvidia.c
 
 FROM ghcr.io/selkies-project/nvidia-glx-desktop:latest
 
