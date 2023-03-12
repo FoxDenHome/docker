@@ -1,9 +1,10 @@
 #!/bin/bash -e
 
 if [ -z "$1" ]; then
-    exit 1
+    export NVIDIA_DRIVER_VERSION=$(head -n1 </proc/driver/nvidia/version | awk '{print $8}')
+else 
+    export NVIDIA_DRIVER_VERSION="$1"
 fi
-export NVIDIA_DRIVER_VERSION="$1"
 
 if [ "$(cat /etc/NVIDIA_DRIVER_VERSION 2>/dev/null)" = "$NVIDIA_DRIVER_VERSION" ]; then
     exit 0
