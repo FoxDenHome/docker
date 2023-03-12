@@ -3,6 +3,7 @@
 if [ -z "$1" ]; then
     exit 1
 fi
+export NVIDIA_DRIVER_VERSION="$1"
 
 cd /tmp
 
