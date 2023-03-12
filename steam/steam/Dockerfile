@@ -48,6 +48,7 @@ RUN git clone https://github.com/Doridian/Sunshine && \
         cpack -G DEB
 
 COPY apps /home/user/apps
+RUN chown -R user:user /home/user/apps
 RUN gcc -o /home/user/apps/entry /home/user/apps/entry.c
 RUN gcc -o /home/user/apps/wait-for-x11 /home/user/apps/wait-for-x11.c
 RUN gcc -o /home/user/apps/nvidia-monitor /home/user/apps/nvidia-monitor.c
