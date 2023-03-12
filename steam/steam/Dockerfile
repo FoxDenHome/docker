@@ -64,7 +64,7 @@ RUN apt update && \
 COPY nvidia-install.sh /etc/nvidia-install.sh
 RUN chown root:root /etc/nvidia-install.sh && chmod 755 /etc/nvidia-install.sh
 ARG NVIDIA_DRIVER_VERSION
-RUN /etc/nvidia-install.sh
+RUN /etc/nvidia-install.sh "${NVIDIA_DRIVER_VERSION}"
 
 RUN adduser user render && \
         groupmod -o -g 107 input && \
