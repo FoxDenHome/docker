@@ -88,10 +88,11 @@ RUN chown root:root /etc/kill-all.sh && chmod 755 /etc/kill-all.sh
 COPY modemgr.py /usr/local/bin/modemgr
 RUN chown root:root /usr/local/bin/modemgr && chmod 755 /usr/local/bin/modemgr
 
-RUN sed 's~sudo nvidia-xconfig~sudo nvidia-xconfig --cool-bits=28~' -i /etc/entrypoint.sh
-RUN sed 's~$KDE_START &~. /etc/custom-entry.sh~' -i /etc/entrypoint.sh
-RUN sed 's~exit 1~/etc/kill-all.sh~g' -i /etc/entrypoint.sh
 RUN sed 's~if ! command -v nvidia-xconfig &> /dev/null; then~if ! /etc/nvidia-install.sh; then~g' -i /etc/entrypoint.sh
+RUN sed 's~sudo nvidia-xconfig~sudo nvidia-xconfig --cool-bits=28~' -i /etc/entrypoint.sh
+RUN sed 's~Xorg ~exec Xorg ~' -i /etc/entrypoint.sh
+RUN sed 's~exit 1~/etc/kill-all.sh~g' -i /etc/entrypoint.sh
+
 COPY supervisord.conf /etc/supervisord.conf
 
 RUN sed 's~selkies-gstreamer~exec selkies-gstreamer~g' -i /etc/selkies-gstreamer-entrypoint.sh
