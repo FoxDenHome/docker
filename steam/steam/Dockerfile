@@ -36,9 +36,9 @@ RUN sudo apt-get update && sudo apt-get -y install \
         libvdpau-dev \
         wget
 
-RUN git clone https://github.com/Doridian/Sunshine && \
+RUN git clone https://github.com/LizardByte/Sunshine && \
         cd Sunshine && \
-        git checkout 34df132832847957345e808e7612a05fd2488c33 && \
+        git checkout 237f21573b8a9c7dda7e7997a11ed5b9d502c9c8 && \
         git submodule update --init --recursive && \
         npm install && \
         mkdir build && \
