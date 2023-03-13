@@ -1,5 +1,9 @@
 #!/bin/bash -e
 
+export PATH="${PATH}:/usr/local/games:/usr/games"
+export LD_LIBRARY_PATH="/usr/lib/libreoffice/program:${LD_LIBRARY_PATH}"
+export DISPLAY=":0"
+
 /usr/local/bin/modemgr --defaults
 
 if [ ! -z "$DEFAULT_SIZEW" ]
