@@ -11,6 +11,9 @@ services:
   apt-web:
     image: ghcr.io/doridian/apt-mirror-docker/nginx:latest
     restart: always
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
     networks:
       vlan2:
         priority: 100
