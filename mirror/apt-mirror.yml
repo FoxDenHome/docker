@@ -1,9 +1,15 @@
 services:
-  apt-mirror:
+  apt:
     image: ghcr.io/doridian/apt-mirror-docker/apt-mirror:latest
     command: bash -c "apt-mirror && bash /apt-mirror/postmirror.sh"
+    restart: unless-stopped
     dns:
       - 8.8.8.8
       - 8.8.4.4
     volumes:
       - "/mnt/zhdd/mirror/apt:/var/spool/apt-mirror"
+  apt-web:
+    image: ghcr.io/doridian/apt-mirror-docker/nginx:latest
+    restart: always
+    volumes:
+      - "/mnt/zhdd/mirror/apt/mirror:/mirror:ro"

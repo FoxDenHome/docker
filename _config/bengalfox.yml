@@ -4,6 +4,7 @@ roles:
 - e621dumper
 - gitbackup
 - steam
+- mirror
 network:
   driver: macvlan
   pvid: 2
