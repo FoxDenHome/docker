@@ -11,6 +11,9 @@ services:
     ports:
       - 80:80
       - 443:443
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
     extra_hosts:
       - host.docker.internal:host-gateway
     healthcheck:
