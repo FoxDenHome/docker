@@ -1,8 +1,10 @@
 services:
   apt:
     image: ghcr.io/doridian/apt-mirror-docker/apt-mirror:latest
-    command: bash -c "apt-mirror && bash /apt-mirror/postmirror.sh"
     restart: unless-stopped
+    environment:
+      PUID: 1001
+      PGID: 1001
     dns:
       - 8.8.8.8
       - 8.8.4.4
