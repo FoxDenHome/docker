@@ -5,7 +5,6 @@ services:
     restart: always
     volumes:
       - /mnt/zhdd/nas:/mnt/nas:ro
-      - /mnt/zhdd/mirror:/mnt/mirror:ro
       - caddy_data:/data
       - caddy_config:/config
     ports:
