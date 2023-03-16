@@ -9,8 +9,6 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
-    environment:
-      PYTORCH_CUDA_ALLOC_CONF: max_split_size_mb:128
     networks:
       vlan2:
         priority: 100
