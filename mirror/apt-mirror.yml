@@ -1,7 +1,7 @@
 services:
   apt:
     image: ghcr.io/doridian/apt-mirror-docker/apt-mirror:latest
-    restart: unless-stopped
+    restart: never
     dns:
       - 8.8.8.8
       - 8.8.4.4
