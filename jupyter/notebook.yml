@@ -1,6 +1,6 @@
 services:
   notebook:
-    image: jupyter/tensorflow-notebook
+    build: notebook
     restart: always
     deploy:
       resources:
