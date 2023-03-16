@@ -2,6 +2,13 @@ services:
   notebook:
     image: jupyter/tensorflow-notebook
     restart: always
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
     networks:
       vlan2:
         priority: 100
