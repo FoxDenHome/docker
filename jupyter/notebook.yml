@@ -1,0 +1,14 @@
+services:
+  notebook:
+    image: jupyter/tensorflow-notebook
+    restart: always
+    networks:
+      vlan2:
+        priority: 100
+        ipv4_address: 10.2.11.14
+    mac_address: da:53:94:31:25:26
+    volumes:
+      - notebook_data:/home/jovyan/work
+
+volumes:
+  notebook_data: {}

@@ -5,6 +5,7 @@ roles:
 - gitbackup
 - steam
 - mirror
+- jupyter
 network:
   driver: macvlan
   pvid: 2
