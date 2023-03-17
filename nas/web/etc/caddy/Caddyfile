@@ -1,3 +1,14 @@
+{
+	servers {
+		listener_wrappers {
+			proxy_protocol {
+				timeout 5s
+				allow 10.99.10.1/32
+			}
+			tls
+		}
+	}
+}
 nas.foxden.network {
 	root * /mnt/nas
 	file_server {

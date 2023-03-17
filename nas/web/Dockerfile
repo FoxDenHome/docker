@@ -1,9 +1,15 @@
+FROM caddy:latest-builder AS builder
+
+RUN xcaddy build \
+    --with github.com/mastercactapus/caddy2-proxyprotocol
+
 FROM caddy:latest
+
+USER root
+COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 
 ENV PUID=10000
 ENV PGID=10000
-
-USER root
 
 RUN apk add --no-cache curl s6 python3 samba-client
 
