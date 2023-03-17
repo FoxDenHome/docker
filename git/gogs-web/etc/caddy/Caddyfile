@@ -1,3 +1,15 @@
+{
+	servers {
+		listener_wrappers {
+			proxy_protocol {
+				timeout 5s
+				allow 10.99.10.1/32
+			}
+			tls
+		}
+	}
+}
+
 git.foxden.network {
 	reverse_proxy 127.0.0.1:3000
 }
