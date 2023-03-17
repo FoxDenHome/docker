@@ -9,6 +9,7 @@
 		}
 	}
 }
+
 nas.foxden.network {
 	root * /mnt/nas
 	file_server {
