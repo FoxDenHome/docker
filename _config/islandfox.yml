@@ -6,7 +6,6 @@ roles:
 - factorio
 - gitbackup
 - git
-- signtools
 network:
   driver: macvlan
   device: ''
