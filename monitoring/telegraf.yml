@@ -2,7 +2,7 @@ services:
   telegraf:
     build: telegraf
     restart: always
-    command: --config-directory /etc/telegraf/includes
+    command: --config /etc/telegraf/telegraf.conf --config-directory /etc/telegraf/includes
     environment:
       TZ: America/Los_Angeles
       SNMP_COMMUNITY: ${SNMP_COMMUNITY}
