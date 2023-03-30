@@ -24,3 +24,4 @@ services:
       - "/mnt/zhdd/mirror/apt/mirror:/mirror:ro"
     ports:
       - 127.80.0.99:80:80
+      - 172.17.0.1:80:80
