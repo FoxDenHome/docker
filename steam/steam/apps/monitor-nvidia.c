@@ -30,6 +30,6 @@ int main(int argc, char *argv[])
         sleep(5);
     }
 
-    execl("/etc/kill-all.sh", "/etc/kill-all.sh", NULL);
+    execl("/apps/kill-all.sh", "/apps/kill-all.sh", NULL);
     return 1;
 }
