@@ -17,10 +17,10 @@ RUN apt update && \
         apt -y dist-upgrade && \
         apt -y install steam zsh
 
-COPY nvidia-install.sh /etc/nvidia-install.sh
-RUN chown root:root /etc/nvidia-install.sh && chmod 755 /etc/nvidia-install.sh
+COPY nvidia-install.sh /apps/nvidia-install.sh
+RUN chown root:root /apps/nvidia-install.sh && chmod 755 /apps/nvidia-install.sh
 ARG NVIDIA_DRIVER_VERSION
-RUN /etc/nvidia-install.sh "${NVIDIA_DRIVER_VERSION}"
+RUN /apps/nvidia-install.sh "${NVIDIA_DRIVER_VERSION}"
 
 RUN adduser user render && \
         groupmod -o -g 107 input && \
@@ -34,18 +34,18 @@ ENV DEFAULT_SIZEW=
 ENV DEFAULT_SIZEH=
 ENV DEFAULT_REFRESH=
 
-COPY custom-entry.sh /etc/custom-entry.sh
-RUN chown root:root /etc/custom-entry.sh && chmod 755 /etc/custom-entry.sh
-COPY kill-all.sh /etc/kill-all.sh
-RUN chown root:root /etc/kill-all.sh && chmod 755 /etc/kill-all.sh
+COPY custom-entry.sh /apps/custom-entry.sh
+RUN chown root:root /apps/custom-entry.sh && chmod 755 /apps/custom-entry.sh
+COPY kill-all.sh /apps/kill-all.sh
+RUN chown root:root /apps/kill-all.sh && chmod 755 /apps/kill-all.sh
 COPY modemgr.py /usr/local/bin/modemgr
 RUN chown root:root /usr/local/bin/modemgr && chmod 755 /usr/local/bin/modemgr
 
-RUN sed 's~if ! command -v nvidia-xconfig &> /dev/null; then~if ! /etc/nvidia-install.sh; then~g' -i /etc/entrypoint.sh
+RUN sed 's~if ! command -v nvidia-xconfig &> /dev/null; then~if ! /apps/nvidia-install.sh; then~g' -i /etc/entrypoint.sh
 RUN sed 's~sudo nvidia-xconfig~sudo nvidia-xconfig --cool-bits=28~' -i /etc/entrypoint.sh
 RUN sed 's~Xorg ~exec Xorg ~' -i /etc/entrypoint.sh
 RUN sed 's~&$~~g' -i /etc/entrypoint.sh
-RUN sed 's~exit 1~/etc/kill-all.sh~g' -i /etc/entrypoint.sh
+RUN sed 's~exit 1~/apps/kill-all.sh~g' -i /etc/entrypoint.sh
 
 COPY supervisord.conf /etc/supervisord.conf
 
