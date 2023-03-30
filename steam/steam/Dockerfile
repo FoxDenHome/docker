@@ -1,7 +1,5 @@
 FROM ghcr.io/selkies-project/nvidia-glx-desktop:latest AS builder
 
-RUN sudo apt-get update && sudo apt-get -y --no-install-recommends install gcc
-
 COPY apps /home/user/apps
 RUN sudo chown -R user:user /home/user/apps
 RUN gcc -o /home/user/apps/entry /home/user/apps/entry.c
@@ -28,7 +26,6 @@ RUN adduser user render && \
         groupmod -o -g 107 input && \
         usermod -s /bin/zsh user
 
-COPY --from=builder /home/user/Sunshine/build/cpack_artifacts/Sunshine.deb /tmp/sunshine.deb
 RUN wget https://github.com/LizardByte/Sunshine/releases/download/v0.19.1/sunshine-ubuntu-22.04-amd64.deb -O /tmp/sunshine.deb && \
         apt-get -y install /tmp/sunshine.deb && \
         rm -f /tmp/sunshine.deb
