@@ -1,51 +1,6 @@
 FROM ghcr.io/selkies-project/nvidia-glx-desktop:latest AS builder
 
-RUN sudo apt-get update && sudo apt-get -y install \
-        git \
-        build-essential \
-        cmake \
-        libavdevice-dev \
-        libboost-filesystem-dev \
-        libboost-log-dev \
-        libboost-thread-dev \
-        libboost-program-options-dev \
-        libboost-locale-dev \
-        libcap-dev \
-        libdrm-dev \
-        libevdev-dev \
-        libmfx-dev \
-        libnuma-dev \
-        libopus-dev \
-        libpulse-dev \
-        libssl-dev \
-        libwayland-dev \
-        libx11-dev \
-        libxcb-shm0-dev \
-        libxcb-xfixes0-dev \
-        libxcb-xtest0-dev \
-        libxcb1-dev \
-        libxfixes-dev \
-        libxrandr-dev \
-        libxtst-dev \
-        nodejs \
-        npm \
-        nvidia-cuda-dev \
-        nvidia-cuda-toolkit \
-        libcurl4-openssl-dev \
-        libva-dev \
-        libvdpau-dev \
-        wget
-
-RUN git clone https://github.com/LizardByte/Sunshine && \
-        cd Sunshine && \
-        git checkout 237f21573b8a9c7dda7e7997a11ed5b9d502c9c8 && \
-        git submodule update --init --recursive && \
-        npm install && \
-        mkdir build && \
-        cd build && \
-        cmake .. && \
-        make -j$(nproc) && \
-        cpack -G DEB
+RUN sudo apt-get update && sudo apt-get -y --no-install-recommends install gcc
 
 COPY apps /home/user/apps
 RUN sudo chown -R user:user /home/user/apps
@@ -74,7 +29,8 @@ RUN adduser user render && \
         usermod -s /bin/zsh user
 
 COPY --from=builder /home/user/Sunshine/build/cpack_artifacts/Sunshine.deb /tmp/sunshine.deb
-RUN apt -y install /tmp/sunshine.deb && \
+RUN wget https://github.com/LizardByte/Sunshine/releases/download/v0.19.1/sunshine-ubuntu-22.04-amd64.deb -O /tmp/sunshine.deb && \
+        apt-get -y install /tmp/sunshine.deb && \
         rm -f /tmp/sunshine.deb
 
 ENV DEFAULT_SIZEW=
