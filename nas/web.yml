@@ -10,6 +10,7 @@ services:
     ports:
       - 10.2.11.1:80:80
       - 10.2.11.1:443:443
+      - 10.2.11.1:443:443/udp
     extra_hosts:
       - host.docker.internal:host-gateway
     healthcheck:
