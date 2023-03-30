@@ -6,6 +6,9 @@ services:
         - NVIDIA_DRIVER_VERSION
     hostname: steam-docker
     restart: unless-stopped
+    extra_hosts:
+      - archive.ubuntu.com:host-gateway
+      - us.archive.ubuntu.com:host-gateway
     ulimits:
       nofile:
         soft: 1024
