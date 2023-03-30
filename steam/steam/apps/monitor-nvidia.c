@@ -12,7 +12,7 @@ static int check_nvidia()
 {
     int pid = fork();
     if(pid == 0) {
-        execl("/usr/bin/nvidia-smi", "/usr/bin/nvidia-smi", "--query-gpu=uuid", "--format=csv", NULL);
+        execlp("nvidia-smi", "nvidia-smi", "--query-gpu=uuid", "--format=csv", NULL);
         return 1;
     }
 
