@@ -3,9 +3,7 @@ roles:
 - nas
 - e621dumper
 - gitbackup
-- steam
 - mirror
-- jupyter
 network:
   driver: macvlan
   pvid: 2
