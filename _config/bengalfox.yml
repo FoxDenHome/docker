@@ -4,6 +4,7 @@ roles:
 - e621dumper
 - gitbackup
 - mirror
+- jupyter
 network:
   driver: macvlan
   pvid: 2
