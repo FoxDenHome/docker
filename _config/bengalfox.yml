@@ -5,6 +5,7 @@ roles:
 - gitbackup
 - mirror
 - jupyter
+- foxcaves
 network:
   driver: macvlan
   pvid: 2
