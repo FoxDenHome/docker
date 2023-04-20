@@ -4,7 +4,6 @@ roles:
 - e621dumper
 - gitbackup
 - mirror
-- jupyter
 - foxcaves
 network:
   driver: macvlan
