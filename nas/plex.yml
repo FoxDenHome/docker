@@ -23,7 +23,7 @@ services:
       TZ: America/Los_Angeles
     volumes:
       - plex_config:/config
-      - /mnt/zssd/docker/plex/transcode:/transcode
+      - /mnt/zhdd/docker/plex/transcode:/transcode
       - /mnt/zhdd/nas:/data
     healthcheck:
       test: '(curl -s -f "http://$${HOSTNAME}:32400/web/index.html" >/dev/null && (nvidia-smi -L | grep -qF "GPU 0")) || exit 1'
