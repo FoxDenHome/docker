@@ -6,9 +6,9 @@ RUN echo 'ip link set wg0 mtu 1420' >> /root/wireguardup.sh
 RUN sed -i 's:incoming_ports_lan_array=():incoming_ports_lan_array=(9100):' /root/iptable.sh
 RUN rm -f /usr/sbin/ip6tables && ln -sf /bin/true /usr/sbin/ip6tables
 
-COPY deluge_config_type.py /deluge_config_type.py
-RUN chown 0:0 /deluge_config_type.py && chmod 755 /deluge_config_type.py && \
-        cat /home/nobody/config_deluge.py >> /deluge_config_type.py
+COPY config_deluge_type.py /config_deluge_type.py
+RUN chown 0:0 /config_deluge_type.py && chmod 755 /config_deluge_type.py && \
+        cat /home/nobody/config_deluge.py >> /config_deluge_type.py
 
 COPY custom_init.sh /custom_init.sh
 RUN chown 0:0 /custom_init.sh && chmod 755 /custom_init.sh
