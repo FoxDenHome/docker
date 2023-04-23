@@ -12,8 +12,8 @@ RUN chown 0:0 /config_deluge_type.py && chmod 755 /config_deluge_type.py && \
 
 RUN sed -i 's:rm -f /config/deluged.pid:rm -f /config/deluged.pid && /deluge_config.sh:' /run/nobody/deluge.sh
 
-COPY custom_init.sh /custom_init.sh
-RUN chown 0:0 /custom_init.sh && chmod 755 /custom_init.sh
+COPY deluge_config.sh /deluge_config.sh
+RUN chown 0:0 /deluge_config.sh && chmod 755 /deluge_config.sh
 
 RUN mkdir -p /plugins
 RUN git clone https://github.com/nicklan/Deluge-Pieces-Plugin /tmp/dpp && \
