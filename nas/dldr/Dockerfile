@@ -6,6 +6,9 @@ RUN echo 'ip link set wg0 mtu 1420' >> /root/wireguardup.sh
 RUN sed -i 's:incoming_ports_lan_array=():incoming_ports_lan_array=(9100):' /root/iptable.sh
 RUN rm -f /usr/sbin/ip6tables && ln -sf /bin/true /usr/sbin/ip6tables
 
+COPY custom-init.sh /custom-init.sh
+RUN chown 0:0 /custom-init.sh && chmod 755 /custom-init.sh
+
 RUN mkdir -p /plugins
 RUN git clone https://github.com/nicklan/Deluge-Pieces-Plugin /tmp/dpp && \
     cd /tmp/dpp && \
