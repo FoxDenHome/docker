@@ -2,6 +2,6 @@
 set -e
 
 /home/nobody/config_deluge.py "/config/core.conf" "plugins_location" "/plugins"
-/home/nobody/config_deluge_array.py "/config/core.conf" "enabled_plugins" "Pieces"
+/config_deluge_type.py "/config/core.conf" "enabled_plugins" "Pieces" "array"
 
 exec /usr/local/bin/init.sh
