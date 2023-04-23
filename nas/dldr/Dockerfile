@@ -16,7 +16,7 @@ COPY deluge_config.sh /deluge_config.sh
 RUN chown 0:0 /deluge_config.sh && chmod 755 /deluge_config.sh
 
 RUN mkdir -p /plugins
-RUN git clone https://github.com/nicklan/Deluge-Pieces-Plugin /tmp/dpp && \
+RUN git clone https://github.com/petroid/Deluge-Pieces-Plugin /tmp/dpp && \
     cd /tmp/dpp && \
     python setup.py bdist_egg && \
     cp dist/*.egg /plugins/
