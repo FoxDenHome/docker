@@ -10,6 +10,8 @@ COPY config_deluge_type.py /config_deluge_type.py
 RUN chown 0:0 /config_deluge_type.py && chmod 755 /config_deluge_type.py && \
         cat /home/nobody/config_deluge.py >> /config_deluge_type.py
 
+RUN sed -i 's:rm -f /config/deluged.pid:rm -f /config/deluged.pid && /deluge_config.sh:' /run/nobody/deluge.sh
+
 COPY custom_init.sh /custom_init.sh
 RUN chown 0:0 /custom_init.sh && chmod 755 /custom_init.sh
 
@@ -18,5 +20,3 @@ RUN git clone https://github.com/nicklan/Deluge-Pieces-Plugin /tmp/dpp && \
     cd /tmp/dpp && \
     python setup.py bdist_egg && \
     cp dist/*.egg /plugins/
-
-CMD ["/bin/bash", "/custom_init.sh"]
