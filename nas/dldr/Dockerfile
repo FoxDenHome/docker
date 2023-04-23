@@ -10,7 +10,7 @@ COPY config_deluge_type.py /config_deluge_type.py
 RUN chown 0:0 /config_deluge_type.py && chmod 755 /config_deluge_type.py && \
         cat /home/nobody/config_deluge.py >> /config_deluge_type.py
 
-RUN sed -i 's:rm -f /config/deluged.pid:rm -f /config/deluged.pid && /deluge_config.sh:' /run/nobody/deluge.sh
+RUN sed -i 's:rm -f /config/deluged.pid:rm -f /config/deluged.pid && /deluge_config.sh:' /home/nobody/deluge.sh
 
 COPY deluge_config.sh /deluge_config.sh
 RUN chown 0:0 /deluge_config.sh && chmod 755 /deluge_config.sh
