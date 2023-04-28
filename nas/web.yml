@@ -1,7 +1,6 @@
 services:
   web:
     build: web
-    userns_mode: host
     restart: always
     volumes:
       - /mnt/zhdd/nas:/mnt/nas:ro
