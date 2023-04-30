@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
 from os import chdir, getenv, listdir, environ
-from os.path import dirname, abspath
+from os.path import dirname, abspath, exists
 from subprocess import run, check_call
 from sys import argv
 from typing import Container
 from yaml import dump as yaml_dump
 from tempfile import NamedTemporaryFile
-from config import yaml_loadfile, HOST_CONFIG
+from config import yaml_loadfile, HOST_CONFIG, HOST_NAME
 from netgen import GLOBAL_NETWORKS, generate_dns_for_vlan
 from dockermgr import Container, prune_images
 from zlib import crc32
@@ -22,8 +22,6 @@ except FileNotFoundError:
     pass
 
 DNS_SERVER = HOST_CONFIG["network"]["dns"]
-PORT_MODE = HOST_CONFIG["network"].get("port_mode", False)
-NO_GPU = HOST_CONFIG.get("no_gpu", False)
 
 class ComposeProject():
     def __init__(self, name, project_dir, nopull, additional_config):
@@ -52,6 +50,10 @@ class ComposeProject():
 
             self.add_yaml(file)
 
+        override_file = f"{dir}/_overrides/{HOST_NAME}.yml"
+        if exists(override_file):
+            self.add_yaml(override_file)
+
     def add_yaml(self, file):
         file = abspath(file)
         if file in self.files:
@@ -66,15 +68,10 @@ class ComposeProject():
 
         if "networks" in data:
             for network in data["networks"]:
-                if PORT_MODE and network[:4] == "vlan":
-                    continue
                 self.additional_config["networks"][network] = {}
                 self.provided_networks.add(network)
 
-        tempfile = NamedTemporaryFile(mode="w+", suffix=".yml")
-        tempfile.write(yaml_dump(data))
-        tempfile.flush()
-        self.files.add(tempfile)
+        self.files.add(file)
 
     def add_service(self, name, data):
         overrides_network = False
@@ -86,10 +83,6 @@ class ComposeProject():
             overrides_network = True
             remove_networks = set()
             for netname, network in data["networks"].items():
-                if PORT_MODE and netname[:4] == "vlan":
-                    remove_networks.add(netname)
-                    continue
-
                 net_priority = network.get("priority", 0)
                 if net_priority > highest_priority_network_priority:
                     highest_priority_network = netname
@@ -109,18 +102,6 @@ class ComposeProject():
             if remove_networks and not data["networks"]:
                 data["networks"]["default"] = {}
                 self.needs_default_network = True
-
-        if "deploy" in data and NO_GPU:
-            data.pop("deploy")
-
-        if PORT_MODE:
-            if "ports" in data:
-                data.pop("ports")
-            if "port_mode_ports" in data:
-                data["ports"] = data["port_mode_ports"]
-                data.pop("port_mode_ports")
-        elif "port_mode_ports" in data:
-            data.pop("port_mode_ports")
 
         if "network_mode" in data:
             overrides_network = True

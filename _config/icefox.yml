@@ -10,5 +10,3 @@ network:
   dns:
   - 185.12.64.1
   - 185.12.64.2
-  port_mode: true
-no_gpu: true

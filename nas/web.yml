@@ -8,14 +8,6 @@ services:
       - caddy_config:/config
     environment:
       - NAS_WEB_DOMAIN
-    ports:
-      - 10.2.11.1:80:80
-      - 10.2.11.1:443:443
-      - 10.2.11.1:443:443/udp
-    port_mode_ports:
-      - 80:80
-      - 443:443
-      - 443:443/udp
     extra_hosts:
       - host.docker.internal:host-gateway
     healthcheck:

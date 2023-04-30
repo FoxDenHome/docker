@@ -8,4 +8,5 @@ def yaml_loadfile(file):
     fh.close()
     return data
 
-HOST_CONFIG = yaml_loadfile(f"_config/{gethostname().lower()}.yml")
+HOST_NAME = gethostname().lower()
+HOST_CONFIG = yaml_loadfile(f"_config/{HOST_NAME}.yml")

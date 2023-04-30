@@ -1,0 +1,48 @@
+services:
+  web:
+    ports:
+      - 10.2.11.1:80:80
+      - 10.2.11.1:443:443
+      - 10.2.11.1:443:443/udp
+    environment:
+      NAS_WEB_DOMAIN: nas.foxden.network
+  dldr:
+    networks:
+      vlan2:
+        priority: 100
+        ipv4_address: 10.2.11.8
+    mac_address: ca:1b:f1:2c:6c:b3
+  nzbget:
+    networks:
+      vlan2:
+        priority: 100
+        ipv4_address: 10.2.11.9
+    mac_address: f2:73:89:cc:9e:e4
+  kiwix:
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+    networks:
+      vlan2:
+        priority: 100
+        ipv4_address: 10.2.11.6
+    mac_address: 00:16:3E:CA:7E:01
+  plex:
+    deploy:
+     resources:
+       reservations:
+         devices:
+           - driver: nvidia
+             count: all
+             capabilities: [gpu]
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+    networks:
+      vlan2:
+        priority: 100
+        ipv4_address: 10.2.11.3
+    mac_address: 00:16:3E:CA:7E:03
+  web:
+    ports:
+      - 10.2.11.1:80:80
+      - 10.2.11.1:443:443
+      - 10.2.11.1:443:443/udp

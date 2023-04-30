@@ -2,20 +2,6 @@ services:
   plex:
     image: plexinc/pms-docker:latest
     restart: always
-    deploy:
-     resources:
-       reservations:
-         devices:
-           - driver: nvidia
-             count: all
-             capabilities: [gpu]
-    sysctls:
-      - net.ipv6.conf.all.disable_ipv6=0
-    networks:
-      vlan2:
-        priority: 100
-        ipv4_address: 10.2.11.3
-    mac_address: 00:16:3E:CA:7E:03
     environment:
       PLEX_UID: 10001
       PLEX_GID: 1001
