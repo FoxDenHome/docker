@@ -6,3 +6,6 @@ services:
       - 443:443/udp
     environment:
       NAS_WEB_DOMAIN: nas.foxden.network
+  plex:
+    ports:
+      - 32400:32400
