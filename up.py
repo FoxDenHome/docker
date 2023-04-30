@@ -81,23 +81,23 @@ class ComposeProject():
         if "networks" in data:
             overrides_network = True
             remove_networks = set()
-            for name, network in data["networks"].items():
+            for netname, network in data["networks"].items():
                 if PORT_MODE and name == "vlan":
-                    remove_networks.add(name)
+                    remove_networks.add(netname)
                     continue
 
                 net_priority = network.get("priority", 0)
                 if net_priority > highest_priority_network_priority:
-                    highest_priority_network = name
+                    highest_priority_network = netname
                     highest_priority_network_priority = net_priority
 
-                if name == "default":
+                if netname == "default":
                     self.needs_default_network = True
                     continue
-                self.used_networks.add(name)
+                self.used_networks.add(netname)
 
-                if not network.get("mac_address"):
-                    raise ValueError(f"Missing mac_address for networked container {name}")
+                if not data.get("mac_address"):
+                    raise ValueError(f"Missing mac_address for networked container {netname}")
 
             for name in remove_networks:
                 data["networks"].pop(name)
