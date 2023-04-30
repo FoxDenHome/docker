@@ -7,6 +7,8 @@ services:
     environment:
       NAS_WEB_DOMAIN: nas-ro.foxden.network
   plex:
+    environment:
+      PLEX_GID: 1003
     ports:
       - 32400:32400
   dldr:
@@ -19,6 +21,3 @@ services:
     environment:
       PUID: 1003
       PGID: 1003
-  plex:
-    environment:
-      PLEX_GID: 1003
