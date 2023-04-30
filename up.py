@@ -106,6 +106,10 @@ class ComposeProject():
             for netname in remove_networks:
                 data["networks"].pop(netname)
 
+            if remove_networks and not data["networks"]:
+                data["networks"]["default"] = {}
+                self.needs_default_network = True
+
         if "deploy" in data and NO_GPU:
             data.pop("deploy")
 
