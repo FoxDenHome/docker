@@ -138,23 +138,18 @@ class ComposeProject():
                         "--project-directory", self.project_dir]
         for file in self.files:
             compose_args.append("-f")
-            compose_args.append(file.name)
+            compose_args.append(file)
 
-        try:
-            compose_up_args = ["up"]
-            if not self.nopull:
-                check_call(compose_args + ["pull"])
-                compose_up_args.append("--build")
-            check_call(compose_args + compose_up_args + ["-d", "--remove-orphans"])
+        compose_up_args = ["up"]
+        if not self.nopull:
+            check_call(compose_args + ["pull"])
+            compose_up_args.append("--build")
+        check_call(compose_args + compose_up_args + ["-d", "--remove-orphans"])
 
-            for ct in self.checked_containers:
-                print(f"Checking container {ct} in {self.name}")
-                if not Container(f"{self.name}_{ct}_1").restart_if_failed():
-                    return self.deploy()
-        finally:
-            for file in self.files:
-                file.close()
-            self.files = []
+        for ct in self.checked_containers:
+            print(f"Checking container {ct} in {self.name}")
+            if not Container(f"{self.name}_{ct}_1").restart_if_failed():
+                return self.deploy()
 
 def load_role(role):
     if role == "":
