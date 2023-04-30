@@ -12,12 +12,20 @@ services:
         priority: 100
         ipv4_address: 10.2.11.8
     mac_address: ca:1b:f1:2c:6c:b3
+    environment:
+      PUID: 1001
+      PGID: 1001
+  dldr-prometheus:
+    user: 1001:1001
   nzbget:
     networks:
       vlan2:
         priority: 100
         ipv4_address: 10.2.11.9
     mac_address: f2:73:89:cc:9e:e4
+    environment:
+      PUID: 1001
+      PGID: 1001
   kiwix:
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
@@ -41,6 +49,9 @@ services:
         priority: 100
         ipv4_address: 10.2.11.3
     mac_address: 00:16:3E:CA:7E:03
+    plex:
+      environment:
+        PLEX_GID: 1001
   web:
     ports:
       - 10.2.11.1:80:80

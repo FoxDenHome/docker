@@ -4,7 +4,6 @@ services:
     restart: always
     environment:
       PLEX_UID: 10001
-      PLEX_GID: 1001
       ALLOWED_NETWORKS: 10.0.0.0/8
       TZ: America/Los_Angeles
     volumes:

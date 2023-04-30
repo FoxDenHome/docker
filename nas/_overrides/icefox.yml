@@ -9,3 +9,16 @@ services:
   plex:
     ports:
       - 32400:32400
+  dldr:
+    environment:
+      PUID: 1003
+      PGID: 1003
+  dldr-prometheus:
+    user: 1003:1003
+  nzbget:
+    environment:
+      PUID: 1003
+      PGID: 1003
+  plex:
+    environment:
+      PLEX_GID: 1003
