@@ -82,7 +82,7 @@ class ComposeProject():
             overrides_network = True
             remove_networks = set()
             for netname, network in data["networks"].items():
-                if PORT_MODE and name == "vlan":
+                if PORT_MODE and name[:4] == "vlan":
                     remove_networks.add(netname)
                     continue
 
