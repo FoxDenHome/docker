@@ -99,8 +99,8 @@ class ComposeProject():
                 if not data.get("mac_address"):
                     raise ValueError(f"Missing mac_address for networked container {name}")
 
-            for name in remove_networks:
-                data["networks"].pop(name)
+            for netname in remove_networks:
+                data["networks"].pop(netname)
 
         if "ports" in data and not PORT_MODE:
                 data.pop("ports")
