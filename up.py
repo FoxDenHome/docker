@@ -82,7 +82,7 @@ class ComposeProject():
             overrides_network = True
             remove_networks = set()
             for netname, network in data["networks"].items():
-                if PORT_MODE and name[:4] == "vlan":
+                if PORT_MODE and netname[:4] == "vlan":
                     remove_networks.add(netname)
                     continue
 
@@ -97,7 +97,7 @@ class ComposeProject():
                 self.used_networks.add(netname)
 
                 if not data.get("mac_address"):
-                    raise ValueError(f"Missing mac_address for networked container {netname}")
+                    raise ValueError(f"Missing mac_address for networked container {name}")
 
             for name in remove_networks:
                 data["networks"].pop(name)
