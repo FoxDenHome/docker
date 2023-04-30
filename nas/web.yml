@@ -6,6 +6,8 @@ services:
       - /mnt/zhdd/nas:/mnt/nas:ro
       - caddy_data:/data
       - caddy_config:/config
+    environment:
+      - NAS_WEB_DOMAIN
     ports:
       - 10.2.11.1:80:80
       - 10.2.11.1:443:443

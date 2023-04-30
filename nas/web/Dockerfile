@@ -10,6 +10,7 @@ COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 
 ENV PUID=10000
 ENV PGID=10000
+ENV NAS_WEB_DOMAIN=nas.foxden.network
 
 RUN apk add --no-cache curl s6 python3 samba-client
 

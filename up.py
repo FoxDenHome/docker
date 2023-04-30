@@ -22,7 +22,8 @@ except FileNotFoundError:
     pass
 
 DNS_SERVER = HOST_CONFIG["network"]["dns"]
-PORT_MODE = HOST_CONFIG["network"]["portmode"]
+PORT_MODE = HOST_CONFIG["network"].get("port_mode", False)
+NO_GPU = HOST_CONFIG.get("no_gpu", False)
 
 class ComposeProject():
     def __init__(self, name, project_dir, nopull, additional_config):
@@ -105,8 +106,11 @@ class ComposeProject():
             for netname in remove_networks:
                 data["networks"].pop(netname)
 
+        if "deploy" in data and NO_GPU:
+            data.pop("deploy")
+
         if "ports" in data and not PORT_MODE:
-                data.pop("ports")
+            data.pop("ports")
 
         if "network_mode" in data:
             overrides_network = True

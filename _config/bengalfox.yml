@@ -13,7 +13,6 @@ network:
   dns:
     - 10.2.0.53
   vlan3: br3
-  portmode: false
 post_scripts: []
 
 # NVMe is IIO2 Slot2 (aka PortB) x8x4x4

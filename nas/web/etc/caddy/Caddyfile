@@ -10,7 +10,7 @@
 	}
 }
 
-nas.foxden.network {
+__NAS_WEB_DOMAIN__ {
 	root * /mnt/nas
 	file_server {
 		browse
