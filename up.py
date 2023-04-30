@@ -88,13 +88,13 @@ class ComposeProject():
 
                 net_priority = network.get("priority", 0)
                 if net_priority > highest_priority_network_priority:
-                    highest_priority_network = network
+                    highest_priority_network = name
                     highest_priority_network_priority = net_priority
 
-                if network == "default":
+                if name == "default":
                     self.needs_default_network = True
                     continue
-                self.used_networks.add(network)
+                self.used_networks.add(name)
 
                 if not network.get("mac_address"):
                     raise ValueError(f"Missing mac_address for networked container {name}")
