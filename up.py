@@ -109,8 +109,14 @@ class ComposeProject():
         if "deploy" in data and NO_GPU:
             data.pop("deploy")
 
-        if "ports" in data and not PORT_MODE:
-            data.pop("ports")
+        if PORT_MODE:
+            if "ports" in data:
+                data.pop("ports")
+            if "port_mode_ports" in data:
+                data["ports"] = data["port_mode_ports"]
+                data.pop("port_mode_ports")
+        elif "port_mode_ports" in data:
+            data.pop("port_mode_ports")
 
         if "network_mode" in data:
             overrides_network = True
