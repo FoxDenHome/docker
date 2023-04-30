@@ -72,6 +72,7 @@ class ComposeProject():
 
         tempfile = NamedTemporaryFile(mode="w+", suffix=".yml")
         tempfile.write(yaml_dump(data))
+        tempfile.flush()
         self.files.add(tempfile)
 
     def add_service(self, name, data):
