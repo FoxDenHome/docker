@@ -21,6 +21,9 @@ try:
 except FileNotFoundError:
     pass
 
+DNS_SERVER = HOST_CONFIG["network"]["dns"]
+PORT_MODE = HOST_CONFIG["network"]["portmode"]
+
 class ComposeProject():
     def __init__(self, name, project_dir, nopull, additional_config):
         self.used_networks = set()
@@ -62,6 +65,8 @@ class ComposeProject():
 
         if "networks" in data:
             for network in data["networks"]:
+                if PORT_MODE and network[:4] == "vlan":
+                    continue
                 self.additional_config["networks"][network] = {}
                 self.provided_networks.add(network)
 
@@ -75,8 +80,13 @@ class ComposeProject():
 
         if "networks" in data:
             overrides_network = True
-            for network in data["networks"]:
-                net_priority = data["networks"].get("priority", 0)
+            remove_networks = set()
+            for name, network in data["networks"].items():
+                if PORT_MODE and name == "vlan":
+                    remove_networks.add(name)
+                    continue
+
+                net_priority = network.get("priority", 0)
                 if net_priority > highest_priority_network_priority:
                     highest_priority_network = network
                     highest_priority_network_priority = net_priority
@@ -86,8 +96,14 @@ class ComposeProject():
                     continue
                 self.used_networks.add(network)
 
-                if not data.get("mac_address"):
+                if not network.get("mac_address"):
                     raise ValueError(f"Missing mac_address for networked container {name}")
+
+            for name in remove_networks:
+                data["networks"].pop(name)
+
+        if "ports" in data and not PORT_MODE:
+                data.pop("ports")
 
         if "network_mode" in data:
             overrides_network = True
@@ -96,7 +112,7 @@ class ComposeProject():
 
         if not has_dns:
             if highest_priority_network == "default":
-                self.additional_config["services"][name]["dns"] = HOST_CONFIG["network"]["dns"]
+                self.additional_config["services"][name]["dns"] = DNS_SERVER
                 self.needs_additional_config = True
             elif highest_priority_network[:4] == "vlan":
                 self.additional_config["services"][name]["dns"] = generate_dns_for_vlan(int(highest_priority_network[4:], 10))

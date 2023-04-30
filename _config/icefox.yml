@@ -1,6 +1,6 @@
 roles:
 - autoheal
-- nas-ro
+- nas
 - gitbackup
 network:
   driver: macvlan
@@ -10,3 +10,4 @@ network:
   dns:
   - 185.12.64.1
   - 185.12.64.2
+  portmode: true

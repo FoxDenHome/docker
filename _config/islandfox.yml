@@ -13,3 +13,4 @@ network:
   ula_base: 'fdd8:2357:cb1a:'
   dns:
   - 10.6.0.53
+  portmode: false

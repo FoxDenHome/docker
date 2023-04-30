@@ -1,5 +1,0 @@
-#!/bin/sh
-
-chown -R "$PUID:$PGID" /data /config
-
-s6-setuidgid "$PUID:$PGID" /usr/bin/caddy run --config /etc/caddy/Caddyfile
