@@ -12,6 +12,7 @@ from netgen import GLOBAL_NETWORKS, generate_dns_for_vlan
 from dockermgr import Container, prune_images
 from zlib import crc32
 from re import sub as re_sub
+from dataclasses import dataclass
 
 chdir(dirname(abspath(__file__)))
 
@@ -23,7 +24,19 @@ except FileNotFoundError:
 
 DNS_SERVER = HOST_CONFIG["network"]["dns"]
 
+@dataclass
+class Service():
+    name: str
+    has_dns: bool
+    needs_default_network: bool
+    overrides_network: bool
+    highest_priority_network: str
+    highest_priority_network_priority: int
+
+
 class ComposeProject():
+    services: dict[str, Service]
+
     def __init__(self, name, project_dir, nopull, additional_config):
         self.used_networks = set()
         self.provided_networks = set()
@@ -36,6 +49,7 @@ class ComposeProject():
         self.additional_config = additional_config
         self.needs_additional_config = False
         self.deploy_blocker_script = None
+        self.services = {}
 
     def load_dir(self, dir):
         for filename in listdir(dir):
@@ -53,6 +67,24 @@ class ComposeProject():
         override_file = f"{dir}/_overrides/{HOST_NAME}.yml"
         if exists(override_file):
             self.add_yaml(override_file)
+
+        self.finalize()
+
+    def finalize(self):
+        for svc in self.services.values():
+            if not svc.overrides_network:
+                svc.needs_default_network = True
+
+            if svc.needs_default_network:
+                self.needs_default_network = True
+
+            if not svc.has_dns:
+                if svc.highest_priority_network == "default":
+                    self.additional_config["services"][svc.name]["dns"] = DNS_SERVER
+                    self.needs_additional_config = True
+                elif svc.highest_priority_network[:4] == "vlan":
+                    self.additional_config["services"][svc.name]["dns"] = generate_dns_for_vlan(int(svc.highest_priority_network[4:], 10))
+                    self.needs_additional_config = True
 
     def add_yaml(self, file):
         file = abspath(file)
@@ -74,50 +106,41 @@ class ComposeProject():
         self.files.add(file)
 
     def add_service(self, name, data):
-        overrides_network = False
-        has_dns = "dns" in data
-        highest_priority_network = "default"
-        highest_priority_network_priority = -1
+        svc = self.services.get(name, None)
+        if svc is None:
+            svc = Service(
+                name=name,
+                has_dns=False,
+                needs_default_network=False,
+                overrides_network=False,
+                highest_priority_network="default",
+                highest_priority_network_priority=-1,
+            )
+            self.services[name] = svc
+
+        if "dns" in data:
+            svc.has_dns = True
 
         if "networks" in data:
-            overrides_network = True
-            remove_networks = set()
+            svc.overrides_network = True
             for netname, network in data["networks"].items():
                 net_priority = network.get("priority", 0)
-                if net_priority > highest_priority_network_priority:
-                    highest_priority_network = netname
-                    highest_priority_network_priority = net_priority
+                if net_priority > svc.highest_priority_network_priority:
+                    svc.highest_priority_network = netname
+                    svc.highest_priority_network_priority = net_priority
 
                 if netname == "default":
-                    self.needs_default_network = True
+                    svc.needs_default_network = True
                     continue
                 self.used_networks.add(netname)
 
                 if not data.get("mac_address"):
                     raise ValueError(f"Missing mac_address for networked container {name}")
 
-            for netname in remove_networks:
-                data["networks"].pop(netname)
-
-            if remove_networks and not data["networks"]:
-                data["networks"]["default"] = {}
-                self.needs_default_network = True
-
         if "network_mode" in data:
-            overrides_network = True
-            has_dns = True
+            svc.overrides_network = True
+            svc.has_dns = True
             self.checked_containers.add(name)
-
-        if not has_dns:
-            if highest_priority_network == "default":
-                self.additional_config["services"][name]["dns"] = DNS_SERVER
-                self.needs_additional_config = True
-            elif highest_priority_network[:4] == "vlan":
-                self.additional_config["services"][name]["dns"] = generate_dns_for_vlan(int(highest_priority_network[4:], 10))
-                self.needs_additional_config = True
-
-        if not overrides_network:
-            self.needs_default_network = True
 
     def get_missing_networks(self):
         return self.used_networks - self.provided_networks
