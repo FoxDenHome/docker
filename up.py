@@ -70,7 +70,9 @@ class ComposeProject():
                 self.additional_config["networks"][network] = {}
                 self.provided_networks.add(network)
 
-        self.files.add(file)
+        tempfile = NamedTemporaryFile(mode="w+", suffix=".yml")
+        tempfile.write(yaml_dump(data))
+        self.files.add(tempfile)
 
     def add_service(self, name, data):
         overrides_network = False
@@ -140,18 +142,23 @@ class ComposeProject():
                         "--project-directory", self.project_dir]
         for file in self.files:
             compose_args.append("-f")
-            compose_args.append(file)
+            compose_args.append(file.name)
 
-        compose_up_args = ["up"]
-        if not self.nopull:
-            check_call(compose_args + ["pull"])
-            compose_up_args.append("--build")
-        check_call(compose_args + compose_up_args + ["-d", "--remove-orphans"])
+        try:
+            compose_up_args = ["up"]
+            if not self.nopull:
+                check_call(compose_args + ["pull"])
+                compose_up_args.append("--build")
+            check_call(compose_args + compose_up_args + ["-d", "--remove-orphans"])
 
-        for ct in self.checked_containers:
-            print(f"Checking container {ct} in {self.name}")
-            if not Container(f"{self.name}_{ct}_1").restart_if_failed():
-                return self.deploy()
+            for ct in self.checked_containers:
+                print(f"Checking container {ct} in {self.name}")
+                if not Container(f"{self.name}_{ct}_1").restart_if_failed():
+                    return self.deploy()
+        finally:
+            for file in self.files:
+                file.close()
+            self.files = []
 
 def load_role(role):
     if role == "":
