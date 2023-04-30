@@ -41,7 +41,7 @@ services:
     volumes:
       - deluge_config:/home/user/.config/deluge:ro
   nzbget:
-    image: lscr.io/linuxserver/nzbget:latest
+    image: linuxserver/nzbget:latest
     environment:
       PUID: 1001
       PGID: 1001
