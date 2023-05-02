@@ -8,7 +8,6 @@ services:
       TZ: America/Los_Angeles
     volumes:
       - plex_config:/config
-      - /mnt/zhdd/docker/plex/transcode:/transcode
       - /mnt/zhdd/nas:/data
 
 volumes:

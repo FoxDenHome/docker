@@ -1,4 +1,7 @@
 services:
+  kiwix:
+    volumes:
+      - /mnt/ztank/kiwix:/data
   web:
     ports:
       - 443:443
@@ -10,6 +13,8 @@ services:
       PLEX_GID: 1003
     ports:
       - 32400:32400
+    volumes:
+      - /mnt/local/docker/plex/transcode:/transcode
     healthcheck:
       test: 'curl -s -f "http://$${HOSTNAME}:32400/web/index.html" >/dev/null'
       interval: 60s
@@ -18,9 +23,13 @@ services:
     environment:
       PUID: 1003
       PGID: 1003
+    volumes:
+      - /mnt/local/torrent:/data
   dldr-prometheus:
     user: 1003:1003
   nzbget:
     environment:
       PUID: 1003
       PGID: 1003
+    volumes:
+      - /mnt/local/usenet:/downloads
