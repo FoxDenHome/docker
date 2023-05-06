@@ -18,7 +18,7 @@ services:
       - redis:redis
     volumes:
       - config:/var/www/foxcaves/config
-      - ssl:/etc/letsencrypt
+      - ssl:/etc/resty-auto-ssl
       - /mnt/zhdd/docker/foxcaves/storage:/var/www/foxcaves/storage
     healthcheck:
       test: 'curl -s -f --resolve "main.foxcaves:443:127.0.0.1" --insecure "https://main.foxcaves/api/v1/system/info" >/dev/null || exit 1'
