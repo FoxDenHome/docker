@@ -2,8 +2,6 @@ services:
   autoheal:
     restart: always
     userns_mode: host
-    image: willfarrell/autoheal
-    environment:
-      - AUTOHEAL_CONTAINER_LABEL=all
+    image: ghcr.io/foxdenhome/dockerheal/dockerheal:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
