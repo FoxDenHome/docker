@@ -2,6 +2,6 @@ services:
   autoheal:
     restart: always
     userns_mode: host
-    image: ghcr.io/foxdenhome/dockerheal/dockerheal:latest
+    image: ghcr.io/doridian/dockerheal/dockerheal:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
