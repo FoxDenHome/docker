@@ -1,0 +1,9 @@
+services:
+  netfix:
+    restart: always
+    userns_mode: host
+    image: ghcr.io/doridian/docker-netfix/docker-netfix:latest
+    privileged: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /proc:/rootfs/proc

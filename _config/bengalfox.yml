@@ -1,5 +1,6 @@
 roles:
 - autoheal
+- netfix
 - nas
 - e621dumper
 - gitbackup

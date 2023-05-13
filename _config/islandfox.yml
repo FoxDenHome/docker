@@ -1,5 +1,6 @@
 roles:
 - autoheal
+- netfix
 - monitoring
 - ut2004
 - syncthing
