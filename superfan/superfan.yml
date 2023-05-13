@@ -1,0 +1,7 @@
+services:
+  superfan:
+    restart: always
+    userns_mode: host
+    image: ghcr.io/foxdenhome/superfan/superfan:latest
+    devices:
+      - "/dev/ipmi0:/dev/ipmi0"
