@@ -16,6 +16,7 @@ DOCKER_STATUS_MAP = {
     "oomkilled": 4,
     "dead": 5,
     "exited": 6,
+    "created": 7,
 }
 
 DOCKER_HEALTH_STATUS_MAP = {
