@@ -6,4 +6,4 @@ RUN echo "deb http://ftp.us.debian.org/debian bullseye main non-free" >> /etc/ap
     rm -rf /var/lib/apt/lists/*
 
 COPY conf/ /etc/telegraf/
-COPY mibs/ /var/lib/snmp/mibs/ietf/
+COPY mibs/ /var/lib/mibs/ietf/
