@@ -17,7 +17,7 @@ COPY deluge_config.sh /deluge_config.sh
 RUN chown 0:0 /deluge_config.sh && chmod 755 /deluge_config.sh
 
 RUN curl -L -v -f "https://github.com/joelacus/deluge-web-dark-theme/raw/8d44250edbd193719aa57a65fd39c2d706d2e66f/deluge_web_dark_theme.tar.gz" | \
-        tar -xz -C /usr/lib/python*/dist-packages/deluge/ui/web/
+        tar -xz -C /usr/lib/python*/site-packages/deluge/ui/web/
 
 RUN mkdir -p /plugins
 RUN git clone https://github.com/petroid/Deluge-Pieces-Plugin /tmp/dpp && \
