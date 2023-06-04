@@ -11,7 +11,7 @@ services:
             - kopia_config:/app/config
             - kopia_cache:/app/cache
             - kopia_logs:/app/logs
-        command: ["server", "start", "--insecure", "--address=0.0.0.0:51515", "--server-username=doridian", "--server-password=${KOPIA_WEB_PASSWORD}"]
+        command: ["server", "start", "--insecure", "--address=0.0.0.0:51515", "--tls-cert-file /app/config/tls.crt", "--tls-key-file /app/config/tls.key", "--server-username=doridian", "--server-password=${KOPIA_WEB_PASSWORD}"]
 
 volumes:
   kopia_config: {}
