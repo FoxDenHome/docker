@@ -1,5 +1,5 @@
 services:
-  apt-web:
+  urbackup:
     image: uroni/urbackup-server:latest
     restart: always
     environment:
