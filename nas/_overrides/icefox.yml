@@ -33,3 +33,11 @@ services:
       PGID: 1003
     volumes:
       - /mnt/local/usenet:/downloads
+  urbackup:
+    volumes:
+      - urbackup_database:/var/urbackup
+      - urbackup_backups:/backups
+
+volumes:
+  urbackup_database: {}
+  urbackup_backups: {}
