@@ -1,0 +1,16 @@
+services:
+  apt-web:
+    image: uroni/urbackup-server:latest
+    restart: always
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: America/Los_Angeles
+    networks:
+      vlan2:
+        priority: 100
+        ipv4_address: 10.2.11.15
+    mac_address: 8a:f3:d2:9f:6b:d5
+    volumes:
+      - /mnt/zssd/docker/urbackup/database:/var/urbackup
+      - /mnt/zssd/docker/urbackup/backups:/backups
