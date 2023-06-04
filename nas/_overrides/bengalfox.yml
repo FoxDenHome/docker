@@ -63,10 +63,9 @@ services:
       test: '(curl -s -f "http://$${HOSTNAME}:32400/web/index.html" >/dev/null && (nvidia-smi -L | grep -qF "GPU 0")) || exit 1'
       interval: 60s
       timeout: 10s
-  urbackup:
+  backup:
     volumes:
-      - /mnt/zssd/docker/urbackup/database:/var/urbackup
-      - /mnt/zhdd/docker/urbackup/backups:/backups
+      - /mnt/zhdd/docker/backup/backups:/app/backup
     networks:
       vlan2:
         priority: 100

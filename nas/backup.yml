@@ -1,0 +1,19 @@
+services:
+    backup:
+        image: kopia/kopia:latest
+        hostname: metal-mind
+        restart: always
+        environment:
+            KOPIA_PASSWORD: ${KOPIA_PASSWORD}
+            KOPIA_WEB_PASSWORD: ${KOPIA_WEB_PASSWORD}
+            TZ: America/Los_Angeles
+        volumes:
+            - kopia_config:/app/config
+            - kopia_cache:/app/cache
+            - kopia_logs:/app/logs
+        entrypoint: ["/app/kopia", "server", "--insecure", "--address=0.0.0.0:51515", "--override-username=doridian", "--server-username=doridian", "--server-password=${KOPIA_WEB_PASSWORD}|"]
+
+volumes:
+  kopia_config: {}
+  kopia_cache: {}
+  kopia_logs: {}
