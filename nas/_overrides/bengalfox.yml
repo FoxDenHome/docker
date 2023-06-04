@@ -66,7 +66,7 @@ services:
   urbackup:
     volumes:
       - /mnt/zssd/docker/urbackup/database:/var/urbackup
-      - /mnt/zssd/docker/urbackup/backups:/backups
+      - /mnt/zhdd/docker/urbackup/backups:/backups
     networks:
       vlan2:
         priority: 100
