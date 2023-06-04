@@ -1,7 +1,7 @@
 services:
     backup:
         image: kopia/kopia:latest
-        hostname: metal-mind
+        hostname: backup.foxden.network
         restart: always
         environment:
             KOPIA_PASSWORD: ${KOPIA_PASSWORD}
