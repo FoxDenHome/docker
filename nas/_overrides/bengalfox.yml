@@ -65,7 +65,7 @@ services:
       timeout: 10s
   backup:
     volumes:
-      - /mnt/zhdd/docker/backup/backups:/repository
+      - /mnt/zhdd/backup/repository:/repository
     networks:
       vlan2:
         priority: 100
