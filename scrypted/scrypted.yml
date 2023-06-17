@@ -5,6 +5,7 @@ services:
     restart: always
     environment:
       TZ: America/Los_Angeles
+      SCRYPTED_DOCKER_AVAHI: true
     devices:
       - /dev/dri:/dev/dri
     volumes:
