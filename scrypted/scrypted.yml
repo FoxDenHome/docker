@@ -1,0 +1,14 @@
+services:
+  scrypted:
+    image: koush/scrypted
+    hostname: scrypted.foxden.network
+    restart: always
+    environment:
+      TZ: America/Los_Angeles
+    devices:
+      - /dev/dri:/dev/dri
+    volumes:
+      - data:/server/volume
+
+volumes:
+  data: {}
