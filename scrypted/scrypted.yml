@@ -1,6 +1,6 @@
 services:
   scrypted:
-    image: koush/scrypted
+    build: scrypted
     hostname: scrypted.foxden.network
     restart: always
     environment:
