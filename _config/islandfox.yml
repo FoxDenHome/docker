@@ -2,6 +2,7 @@ roles:
 - autoheal
 - netfix
 - monitoring
+- scrypted
 - ut2004
 - syncthing
 - factorio
