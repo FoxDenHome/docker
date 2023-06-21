@@ -10,7 +10,7 @@ def get_hostdev_for(id):
         if id == HOST_CONFIG["network"]["pvid"]:
             return host_dev
         return f"{host_dev}.{id}"
-    return "br{id}"
+    return f"br{id}"
 
 def generate_driver_opts(id, driver):
     if driver == "macvlan":
