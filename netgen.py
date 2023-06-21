@@ -1,24 +1,21 @@
 from config import HOST_CONFIG
 
+def get_hostdev_for(id):
+    vlan_dev = f"vlan{id}"
+    if vlan_dev in HOST_CONFIG["network"]:
+        return HOST_CONFIG["network"][vlan_dev]
+
+    host_dev = HOST_CONFIG["network"]["device"]
+    if host_dev:
+        if id == HOST_CONFIG["network"]["pvid"]:
+            return host_dev
+        return f"{host_dev}.{id}"
+    return "br{id}"
+
 def generate_driver_opts(id, driver):
     if driver == "macvlan":
-        vlan_dev = f"vlan{id}"
-        if vlan_dev in HOST_CONFIG["network"]:
-            return {
-                "parent": HOST_CONFIG["network"][vlan_dev],
-            }
-
-        host_dev = HOST_CONFIG["network"]["device"]
-        if host_dev:
-            if id == HOST_CONFIG["network"]["pvid"]:
-                return {
-                    "parent": f"{host_dev}",
-                }
-            return {
-                "parent": f"{host_dev}.{id}",
-            }
         return {
-            "parent": f"br{id}",
+            "parent": get_hostdev_for(id),
         }
     elif driver == "sriov":
         cfg = {
@@ -27,6 +24,13 @@ def generate_driver_opts(id, driver):
         }
         if id != HOST_CONFIG["network"]["pvid"]:
             cfg["vlan"] = f"{id}"
+        return cfg
+    elif driver == "bridge":
+        cfg = {
+            "com.docker.network.bridge.name": get_hostdev_for(id),
+            "com.docker.network.bridge.enable_ip_masquerade": "false",
+            "com.docker.network.bridge.inhibit_ipv4": "true",
+        }
         return cfg
     else:
         raise ValueError(f"Invalid net_driver {driver}")

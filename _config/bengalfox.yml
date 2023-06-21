@@ -8,13 +8,12 @@ roles:
 - mirror
 - foxcaves
 network:
-  driver: macvlan
+  driver: bridge
   pvid: 2
-  device: ens1f0np0
+  device: ""
   ula_base: 'fdd8:2357:cb19:'
   dns:
     - 10.2.0.53
-  vlan3: br3
 post_scripts: []
 
 # NVMe is IIO2 Slot2 (aka PortB) x8x4x4
