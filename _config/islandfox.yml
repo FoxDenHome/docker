@@ -9,7 +9,7 @@ roles:
 - gitbackup
 - git
 network:
-  driver: macvlan
+  driver: bridge
   device: ''
   pvid: 6
   ula_base: 'fdd8:2357:cb1a:'
