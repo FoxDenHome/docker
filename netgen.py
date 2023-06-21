@@ -8,7 +8,7 @@ def get_hostdev_for(id):
     host_dev = HOST_CONFIG["network"]["device"]
     if host_dev:
         if id == HOST_CONFIG["network"]["pvid"]:
-            return host_dev
+            return f"{host_dev}"
         return f"{host_dev}.{id}"
     return f"br{id}"
 
@@ -31,6 +31,9 @@ def generate_driver_opts(id, driver):
             "com.docker.network.bridge.enable_ip_masquerade": "false",
             "com.docker.network.bridge.inhibit_ipv4": "true",
         }
+        if "mtu" in HOST_CONFIG["network"]:
+            mtu = HOST_CONFIG["network"]["mtu"]
+            cfg["com.docker.network.driver.mtu"] = f"{mtu}"
         return cfg
     else:
         raise ValueError(f"Invalid net_driver {driver}")

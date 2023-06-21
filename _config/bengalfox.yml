@@ -10,6 +10,7 @@ roles:
 network:
   driver: bridge
   pvid: 2
+  mtu: 9000
   device: ""
   ula_base: 'fdd8:2357:cb19:'
   dns:
