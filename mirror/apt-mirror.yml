@@ -14,14 +14,9 @@ services:
       - 8.8.8.8
       - 8.8.4.4
     networks:
-      default:
-        priority: 1
       vlan2:
         priority: 100
         ipv4_address: 10.2.11.13
     mac_address: 02:40:12:6c:d7:1a
     volumes:
       - "/mnt/zhdd/mirror/apt/mirror:/mirror:ro"
-    ports:
-      - 127.80.0.99:80:80
-      - 172.17.0.1:80:80
