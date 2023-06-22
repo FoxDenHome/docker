@@ -71,7 +71,8 @@ class ComposeProject():
         self.finalize()
 
     def finalize(self):
-        for svc in sorted(self.services.values()):
+        for name in sorted(self.services):
+            svc = self.services[name]
             if not svc.overrides_network:
                 svc.needs_default_network = True
 
