@@ -239,8 +239,7 @@ def main():
         load_role(argv[1].strip())
     else:
         load_roles_by_hostname()
-
-    netgen_done()
+        netgen_done()
 
     prune_images()
 
