@@ -12,6 +12,7 @@ network:
   pvid: 2
   mtu: 9000
   device: ens1f0np0
+  vfdevice: ens1f0
   ula_base: 'fdd8:2357:cb19:'
   dns:
     - 10.2.0.53
