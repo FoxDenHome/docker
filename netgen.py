@@ -1,6 +1,8 @@
 from config import HOST_CONFIG
 from subprocess import check_call
 
+VF_SCRIPT_PATH = "/var/sriov-init-script.sh"
+
 def get_hostdev_for(id):
     vlan_dev = f"vlan{id}"
     if vlan_dev in HOST_CONFIG["network"]:
@@ -64,22 +66,37 @@ def generate_dns_for_vlan(id):
         f"10.{id}.0.53"
     ]
 
-VF_MIN_IDS = {}
-VF_USED_MACS = {}
+VF_IF_MACS = {}
 
-VF_SCRIPT = open("/var/sriov-init-script.sh", "w")
+def load_vf_if_macs():
+    try:
+        with open(VF_SCRIPT_PATH, "r") as f:
+            for line in f:
+                if not line.startswith("#;[SAVE];"):
+                    continue
+
+                line_parse = line.split(";")
+
+                hostdev = line_parse[2]
+                idx = line_parse[3]
+                mac_address = line_parse[4]
+
+                if hostdev not in VF_IF_MACS:
+                    VF_IF_MACS[hostdev] = {}
+                VF_IF_MACS[hostdev][mac_address] = idx
+    except FileNotFoundError:
+        pass
+load_vf_if_macs()
+
+VF_SCRIPT = open(VF_SCRIPT_PATH, "w")
 VF_SCRIPT.write("#!/bin/sh\nset -e\n")
 VF_SCRIPT.flush()
 def vf_cmd(cmd):
-    check_call(["/bin/sh", "-c", cmd])
+    #check_call(["/bin/sh", "-c", cmd])
     VF_SCRIPT.write(f"{cmd}\n")
     VF_SCRIPT.flush()
 
 def net_grab_physical(netname, mac_address):
-    if VF_USED_MACS.get(mac_address, False):
-        raise ValueError(f"Duplicate MAC: {mac_address}")
-    VF_USED_MACS[mac_address] = True
-
     driver = HOST_CONFIG["network"]["driver"]
     if driver != "sriov":
         return
@@ -88,12 +105,20 @@ def net_grab_physical(netname, mac_address):
     vlan = driver_opts["vlan"]
     hostdev = driver_opts["netdevice"]
 
-    idx = VF_MIN_IDS.get(hostdev, 0)
+    vf_if_local_macs: dict[str, int] = VF_IF_MACS.get(hostdev, {})
+    VF_IF_MACS[hostdev] = vf_if_local_macs
+    idx = vf_if_local_macs.get(mac_address, -1)
+    if idx < 0:
+        other_indices = set(vf_if_local_macs.values())
+        idx = 0
+        while idx in other_indices:
+            idx += 1
+        vf_if_local_macs[mac_address] = idx
     if idx == 0:
         vf_cmd(f"cat '/sys/class/net/{hostdev}/device/sriov_totalvfs' > '/sys/class/net/{hostdev}/device/sriov_numvfs'")
-    VF_MIN_IDS[hostdev] = idx + 1
 
     vf_cmd(f"ip link set '{hostdev}' vf '{idx}' mac '{mac_address}' vlan '{vlan}' spoofchk on")
+    VF_SCRIPT.write(f"#;[SAVE];{hostdev};{idx};{mac_address}\n")
 
 GLOBAL_NETWORKS = {}
 def load():
