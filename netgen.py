@@ -75,7 +75,7 @@ def load_vf_if_macs():
                 if not line.startswith("#;[SAVE];"):
                     continue
 
-                line_parse = line.split(";")
+                line_parse = line.strip().split(";")
 
                 hostdev = line_parse[2]
                 idx = line_parse[3]
@@ -88,13 +88,14 @@ def load_vf_if_macs():
         pass
 load_vf_if_macs()
 
-VF_SCRIPT = open(VF_SCRIPT_PATH, "w")
-VF_SCRIPT.write("#!/bin/sh\nset -e\n")
-VF_SCRIPT.flush()
+
+VF_SCRIPT_DATA = [
+    "#!/bin/sh",
+    "set -e",
+]
 def vf_cmd(cmd):
-    #check_call(["/bin/sh", "-c", cmd])
-    VF_SCRIPT.write(f"{cmd}\n")
-    VF_SCRIPT.flush()
+    check_call(["/bin/sh", "-c", cmd])
+    VF_SCRIPT_DATA.append(cmd)
 
 def net_grab_physical(netname, mac_address):
     driver = HOST_CONFIG["network"]["driver"]
@@ -114,11 +115,16 @@ def net_grab_physical(netname, mac_address):
         while idx in other_indices:
             idx += 1
         vf_if_local_macs[mac_address] = idx
+
     if idx == 0:
         vf_cmd(f"cat '/sys/class/net/{hostdev}/device/sriov_totalvfs' > '/sys/class/net/{hostdev}/device/sriov_numvfs'")
 
     vf_cmd(f"ip link set '{hostdev}' vf '{idx}' mac '{mac_address}' vlan '{vlan}' spoofchk on")
-    VF_SCRIPT.write(f"#;[SAVE];{hostdev};{idx};{mac_address}\n")
+    VF_SCRIPT_DATA.append(f"#;[SAVE];{hostdev};{idx};{mac_address}")
+
+def netgen_done():
+    with open(VF_SCRIPT_PATH, "w") as f:
+        f.write("\n".join(VF_SCRIPT_DATA))
 
 GLOBAL_NETWORKS = {}
 def load():

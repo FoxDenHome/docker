@@ -8,7 +8,7 @@ from typing import Container
 from yaml import dump as yaml_dump
 from tempfile import NamedTemporaryFile
 from config import yaml_loadfile, HOST_CONFIG, HOST_NAME
-from netgen import GLOBAL_NETWORKS, generate_dns_for_vlan, net_grab_physical
+from netgen import GLOBAL_NETWORKS, generate_dns_for_vlan, net_grab_physical, netgen_done
 from dockermgr import Container, prune_images
 from zlib import crc32
 from re import sub as re_sub
@@ -72,7 +72,7 @@ class ComposeProject():
 
     def finalize(self):
         for name in sorted(self.services):
-            svc = self.services[name]
+            svc = self.services
             if not svc.overrides_network:
                 svc.needs_default_network = True
 
@@ -239,6 +239,8 @@ def main():
         load_role(argv[1].strip())
     else:
         load_roles_by_hostname()
+
+    netgen_done()
 
     prune_images()
 
