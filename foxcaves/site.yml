@@ -12,7 +12,7 @@ services:
       vlan3:
         priority: 100
         ipv4_address: 10.3.10.1
-    mac_address: A6:92:B3:48:21:9D
+    mac_address: a6:92:b3:48:21:9d
     links:
       - postgres:postgres
       - redis:redis
