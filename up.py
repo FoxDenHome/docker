@@ -174,10 +174,10 @@ class ComposeProject():
             if not Container(f"{self.name}_{ct}_1").restart_if_failed():
                 return self.deploy()
 
-def load_role(role):
+def load_role(role, deploy):
     if role == "":
         return
-    print("Loading role", role)
+    print("Loading role", role, deploy)
 
     additional_config = {
         "services": {},
@@ -220,6 +220,9 @@ def load_role(role):
             }
         }
 
+    if not deploy:
+        return
+
     with NamedTemporaryFile(mode="w+", suffix=".yml") as temp_file:
         if additional_config_needed:
             yaml_dump(additional_config, temp_file)
@@ -228,19 +231,28 @@ def load_role(role):
 
         project.deploy()
 
-def load_roles_by_hostname():
+def load_roles_by_hostname(deployfn=None):
     roles = set(HOST_CONFIG["roles"])
 
     for role in sorted(roles):
-        load_role(role.strip())
+        role = role.strip()
+        load_role(role, deployfn(role))
+
+def deploy_all(role: str):
+    return True
+
+def make_deploy_set(roles: set[str]):
+    def deployfn(role: str):
+        return role.lower() in roles
+    return deployfn
 
 def main():
+    deployfn = deploy_all
     if len(argv) > 1:
-        load_role(argv[1].strip())
-    else:
-        load_roles_by_hostname()
-        netgen_done()
+        deployfn = make_deploy_set(set([x.strip().lower() for x in argv[1:]]))
 
+    load_roles_by_hostname(deployfn)
+    netgen_done()
     prune_images()
 
     if "post_scripts" in HOST_CONFIG:
