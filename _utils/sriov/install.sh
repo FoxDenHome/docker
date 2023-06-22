@@ -10,7 +10,7 @@ mv /usr/local/bin/docker-sriov-plugin.service /etc/systemd/system/docker-sriov-p
 rm -f /usr/local/bin/LICENSE /usr/local/bin/README.md
 chmod +x /usr/local/bin/docker-sriov-plugin
 
-sed -i 's~Restart=always~Restart=always\nExecStartPre=-/bin/sh /var/sriov-init-script.sh' /etc/systemd/system/docker-sriov-plugin.service
+sed -i 's~Restart=always~Restart=always\nExecStartPre=-/bin/sh /var/sriov-init-script.sh~' /etc/systemd/system/docker-sriov-plugin.service
 
 systemctl daemon-reload
 systemctl enable docker-sriov-plugin
