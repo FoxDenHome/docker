@@ -120,7 +120,7 @@ def net_grab_physical(netname, mac_address):
         vf_cmd(f"cat '/sys/class/net/{hostdev}/device/sriov_totalvfs' > '/sys/class/net/{hostdev}/device/sriov_numvfs'")
 
     vf_cmd(f"ip link set dev '{hostdev}' vf '{idx}' mac '{mac_address}' vlan '{vlan}' spoofchk on")
-    vf_cmd(f"(NETDEV=\"$(find /sys/class/net/{hostdev}/device/virtfn{idx}/net/)\" && ip link set dev \"$NETDEV\" address '{mac_address}') || true")
+    vf_cmd(f"(NETDEV=\"$(ls /sys/class/net/{hostdev}/device/virtfn{idx}/net/)\" && ip link set dev \"$NETDEV\" address '{mac_address}') || true")
     VF_SCRIPT_DATA.append(f"#;[SAVE];{hostdev};{idx};{mac_address}")
 
 def netgen_done():
