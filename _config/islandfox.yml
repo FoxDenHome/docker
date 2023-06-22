@@ -1,13 +1,13 @@
 roles:
 - autoheal
-- netfix
-- monitoring
-- scrypted
-- ut2004
-- syncthing
 - factorio
-- gitbackup
 - git
+- gitbackup
+- monitoring
+- netfix
+- scrypted
+- syncthing
+- ut2004
 network:
   driver: bridge
   device: ''

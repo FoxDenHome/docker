@@ -8,7 +8,7 @@ from typing import Container
 from yaml import dump as yaml_dump
 from tempfile import NamedTemporaryFile
 from config import yaml_loadfile, HOST_CONFIG, HOST_NAME
-from netgen import GLOBAL_NETWORKS, generate_dns_for_vlan
+from netgen import GLOBAL_NETWORKS, generate_dns_for_vlan, net_grab_physical
 from dockermgr import Container, prune_images
 from zlib import crc32
 from re import sub as re_sub
@@ -132,10 +132,9 @@ class ComposeProject():
                 if netname == "default":
                     svc.needs_default_network = True
                     continue
-                self.used_networks.add(netname)
 
-                if not data.get("mac_address"):
-                    raise ValueError(f"Missing mac_address for networked container {name}")
+                self.used_networks.add(netname)
+                net_grab_physical(netname, data["mac_address"])
 
         if "network_mode" in data:
             svc.overrides_network = True

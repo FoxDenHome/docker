@@ -1,12 +1,12 @@
 roles:
 - autoheal
-- netfix
-- superfan
-- nas
 - e621dumper
+- foxcaves
 - gitbackup
 - mirror
-- foxcaves
+- nas
+- netfix
+- superfan
 network:
   driver: bridge
   pvid: 2
