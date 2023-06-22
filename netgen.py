@@ -104,8 +104,7 @@ def net_grab_physical(netname, mac_address):
 
     driver_opts = GLOBAL_NETWORKS[netname]["driver_opts"]
     vlan = driver_opts["vlan"]
-    hostdev = HOST_CONFIG["network"]["device"]
-    vfdev = HOST_CONFIG["network"]["vfdevice"]
+    hostdev = driver_opts["netdevice"]
 
     vf_if_local_macs: dict[str, int] = VF_IF_MACS.get(hostdev, {})
     VF_IF_MACS[hostdev] = vf_if_local_macs
@@ -121,7 +120,7 @@ def net_grab_physical(netname, mac_address):
         vf_cmd(f"cat '/sys/class/net/{hostdev}/device/sriov_totalvfs' > '/sys/class/net/{hostdev}/device/sriov_numvfs'")
 
     vf_cmd(f"ip link set dev '{hostdev}' vf '{idx}' mac '{mac_address}' vlan '{vlan}' spoofchk on")
-    vf_cmd(f"ip link set dev '{vfdev}v{idx}' address '{mac_address}' || true")
+    vf_cmd(f"(NETDEV=\"$(find /sys/class/net/{hostdev}/device/virtfn{idx}/net/)\" && ip link set dev \"$NETDEV\" address '{mac_address}') || true")
     VF_SCRIPT_DATA.append(f"#;[SAVE];{hostdev};{idx};{mac_address}")
 
 def netgen_done():
