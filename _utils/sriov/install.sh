@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-VERSION="1.5.0"
+VERSION="1.6.0"
 
 rm -f /usr/local/bin/docker-sriov-plugin /etc/systemd/system/docker-sriov-plugin.service /tmp/sriov-plugin.tar.gz
 wget "https://github.com/FoxDenHome/docker-sriov-plugin/releases/download/$VERSION/docker-sriov-plugin-linux-amd64.tar.gz" -O /tmp/sriov-plugin.tar.gz
