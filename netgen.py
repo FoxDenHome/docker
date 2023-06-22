@@ -78,7 +78,7 @@ def load_vf_if_macs():
                 line_parse = line.strip().split(";")
 
                 hostdev = line_parse[2]
-                idx = line_parse[3]
+                idx = int(line_parse[3], 10)
                 mac_address = line_parse[4]
 
                 if hostdev not in VF_IF_MACS:
