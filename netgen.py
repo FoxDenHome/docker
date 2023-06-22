@@ -126,6 +126,7 @@ def net_grab_physical(netname, mac_address):
 def netgen_done():
     with open(VF_SCRIPT_PATH, "w") as f:
         f.write("\n".join(VF_SCRIPT_DATA))
+        f.write("\n")
 
 GLOBAL_NETWORKS = {}
 def load():
