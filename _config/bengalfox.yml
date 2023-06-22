@@ -8,10 +8,10 @@ roles:
 - netfix
 - superfan
 network:
-  driver: bridge
+  driver: sriov
   pvid: 2
   mtu: 9000
-  device: ""
+  device: ens1f0np0
   ula_base: 'fdd8:2357:cb19:'
   dns:
     - 10.2.0.53
