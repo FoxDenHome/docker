@@ -119,7 +119,8 @@ def net_grab_physical(netname, mac_address):
     if idx == 0:
         vf_cmd(f"cat '/sys/class/net/{hostdev}/device/sriov_totalvfs' > '/sys/class/net/{hostdev}/device/sriov_numvfs'")
 
-    vf_cmd(f"ip link set '{hostdev}' vf '{idx}' mac '{mac_address}' vlan '{vlan}' spoofchk on")
+    vf_cmd(f"ip link set dev '{hostdev}' vf '{idx}' mac '{mac_address}' vlan '{vlan}' spoofchk on")
+    vf_cmd(f"ip link set dev '{hostdev}v{idx}' address '{mac_address}' || true")
     VF_SCRIPT_DATA.append(f"#;[SAVE];{hostdev};{idx};{mac_address}")
 
 def netgen_done():
