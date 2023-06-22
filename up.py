@@ -52,7 +52,7 @@ class ComposeProject():
         self.services = {}
 
     def load_dir(self, dir):
-        for filename in listdir(dir):
+        for filename in sorted(listdir(dir)):
             file = f"{dir}/{filename}"
 
             if filename == "deploy_blocker" or filename.startswith("deploy_blocker."):
@@ -71,7 +71,7 @@ class ComposeProject():
         self.finalize()
 
     def finalize(self):
-        for svc in self.services.values():
+        for svc in sorted(self.services.values()):
             if not svc.overrides_network:
                 svc.needs_default_network = True
 
@@ -94,12 +94,12 @@ class ComposeProject():
         data = yaml_loadfile(file)
 
         if "services" in data:
-            for service in data["services"]:
+            for service in sorted(data["services"]):
                 self.additional_config["services"][service] = {}
                 self.add_service(service, data["services"][service])
 
         if "networks" in data:
-            for network in data["networks"]:
+            for network in sorted(data["networks"]):
                 self.additional_config["networks"][network] = {}
                 self.provided_networks.add(network)
 
@@ -123,7 +123,7 @@ class ComposeProject():
 
         if "networks" in data:
             svc.overrides_network = True
-            for netname, network in data["networks"].items():
+            for netname, network in sorted(data["networks"].items()):
                 net_priority = network.get("priority", 0)
                 if net_priority > svc.highest_priority_network_priority:
                     svc.highest_priority_network = netname
@@ -158,7 +158,7 @@ class ComposeProject():
 
         compose_args = ["docker-compose", "-p", self.name,
                         "--project-directory", self.project_dir]
-        for file in self.files:
+        for file in sorted(self.files):
             compose_args.append("-f")
             compose_args.append(file)
 
@@ -168,7 +168,7 @@ class ComposeProject():
             compose_up_args.append("--build")
         check_call(compose_args + compose_up_args + ["-d", "--remove-orphans"])
 
-        for ct in self.checked_containers:
+        for ct in sorted(self.checked_containers):
             print(f"Checking container {ct} in {self.name}")
             if not Container(f"{self.name}_{ct}_1").restart_if_failed():
                 return self.deploy()
@@ -198,7 +198,7 @@ def load_role(role):
 
     if missing_networks:
         additional_config_needed = True
-        for network in missing_networks:
+        for network in sorted(missing_networks):
             additional_config["networks"][network] = GLOBAL_NETWORKS[network]
 
     if project.needs_default_network:
@@ -230,7 +230,7 @@ def load_role(role):
 def load_roles_by_hostname():
     roles = set(HOST_CONFIG["roles"])
 
-    for role in roles:
+    for role in sorted(roles):
         load_role(role.strip())
 
 def main():
