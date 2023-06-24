@@ -72,6 +72,9 @@ services:
         ipv4_address: 10.2.11.15
     mac_address: 8a:f3:d2:9f:6b:d5
   s3:
+    environment:
+      MINIO_BROWSER_REDIRECT_URL: https://console.s3.foxden.network
+      MINIO_SERVER_URL: https://s3.foxden.network
     networks:
       vlan2:
         priority: 100
