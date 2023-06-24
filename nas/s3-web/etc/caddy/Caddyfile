@@ -10,6 +10,8 @@
 	}
 }
 
+log
+
 __S3_BASE__ {
 	reverse_proxy 127.0.0.1:9000 {
 		header_up X-Real-IP {remote_host}
