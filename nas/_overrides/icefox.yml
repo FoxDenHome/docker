@@ -42,4 +42,4 @@ services:
   s3-web:
     build:
       args:
-        S3_BASE:  s3.doridian.net
+        S3_BASE: s3.doridian.net
