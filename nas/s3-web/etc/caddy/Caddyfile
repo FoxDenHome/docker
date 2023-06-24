@@ -10,10 +10,10 @@
 	}
 }
 
-s3.foxden.network {
+__S3_BASE__ {
 	reverse_proxy 127.0.0.1:9000
 }
 
-console.s3.foxden.network {
+console.__S3_BASE__ {
 	reverse_proxy 127.0.0.1:9001
 }

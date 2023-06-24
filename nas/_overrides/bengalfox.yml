@@ -82,3 +82,6 @@ services:
     mac_address: d2:5b:0f:b8:77:26
     volumes:
       - /mnt/zhdd/s3:/data
+  s3-web:
+    environment:
+      S3_BASE: s3.foxden.network
