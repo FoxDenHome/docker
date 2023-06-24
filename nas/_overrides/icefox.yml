@@ -40,5 +40,6 @@ services:
     volumes:
       - /mnt/local/s3:/data
   s3-web:
-    environment:
-      S3_BASE: s3.doridian.net
+    build:
+      args:
+        S3_BASE:  s3.doridian.net

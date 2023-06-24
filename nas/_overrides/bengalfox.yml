@@ -83,5 +83,6 @@ services:
     volumes:
       - /mnt/zhdd/s3:/data
   s3-web:
-    environment:
-      S3_BASE: s3.foxden.network
+    build:
+      args:
+        S3_BASE: s3.foxden.network

@@ -7,7 +7,8 @@ services:
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
     image: quay.io/minio/minio:latest
   s3-web:
-    build: s3-web
+    build:
+      context: s3-web
     restart: always
     network_mode: service:s3
     volumes:
