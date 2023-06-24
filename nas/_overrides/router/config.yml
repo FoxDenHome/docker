@@ -10,9 +10,9 @@ hosts:
       https: 1337
 
   s3.doridian.net:
-    target: s3-web
+    target: s3
   console.s3.doridian.net:
-    target: s3-web
+    target: s3
 
   nas-ro.foxden.network:
     target: web
