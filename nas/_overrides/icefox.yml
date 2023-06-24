@@ -2,10 +2,19 @@ services:
   kiwix:
     volumes:
       - /mnt/ztank/kiwix:/data
-  web:
+  router:
+    build: _overrides/router
+    restart: always
+    init: true
     ports:
-      - 443:443
-      - 443:443/udp
+    - 80:80
+    - 443:443
+    links:
+    - web:web
+    - s3-web:s3-web
+    extra_hosts:
+    - host.docker.internal:host-gateway
+  web:
     environment:
       NAS_WEB_DOMAIN: nas-ro.foxden.network
   plex:

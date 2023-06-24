@@ -1,0 +1,18 @@
+defaults:
+  ports:
+    http: 80
+    https: 443
+hosts:
+  __default__:
+    target: 127.0.0.1
+    ports:
+      http: 1337
+      https: 1337
+
+  s3.doridian.net:
+    target: s3-web
+  console.s3.doridian.net:
+    target: s3-web
+
+  nas-ro.foxden.network:
+    target: web
