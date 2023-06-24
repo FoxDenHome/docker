@@ -11,7 +11,7 @@ services:
     - 443:443
     links:
     - web:web
-    - s3-web:s3-web
+    - s3:s3
     extra_hosts:
     - host.docker.internal:host-gateway
   web:
