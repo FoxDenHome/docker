@@ -7,13 +7,17 @@ services:
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
     image: quay.io/minio/minio:latest
   s3-web:
-    build: grafana-web
+    build: s3-web
     restart: always
     network_mode: service:s3
     volumes:
-      - grafana_web_data:/data
-      - grafana_web_config:/config
+      - s3_web_data:/data
+      - s3_web_config:/config
     healthcheck:
       test: 'nc -z "$${HOSTNAME}" 443 || exit 1'
       interval: 60s
       timeout: 10s
+
+volumes:
+  s3_web_data: {}
+  s3_web_config: {}
