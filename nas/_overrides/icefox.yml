@@ -46,9 +46,7 @@ services:
     environment:
       MINIO_BROWSER_REDIRECT_URL: https://console.s3.doridian.net
       MINIO_SERVER_URL: https://s3.doridian.net
-    extra_hosts:
-    - s3.doridian.net:127.0.0.1
-    - console.s3.doridian.net:127.0.0.1
+    hostname: s3.doridian.net
     volumes:
       - /mnt/ztank/s3:/data
   s3-web:

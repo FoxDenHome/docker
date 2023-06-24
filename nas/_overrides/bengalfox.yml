@@ -67,9 +67,7 @@ services:
     environment:
       MINIO_BROWSER_REDIRECT_URL: https://console.s3.foxden.network
       MINIO_SERVER_URL: https://s3.foxden.network
-    extra_hosts:
-    - s3.foxden.network:127.0.0.1
-    - console.s3.foxden.network:127.0.0.1
+    hostname: s3.foxden.network
     networks:
       vlan2:
         priority: 100
