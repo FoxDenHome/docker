@@ -63,14 +63,6 @@ services:
       test: '(curl -s -f "http://$${HOSTNAME}:32400/web/index.html" >/dev/null && (nvidia-smi -L | grep -qF "GPU 0")) || exit 1'
       interval: 60s
       timeout: 10s
-  backup:
-    volumes:
-      - /mnt/zhdd/backup/repository:/repository
-    networks:
-      vlan2:
-        priority: 100
-        ipv4_address: 10.2.11.15
-    mac_address: 8a:f3:d2:9f:6b:d5
   s3:
     environment:
       MINIO_BROWSER_REDIRECT_URL: https://console.s3.foxden.network
