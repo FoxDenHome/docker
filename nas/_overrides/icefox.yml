@@ -33,3 +33,9 @@ services:
       PGID: 1003
     volumes:
       - /mnt/local/usenet:/downloads
+  s3:
+    volumes:
+      - s3_data:/data
+
+volumes:
+  s3_data: {}

@@ -1,0 +1,7 @@
+services:
+  s3:
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: doridian
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    image: quay.io/minio/minio:latest

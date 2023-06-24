@@ -71,3 +71,11 @@ services:
         priority: 100
         ipv4_address: 10.2.11.15
     mac_address: 8a:f3:d2:9f:6b:d5
+  s3:
+    networks:
+      vlan2:
+        priority: 100
+        ipv4_address: 10.2.11.17
+    mac_address: d2:5b:0f:b8:77:26
+    volumes:
+      - /mnt/zhdd/s3:/data
