@@ -47,7 +47,7 @@ services:
       MINIO_BROWSER_REDIRECT_URL: https://console.s3.doridian.net
       MINIO_SERVER_URL: https://s3.doridian.net
     volumes:
-      - /mnt/local/s3:/data
+      - /mnt/ztank/s3:/data
   s3-web:
     build:
       args:
