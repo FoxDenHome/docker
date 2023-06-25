@@ -6,7 +6,10 @@ rcon_pw = None
 with open("/var/lib/docker/231072.231072/volumes/factorio_data/_data/config/rconpw", "r") as fh:
     rcon_pw = fh.read().strip()
 
-server_ip = check_output(["docker", "inspect", "-f", "{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}", "factorio_server_1"]).strip()
+try:
+    server_ip = check_output(["docker", "inspect", "-f", "{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}", "factorio_server_1"]).strip()
+except:
+    exit(0)
 
 client = factorio_rcon.RCONClient(server_ip, 27015, rcon_pw)
 response = client.send_command("/players")
