@@ -1,5 +1,7 @@
 services:
   syncthing:
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
     environment:
       PUID: 10000
       PGID: 10000
