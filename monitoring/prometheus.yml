@@ -32,6 +32,7 @@ services:
       - telegraf:telegraf
       - telegraf:telegraf.foxden.network
       - node-exporter:islandfox.foxden.network
+      - mktxp:mktxp
     extra_hosts:
       - ntp.foxden.network:10.6.1.2
       - router.foxden.network:10.6.1.1

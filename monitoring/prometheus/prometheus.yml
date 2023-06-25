@@ -30,3 +30,7 @@ scrape_configs:
   - job_name: deluge
     static_configs:
       - targets: ['dldr.foxden.network:9100']
+
+  - job_name: mktxp
+    static_configs:
+      - target: ['mktxp:49090']
