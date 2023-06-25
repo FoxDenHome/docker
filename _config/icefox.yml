@@ -2,6 +2,7 @@ roles:
 - autoheal
 - gitbackup
 - nas
+- syncthing
 network:
   driver: macvlan
   device: ''

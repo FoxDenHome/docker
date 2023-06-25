@@ -1,0 +1,11 @@
+services:
+  syncthing:
+    environment:
+      PUID: 10000
+      PGID: 10000
+    volumes:
+      - /mnt/ztank/dav:/mnt/dav
+    ports:
+      - 10.99.10.2:8384:8384
+      - 22000:22000
+      - 22000:22000/udp
