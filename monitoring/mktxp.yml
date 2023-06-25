@@ -1,0 +1,4 @@
+services:
+  mktxp:
+    build: mktxp
+    restart: always
