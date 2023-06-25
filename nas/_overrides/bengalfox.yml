@@ -6,6 +6,7 @@ services:
       - 10.2.11.1:443:443/udp
     environment:
       NAS_WEB_DOMAIN: nas.foxden.network
+      DAV_DOMAIN: dav.foxden.network
   dldr:
     networks:
       vlan2:

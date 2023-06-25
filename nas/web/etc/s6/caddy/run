@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sed "s/__NAS_WEB_DOMAIN__/$NAS_WEB_DOMAIN/g" /etc/caddy/Caddyfile > /etc/caddy/Caddyfile-live
+sed "s/__NAS_WEB_DOMAIN__/$NAS_WEB_DOMAIN/g" /etc/caddy/Caddyfile | sed "s/__DAV_DOMAIN__/$DAV_DOMAIN/g" > /etc/caddy/Caddyfile-live
 
 chown -R "$PUID:$PGID" /data /config
 

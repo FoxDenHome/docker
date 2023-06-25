@@ -8,6 +8,7 @@ services:
     - 443:443
     environment:
       NAS_WEB_DOMAIN: nas-ro.foxden.network
+      DAV_DOMAIN: dav.doridian.net
   plex:
     environment:
       PLEX_GID: 1003
