@@ -2,19 +2,10 @@ services:
   kiwix:
     volumes:
       - /mnt/ztank/kiwix:/data
-  router:
-    build: _overrides/router
-    restart: always
-    init: true
+  web:
     ports:
     - 80:80
     - 443:443
-    links:
-    - web:web
-    - s3:s3
-    extra_hosts:
-    - host.docker.internal:host-gateway
-  web:
     environment:
       NAS_WEB_DOMAIN: nas-ro.foxden.network
   plex:
@@ -42,14 +33,3 @@ services:
       PGID: 1003
     volumes:
       - /mnt/local/usenet:/downloads
-  s3:
-    environment:
-      MINIO_BROWSER_REDIRECT_URL: https://console.s3.doridian.net
-      MINIO_SERVER_URL: https://s3.doridian.net
-    hostname: s3.doridian.net
-    volumes:
-      - /mnt/ztank/s3:/data
-  s3-web:
-    build:
-      args:
-        S3_BASE: s3.doridian.net

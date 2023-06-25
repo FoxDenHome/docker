@@ -1,4 +1,6 @@
 {
+	order webdav before file_server
+
 	servers {
 		listener_wrappers {
 			proxy_protocol {
@@ -18,5 +20,15 @@ __NAS_WEB_DOMAIN__ {
 
 	forward_auth http://127.0.0.1:1042 {
 		uri /
+	}
+}
+
+__DAV_DOMAIN__ {
+	basicauth * {
+		import import/webdav.auth
+	}
+
+	webdav * {
+		root /mnt/dav/{http.auth.user.id}
 	}
 }

@@ -6,6 +6,7 @@ services:
       - /mnt/zhdd/nas:/mnt/nas:ro
       - caddy_data:/data
       - caddy_config:/config
+      - caddy_import:/etc/caddy/import
     extra_hosts:
       - host.docker.internal:host-gateway
     healthcheck:
@@ -16,3 +17,4 @@ services:
 volumes:
   caddy_data: {}
   caddy_config: {}
+  caddy_import: {}
