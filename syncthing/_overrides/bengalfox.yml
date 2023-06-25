@@ -6,7 +6,7 @@ services:
     volumes:
       - /mnt/zhdd/dav:/mnt/dav
     networks:
-      vlan3:
+      vlan2:
         priority: 100
-        ipv4_address: 10.3.10.8
+        ipv4_address: 10.2.11.15
     mac_address: 6c:de:77:10:02:aa
