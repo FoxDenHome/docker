@@ -2,3 +2,6 @@ services:
   mktxp:
     build: mktxp
     restart: always
+    environment:
+      MTIK_USERNAME: ${MTIK_USERNAME}
+      MTIK_PASSWORD: ${MTIK_PASSWORD}
