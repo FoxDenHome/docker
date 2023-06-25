@@ -9,6 +9,8 @@ services:
     environment:
       NAS_WEB_DOMAIN: nas-ro.foxden.network
       DAV_DOMAIN: dav.doridian.net
+    volumes:
+      - /mnt/ztank/dav:/mnt/dav
   plex:
     environment:
       PLEX_GID: 1003
