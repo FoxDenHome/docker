@@ -1,7 +1,6 @@
 FROM ghcr.io/akpw/mktxp:latest
 
 USER root
-RUN apk add --no-cache envsubst
 RUN chown -R mktxp:mktxp /home/mktxp
 USER mktxp
 

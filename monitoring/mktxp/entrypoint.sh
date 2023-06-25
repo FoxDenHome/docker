@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
 
-envsubst < /home/mktxp/mktxp/mktxp.conf.tpl > /home/mktxp/mktxp/mktxp.conf
+cat /home/mktxp/mktxp/mktxp.conf.tpl | sed "s/__MTIK_USERNAME__/${MTIK_USERNAME}/g" | sed "s/__MTIK_PASSWORD__/${MTIK_PASSWORD}/g" > /home/mktxp/mktxp/mktxp.conf
 
 exec /usr/local/bin/mktxp export
