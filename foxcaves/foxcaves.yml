@@ -1,5 +1,5 @@
 services:
-  site:
+  foxcaves:
     image: ghcr.io/foxcaves/foxcaves/foxcaves:latest
     restart: always
     sysctls:
