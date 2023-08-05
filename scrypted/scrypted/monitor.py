@@ -1,0 +1,103 @@
+#!/usr/bin/env python3
+
+from subprocess import Popen, PIPE
+from threading import Thread
+from queue import Queue
+from sys import argv, stdout, stderr
+from time import sleep
+from signal import signal, SIGTERM, SIGINT
+from datetime import datetime, timedelta
+
+ERROR_TIMEOUT = timedelta(minutes=30)
+ERROR_THRESHOLD = 10
+
+class AsynchronousFileReader(Thread):
+    def __init__(self, fd):
+        assert callable(fd.readline)
+        Thread.__init__(self, daemon=True)
+        self._fd = fd
+        self.queue = Queue()
+
+    def run(self):
+        for line in iter(self._fd.readline, ""):
+            self.queue.put(line)
+
+    def eof(self):
+        return not self.is_alive() and self.queue.empty()
+
+class ScryptedMonitor:
+    errors: list[datetime]
+
+    def __init__(self, args):
+        self.args = args
+        self.errors = []
+        signal(SIGTERM, self.sighandler)
+        signal(SIGINT, self.sighandler)
+
+    def sighandler(self, _, __):
+        self.stop()
+
+    def stop(self):
+        if self.process is not None:
+            self.process.send_signal(SIGTERM)
+
+    def wait(self):
+        if self.process is not None:
+            self.process.wait()
+
+    def run(self):
+        self.process = Popen(self.args, stdin=PIPE,
+                             stdout=PIPE, stderr=PIPE, encoding="utf-8")
+
+        stdout_reader = AsynchronousFileReader(self.process.stdout)
+        stdout_reader.start()
+        stderr_reader = AsynchronousFileReader(self.process.stderr)
+        stderr_reader.start()
+
+        while not stdout_reader.eof() or not stderr_reader.eof():
+            while not stdout_reader.queue.empty():
+                line = stdout_reader.queue.get()
+                self.handle_line(line, stdout)
+
+            while not stderr_reader.queue.empty():
+                line = stderr_reader.queue.get()
+                self.handle_line(line, stderr)
+
+            sleep(.1)
+
+        self.process.stdout.close()
+        self.process.stderr.close()
+        self.process.stdin.close()
+
+        stdout_reader.join()
+        stderr_reader.join()
+
+        self.process.wait()
+        self.process = None
+
+    def append_error(self):
+        now = datetime.now()
+        old_errors = self.errors
+        new_errors = [now]
+        for err in old_errors:
+            if now - err <= ERROR_TIMEOUT:
+                new_errors.append(err)
+        self.errors = new_errors
+
+    def handle_line(self, line, stream):
+        stream.write(line)
+        stream.flush()
+
+        if "The image snapshot handler for the given accessory is slow to respond!" in line:
+            self.append_error()
+
+        if len(self.errors) > ERROR_THRESHOLD:
+            self.stop()
+
+
+def main():
+    scrypted =  ScryptedMonitor(argv[1:])
+    scrypted.run()
+
+if __name__ == "__main__":
+    main()
