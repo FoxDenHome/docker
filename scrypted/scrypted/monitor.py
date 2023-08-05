@@ -96,6 +96,9 @@ class ScryptedMonitor:
 
 
 def main():
+    print("ARGV")
+    print(argv)
+    print("ARGV")
     scrypted =  ScryptedMonitor(argv[1:])
     scrypted.run()
 
