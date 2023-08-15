@@ -11,6 +11,11 @@ from datetime import datetime, timedelta
 ERROR_TIMEOUT = timedelta(minutes=30)
 ERROR_THRESHOLD = 10
 
+ERROR_MESSAGES = [
+    "The image snapshot handler for the given accessory didn't respond at all!",
+    "The image snapshot handler for the given accessory is slow to respond!",
+]
+
 class AsynchronousFileReader(Thread):
     def __init__(self, fd):
         assert callable(fd.readline)
@@ -88,17 +93,16 @@ class ScryptedMonitor:
         stream.write(line)
         stream.flush()
 
-        if "The image snapshot handler for the given accessory is slow to respond!" in line:
-            self.append_error()
+        for msg in ERROR_MESSAGES:
+            if msg in line:
+                self.append_error()
+                break
 
         if len(self.errors) > ERROR_THRESHOLD:
             self.stop()
 
 
 def main():
-    print("ARGV")
-    print(argv)
-    print("ARGV")
     scrypted =  ScryptedMonitor(argv[1:])
     scrypted.run()
 
