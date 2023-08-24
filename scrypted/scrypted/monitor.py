@@ -46,6 +46,7 @@ class ScryptedMonitor:
         self.stop()
 
     def stop(self):
+        log("Stop triggered!")
         if self.process is not None:
             self.process.send_signal(SIGTERM)
 
@@ -62,6 +63,8 @@ class ScryptedMonitor:
         stderr_reader = AsynchronousFileReader(self.process.stderr)
         stderr_reader.start()
 
+        log("System initialized, starting stderr/stdout loops!")
+
         while not stdout_reader.eof() or not stderr_reader.eof():
             while not stdout_reader.queue.empty():
                 line = stdout_reader.queue.get()
@@ -73,6 +76,8 @@ class ScryptedMonitor:
 
             sleep(.1)
 
+        log("System shutdown initiated, waiting for process to exit...")
+
         self.process.stdout.close()
         self.process.stderr.close()
         self.process.stdin.close()
@@ -82,6 +87,8 @@ class ScryptedMonitor:
 
         self.process.wait()
         self.process = None
+
+        log("System shutdown complete!")
 
     def append_error(self):
         now = datetime.now()
