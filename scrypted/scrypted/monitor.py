@@ -9,12 +9,15 @@ from signal import signal, SIGTERM, SIGINT
 from datetime import datetime, timedelta
 
 ERROR_TIMEOUT = timedelta(minutes=30)
-ERROR_THRESHOLD = 10
+ERROR_THRESHOLD = 5
 
 ERROR_MESSAGES = [
     "The image snapshot handler for the given accessory didn't respond at all!",
     "The image snapshot handler for the given accessory is slow to respond!",
 ]
+
+def log(s):
+    print(f"[MONITOR] {s}", file=stderr, flush=True)
 
 class AsynchronousFileReader(Thread):
     def __init__(self, fd):
@@ -85,9 +88,10 @@ class ScryptedMonitor:
         old_errors = self.errors
         new_errors = [now]
         for err in old_errors:
-            if now - err <= ERROR_TIMEOUT:
+            if (now - err) <= ERROR_TIMEOUT:
                 new_errors.append(err)
         self.errors = new_errors
+        log(f"Error detected, errors: {len(self.errors)}")
 
     def handle_line(self, line, stream):
         stream.write(line)
