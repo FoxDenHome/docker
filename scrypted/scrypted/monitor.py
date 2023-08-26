@@ -5,7 +5,7 @@ from threading import Thread
 from queue import Queue
 from sys import argv, stdout, stderr
 from time import sleep
-from signal import signal, SIGTERM, SIGINT
+from signal import signal, SIGTERM, SIGINT, SIGKILL
 from datetime import datetime, timedelta
 
 ERROR_TIMEOUT = timedelta(minutes=30)
@@ -45,14 +45,21 @@ class ScryptedMonitor:
     def sighandler(self, _, __):
         self.stop()
 
+    def signal(self, signal=SIGTERM):
+        if self.process is not None:
+            self.process.send_signal(signal)
+
+    def wait(self, timeout = None) -> bool:
+        if self.process is not None:
+            return self.process.wait(timeout=timeout) is not None
+        return True
+
     def stop(self):
         log("Stop triggered!")
-        if self.process is not None:
-            self.process.send_signal(SIGTERM)
-
-    def wait(self):
-        if self.process is not None:
-            self.process.wait()
+        self.signal()
+        if not self.wait(timeout=5):
+            self.signal(signal=SIGKILL)
+        exit(1)
 
     def run(self):
         self.process = Popen(self.args, stdin=PIPE,
@@ -110,7 +117,7 @@ class ScryptedMonitor:
                 break
 
         if len(self.errors) > ERROR_THRESHOLD:
-            self.stop()
+            self.signal()
 
 
 def main():
