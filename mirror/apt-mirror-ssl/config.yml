@@ -1,0 +1,38 @@
+defaults:
+  backends:
+    http:
+      host: 127.0.0.1
+      port: 9999
+    https:
+      host: deb.debian.org
+      port: 443
+templates:
+  archive.ubuntu.com:
+    https:
+      host: archive.ubuntu.com
+  security.ubuntu.com:
+    https:
+      host: security.ubuntu.com
+  ports.ubuntu.com:
+    https:
+      host: ports.ubuntu.com
+  deb.debian.org:
+    https:
+      host: deb.debian.org
+hosts:
+  archive.ubuntu.com:
+    template: archive.ubuntu.com
+  _.archive.ubuntu.com:
+    template: archive.ubuntu.com
+  security.ubuntu.com:
+    template: security.ubuntu.com
+  _.security.ubuntu.com:
+    template: security.ubuntu.com
+  ports.ubuntu.com:
+    template: ports.ubuntu.com
+  _.ports.ubuntu.com:
+    template: ports.ubuntu.com
+  deb.debian.org:
+    template: deb.debian.org
+  _.deb.debian.org:
+    template: deb.debian.org
