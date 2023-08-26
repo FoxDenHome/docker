@@ -2,27 +2,31 @@ defaults:
   backends:
     http:
       host: 127.0.0.1
-      port: 9999
+      port: 9998
     https:
-      host: deb.debian.org
-      port: 443
+      host: 127.0.0.1
+      port: 9999
 templates:
   archive.ubuntu.com:
     https:
       host: archive.ubuntu.com
       host_passthrough: true
+      port: 443
   security.ubuntu.com:
     https:
       host: security.ubuntu.com
       host_passthrough: true
+      port: 443
   ports.ubuntu.com:
     https:
       host: ports.ubuntu.com
       host_passthrough: true
+      port: 443
   deb.debian.org:
     https:
       host: deb.debian.org
       host_passthrough: true
+      port: 443
 hosts:
   archive.ubuntu.com:
     template: archive.ubuntu.com
