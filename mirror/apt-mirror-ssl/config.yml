@@ -10,15 +10,19 @@ templates:
   archive.ubuntu.com:
     https:
       host: archive.ubuntu.com
+      host_passthrough: true
   security.ubuntu.com:
     https:
       host: security.ubuntu.com
+      host_passthrough: true
   ports.ubuntu.com:
     https:
       host: ports.ubuntu.com
+      host_passthrough: true
   deb.debian.org:
     https:
       host: deb.debian.org
+      host_passthrough: true
 hosts:
   archive.ubuntu.com:
     template: archive.ubuntu.com
