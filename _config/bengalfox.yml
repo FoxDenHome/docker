@@ -8,6 +8,7 @@ roles:
 - netfix
 - superfan
 - syncthing
+- minecraft
 network:
   driver: sriov
   pvid: 2
