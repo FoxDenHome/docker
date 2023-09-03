@@ -14,7 +14,4 @@ services:
         ipv4_address: 10.3.10.8
     mac_address: 36:16:0c:c9:e8:b0
     volumes:
-      - data:/mnt/zssd/minecraft
-
-volumes:
-  data: {}
+      - /mnt/zssd/minecraft:/data
