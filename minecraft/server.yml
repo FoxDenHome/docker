@@ -1,6 +1,6 @@
 services:
   server:
-    image: ghcr.io/foxbukkit/foxbukkit-docker/server:latest
+    image: ghcr.io/foxbukkit/packages/server:latest
     restart: always
     environment:
       MAX_MEMORY: 16G
@@ -12,4 +12,4 @@ services:
         ipv4_address: 10.3.10.8
     mac_address: 36:16:0c:c9:e8:b0
     volumes:
-      - /mnt/zssd/minecraft:/data
+      - /mnt/zssd/docker/minecraft:/data
