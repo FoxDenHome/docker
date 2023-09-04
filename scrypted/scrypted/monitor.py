@@ -117,7 +117,7 @@ class ScryptedMonitor:
                 break
 
         if len(self.errors) > ERROR_THRESHOLD:
-            self.signal()
+            self.stop()
 
 
 def main():
