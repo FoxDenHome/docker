@@ -5,6 +5,7 @@ services:
     environment:
       MAX_MEMORY: 16G
       TZ: America/Los_Angeles
+      MAVEN_GITHUB_TOKEN: ${MAVEN_GITHUB_TOKEN}
     networks:
       vlan3:
         priority: 100
