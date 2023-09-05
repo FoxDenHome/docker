@@ -4,7 +4,6 @@ services:
       - /mnt/ztank/kiwix:/data
   web:
     ports:
-    - 80:80
     - 443:443
     environment:
       NAS_WEB_DOMAIN: nas-ro.foxden.network
