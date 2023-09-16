@@ -11,5 +11,16 @@ services:
       interval: 60s
       timeout: 10s
 
+# Major upgrade procedure:
+# $ docker exec -it foxcaves_postgres_1 pg_dumpall -U postgres > /mnt/zssd/foxcaves-upgrade.sql
+# Edit the image reference, upgrade the container
+# $ docker stop foxcaves_foxcaves_1 foxcaves_postgres_1
+# $ rm -rf /var/lib/docker/362144.362144/volumes/foxcaves_postgres/_data/*
+# $ docker start foxcaves_postgres_1
+# $ cat /mnt/zssd/foxcaves-upgrade.sql | docker exec -i foxcaves_postgres_1 psql -U postgres
+# $ docker start foxcaves_foxcaves_1
+# Verify everything works
+# $ rm -f /mnt/zssd/foxcaves-upgrade.sql
+
 volumes:
   postgres: {}
