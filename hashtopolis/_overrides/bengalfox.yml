@@ -3,6 +3,8 @@ services:
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
     networks:
+      default:
+        priority: 1
       vlan2:
         priority: 100
         ipv4_address: 10.2.11.17
