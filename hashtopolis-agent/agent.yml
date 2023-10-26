@@ -4,5 +4,5 @@ services:
     restart: always
     environment:
       BASE_URL: https://htpl.foxden.network
-      KEY_TYPE: voucher
-      KEY_VALUE: ${HASHTOPOLIS_VOUCHER}
+      KEY_TYPE: apikey
+      KEY_VALUE: ${HASHTOPOLIS_KEY}
