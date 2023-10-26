@@ -9,7 +9,7 @@ services:
         priority: 100
         ipv4_address: 10.2.11.17
     mac_address: f2:6c:78:d6:ee:e6
-  backend:
+  fitcrack:
     volumes:
       - "/mnt/zssd/fitcrack/mysql:/var/lib/mysql"
       - "/mnt/zhdd/fitcrack/collections:/usr/share/collections"
