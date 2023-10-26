@@ -30,7 +30,7 @@ services:
         - BOINC_PROTO=https
         - BOINC_PORT=80
         - SSL_BOINCn
-        - BOINC_URL=${BOINC_PROTO}://${BOINC_HOST}
+        - BOINC_URL=https://ftcr.foxden.network
         - BOINC_USER=boincadm
         - BOINC_GROUP=boincadm
         - BOINC_HOME=/home/boincadm
