@@ -9,7 +9,8 @@ roles:
 - superfan
 - syncthing
 - minecraft
-- fitcrack
+- hashtopolis
+- hashtopolis-agent
 network:
   driver: sriov
   pvid: 2
