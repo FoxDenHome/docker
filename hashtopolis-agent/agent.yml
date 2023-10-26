@@ -13,3 +13,8 @@ services:
       BASE_URL: https://htpl.foxden.network
       KEY_TYPE: apikey
       KEY_VALUE: ${HASHTOPOLIS_KEY}
+    volumes:
+    - agent:/opt/agent
+
+volumes:
+  agent: {}
