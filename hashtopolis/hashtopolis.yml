@@ -1,0 +1,22 @@
+services:
+  backend:
+    image: hashtopolis/backend:latest
+    restart: always
+    environment:
+      HASHTOPOLIS_DB_USER: hashtopolis
+      HASHTOPOLIS_DB_PASS: $MYSQL_PASSWORD
+      HASHTOPOLIS_DB_HOST: mysql
+      HASHTOPOLIS_DB_DATABASE: hashtopolis
+      HASHTOPOLIS_ADMIN_USER: doridian
+      HASHTOPOLIS_ADMIN_PASSWORD: $HASHTOPOLIS_ADMIN_PASSWORD
+      HASHTOPOLIS_APIV2_ENABLE: ""
+    links:
+      - mysql:mysql
+  frontend:
+    container_name: hashtopolis-frontend
+    image: hashtopolis/frontend:latest
+    environment:
+      HASHTOPOLIS_BACKEND_URL: https://htpl.foxden.network
+    restart: always
+    links:
+      - backend:backend

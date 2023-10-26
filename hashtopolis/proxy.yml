@@ -1,0 +1,18 @@
+services:
+  proxy:
+    build: proxy
+    restart: always
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    links:
+      - frontend:frontend
+      - backend:backend
+    healthcheck:
+      test: 'nc -z "$${HOSTNAME}" 443 || exit 1'
+      interval: 60s
+      timeout: 10s
+
+volumes:
+  caddy_data: {}
+  caddy_config: {}

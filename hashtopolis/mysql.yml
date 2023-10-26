@@ -1,0 +1,14 @@
+services:
+  mysql:
+    image: mysql:8.0
+    restart: always
+    volumes:
+      - mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: hashtopolis
+      MYSQL_USER: hashtopolis
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
+
+volumes:
+  mysql: {}

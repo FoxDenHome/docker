@@ -9,6 +9,7 @@ roles:
 - superfan
 - syncthing
 - minecraft
+- hashtopolis
 network:
   driver: sriov
   pvid: 2
