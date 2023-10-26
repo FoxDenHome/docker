@@ -9,4 +9,4 @@ services:
     mac_address: f2:6c:78:d6:ee:e6
   backend:
     volumes:
-      - hashtopolis:/mnt/zhdd/hashtopolis
+      - /mnt/zhdd/hashtopolis:/usr/local/share/hashtopolis
