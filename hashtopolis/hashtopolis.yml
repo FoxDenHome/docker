@@ -2,6 +2,7 @@ services:
   backend:
     image: hashtopolis/backend:latest
     restart: always
+    init: true
     environment:
       HASHTOPOLIS_DB_USER: hashtopolis
       HASHTOPOLIS_DB_PASS: $MYSQL_PASSWORD
@@ -17,5 +18,6 @@ services:
     environment:
       HASHTOPOLIS_BACKEND_URL: https://htpl.foxden.network
     restart: always
+    init: true
     links:
       - backend:backend
