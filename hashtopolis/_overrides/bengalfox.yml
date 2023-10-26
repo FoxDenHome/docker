@@ -12,3 +12,4 @@ services:
   backend:
     volumes:
       - /mnt/zhdd/hashtopolis:/usr/local/share/hashtopolis
+      - /mnt/zhdd/hashtopolis/bin/hashtopolis-mod.zip:/var/www/html/src/bin/hashtopolis-mod.zip

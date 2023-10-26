@@ -13,7 +13,6 @@ services:
     links:
       - mysql:mysql
   frontend:
-    container_name: hashtopolis-frontend
     image: hashtopolis/frontend:latest
     environment:
       HASHTOPOLIS_BACKEND_URL: https://htpl.foxden.network
