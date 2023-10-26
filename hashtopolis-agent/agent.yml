@@ -1,0 +1,8 @@
+services:
+  agent:
+    image: ghcr.io/doridian/hashtopolis-docker:cuda
+    restart: always
+    environment:
+      BASE_URL: https://htpl.foxden.network
+      KEY_TYPE: voucher
+      KEY_VALUE: ${HASHTOPOLIS_VOUCHER}

@@ -10,6 +10,7 @@ roles:
 - syncthing
 - minecraft
 - hashtopolis
+- hashtopolis-agent
 network:
   driver: sriov
   pvid: 2
