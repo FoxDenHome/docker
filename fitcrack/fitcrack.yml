@@ -25,6 +25,8 @@ services:
 
         - DYNAMIC_BACKEND_URL=n
 
+        - FITCRACK_SERVER_HOST=ftcr.foxden.network
+
         # BOINC server environment variables
         - BOINC_HOST=ftcr.foxden.network
         - BOINC_PROTO=https
