@@ -1,5 +1,12 @@
 services:
   agent:
+    deploy:
+     resources:
+       reservations:
+         devices:
+           - driver: nvidia
+             count: all
+             capabilities: [gpu]
     image: ghcr.io/doridian/hashtopolis-docker:cuda
     restart: always
     environment:
