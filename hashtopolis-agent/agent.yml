@@ -7,7 +7,7 @@ services:
            - driver: nvidia
              count: all
              capabilities: [gpu]
-    image: ghcr.io/doridian/hashtopolis-docker:cuda
+    image: ghcr.io/doridian/hashtopolis-docker/agent:cuda
     restart: always
     environment:
       BASE_URL: https://htpl.foxden.network
