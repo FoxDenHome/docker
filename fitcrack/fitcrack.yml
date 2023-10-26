@@ -1,7 +1,7 @@
 services:
-    fitcrack_server:
+    fitcrack:
       image: hranicky/fitcrack_server:2.4.0
-      hostname: fitcrack
+      hostname: ftcr.foxden.network
       command: ./entrypoint-fitcrack.sh
       restart: always
       environment:
