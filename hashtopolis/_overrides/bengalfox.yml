@@ -11,5 +11,5 @@ services:
     mac_address: f2:6c:78:d6:ee:e6
   backend:
     volumes:
-      - /mnt/zhdd/hashtopolis:/usr/local/share/hashtopolis
-      - /mnt/zhdd/hashtopolis/bin:/var/www/html/src/bin
+      - /mnt/zhdd/docker/hashtopolis:/usr/local/share/hashtopolis
+      - /mnt/zhdd/docker/hashtopolis/bin:/var/www/html/src/bin
