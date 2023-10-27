@@ -1,6 +1,6 @@
 FROM hranicky/fitcrack_server:2.4.0
 
-RUN apt-get -y update && apt-get -y install certbot
+RUN apt-get -y update && apt-get -y install certbot cron
 
 COPY entrypoint.sh /custom-entrypoint.sh
 
