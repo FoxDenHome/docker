@@ -59,10 +59,12 @@ services:
         - "apache-conf:/etc/init.d"
         - "webadmin-be:/var/www/html/fitcrackAPI"
         - "webadmin-fe:/var/www/html/fitcrackFE"
+        - "ssl:/srv/certificates"
 
 volumes:
-  apache:
-  apache-conf:
-  webadmin-be:
-  webadmin-fe:
+  ssl: {}
+  apache: {}
+  apache-conf: {}
+  webadmin-be: {}
+  webadmin-fe: {}
 
