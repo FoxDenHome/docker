@@ -1,8 +1,8 @@
 services:
     fitcrack:
-      image: hranicky/fitcrack_server:2.4.0
+      build: fitcrack
       hostname: ftcr.foxden.network
-      command: ./entrypoint-fitcrack.sh
+      command: /custom-entrypoint.sh
       restart: always
       environment:
         - USER=root
@@ -55,16 +55,7 @@ services:
         - APACHE_SERVICE=apache2                          # Apach servic name
         - PYTHONUNBUFFERED=1                              # Backend python buffering
       volumes:
-        - "apache:/etc/apache2"
-        - "apache-conf:/etc/init.d"
-        - "webadmin-be:/var/www/html/fitcrackAPI"
-        - "webadmin-fe:/var/www/html/fitcrackFE"
         - "ssl:/srv/certificates"
 
 volumes:
   ssl: {}
-  apache: {}
-  apache-conf: {}
-  webadmin-be: {}
-  webadmin-fe: {}
-
