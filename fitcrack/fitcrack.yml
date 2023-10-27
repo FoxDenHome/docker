@@ -55,7 +55,7 @@ services:
         - APACHE_SERVICE=apache2                          # Apach servic name
         - PYTHONUNBUFFERED=1                              # Backend python buffering
       volumes:
-        - "ssl:/srv/certificates"
+        - "ssl:/etc/letsencrypt"
 
 volumes:
   ssl: {}
