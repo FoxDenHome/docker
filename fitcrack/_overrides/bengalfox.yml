@@ -1,0 +1,17 @@
+services:
+  proxy:
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+    networks:
+      default:
+        priority: 1
+      vlan2:
+        priority: 100
+        ipv4_address: 10.2.11.17
+    mac_address: f2:6c:78:d6:ee:e6
+  fitcrack:
+    volumes:
+      - "/mnt/zssd/fitcrack/mysql:/var/lib/mysql"
+      - "/mnt/zhdd/fitcrack/collections:/usr/share/collections"
+      - "/mnt/zssd/fitcrack/boincadm:/home/boincadm"
+      - "/mnt/zssd/fitcrack/logs:/var/log/fitcrack"
