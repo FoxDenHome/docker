@@ -55,7 +55,15 @@ services:
         - APACHE_SERVICE=apache2                          # Apach servic name
         - PYTHONUNBUFFERED=1                              # Backend python buffering
       volumes:
+        - "apache:/etc/apache2"
+        - "apache-conf:/etc/init.d"
+        - "webadmin-be:/var/www/html/fitcrackAPI"
+        - "webadmin-fe:/var/www/html/fitcrackFE"
         - "ssl:/etc/letsencrypt"
 
 volumes:
+  apache: {}
+  apache-conf: {}
+  webadmin-be: {}
+  webadmin-fe: {}
   ssl: {}
