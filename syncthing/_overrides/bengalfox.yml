@@ -13,5 +13,6 @@ services:
         ipv4_address: 10.2.11.15
     mac_address: 6c:de:77:10:02:aa
   webdav:
+    network_mode: service:syncthing
     environment:
       SYNCTHING_DOMAIN: bengalfox-syncthing.foxden.network

@@ -13,7 +13,6 @@ services:
     build: webdav
     restart: always
     init: true
-    network_mode: service:syncthing
     environment:
       WEBDAV_PASSWORD_DORIDIAN: ${WEBDAV_PASSWORD_DORIDIAN}
     volumes:
