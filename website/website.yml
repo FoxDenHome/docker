@@ -7,9 +7,9 @@ services:
       interval: 60s
       timeout: 10s
     volumes:
-    - website_config:/config
-    - website_data:/data
+    - config:/config
+    - data:/data
 
 volumes:
-  website_config: {}
-  website_data: {}
+  config: {}
+  data: {}
