@@ -9,6 +9,6 @@ services:
       - 10.99.10.2:8384:8384
       - 22000:22000
       - 22000:22000/udp
-  wendav:
+  webdav:
     environment:
       SYNCTHING_DOMAIN: syncthing.doridian.net
