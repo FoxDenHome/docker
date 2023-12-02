@@ -16,6 +16,3 @@ services:
 
 volumes:
   data: {}
-  webdav_config: {}
-  webdav_data: {}
-
