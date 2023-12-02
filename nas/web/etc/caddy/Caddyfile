@@ -1,11 +1,17 @@
 {
-	order webdav before file_server
-
 	servers {
 		listener_wrappers {
 			proxy_protocol {
 				timeout 5s
-				allow 10.99.10.1/32
+				allow 10.1.0.0/24
+				allow 10.2.0.0/24
+				allow 10.3.0.0/24
+				allow 10.4.0.0/24
+				allow 10.5.0.0/24
+				allow 10.6.0.0/24
+				allow 10.7.0.0/24
+				allow 10.8.0.0/24
+				allow 10.9.0.0/24
 			}
 			tls
 		}
@@ -20,15 +26,5 @@ __NAS_WEB_DOMAIN__ {
 
 	forward_auth http://127.0.0.1:1042 {
 		uri /
-	}
-}
-
-__DAV_DOMAIN__ {
-	basicauth * {
-		import import/webdav.auth
-	}
-
-	webdav * {
-		root /mnt/dav/{http.auth.user.id}
 	}
 }

@@ -1,12 +1,6 @@
-FROM caddy:builder AS builder
-
-RUN xcaddy build \
-    --with github.com/mholt/caddy-webdav
-
 FROM caddy:latest
 
 USER root
-COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 
 ENV PUID=10000
 ENV PGID=10000
