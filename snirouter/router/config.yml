@@ -1,0 +1,34 @@
+defaults:
+  backends:
+    http:
+      host: host.docker.internal
+      port: 80
+    https:
+      host: host.docker.internal
+      port: 443
+templates:
+  nas:
+    http:
+      host: host.docker.internal
+      port: 180
+    https:
+      host: host.docker.internal
+      port: 543
+  syncthing:
+    http:
+      host: host.docker.internal
+      port: 181
+    https:
+      host: host.docker.internal
+      port: 544
+
+hosts:
+  icefox.doridian.net:
+    template: nas
+  nas-ro.doridian.net:
+    template: nas
+  nas-ro.foxden.network:
+    template: nas
+
+  syncthing.doridian.net:
+    template: syncthing

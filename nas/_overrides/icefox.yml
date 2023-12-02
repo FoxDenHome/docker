@@ -4,7 +4,8 @@ services:
       - /mnt/ztank/kiwix:/data
   web:
     ports:
-    - 443:443
+    - 180:80
+    - 543:443
     environment:
       NAS_WEB_DOMAIN: nas-ro.foxden.network
   plex:

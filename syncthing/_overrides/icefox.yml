@@ -12,3 +12,6 @@ services:
   webdav:
     environment:
       SYNCTHING_DOMAIN: syncthing.doridian.net
+    ports:
+    - 181:80
+    - 544:443

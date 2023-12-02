@@ -3,6 +3,7 @@ roles:
 - gitbackup
 - nas
 - syncthing
+- snirouter
 network:
   driver: macvlan
   device: ''
