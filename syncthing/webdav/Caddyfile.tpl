@@ -2,7 +2,7 @@
 	order webdav before file_server
 }
 
-syncthing.foxden.network {
+__SYNCTHING_DOMAIN__ {
 	root * /syncthing
 	file_server {
 		browse

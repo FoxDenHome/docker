@@ -7,4 +7,7 @@ FROM caddy:latest
 
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 
-COPY Caddyfile /etc/caddy/Caddyfile
+COPY Caddyfile.tpl /etc/caddy/Caddyfile.tpl
+
+COPY startup.sh /startup.sh
+ENTRYPOINT [ "/startup.sh" ]
