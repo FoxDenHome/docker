@@ -28,3 +28,13 @@ __NAS_WEB_DOMAIN__ {
 		uri /
 	}
 }
+
+__DAV_DOMAIN__ {
+	basicauth * {
+		import import/webdav.auth
+	}
+
+	webdav * {
+		root /mnt/dav/{http.auth.user.id}
+	}
+}
