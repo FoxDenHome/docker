@@ -1,4 +1,6 @@
 {
+	order webdav before file_server
+
 	servers {
 		listener_wrappers {
 			proxy_protocol {
