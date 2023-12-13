@@ -6,6 +6,7 @@ services:
       TZ: America/Los_Angeles
     volumes:
       - jellyfin_config:/config
+      - jellyfin_cache:/cache
       - /mnt/zhdd/nas:/media
   jellyfin-web:
     build: jellyfin-web
@@ -23,3 +24,4 @@ volumes:
   jellyfin_config: {}
   jellyfin_web_data: {}
   jellyfin_web_config: {}
+  jellyfin_cache: {}
