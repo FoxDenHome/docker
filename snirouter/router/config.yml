@@ -21,12 +21,22 @@ templates:
     https:
       host: host.docker.internal
       port: 544
+  jellyfin:
+    http:
+      host: host.docker.internal
+      port: 182
+    https:
+      host: host.docker.internal
+      port: 545
 
 hosts:
   icefox.doridian.net:
     template: nas
   nas-ro.foxden.network:
     template: nas
+
+  jellyfin.foxden.network:
+    template: jellyfin
 
   syncthing.doridian.net:
     template: syncthing
