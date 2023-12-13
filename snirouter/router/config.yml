@@ -35,7 +35,7 @@ hosts:
   nas-ro.foxden.network:
     template: nas
 
-  jellyfin.foxden.network:
+  jellyfin.doridian.net:
     template: jellyfin
 
   syncthing.doridian.net:
