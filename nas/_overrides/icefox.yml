@@ -40,9 +40,9 @@ services:
     user: 10001:1003
     environment:
       - JELLYFIN_PublishedServerUrl=https://jellyfin.doridian.net
-  jellyfin-web:
-    environment:
-      - JELLYFIN_DOMAIN=jellyfin.doridian.net
     ports:
     - 182:80
     - 545:443
+  jellyfin-web:
+    environment:
+      - JELLYFIN_DOMAIN=jellyfin.doridian.net
