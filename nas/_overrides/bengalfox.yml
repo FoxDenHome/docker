@@ -76,6 +76,7 @@ services:
               capabilities: [gpu]
     environment:
       - JELLYFIN_PublishedServerUrl=https://jellyfin.foxden.network
+      - JELLYFIN_DOMAIN=jellyfin.foxden.network
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
     networks:
