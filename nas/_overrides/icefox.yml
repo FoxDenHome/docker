@@ -36,3 +36,10 @@ services:
       PGID: 1003
     volumes:
       - /mnt/local/usenet:/downloads
+  jellyfin:
+    user: 10001:1003
+    environment:
+      - JELLYFIN_PublishedServerUrl=https://jellyfin.doridian.net
+  jellyfin-web:
+    environment:
+      - JELLYFIN_DOMAIN=jellyfin.doridian.net
