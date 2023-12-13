@@ -38,6 +38,7 @@ services:
       - /mnt/local/usenet:/downloads
   jellyfin:
     user: 10001:1003
+    hostname: jellyfin.doridian.net
     environment:
       - JELLYFIN_PublishedServerUrl=https://jellyfin.doridian.net
     ports:

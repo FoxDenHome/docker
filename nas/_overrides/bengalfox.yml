@@ -74,6 +74,7 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
+    hostname: jellyfin.foxden.network
     environment:
       - JELLYFIN_PublishedServerUrl=https://jellyfin.foxden.network
     sysctls:
