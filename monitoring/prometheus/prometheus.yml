@@ -34,3 +34,10 @@ scrape_configs:
   - job_name: mktxp
     static_configs:
       - targets: ['mktxp:49090']
+
+  - job_name: foxdns
+    static_configs:
+      - targets: ['router.foxden.network:5301', 'router-backup.foxden.network:5301']
+  - job_name: foxdns-internal
+    static_configs:
+      - targets: ['router.foxden.network:5302', 'router-backup.foxden.network:5302']
