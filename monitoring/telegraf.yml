@@ -17,7 +17,6 @@ services:
       - ntp.foxden.network:10.6.1.2
       - router.foxden.network:10.6.1.1
       - router-backup.foxden.network:10.6.1.3
-      - redfox.doridian.net:10.99.10.1
       - icefox.doridian.net:10.99.10.2
     healthcheck:
       test: 'curl -f -s "http://$${HOSTNAME}:9273/metrics" | grep -q "^snmp_" || exit 1'
