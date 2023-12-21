@@ -29,12 +29,12 @@ __NAS_WEB_DOMAIN__ {
 	forward_auth http://127.0.0.1:1042 {
 		uri /
 	}
-}
 
-__NAS_WEB_DOMAIN__/guest {
-	root * /mnt/nas/guest
-	file_server {
-		browse
+	route /guest {
+		root * /mnt/nas/guest
+		file_server {
+			browse
+		}
 	}
 }
 
