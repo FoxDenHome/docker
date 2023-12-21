@@ -31,6 +31,13 @@ __NAS_WEB_DOMAIN__ {
 	}
 }
 
+__NAS_WEB_DOMAIN__/guest {
+	root * /mnt/nas/guest
+	file_server {
+		browse
+	}
+}
+
 __DAV_DOMAIN__ {
 	basicauth * {
 		import import/webdav.auth
