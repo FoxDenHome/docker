@@ -21,21 +21,21 @@
 }
 
 __NAS_WEB_DOMAIN__ {
-	route /guest {
+	route /guest/* {
 		root * /mnt/nas/guest
 		file_server {
 			browse
 		}
 	}
 
-	route / {	
+	forward_auth /* http://127.0.0.1:1042 {
+		uri /
+	}
+
+	route /* {	
 		root * /mnt/nas
 		file_server {
 			browse
-		}
-
-		forward_auth http://127.0.0.1:1042 {
-			uri /
 		}
 	}
 }
