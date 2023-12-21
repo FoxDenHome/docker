@@ -28,7 +28,7 @@ __NAS_WEB_DOMAIN__ {
 		}
 	}
 
-	route {	
+	handle {	
 		root * /mnt/nas
 		file_server {
 			browse
