@@ -23,9 +23,7 @@
 __NAS_WEB_DOMAIN__ {
 	handle /guest/* {
 		root * /mnt/nas
-		file_server {
-			browse
-		}
+		file_server
 	}
 
 	handle {	
