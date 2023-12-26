@@ -11,6 +11,7 @@ roles:
 - minecraft
 - hashtopolis
 - hashtopolis-agent
+- ollama
 network:
   driver: sriov
   pvid: 2

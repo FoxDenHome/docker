@@ -1,0 +1,5 @@
+services:
+  ollama:
+    image: ghcr.io/ivanfioravanti/chatbot-ollama:main
+    restart: always
+    init: true
