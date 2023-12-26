@@ -1,5 +1,11 @@
 services:
   ollama:
-    image: ghcr.io/ivanfioravanti/chatbot-ollama:main
+    image: ollama/ollama
     restart: always
     init: true
+  web:
+    image: ghcr.io/ivanfioravanti/chatbot-ollama:main
+    links:
+      - ollama:ollama
+    environment:
+      OLLAMA_HOST: "http://ollama:11434"
