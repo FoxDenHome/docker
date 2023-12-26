@@ -9,3 +9,4 @@ services:
       - ollama:ollama
     environment:
       OLLAMA_HOST: "http://ollama:11434"
+      DEFAULT_MODEL: llama2-uncensored
