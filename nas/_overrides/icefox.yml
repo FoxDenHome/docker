@@ -4,8 +4,8 @@ services:
       - /mnt/ztank/kiwix:/data
   web:
     ports:
-    - 107.181.226.75:80:80
-    - 107.181.226.75:443:443
+    - 107.181.226.74:80:80
+    - 107.181.226.74:443:443
     environment:
       NAS_WEB_DOMAIN: nas-ro.foxden.network
       DAV_DOMAIN: dav.doridian.net
@@ -42,8 +42,8 @@ services:
     environment:
       - JELLYFIN_PublishedServerUrl=https://jellyfin.doridian.net
     ports:
-    - 107.181.226.76:80:80
-    - 107.181.226.76:443:443
+    - 107.181.226.75:80:80
+    - 107.181.226.75:443:443
   jellyfin-web:
     environment:
       - JELLYFIN_DOMAIN=jellyfin.doridian.net

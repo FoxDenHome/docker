@@ -13,5 +13,5 @@ services:
     environment:
       SYNCTHING_DOMAIN: syncthing.doridian.net
     ports:
-    - 107.181.226.77:80:80
-    - 107.181.226.77:443:443
+    - 107.181.226.76:80:80
+    - 107.181.226.76:443:443
