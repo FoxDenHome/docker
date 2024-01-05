@@ -1,4 +1,4 @@
-FROM koush/scrypted:latest
+FROM ghcr.io/koush/scrypted:latest
 
 COPY monitor.py /monitor.py
 
