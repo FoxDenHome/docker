@@ -8,7 +8,6 @@ roles:
 - netfix
 - superfan
 - syncthing
-- minecraft
 - hashtopolis
 - hashtopolis-agent
 - ollama

@@ -7,7 +7,6 @@ roles:
 - netfix
 - scrypted
 - syncthing
-- ut2004
 - website
 network:
   driver: bridge
