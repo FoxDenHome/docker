@@ -2,7 +2,7 @@
 	order webdav before file_server
 }
 
-__SYNCTHING_DOMAIN__ {
+{$SYNCTHING_DOMAIN} {
 	root * /syncthing
 	file_server {
 		browse
