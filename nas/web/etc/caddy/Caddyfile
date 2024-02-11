@@ -20,7 +20,7 @@
 	}
 }
 
-__NAS_WEB_DOMAIN__ {
+{$NAS_WEB_DOMAIN} {
 	handle /guest/* {
 		root * /mnt/nas
 		file_server
@@ -38,7 +38,7 @@ __NAS_WEB_DOMAIN__ {
 	}
 }
 
-__DAV_DOMAIN__ {
+{$DAV_DOMAIN} {
 	basicauth * {
 		import import/webdav.auth
 	}
