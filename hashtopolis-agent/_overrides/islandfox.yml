@@ -1,0 +1,5 @@
+services:
+  agent:
+    devices:
+      - /dev/card0:/dev/card0
+      - /dev/renderD128:/dev/renderD128
