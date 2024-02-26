@@ -8,6 +8,7 @@ roles:
 - scrypted
 - syncthing
 - website
+- hashtopolis-agent
 network:
   driver: bridge
   device: ''
