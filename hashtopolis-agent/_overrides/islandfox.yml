@@ -1,5 +1,6 @@
 services:
   agent:
+    userns_mode: host
     image: ghcr.io/doridian/hashtopolis-docker/agent:rocm
     devices:
       - /dev/dri:/dev/dri
