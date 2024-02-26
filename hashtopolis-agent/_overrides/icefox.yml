@@ -1,0 +1,3 @@
+services:
+  gpu:
+    entrypoint: ["sleep", "Infinity"]

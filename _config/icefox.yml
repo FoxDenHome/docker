@@ -3,6 +3,7 @@ roles:
 - gitbackup
 - nas
 - syncthing
+- hashtopolis-agent
 network:
   driver: macvlan
   device: ''
