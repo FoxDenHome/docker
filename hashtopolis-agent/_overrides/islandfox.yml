@@ -1,5 +1,5 @@
 services:
   agent:
     devices:
-      - /dev/card0:/dev/card0
-      - /dev/renderD128:/dev/renderD128
+      - /dev/dri/card0:/dev/dri/card0
+      - /dev/dri/renderD128:/dev/dri/renderD128
