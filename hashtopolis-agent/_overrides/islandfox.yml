@@ -3,3 +3,6 @@ services:
     image: ghcr.io/doridian/hashtopolis-docker/agent:rocm
     devices:
       - /dev/dri:/dev/dri
+      - /dev/kfd:/dev/kfd
+    security_opt:
+      - seccomp:unconfined
