@@ -5,6 +5,8 @@ services:
       - /dev/dri:/dev/dri
       - /dev/kfd:/dev/kfd
     volumes:
-      - '"/sys/bus/pci/devices/0000:04:00.0":"/sys/bus/pci/devices/0000:04:00.0"'
+      - type: bind
+        source: /sys/bus/pci/devices/0000:04:00.0
+        target: /sys/bus/pci/devices/0000:04:00.0
     security_opt:
       - seccomp:unconfined
