@@ -1,6 +1,5 @@
 services:
   agent:
-    image: ghcr.io/doridian/hashtopolis-docker/agent:please-select-tag
     restart: always
     init: true
     environment:
