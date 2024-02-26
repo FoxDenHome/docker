@@ -1,5 +1,5 @@
 services:
-  agent:
+  gpu:
     restart: always
     init: true
     environment:
@@ -7,8 +7,8 @@ services:
       KEY_TYPE: apikey
       KEY_VALUE: ${HASHTOPOLIS_KEY}
     volumes:
-    - agent:/opt/agent
-  agent-cpu:
+    - agent-gpu:/opt/agent
+  cpu:
     image: ghcr.io/doridian/hashtopolis-docker/agent:cpu
     restart: always
     init: true
@@ -20,5 +20,5 @@ services:
     - agent-cpu:/opt/agent
 
 volumes:
-  agent: {}
+  agent-gpu: {}
   agent-cpu: {}
