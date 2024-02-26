@@ -1,3 +1,4 @@
 services:
   gpu:
+    image: alpine
     entrypoint: ["sleep", "Infinity"]
