@@ -1,5 +1,6 @@
 services:
   agent:
+    image: ghcr.io/doridian/hashtopolis-docker/agent:opencl
     devices:
       - /dev/dri/card0:/dev/dri/card0
       - /dev/dri/renderD128:/dev/dri/renderD128
