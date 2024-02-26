@@ -1,5 +1,5 @@
 services:
-  agent-gpu:
+  gpu:
     image: ghcr.io/doridian/hashtopolis-docker/agent:cuda-latest
     deploy:
      resources:
