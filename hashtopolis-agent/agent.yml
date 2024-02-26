@@ -8,6 +8,17 @@ services:
       KEY_VALUE: ${HASHTOPOLIS_KEY}
     volumes:
     - agent:/opt/agent
+  agent-cpu:
+    image: ghcr.io/doridian/hashtopolis-docker/agent:cpu
+    restart: always
+    init: true
+    environment:
+      BASE_URL: https://htpl.foxden.network
+      KEY_TYPE: apikey
+      KEY_VALUE: ${HASHTOPOLIS_KEY}
+    volumes:
+    - agent-cpu:/opt/agent
 
 volumes:
   agent: {}
+  agent-cpu: {}
