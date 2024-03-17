@@ -4,7 +4,7 @@ services:
     restart: always
     cap_add:
       - NET_ADMIN
-    links:
+    extra_hosts:
       - bitmagnet-postgres:bitmagnet-postgres
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
