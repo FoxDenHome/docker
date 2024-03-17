@@ -1,6 +1,8 @@
 services:
   bitmagnet:
     image: ghcr.io/bitmagnet-io/bitmagnet:latest
+    links:
+      - bitmagnet-postgres:bitmagnet-postgres
     restart: always
     network_mode: service:dldr
     environment:
