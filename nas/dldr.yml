@@ -2,6 +2,8 @@ services:
   dldr:
     build: dldr
     restart: always
+    links:
+      - bitmagnet-postgres:bitmagnet-postgres
     cap_add:
       - NET_ADMIN
     sysctls:
