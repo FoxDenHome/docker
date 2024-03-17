@@ -11,6 +11,7 @@ roles:
 - hashtopolis
 - hashtopolis-agent
 - ollama
+- bitmagnet
 network:
   driver: sriov
   pvid: 2
