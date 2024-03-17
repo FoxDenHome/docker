@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    volumes:
+      - bitmagnet_postgres_data:/var/lib/postgresql/data
+    restart: always
+    environment:
+      - TZ=America/Los_Angeles
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=bitmagnet
+      - PGUSER=postgres
+    shm_size: 1g
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready
+      start_period: 20s
+      interval: 10s
+    networks:
+      bitmagnet:
+        ipv4_address: 192.168.69.12
+
+volumes:
+  postgres_data: {}

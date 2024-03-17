@@ -1,0 +1,28 @@
+services:
+  gluetun:
+    image: qmcgaw/gluetun:latest
+    cap_add:
+      - NET_ADMIN
+    environment:
+      # Put your personal gluetun/VPN account config and credentials here:
+      # (See https://github.com/qdm12/gluetun-wiki/tree/main/setup/providers)
+      - VPN_SERVICE_PROVIDER=mullvad
+      - VPN_TYPE=wireguard
+      - WIREGUARD_PRIVATE_KEY=${WIREGUARD_PRIVATE_KEY}
+      - WIREGUARD_ADDRESSES=${WIREGUARD_ADDRESSES}
+    restart: always
+    networks:
+      bitmagnet:
+        ipv4_address: 192.168.69.11
+    extra_hosts:
+      - "bitmagnet:192.168.55.11"
+      - "postgres:192.168.55.12"
+
+networks:
+  bitmagnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.69.0/24
+          gateway: 192.168.69.1
