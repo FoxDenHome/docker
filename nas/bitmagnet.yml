@@ -1,0 +1,37 @@
+services:
+  bitmagnet:
+    image: ghcr.io/bitmagnet-io/bitmagnet:latest
+    container_name: bitmagnet
+    restart: always
+    network_mode: service:dldr
+    environment:
+      - TZ=America/Los_Angeles
+      - POSTGRES_HOST=bitmagnet-postgres
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    command:
+      - worker
+      - run
+      - --keys=http_server
+      - --keys=queue_server
+      - --keys=dht_crawler
+  bitmagnet-postgres:
+    image: postgres:16-alpine
+    container_name: bitmagnet-postgres
+    volumes:
+      - bitmagnet_postgres_data:/var/lib/postgresql/data
+    restart: always
+    environment:
+      - TZ=America/Los_Angeles
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=bitmagnet
+      - PGUSER=postgres
+    shm_size: 1g
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready
+      start_period: 20s
+      interval: 10s
+
+volumes:
+  bitmagnet_postgres_data: {}
