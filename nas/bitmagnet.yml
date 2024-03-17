@@ -1,7 +1,6 @@
 services:
   bitmagnet:
     image: ghcr.io/bitmagnet-io/bitmagnet:latest
-    container_name: bitmagnet
     restart: always
     network_mode: service:dldr
     environment:
@@ -16,7 +15,6 @@ services:
       - --keys=dht_crawler
   bitmagnet-postgres:
     image: postgres:16-alpine
-    container_name: bitmagnet-postgres
     volumes:
       - bitmagnet_postgres_data:/var/lib/postgresql/data
     restart: always
