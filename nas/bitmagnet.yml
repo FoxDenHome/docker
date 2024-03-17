@@ -3,8 +3,6 @@ services:
     image: ghcr.io/bitmagnet-io/bitmagnet:latest
     restart: always
     network_mode: service:dldr
-    extra_hosts:
-      - bitmagnet-postgres:bitmagnet-postgres
     environment:
       - TZ=America/Los_Angeles
       - POSTGRES_HOST=bitmagnet-postgres
