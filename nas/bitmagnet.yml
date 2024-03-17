@@ -2,6 +2,8 @@ services:
   bitmagnet:
     image: ghcr.io/bitmagnet-io/bitmagnet:latest
     restart: always
+    links:
+      - bitmagnet-postgres:bitmagnet-postgres
     environment:
       - TZ=America/Los_Angeles
       - POSTGRES_HOST=bitmagnet-postgres
