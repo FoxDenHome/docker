@@ -17,7 +17,7 @@ services:
       start_period: 20s
       interval: 10s
     networks:
-      default:
+      bitmagnet:
         ipv4_address: 192.168.69.12
 
 volumes:

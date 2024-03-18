@@ -80,11 +80,11 @@ class ComposeProject():
                 self.needs_default_network = True
 
             if not svc.has_dns:
-                if svc.highest_priority_network == "default":
-                    self.additional_config["services"][svc.name]["dns"] = DNS_SERVER
-                    self.needs_additional_config = True
-                elif svc.highest_priority_network[:4] == "vlan":
+                if svc.highest_priority_network[:4] == "vlan":
                     self.additional_config["services"][svc.name]["dns"] = generate_dns_for_vlan(int(svc.highest_priority_network[4:], 10))
+                    self.needs_additional_config = True
+                elif svc.highest_priority_network is not None:
+                    self.additional_config["services"][svc.name]["dns"] = DNS_SERVER
                     self.needs_additional_config = True
 
     def add_yaml(self, file):
@@ -135,7 +135,8 @@ class ComposeProject():
                     continue
 
                 self.used_networks.add(netname)
-                net_grab_physical(netname, data["mac_address"])
+                if "mac_address" in data:
+                    net_grab_physical(netname, data["mac_address"])
 
         if "network_mode" in data:
             svc.overrides_network = True
