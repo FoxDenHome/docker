@@ -12,14 +12,14 @@ services:
       - WIREGUARD_ADDRESSES=${WIREGUARD_ADDRESSES}
     restart: always
     networks:
-      bitmagnet:
+      default:
         ipv4_address: 192.168.69.11
     extra_hosts:
       - "bitmagnet:192.168.55.11"
       - "postgres:192.168.55.12"
 
 networks:
-  bitmagnet:
+  default:
     driver: bridge
     ipam:
       driver: default
