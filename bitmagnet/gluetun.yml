@@ -1,5 +1,5 @@
 networks:
-  default:
+  bitmagnet:
     ipam:
       config:
         - subnet: 192.168.69.0/24
@@ -18,7 +18,7 @@ services:
       - WIREGUARD_ADDRESSES=${WIREGUARD_ADDRESSES}
     restart: always
     networks:
-      default:
+      bitmagnet:
         ipv4_address: 192.168.69.11
     extra_hosts:
       - "bitmagnet:192.168.55.11"
