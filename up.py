@@ -101,7 +101,6 @@ class ComposeProject():
 
         if "networks" in data:
             for network in sorted(data["networks"]):
-                self.additional_config["networks"][network] = {}
                 self.provided_networks.add(network)
 
         self.files.add(file)
