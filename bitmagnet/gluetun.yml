@@ -18,7 +18,7 @@ services:
       - WIREGUARD_ADDRESSES=${WIREGUARD_ADDRESSES}
     restart: always
     extra_hosts:
-      - "bitmagnet:192.168.55.11"
-      - "postgres:192.168.55.12"
+      - "bitmagnet:192.168.69.11"
+      - "postgres:192.168.69.12"
     devices:
       - /dev/net/tun
