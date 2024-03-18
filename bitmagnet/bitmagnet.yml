@@ -2,6 +2,7 @@ services:
   bitmagnet:
     image: ghcr.io/bitmagnet-io/bitmagnet:latest
     restart: always
+    network_mode: service:gluetun
     environment:
       - TZ=America/Los_Angeles
       - POSTGRES_HOST=postgres
