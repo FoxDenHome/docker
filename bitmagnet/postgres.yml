@@ -2,7 +2,7 @@ services:
   postgres:
     image: postgres:16-alpine
     volumes:
-      - bitmagnet_postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     restart: always
     environment:
       - TZ=America/Los_Angeles
