@@ -5,8 +5,11 @@ class Container():
         self.id = id
 
     def check(self):
-        check_call(["docker", "exec", "-i", self.id,
-                   "ls", "/sys/class/net/eth0"], stdout=PIPE)
+        pid = check_output(["docker", "inspect", "-f", "{{.State.Pid}}", self.id], encoding="utf8").strip()
+        if (not pid) or pid == "0":
+            return False
+        check_call(["nsenter", "--target", pid, "--net",
+                    "/usr/bin/ip", "link", "show", "dev", "eth0"], stdout=PIPE)
         return True
 
     def restart(self):
