@@ -9,7 +9,7 @@ class Container():
         if (not pid) or pid == "0":
             return False
         check_call(["nsenter", "--target", pid, "--net",
-                    "/usr/bin/ip", "link", "show", "dev", "eth0"], stdout=PIPE)
+                    "ip", "link", "show", "dev", "eth0"], stdout=PIPE)
         return True
 
     def restart(self):
