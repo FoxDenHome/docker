@@ -12,4 +12,3 @@ services:
   backend:
     volumes:
       - /mnt/zhdd/docker/hashtopolis:/usr/local/share/hashtopolis
-      - /mnt/zhdd/docker/hashtopolis/bin:/var/www/html/src/bin
