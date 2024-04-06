@@ -4,7 +4,7 @@ services:
       PUID: 10000
       PGID: 10000
     volumes:
-      - /mnt/ztank/dav:/mnt/dav
+      - /mnt/zhdd/dav:/mnt/dav
     ports:
       - 10.99.10.2:8384:8384
       - 22000:22000
@@ -13,5 +13,5 @@ services:
     environment:
       SYNCTHING_DOMAIN: syncthing.doridian.net
     ports:
-    - 107.181.226.76:80:80
-    - 107.181.226.76:443:443
+    - 23.239.97.12:80:80
+    - 23.239.97.12:443:443
