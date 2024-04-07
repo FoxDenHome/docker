@@ -13,20 +13,20 @@ services:
       - /mnt/zhdd/dav:/mnt/dav
   dldr:
     environment:
-      PUID: 1003
-      PGID: 1003
+      PUID: 1001
+      PGID: 1001
     volumes:
       - /mnt/zhdd/nas/torrent:/data
   dldr-prometheus:
-    user: 1003:1003
+    user: 1001:1001
   nzbget:
     environment:
-      PUID: 1003
-      PGID: 1003
+      PUID: 1001
+      PGID: 1001
     volumes:
       - /mnt/zhdd/nas/usenet:/downloads
   jellyfin:
-    user: 10001:1003
+    user: 10001:1001
     hostname: jellyfin.doridian.net
     environment:
       - JELLYFIN_PublishedServerUrl=https://jellyfin.doridian.net
