@@ -4,6 +4,8 @@ services:
     restart: always
     volumes:
       - /mnt/zhdd/nas:/mnt/nas:ro
+      - /mnt/zssd/nas/torrent:/mnt/nas/torrent:ro
+      - /mnt/zssd/nas/usenet:/mnt/nas/usenet:ro
       - caddy_data:/data
       - caddy_config:/config
       - caddy_import:/etc/caddy/import
