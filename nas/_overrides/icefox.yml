@@ -6,8 +6,8 @@ services:
     ports:
     - 23.239.97.10:80:80
     - 23.239.97.10:443:443
-    - [2606:c700:4020:af::2]:80:80
-    - [2606:c700:4020:af::2]:443:443
+    - '[2606:c700:4020:af::2]:80:80'
+    - '[2606:c700:4020:af::2]:443:443'
     environment:
       NAS_WEB_DOMAIN: nas-ro.foxden.network
       DAV_DOMAIN: dav.doridian.net
@@ -35,8 +35,8 @@ services:
     ports:
     - 23.239.97.11:80:80
     - 23.239.97.11:443:443
-    - [2606:c700:4020:af::3]:80:80
-    - [2606:c700:4020:af::3]:443:443
+    - '[2606:c700:4020:af::3]:80:80'
+    - '[2606:c700:4020:af::3]:443:443'
   jellyfin-web:
     environment:
       - JELLYFIN_DOMAIN=jellyfin.doridian.net
