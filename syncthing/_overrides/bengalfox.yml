@@ -5,8 +5,6 @@ services:
     environment:
       PUID: 10000
       PGID: 10000
-    volumes:
-      - /mnt/zhdd/dav:/mnt/dav
     networks:
       vlan2:
         priority: 100
