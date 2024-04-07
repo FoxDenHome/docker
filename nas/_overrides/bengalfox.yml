@@ -18,7 +18,7 @@ services:
         ipv4_address: 10.2.11.8
     mac_address: ca:1b:f1:2c:6c:b3
     volumes:
-      - /mnt/zhdd/nas/torrent:/data
+      - /mnt/zssd/nas/torrent:/data
     environment:
       PUID: 1001
       PGID: 1001
@@ -34,7 +34,7 @@ services:
       PUID: 1001
       PGID: 1001
     volumes:
-      - /mnt/zhdd/nas/usenet:/downloads
+      - /mnt/zssd/nas/usenet:/downloads
   kiwix:
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0

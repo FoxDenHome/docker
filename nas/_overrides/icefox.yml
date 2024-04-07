@@ -16,7 +16,7 @@ services:
       PUID: 1001
       PGID: 1001
     volumes:
-      - /mnt/zhdd/nas/torrent:/data
+      - /mnt/zssd/nas/torrent:/data
   dldr-prometheus:
     user: 1001:1001
   nzbget:
@@ -24,7 +24,7 @@ services:
       PUID: 1001
       PGID: 1001
     volumes:
-      - /mnt/zhdd/nas/usenet:/downloads
+      - /mnt/zssd/nas/usenet:/downloads
   jellyfin:
     user: 10001:1001
     hostname: jellyfin.doridian.net
