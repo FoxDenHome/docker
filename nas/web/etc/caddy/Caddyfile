@@ -21,7 +21,7 @@
 }
 
 http://{$HOST_DOMAIN} {
-	reverse_proxy host.docker.internal:8989
+	reverse_proxy host.docker.internal:180
 }
 
 {$NAS_WEB_DOMAIN} {
