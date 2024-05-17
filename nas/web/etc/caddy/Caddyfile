@@ -20,6 +20,10 @@
 	}
 }
 
+http://{$HOST_DOMAIN} {
+	reverse_proxy host.docker.internal:8989
+}
+
 {$NAS_WEB_DOMAIN} {
 	handle /guest/* {
 		root * /mnt/nas
