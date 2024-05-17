@@ -20,7 +20,7 @@
 	}
 }
 
-{$HOST_DOMAIN} {
+http://{$HOST_DOMAIN} {
 	reverse_proxy host.docker.internal:8989
 }
 

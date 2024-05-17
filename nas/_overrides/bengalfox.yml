@@ -7,6 +7,7 @@ services:
     environment:
       NAS_WEB_DOMAIN: nas.foxden.network
       DAV_DOMAIN: dav.foxden.network
+      HOST_DOMAIN: bengalfox.foxden.network
     volumes:
       - /mnt/zhdd/dav:/mnt/dav
   dldr:

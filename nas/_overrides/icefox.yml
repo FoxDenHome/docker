@@ -11,6 +11,7 @@ services:
     environment:
       NAS_WEB_DOMAIN: nas-ro.foxden.network
       DAV_DOMAIN: dav.doridian.net
+      HOST_DOMAIN: icefox.doridian.net
     volumes:
       - /mnt/zhdd/dav:/mnt/dav
   dldr:
