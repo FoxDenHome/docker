@@ -33,7 +33,7 @@ def get_container_status(ct):
     base_status = ct["State"].lower()
     status = None
     if base_status == "running" and "(" in ct["Status"]:
-        health_status = ct["Status"].split("(", 2)[2].removesuffix(")").strip().lower()
+        health_status = ct["Status"].split("(", 2)[1].removesuffix(")").strip().lower()
         status = DOCKER_HEALTH_STATUS_MAP.get(health_status, None)
         if not status:
             print(f"Unknown health status: {health_status}")
