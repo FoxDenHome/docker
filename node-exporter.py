@@ -32,8 +32,8 @@ def get_container_status(ct):
 
     base_status = ct["State"].lower()
     status = None
-    if base_status == "running" and ct["Status"]:
-        health_status = ct["Status"].lower()
+    if base_status == "running" and "(" in ct["Status"]:
+        health_status = ct["Status"].split("(", 2)[2].removesuffix(")").strip().lower()
         status = DOCKER_HEALTH_STATUS_MAP.get(health_status, None)
         if not status:
             print(f"Unknown health status: {health_status}")
@@ -56,13 +56,13 @@ def main():
     outfile = argv[1]
     tmpfile = f"{outfile}.tmp"
 
-    data = check_output(["docker", "container", "list", "--all", "--format", "{{json .}}"])
+    data = check_output(["docker", "container", "list", "--all", "--format", "json"])
+    cts = json_loads(data)
 
     with open(tmpfile, "w") as fh:
         fh.write(get_prometheus_header())
         fh.write("\n")
-        for ctjson in data.splitlines():
-            ct = json_loads(ctjson)
+        for ct in cts:
             fh.write(get_prometheus_line(ct))
             fh.write("\n")
 
