@@ -56,13 +56,15 @@ def main():
     outfile = argv[1]
     tmpfile = f"{outfile}.tmp"
 
-    data = check_output(["docker", "container", "list", "--all", "--format", "json"])
-    cts = json_loads(data)
+    data = check_output(["docker", "container", "list", "--all", "--format", "{{json .}}"]).splitlines()
 
     with open(tmpfile, "w") as fh:
         fh.write(get_prometheus_header())
         fh.write("\n")
-        for ct in cts:
+        for ctjson in data:
+            if not ctjson:
+                continue
+            ct = json_loads(ctjson)
             fh.write(get_prometheus_line(ct))
             fh.write("\n")
 
