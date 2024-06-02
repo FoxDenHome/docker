@@ -47,7 +47,10 @@ def get_container_status(ct):
 
 def get_prometheus_line(ct):
     status = get_container_status(ct)
-    return "docker_container_status{container=\"%s\"} %s" % (ct["Names"][0], status)
+    names = ct["Names"]
+    if isinstance(names, list):
+        names = names[0]
+    return "docker_container_status{container=\"%s\"} %s" % (names, status)
 
 def get_prometheus_header():
     return "# TYPE docker_container_status gauge"
