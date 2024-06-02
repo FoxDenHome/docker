@@ -2,9 +2,10 @@
 
 # * * * * * /opt/docker/node-exporter.py /var/lib/prometheus/node-exporter/docker-custom.prom
 
-from docker import DockerClient
+from subprocess import check_output
 from sys import argv
 from os import rename, unlink
+from json import loads as json_loads
 
 DOCKER_STATUS_MAP = {
     "unknown": -2,
@@ -29,27 +30,24 @@ def get_container_status(ct):
     if not ct:
         return DOCKER_STATUS_MAP["deleted"]
 
-    state = ct.attrs["State"]
+    base_status = ct["State"].lower()
     status = None
-
-    base_status = state["Status"].lower()
-
-    if base_status == "running" and "Health" in state:
-        health_status = state["Health"]["Status"].lower()
+    if base_status == "running" and ct["Status"]:
+        health_status = ct["Status"].lower()
         status = DOCKER_HEALTH_STATUS_MAP.get(health_status, None)
         if not status:
-            print(f"Unknown health status: {state['Health']['Status'].lower()}")
+            print(f"Unknown health status: {health_status}")
 
     if not status:
         status = DOCKER_STATUS_MAP.get(base_status, DOCKER_STATUS_MAP["unknown"])
         if status == DOCKER_STATUS_MAP["unknown"]:
-            print(f"Unknown status: {state['Status'].lower()}")
+            print(f"Unknown status: {base_status.lower()}")
 
     return status
 
 def get_prometheus_line(ct):
     status = get_container_status(ct)
-    return "docker_container_status{container=\"%s\"} %s" % (ct.name, status)
+    return "docker_container_status{container=\"%s\"} %s" % (ct["Names"][0], status)
 
 def get_prometheus_header():
     return "# TYPE docker_container_status gauge"
@@ -58,16 +56,15 @@ def main():
     outfile = argv[1]
     tmpfile = f"{outfile}.tmp"
 
-    client = DockerClient(base_url="unix://var/run/docker.sock")
+    data = check_output(["docker", "container", "list", "--all", "--format", "{{json .}}"])
 
     with open(tmpfile, "w") as fh:
         fh.write(get_prometheus_header())
         fh.write("\n")
-        for ct in client.containers.list(all=True, ignore_removed=True):
+        for ctjson in data.splitlines():
+            ct = json_loads(ctjson)
             fh.write(get_prometheus_line(ct))
             fh.write("\n")
-
-    client.close()
 
     try:
         unlink(outfile)
