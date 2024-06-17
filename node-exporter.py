@@ -26,6 +26,10 @@ DOCKER_HEALTH_STATUS_MAP = {
     "unhealthy": 102,
 }
 
+def get_health_status(status: str) -> int | None:
+    status = status.removeprefix("health:").strip()
+    return DOCKER_HEALTH_STATUS_MAP.get(status, None)
+
 def get_container_status(ct):
     if not ct:
         return DOCKER_STATUS_MAP["deleted"]
@@ -36,9 +40,9 @@ def get_container_status(ct):
         base_health_status = ct["Status"].lower()
         if "(" in base_health_status:
             health_status = base_health_status.split("(", 2)[1].removesuffix(")").strip()
-            status = DOCKER_HEALTH_STATUS_MAP.get(health_status, None)
+            status = get_health_status(health_status)
         elif base_health_status in DOCKER_HEALTH_STATUS_MAP:
-            status = DOCKER_HEALTH_STATUS_MAP[base_health_status]
+            status = get_health_status(base_health_status)
         else:
             base_health_status = None
 
