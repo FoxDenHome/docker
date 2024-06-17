@@ -18,7 +18,7 @@ chdir(dirname(abspath(__file__)))
 
 try:
     with open("/proc/driver/nvidia/version", "r") as f:
-        environ["NVIDIA_DRIVER_VERSION"] = re_sub("\s+", " ", f.read()).split(" ")[7]
+        environ["NVIDIA_DRIVER_VERSION"] = re_sub("\\s+", " ", f.read()).split(" ")[7]
 except FileNotFoundError:
     pass
 
