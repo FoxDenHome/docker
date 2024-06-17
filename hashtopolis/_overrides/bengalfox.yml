@@ -8,7 +8,7 @@ services:
       vlan2:
         priority: 100
         ipv4_address: 10.2.11.17
-    mac_address: f2:6c:78:d6:ee:e6
+        mac_address: f2:6c:78:d6:ee:e6
   backend:
     volumes:
       - /mnt/zhdd/docker/hashtopolis:/usr/local/share/hashtopolis

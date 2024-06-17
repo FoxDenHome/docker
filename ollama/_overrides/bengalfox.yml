@@ -20,4 +20,4 @@ services:
       vlan2:
         priority: 100
         ipv4_address: 10.2.11.19
-    mac_address: 00:16:3E:CA:7E:99
+        mac_address: 00:16:3E:CA:7E:99

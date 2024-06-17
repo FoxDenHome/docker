@@ -4,4 +4,4 @@ services:
       vlan3:
         priority: 100
         ipv4_address: 10.3.10.10
-    mac_address: ae:75:d4:40:07:76
+        mac_address: ae:75:d4:40:07:76

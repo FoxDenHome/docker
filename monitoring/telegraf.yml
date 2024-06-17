@@ -6,13 +6,13 @@ services:
     environment:
       TZ: America/Los_Angeles
       SNMP_COMMUNITY: ${SNMP_COMMUNITY}
-    mac_address: 42:fe:0c:c8:e0:f5
     networks:
       default:
         priority: 1
       vlan6:
         priority: 100
         ipv4_address: 10.6.11.2
+        mac_address: 42:fe:0c:c8:e0:f5
     extra_hosts:
       - ntp.foxden.network:10.6.1.2
       - router.foxden.network:10.6.1.1

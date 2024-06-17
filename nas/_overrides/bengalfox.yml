@@ -17,7 +17,7 @@ services:
       vlan2:
         priority: 100
         ipv4_address: 10.2.11.8
-    mac_address: ca:1b:f1:2c:6c:b3
+        mac_address: ca:1b:f1:2c:6c:b3
     volumes:
       - /mnt/zssd/nas/torrent:/data
     environment:
@@ -30,7 +30,7 @@ services:
       vlan2:
         priority: 100
         ipv4_address: 10.2.11.9
-    mac_address: f2:73:89:cc:9e:e4
+        mac_address: f2:73:89:cc:9e:e4
     environment:
       PUID: 1001
       PGID: 1001
@@ -43,7 +43,7 @@ services:
       vlan2:
         priority: 100
         ipv4_address: 10.2.11.6
-    mac_address: 00:16:3E:CA:7E:01
+        mac_address: 00:16:3E:CA:7E:01
     volumes:
       - /mnt/zhdd/kiwix:/data
   jellyfin:
@@ -63,7 +63,7 @@ services:
       vlan2:
         priority: 100
         ipv4_address: 10.2.11.18
-    mac_address: 00:16:3E:CA:7E:18
+        mac_address: 00:16:3E:CA:7E:18
     user: 10001:1001
     healthcheck:
       test: '(curl -Lk -fsS "$${HEALTHCHECK_URL}" >/dev/null && (nvidia-smi -L | grep -qF "GPU 0")) || exit 1'

@@ -17,7 +17,7 @@ services:
       vlan2:
         priority: 100
         ipv4_address: 10.2.11.13
-    mac_address: 02:40:12:6c:d7:1a
+        mac_address: 02:40:12:6c:d7:1a
     volumes:
       - "/mnt/zhdd/mirror/apt/mirror:/mirror:ro"
   apt-web-ssl:

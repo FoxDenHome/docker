@@ -10,7 +10,7 @@ services:
       vlan3:
         priority: 100
         ipv4_address: 10.3.10.7
-    mac_address: 36:16:0c:c9:e8:0b
+        mac_address: 36:16:0c:c9:e8:0b
     volumes:
       - data:/factorio
 

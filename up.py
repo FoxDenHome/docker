@@ -134,8 +134,8 @@ class ComposeProject():
                     continue
 
                 self.used_networks.add(netname)
-                if "mac_address" in data:
-                    net_grab_physical(netname, data["mac_address"])
+                if "mac_address" in network:
+                    net_grab_physical(netname, network["mac_address"])
 
         if "network_mode" in data:
             svc.overrides_network = True

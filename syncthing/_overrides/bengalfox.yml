@@ -9,7 +9,7 @@ services:
       vlan2:
         priority: 100
         ipv4_address: 10.2.11.15
-    mac_address: 6c:de:77:10:02:aa
+        mac_address: 6c:de:77:10:02:aa
   webdav:
     network_mode: service:syncthing
     environment:
