@@ -7,7 +7,7 @@ with open("/var/lib/docker/231072.231072/volumes/factorio_data/_data/config/rcon
     rcon_pw = fh.read().strip()
 
 try:
-    server_ip = check_output(["docker", "inspect", "-f", "{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}", "factorio_server_1"]).strip()
+    server_ip = check_output(["docker", "inspect", "-f", "{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}", "factorio-server-1"]).strip()
 except:
     exit(0)
 
