@@ -17,8 +17,8 @@ services:
       C2S_REQUIRE_ENCRYPTION: 'true'
       S2S_REQUIRE_ENCRYPTION: 'true'
       S2S_SECURE_AUTH: 'true'
-      E2E_POLICY_CHAT: 'optional'
-      E2E_POLICY_MUC: 'optional'
+      E2E_POLICY_CHAT: 'none'
+      E2E_POLICY_MUC: 'none'
       E2E_POLICY_WHITELIST: ''
       SERVER_CONTACT_INFO_ABUSE: doridian@foxden.network
       SERVER_CONTACT_INFO_ADMIN: doridian@foxden.network
