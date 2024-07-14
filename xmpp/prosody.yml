@@ -6,9 +6,9 @@ services:
     environment:
       DOMAIN: foxden.network
       DOMAIN_HTTP_UPLOAD: xmpp-upload.foxden.network
-      DOMAIN_MUC: foxden.network
-      DOMAIN_PROXY: foxden.network
-      DOMAIN_PUBSUB: foxden.network
+      DOMAIN_MUC: muc.foxden.network
+      DOMAIN_PROXY: proxy.foxden.network
+      DOMAIN_PUBSUB: pubsub.foxden.network
       PROSODY_ADMINS: doridian@foxden.network
       ALLOW_REGISTRATION: 'true'
       C2S_REQUIRE_ENCRYPTION: 'true'
