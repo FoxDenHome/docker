@@ -5,6 +5,8 @@ services:
     hostname: foxden.network
     environment:
       LOG_LEVEL: debug
+      DB_DRIVER: SQLite3
+      DB_DATABASE: prosody.sqlite
       DOMAIN: foxden.network
       DOMAIN_HTTP_UPLOAD: xmpp-upload.foxden.network
       DOMAIN_MUC: muc.foxden.network
