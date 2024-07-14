@@ -4,6 +4,7 @@ services:
     restart: always
     hostname: foxden.network
     environment:
+      LOG_LEVEL: debug
       DOMAIN: foxden.network
       DOMAIN_HTTP_UPLOAD: xmpp-upload.foxden.network
       DOMAIN_MUC: muc.foxden.network
