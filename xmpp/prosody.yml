@@ -13,6 +13,12 @@ services:
       E2E_POLICY_CHAT: 'optional'
       E2E_POLICY_MUC: 'optional'
       E2E_POLICY_WHITELIST: ''
+      SERVER_CONTACT_INFO_ABUSE: doridian@foxden.network
+      SERVER_CONTACT_INFO_ADMIN: doridian@foxden.network
+      SERVER_CONTACT_INFO_FEEDBACK: doridian@foxden.network
+      SERVER_CONTACT_INFO_SALES: doridian@foxden.network
+      SERVER_CONTACT_INFO_SECURITY: doridian@foxden.network
+      SERVER_CONTACT_INFO_SUPPORT: doridian@foxden.network
       TZ: America/Los_Angeles
     volumes:
     - prosody_config:/usr/local/etc/prosody
