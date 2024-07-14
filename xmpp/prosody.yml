@@ -8,10 +8,10 @@ services:
       DB_DRIVER: SQLite3
       DB_DATABASE: prosody.sqlite
       DOMAIN: foxden.network
-      DOMAIN_HTTP_UPLOAD: xmpp-upload.foxden.network
-      DOMAIN_MUC: muc.foxden.network
-      DOMAIN_PROXY: proxy.foxden.network
-      DOMAIN_PUBSUB: pubsub.foxden.network
+      DOMAIN_HTTP_UPLOAD: upload.xmpp.foxden.network
+      DOMAIN_MUC: muc.xmpp.foxden.network
+      DOMAIN_PROXY: proxy.xmpp.foxden.network
+      DOMAIN_PUBSUB: pubsub.xmpp.foxden.network
       PROSODY_ADMINS: doridian@foxden.network
       ALLOW_REGISTRATION: 'true'
       C2S_REQUIRE_ENCRYPTION: 'true'
