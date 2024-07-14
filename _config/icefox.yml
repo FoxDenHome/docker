@@ -4,6 +4,7 @@ roles:
 - nas
 - syncthing
 - hashtopolis-agent
+- xmpp
 network:
   driver: macvlan
   device: ''
