@@ -10,6 +10,9 @@ services:
       C2S_REQUIRE_ENCRYPTION: 'true'
       S2S_REQUIRE_ENCRYPTION: 'true'
       S2S_SECURE_AUTH: 'true'
+      E2E_POLICY_CHAT: 'optional'
+      E2E_POLICY_MUC: 'optional'
+      E2E_POLICY_WHITELIST: ''
       TZ: America/Los_Angeles
     volumes:
     - prosody_config:/usr/local/etc/prosody
