@@ -5,6 +5,11 @@ services:
     hostname: foxden.network
     environment:
       DOMAIN: foxden.network
+      PROSODY_ADMINS: doridian@foxden.network
+      ALLOW_REGISTRATION: 'true'
+      C2S_REQUIRE_ENCRYPTION: 'true'
+      S2S_REQUIRE_ENCRYPTION: 'true'
+      S2S_SECURE_AUTH: 'true'
       TZ: America/Los_Angeles
     volumes:
     - prosody_config:/usr/local/etc/prosody
