@@ -12,6 +12,8 @@ RUN download-prosody-modules.bash \
         cloud_notify_priority_tag \
         cloud_notify_filters \
         privilege \
+        sasl2 \
+        sasl_ssdp \
  && apt-get update \
  && apt-get install -y --no-install-recommends lua-luaossl \
  && rm -rf "/usr/src/prosody-modules"
