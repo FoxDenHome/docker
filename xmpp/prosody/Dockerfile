@@ -12,7 +12,8 @@ RUN download-prosody-modules.bash \
         cloud_notify_priority_tag \
         cloud_notify_filters \
         privilege \
- && luarocks install luassl \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends lua-luaossl \
  && rm -rf "/usr/src/prosody-modules"
 
 COPY s6 /etc/s6
