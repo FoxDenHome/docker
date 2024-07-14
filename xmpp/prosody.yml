@@ -2,9 +2,9 @@ services:
   prosody:
     build: prosody
     restart: always
-    hostname: f0x.es
+    hostname: foxden.network
     environment:
-      DOMAIN: f0x.es
+      DOMAIN: foxden.network
       TZ: America/Los_Angeles
     volumes:
     - prosody_config:/usr/local/etc/prosody
@@ -13,19 +13,19 @@ services:
   slidcord:
     image: nicocool84/slidcord:master
     restart: always
-    hostname: discord.f0x.es
+    hostname: discord.foxden.network
     command:
     - "--server"
-    - "f0x.es"
+    - "foxden.network"
     - "--user-jid-validator"
-    - ".*@f0x.es"
+    - ".*@foxden.network"
     - "--jid"
-    - "discord.f0x.es"
+    - "discord.foxden.network"
     - "--secret"
     - "${SLIDCORD_SECRET}"
     links:
-    - prosody:f0x.es
-    - prosody:xmppshare.f0x.es
+    - prosody:foxden.network
+    - prosody:xmppshare.foxden.network
     environment:
       TZ: America/Los_Angeles
     volumes:
@@ -33,19 +33,19 @@ services:
   slidgram:
     image: nicocool84/slidgram:master
     restart: always
-    hostname: telegram.f0x.es
+    hostname: telegram.foxden.network
     command:
     - "--server"
-    - "f0x.es"
+    - "foxden.network"
     - "--user-jid-validator"
-    - ".*@f0x.es"
+    - ".*@foxden.network"
     - "--jid"
-    - "telegram.f0x.es"
+    - "telegram.foxden.network"
     - "--secret"
     - "${SLIDGRAM_SECRET}"
     links:
-    - prosody:f0x.es
-    - prosody:xmppshare.f0x.es
+    - prosody:foxden.network
+    - prosody:xmppshare.foxden.network
     environment:
       TZ: America/Los_Angeles
     volumes:
