@@ -4,7 +4,7 @@ services:
     restart: always
     hostname: foxden.network
     environment:
-      LOG_LEVEL: debug
+      LOG_LEVEL: info
       DB_DRIVER: SQLite3
       DB_DATABASE: prosody.sqlite
       DOMAIN: foxden.network
