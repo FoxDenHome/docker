@@ -14,6 +14,7 @@ RUN download-prosody-modules.bash \
         privilege \
         sasl2 \
         sasl_ssdp \
+        bind2 \
  && apt-get update \
  && apt-get install -y --no-install-recommends lua-luaossl \
  && rm -rf "/usr/src/prosody-modules"
