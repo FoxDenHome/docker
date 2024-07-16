@@ -44,7 +44,6 @@ services:
     - ".*@foxden.network"
     - "--jid"
     - "discord.xmpp.foxden.network"
-    - "--debug"
     links:
     - prosody:foxden.network
     - prosody:upload.xmpp.foxden.network
@@ -64,7 +63,6 @@ services:
     - ".*@foxden.network"
     - "--jid"
     - "telegram.xmpp.foxden.network"
-    - "--debug"
     links:
     - prosody:foxden.network
     - prosody:upload.xmpp.foxden.network
