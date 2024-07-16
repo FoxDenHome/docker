@@ -69,6 +69,8 @@ services:
     environment:
       TZ: America/Los_Angeles
       SLIDGE_SECRET: ${SLIDGRAM_SECRET}
+      API_HASH: ${TELEGRAM_API_HASH}
+      API_ID: ${TELEGRAM_API_ID}
     volumes:
     - slidgram_data:/var/lib/slidge
 
