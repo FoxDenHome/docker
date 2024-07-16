@@ -34,7 +34,7 @@ services:
     - prosody_letsencrypt:/etc/letsencrypt
     - prosody_data:/usr/local/var/lib/prosody
   slidcord:
-    image: nicocool84/slidcord:master
+    build: slidcord
     restart: always
     hostname: discord.xmpp.foxden.network
     command:
