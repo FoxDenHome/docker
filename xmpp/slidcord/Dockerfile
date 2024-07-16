@@ -1,4 +1,4 @@
-FROM nicocool84/slidgram:master
+FROM nicocool84/slidcord:master
 
 USER root
 RUN apt-get update && \
