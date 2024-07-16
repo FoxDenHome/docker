@@ -46,6 +46,7 @@ services:
     - "discord.xmpp.foxden.network"
     links:
     - prosody:foxden.network
+    - prosody:xmpp.foxden.network
     - prosody:upload.xmpp.foxden.network
     environment:
       TZ: America/Los_Angeles
@@ -65,6 +66,7 @@ services:
     - "telegram.xmpp.foxden.network"
     links:
     - prosody:foxden.network
+    - prosody:xmpp.foxden.network
     - prosody:upload.xmpp.foxden.network
     environment:
       TZ: America/Los_Angeles
