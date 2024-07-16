@@ -26,8 +26,8 @@ services:
       SERVER_CONTACT_INFO_SALES: doridian@foxden.network
       SERVER_CONTACT_INFO_SECURITY: doridian@foxden.network
       SERVER_CONTACT_INFO_SUPPORT: doridian@foxden.network
-      SLIDCORD_SECRET: "${SLIDCORD_SECRET}"
-      SLIDGRAM_SECRET: "${SLIDGRAM_SECRET}"
+      SLIDCORD_SECRET: ${SLIDCORD_SECRET}
+      SLIDGRAM_SECRET: ${SLIDGRAM_SECRET}
       TZ: America/Los_Angeles
     volumes:
     - prosody_config:/usr/local/etc/prosody
@@ -48,7 +48,7 @@ services:
     - "${SLIDCORD_SECRET}"
     links:
     - prosody:foxden.network
-    - prosody:xmppshare.foxden.network
+    - prosody:upload.xmpp.foxden.network
     environment:
       TZ: America/Los_Angeles
     volumes:
@@ -68,7 +68,7 @@ services:
     - "${SLIDGRAM_SECRET}"
     links:
     - prosody:foxden.network
-    - prosody:xmppshare.foxden.network
+    - prosody:upload.xmpp.foxden.network
     environment:
       TZ: America/Los_Angeles
     volumes:
