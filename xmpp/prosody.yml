@@ -36,14 +36,14 @@ services:
   slidcord:
     image: nicocool84/slidcord:master
     restart: always
-    hostname: discord.foxden.network
+    hostname: discord.xmpp.foxden.network
     command:
     - "--server"
     - "foxden.network"
     - "--user-jid-validator"
     - ".*@foxden.network"
     - "--jid"
-    - "discord.foxden.network"
+    - "discord.xmpp.foxden.network"
     - "--secret"
     - "${SLIDCORD_SECRET}"
     links:
@@ -56,14 +56,14 @@ services:
   slidgram:
     image: nicocool84/slidgram:master
     restart: always
-    hostname: telegram.foxden.network
+    hostname: telegram.xmpp.foxden.network
     command:
     - "--server"
     - "foxden.network"
     - "--user-jid-validator"
     - ".*@foxden.network"
     - "--jid"
-    - "telegram.foxden.network"
+    - "telegram.xmpp.foxden.network"
     - "--secret"
     - "${SLIDGRAM_SECRET}"
     links:
