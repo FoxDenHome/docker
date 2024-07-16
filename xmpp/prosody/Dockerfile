@@ -20,6 +20,7 @@ RUN download-prosody-modules.bash \
  && rm -rf "/usr/src/prosody-modules"
 
 COPY s6 /etc/s6
+RUN rm -rf /usr/local/etc/prosody
 COPY conf /usr/local/etc/prosody
 RUN mkdir -p /usr/local/etc/prosody/certs
 
