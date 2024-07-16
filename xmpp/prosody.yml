@@ -44,13 +44,13 @@ services:
     - ".*@foxden.network"
     - "--jid"
     - "discord.xmpp.foxden.network"
-    - "--secret"
-    - "${SLIDCORD_SECRET}"
+    - "--debug"
     links:
     - prosody:foxden.network
     - prosody:upload.xmpp.foxden.network
     environment:
       TZ: America/Los_Angeles
+      SLIDGE_SECRET: ${SLIDCORD_SECRET}
     volumes:
     - slidcord_data:/var/lib/slidge
   slidgram:
@@ -64,13 +64,13 @@ services:
     - ".*@foxden.network"
     - "--jid"
     - "telegram.xmpp.foxden.network"
-    - "--secret"
-    - "${SLIDGRAM_SECRET}"
+    - "--debug"
     links:
     - prosody:foxden.network
     - prosody:upload.xmpp.foxden.network
     environment:
       TZ: America/Los_Angeles
+      SLIDGE_SECRET: ${SLIDGRAM_SECRET}
     volumes:
     - slidgram_data:/var/lib/slidge
 
