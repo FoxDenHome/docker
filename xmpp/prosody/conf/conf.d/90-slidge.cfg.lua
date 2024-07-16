@@ -1,0 +1,10 @@
+component_ports = { 5347 }
+component_interfaces = { "0.0.0.0" }
+
+Component "discord.xmpp.foxden.network"
+  component_secret = os.getenv("SLIDCORD_SECRET")
+  modules_enabled = {"privilege"}
+
+Component "telegram.xmpp.foxden.network"
+  component_secret = os.getenv("SLIDGRAM_SECRET")
+  modules_enabled = {"privilege"}

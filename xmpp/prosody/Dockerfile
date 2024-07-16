@@ -20,5 +20,7 @@ RUN download-prosody-modules.bash \
  && rm -rf "/usr/src/prosody-modules"
 
 COPY s6 /etc/s6
+COPY conf /usr/local/etc/prosody
+RUN mkdir -p /usr/local/etc/prosody/certs
 
 ENTRYPOINT [ "/usr/bin/s6-svscan", "/etc/s6" ]
