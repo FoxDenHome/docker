@@ -22,20 +22,20 @@ local _slidge_priv = {
   };
 }
 
--- Dummy VHost to allow Slidge to function for some reason
-VirtualHost "xmpp.foxden.network"
-  allow_registration = false
-  modules_enabled = {"isolate_host"}
-  isolate_except_domains = {"telegram.xmpp.foxden.network", "discord.xmpp.foxden.network"}
+VirtualHost "foxden.network"
+  disco_items = {
+    { "upload.xmpp.foxden.network" },
+  }
   privileged_entities = {
     ["telegram.xmpp.foxden.network"] = _slidge_priv,
     ["discord.xmpp.foxden.network"] = _slidge_priv,
   }
 
-VirtualHost "foxden.network"
-  disco_items = {
-    { "upload.xmpp.foxden.network" },
-  }
+-- Dummy VHost to allow Slidge to function for some reason
+VirtualHost "xmpp.foxden.network"
+  allow_registration = false
+  modules_enabled = {"isolate_host"}
+  isolate_except_domains = {"telegram.xmpp.foxden.network", "discord.xmpp.foxden.network"}
   privileged_entities = {
     ["telegram.xmpp.foxden.network"] = _slidge_priv,
     ["discord.xmpp.foxden.network"] = _slidge_priv,
