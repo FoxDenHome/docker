@@ -62,9 +62,9 @@ modules_enabled = {
 	"cloud_notify_priority_tag";
 	"cloud_notify_filters";
 
-        --"sasl2";
-        --"sasl_ssdp";
-        --"bind2";
+    --"sasl2";
+    --"sasl_ssdp";
+    --"bind2";
 };
 
 -- These modules are auto-loaded, but should you want
