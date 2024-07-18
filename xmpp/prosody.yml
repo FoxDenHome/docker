@@ -59,6 +59,3 @@ volumes:
   prosody_certs: {}
   prosody_letsencrypt: {}
   prosody_data: {}
-
-  slidcord_data: {}
-  slidgram_data: {}

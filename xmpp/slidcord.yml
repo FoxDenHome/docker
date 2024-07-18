@@ -1,0 +1,24 @@
+services:
+  slidcord:
+    build: slidcord
+    restart: always
+    hostname: discord.xmpp.foxden.network
+    command:
+    - "--server"
+    - "foxden.network"
+    - "--user-jid-validator"
+    - ".*@foxden.network"
+    - "--jid"
+    - "discord.xmpp.foxden.network"
+    links:
+    - prosody:foxden.network
+    - prosody:xmpp.foxden.network
+    - prosody:upload.xmpp.foxden.network
+    environment:
+      TZ: America/Los_Angeles
+      SLIDGE_SECRET: ${SLIDCORD_SECRET}
+    volumes:
+    - slidcord_data:/var/lib/slidge
+
+volumes:
+  slidcord_data: {}
