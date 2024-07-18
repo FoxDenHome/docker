@@ -29,6 +29,8 @@ VirtualHost "foxden.network"
     { "muc.xmpp.foxden.network" },
     { "discord.xmpp.foxden.network" },
     { "telegram.xmpp.foxden.network" },
+    { "proxy.xmpp.foxden.network" },
+    { "pubsub.xmpp.foxden.network" },
   }
   privileged_entities = {
     ["telegram.xmpp.foxden.network"] = _slidge_priv,
