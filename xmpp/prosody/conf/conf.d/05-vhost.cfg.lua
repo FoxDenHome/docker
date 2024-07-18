@@ -23,7 +23,7 @@ local _slidge_priv = {
 }
 
 VirtualHost "foxden.network"
-  modules_enabled = {"privilege", "disco_items"}
+  modules_enabled = {"privilege", "discoitems"}
   disco_items = {
     { "upload.xmpp.foxden.network" },
     { "muc.xmpp.foxden.network" },

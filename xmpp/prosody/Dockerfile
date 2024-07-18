@@ -14,7 +14,7 @@ RUN download-prosody-modules.bash \
         privilege \
         isolate_host \
         compat_roles \
-        disco_items \
+        discoitems \
         sasl2 \
         sasl_ssdp \
         bind2 \
