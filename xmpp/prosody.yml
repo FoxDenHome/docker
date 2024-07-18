@@ -30,6 +30,7 @@ services:
     environment:
       TZ: America/Los_Angeles
       SLIDGE_SECRET: ${SLIDCORD_SECRET}
+      DISCORD_VERBOSE: true
     volumes:
     - slidcord_data:/var/lib/slidge
   slidgram:
