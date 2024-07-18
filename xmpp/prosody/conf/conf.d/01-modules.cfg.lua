@@ -45,7 +45,7 @@ modules_enabled = {
     "lastactivity";
     "server_contact_info"; -- This module lets you advertise various contact addresses for your XMPP service via XEP-0157.
 
-	--"bookmarks";
+	"bookmarks";
 	"carbons";
 	"cloud_notify";
 	"csi";
