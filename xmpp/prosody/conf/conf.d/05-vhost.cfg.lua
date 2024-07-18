@@ -23,7 +23,13 @@ local _slidge_priv = {
 }
 
 VirtualHost "foxden.network"
-  modules_enabled = {"privilege"}
+  modules_enabled = {"privilege", "disco_items"}
+  disco_items = {
+    { "upload.xmpp.foxden.network" },
+    { "muc.xmpp.foxden.network" },
+    { "discord.xmpp.foxden.network" },
+    { "telegram.xmpp.foxden.network" },
+  }
   privileged_entities = {
     ["telegram.xmpp.foxden.network"] = _slidge_priv,
     ["discord.xmpp.foxden.network"] = _slidge_priv,
