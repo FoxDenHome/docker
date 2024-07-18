@@ -23,6 +23,7 @@ services:
     - ".*@foxden.network"
     - "--jid"
     - "discord.xmpp.foxden.network"
+    - "--debug"
     links:
     - prosody:foxden.network
     - prosody:xmpp.foxden.network
