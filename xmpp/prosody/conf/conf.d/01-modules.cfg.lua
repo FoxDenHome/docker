@@ -47,7 +47,6 @@ modules_enabled = {
 
 	"bookmarks";
 	"carbons";
-	"cloud_notify";
 	"csi";
 	--"e2e_policy";
 	"filter_chatstates";

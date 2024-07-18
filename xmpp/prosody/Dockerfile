@@ -20,7 +20,7 @@ RUN download-prosody-modules.bash \
         bind2 \
  && apt-get update \
  && apt-get install -y --no-install-recommends lua-luaossl \
- && rm -rf "/usr/src/prosody-modules"
+ && rm -rf '/usr/src/prosody-modules' '/usr/local/lib/prosody/custom-modules/mod_bookmarks.lua'
 
 COPY s6 /etc/s6
 RUN rm -rf /usr/local/etc/prosody
