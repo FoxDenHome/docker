@@ -23,6 +23,7 @@ local _slidge_priv = {
 }
 
 VirtualHost "foxden.network"
+  modules_enabled = {"privilege"}
   disco_items = {
     { "upload.xmpp.foxden.network" },
   }
@@ -34,7 +35,7 @@ VirtualHost "foxden.network"
 -- Dummy VHost to allow Slidge to function for some reason
 VirtualHost "xmpp.foxden.network"
   allow_registration = false
-  modules_enabled = {"isolate_host"}
+  modules_enabled = {"isolate_host", "privilege"}
   isolate_except_domains = {"telegram.xmpp.foxden.network", "discord.xmpp.foxden.network"}
   privileged_entities = {
     ["telegram.xmpp.foxden.network"] = _slidge_priv,
