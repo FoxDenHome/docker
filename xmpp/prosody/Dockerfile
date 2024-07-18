@@ -12,11 +12,12 @@ RUN download-prosody-modules.bash \
         cloud_notify_priority_tag \
         cloud_notify_filters \
         privilege \
+        isolate_host \
+        compat_roles \
+        disco_items \
         sasl2 \
         sasl_ssdp \
         bind2 \
-        isolate_host \
-        compat_roles \
  && apt-get update \
  && apt-get install -y --no-install-recommends lua-luaossl \
  && rm -rf "/usr/src/prosody-modules"
