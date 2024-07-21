@@ -7,7 +7,7 @@ services:
     - "--server"
     - "foxden.network"
     - "--user-jid-validator"
-    - ".*@foxden.network"
+    - ".*@foxden\\.network"
     - "--jid"
     - "discord.xmpp.foxden.network"
     links:
