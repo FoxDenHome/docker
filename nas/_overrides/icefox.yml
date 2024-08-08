@@ -18,6 +18,9 @@ services:
     environment:
       PUID: 1001
       PGID: 1001
+    ports:
+    - 23.239.97.10:8112:8112
+    - '[2606:c700:4020:af::2]:8112:8112'
     volumes:
       - /mnt/ztank/nas/torrent:/data
   dldr-prometheus:
