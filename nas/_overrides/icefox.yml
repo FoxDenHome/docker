@@ -8,19 +8,19 @@ services:
     - 23.239.97.10:443:443
     - '[2606:c700:4020:af::2]:80:80'
     - '[2606:c700:4020:af::2]:443:443'
+    links:
+      - dldr:dldr
     environment:
       NAS_WEB_DOMAIN: nas-ro.foxden.network
       DAV_DOMAIN: dav.doridian.net
       HOST_DOMAIN: icefox.doridian.net
+      DLDR_DOMAIN: dldr.doridian.net
     volumes:
       - /mnt/zhdd/dav:/mnt/dav
   dldr:
     environment:
       PUID: 1001
       PGID: 1001
-    ports:
-    - 23.239.97.10:8112:8112
-    - '[2606:c700:4020:af::2]:8112:8112'
     volumes:
       - /mnt/ztank/local/torrent:/data
   dldr-prometheus:

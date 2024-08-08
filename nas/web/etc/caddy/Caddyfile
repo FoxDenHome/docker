@@ -51,3 +51,7 @@ http://{$HOST_DOMAIN} {
 		root /mnt/dav/{http.auth.user.id}
 	}
 }
+
+{$DLDR_DOMAIN} {
+	reverse_proxy dldr:8112
+}
