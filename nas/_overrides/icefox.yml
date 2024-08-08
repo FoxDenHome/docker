@@ -22,7 +22,7 @@ services:
     - 23.239.97.10:8112:8112
     - '[2606:c700:4020:af::2]:8112:8112'
     volumes:
-      - /mnt/ztank/nas/torrent:/data
+      - /mnt/ztank/local/torrent:/data
   dldr-prometheus:
     user: 1001:1001
   nzbget:
@@ -30,7 +30,7 @@ services:
       PUID: 1001
       PGID: 1001
     volumes:
-      - /mnt/ztank/nas/usenet:/downloads
+      - /mnt/ztank/local/usenet:/downloads
   jellyfin:
     user: 10001:1001
     hostname: jellyfin.doridian.net
