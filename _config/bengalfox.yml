@@ -10,6 +10,7 @@ roles:
 - hashtopolis
 - hashtopolis-agent
 - ollama
+- fadumper
 network:
   driver: sriov
   pvid: 2
