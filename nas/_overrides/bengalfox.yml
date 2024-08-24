@@ -9,6 +9,7 @@ services:
       DAV_DOMAIN: dav.foxden.network
       HOST_DOMAIN: bengalfox.foxden.network
       DLDR_DOMAIN: http://dldr.foxden.network
+      ARCHMIRROR_DOMAIN: http://archlinux.foxden.network
     volumes:
       - /mnt/zhdd/dav:/mnt/dav
   dldr:

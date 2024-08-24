@@ -55,3 +55,12 @@ http://{$HOST_DOMAIN} {
 {$DLDR_DOMAIN} {
 	reverse_proxy dldr:8112
 }
+
+{$ARCHMIRROR_DOMAIN} {
+	handle {
+		root * /mnt/archmirror
+		file_server {
+			browse
+		}
+	}
+}

@@ -15,8 +15,10 @@ services:
       DAV_DOMAIN: dav.doridian.net
       HOST_DOMAIN: icefox.doridian.net
       DLDR_DOMAIN: dldr.icefox.doridian.net
+      ARCHMIRROR_DOMAIN: archlinux.doridian.net
     volumes:
       - /mnt/zhdd/dav:/mnt/dav
+      - /mnt/ztank/local/archmirror:/mnt/archmirror
   dldr:
     environment:
       PUID: 1001
