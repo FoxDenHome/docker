@@ -62,6 +62,21 @@ http://{$HOST_DOMAIN} {
 		file_server
 	}
 
+	handle /favicon.ico {
+		root * /etc/caddy/public_html
+		file_server
+	}
+
+	handle /.well-known {
+		root * /etc/caddy/public_html
+		file_server
+	}
+
+	handle /.well-known/* {
+		root * /etc/caddy/public_html
+		file_server
+	}
+
 	handle {
 		root * /mnt/archmirror
 		file_server {
