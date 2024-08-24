@@ -3,7 +3,7 @@
 <!--
 {{ $nonce := uuidv4 -}}
 {{ $nonceAttribute := print "nonce=" (quote $nonce) -}}
-{{ $csp := printf "default-src 'none'; img-src 'self'; object-src 'none'; base-uri 'none'; script-src 'none'; style-src 'nonce-%s'; frame-ancestors 'none'; form-action 'none';" $nonce $nonce -}}
+{{ $csp := printf "default-src 'none'; img-src 'self'; object-src 'none'; base-uri 'none'; script-src 'none'; style-src 'nonce-%s'; frame-ancestors 'none'; form-action 'none';" $nonce -}}
 {{- .RespHeader.Set "Content-Security-Policy" $csp -}}
 -->
 <head>
