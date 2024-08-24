@@ -1,11 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
 <!--
 {{ $nonce := uuidv4 -}}
 {{ $nonceAttribute := print "nonce=" (quote $nonce) -}}
 {{ $csp := printf "default-src 'none'; img-src 'self'; object-src 'none'; base-uri 'none'; script-src 'nonce-%s'; style-src 'nonce-%s'; frame-ancestors 'self'; form-action 'self';" $nonce $nonce -}}
 {{- .RespHeader.Set "Content-Security-Policy" $csp -}}
 -->
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{{html .Path}} - Doridian's Arch Linux Mirror</title>
