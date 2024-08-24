@@ -37,7 +37,12 @@
         a:hover {
             color: white;
         }
-
+        td {
+            padding-top: 0.3em;
+        }
+        th {
+            padding-bottom: 0.3em;
+        }
         td a {
             width: 100%;
             display: block;
@@ -53,7 +58,8 @@
             border: 0.1em solid purple;
             padding: 1.5em;
             margin: 1em;
-            margin-top: 1.5em;
+            margin-top: 0.5em;
+            margin-bottom: 2em;
             background-color: #160016;
         }
     </style>
@@ -97,7 +103,7 @@
             </tr>
         </thead>
         <tbody>
-        {{- if .CanGoUp}}
+        <!--{{- if .CanGoUp}}-->
             <tr>
                 <td class="filename">
                     <a href="..">.. (Up a directory)</a>
@@ -105,8 +111,8 @@
                 <td class="last-modified"></td>
                 <td class="size"></td>
             </tr>
-        {{- end}}
-        {{- range .Items}}
+        <!--{{- end}}-->
+        <!--{{- range .Items}}-->
             <tr>
                 <td class="filename">
                     <a href="{{html .URL}}" title='{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}'>{{html .Name}}</a>
@@ -114,7 +120,7 @@
                 <td class="last-modified">{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}</td>
                 <td class="size">{{html .HumanSize}}</td>
             </tr>
-        {{- end}}
+        <!--{{{- end}}-->
         </tbody>
     </table>
 </body>
