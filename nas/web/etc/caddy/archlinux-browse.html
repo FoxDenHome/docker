@@ -1,0 +1,85 @@
+{{ $nonce := uuidv4 -}}
+{{ $nonceAttribute := print "nonce=" (quote $nonce) -}}
+{{ $csp := printf "default-src 'none'; img-src 'self'; object-src 'none'; base-uri 'none'; script-src 'nonce-%s'; style-src 'nonce-%s'; frame-ancestors 'self'; form-action 'self';" $nonce $nonce -}}
+{{- .RespHeader.Set "Content-Security-Policy" $csp -}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doridian's Arch Linux Mirror</title>
+    <style type="text/css" {{ $nonceAttribute }}>
+        table {
+            width: 100%;
+        }
+        th {
+            text-align: left;
+        }
+        td.size {
+            text-align: right;
+        }
+        body {
+            background-color: black;
+            color: fuchsia;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        a {
+            color: fuchsia;
+        }
+        a:visited {
+            color: purple;
+        }
+    </style>
+</head>
+<body>
+    <h1>Doridian's Arch Linux Mirror</h1>
+    <p>
+        This is a mirror of the Arch Linux package repositories. It is updated every 6 hours.
+    </p>
+    <p>
+        You can access this mirror via the following methods:
+    </p>
+    <ul>
+        <li>HTTPS: <a href="https://archlinux.doridian.net/">https://archlinux.doridian.net/</a></li>
+        <li>rsync: <a href="rsync://archlinux.doridian.net/archlinux/">rsync://archlinux.doridian.net/archlinux/</a></li>
+    </ul>
+    <p>
+        Below are a couple quick links to the latest ISOs and the package repositories.
+    </p>
+    <ul>
+        <li><a href="/iso/latest/">ISOs</a></li>
+        <li><a href="/core/os/x86_64/">Core</a></li>
+        <li><a href="/extra/os/x86_64/">Extra</a></li>
+        <li><a href="/community/os/x86_64/">Community</a></li>
+        <li><a href="/multilib/os/x86_64/">Multilib</a></li>
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th class="filename">Filename</th>
+                <th class="last-modified">Last modified</th>
+                <th class="size">Size</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{- if .CanGoUp}}
+            <tr>
+                <td class="filename">
+                    <a href="..">.. (Up a directory)</a>
+                </td>
+                <td class="last-modified"></td>
+                <td class="size"></td>
+            </tr>
+        {{- end}}
+        {{- range .Items}}
+            <tr>
+                <td class="filename">
+                    <a href="{{html .URL}}" title='{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}'>{{html .Name}}</a>
+                </td>
+                <td class="last-modified">{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}</td>
+                <td class="size">{{.HumanSize}}</td>
+            </tr>
+        {{- end}}
+        </tbody>
+    </table>
+</body>
+</html>

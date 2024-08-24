@@ -60,7 +60,7 @@ http://{$HOST_DOMAIN} {
 	handle {
 		root * /mnt/archmirror
 		file_server {
-			browse
+			browse /etc/caddy/archlinux-browse.html
 		}
 	}
 }
