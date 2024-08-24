@@ -57,10 +57,15 @@ http://{$HOST_DOMAIN} {
 }
 
 {$ARCHMIRROR_DOMAIN} {
+	handle /archlinux-browse.css {
+		root * /etc/caddy/public_html
+		file_server
+	}
+
 	handle {
 		root * /mnt/archmirror
 		file_server {
-			browse /etc/caddy/archlinux-browse.html
+			browse /etc/caddy/public_html/archlinux-browse.html
 		}
 	}
 }

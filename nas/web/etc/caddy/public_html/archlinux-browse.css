@@ -1,0 +1,61 @@
+body {
+  background-color: black;
+  color: fuchsia;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 2.5em;
+}
+a {
+  color: fuchsia;
+}
+a:visited {
+  color: purple;
+}
+a:hover {
+  color: white;
+}
+
+.header-bottom {
+  margin-bottom: 0px;
+}
+.header {
+  border: 0.1em solid purple;
+  padding: 1.5em;
+  margin-bottom: 2em;
+  background-color: #160016;
+}
+h1 {
+  margin-top: 0px;
+  text-align: center;
+}
+h1 a {
+  text-decoration: none;
+  color: fuchsia;
+}
+h1 a:visited {
+  color: fuchsia;
+}
+h1 a:hover {
+  color: white;
+}
+
+td {
+  padding-top: 0.3em;
+}
+th {
+  padding-bottom: 0.3em;
+}
+td a {
+  width: 100%;
+  display: block;
+  user-select: text;
+}
+table {
+  width: 100%;
+}
+th {
+  text-align: left;
+  border-bottom: 1px solid #500050;
+}
+.numeric-cell {
+  text-align: right;
+}
