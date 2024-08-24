@@ -18,7 +18,7 @@
             text-align: left;
             border-bottom: 1px solid #500050;
         }
-        .size {
+        .numeric-cell {
             text-align: right;
         }
         body {
@@ -94,7 +94,7 @@
     <table>
         <thead>
             <tr>
-                <th class="filename">Filename</th>
+                <th>Name</th>
                 <th class="last-modified">Last modified</th>
                 <th class="size">Size</th>
             </tr>
@@ -102,20 +102,20 @@
         <tbody>
         <!--{{- if .CanGoUp}}-->
             <tr>
-                <td class="filename">
+                <td>
                     <a href="..">.. (Up a directory)</a>
                 </td>
-                <td class="last-modified"></td>
-                <td class="size"></td>
+                <td></td>
+                <td class="numeric-cell"></td>
             </tr>
         <!--{{- end}}-->
         <!--{{- range .Items}}-->
             <tr>
-                <td class="filename">
+                <td>
                     <a href="{{html .URL}}" title='{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}'>{{html .Name}}</a>
                 </td>
-                <td class="last-modified">{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}</td>
-                <td class="size">{{html .HumanSize}}</td>
+                <td>{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}</td>
+                <td class="numeric-cell">{{html .HumanSize}}</td>
             </tr>
         <!--{{- end}}-->
         </tbody>
