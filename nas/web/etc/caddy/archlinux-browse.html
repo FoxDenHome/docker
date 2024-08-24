@@ -110,7 +110,7 @@
                     <a href="{{html .URL}}" title='{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}'>{{html .Name}}</a>
                 </td>
                 <td class="last-modified">{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}</td>
-                <td class="size">{{.HumanSize}}</td>
+                <td class="size">{{html .HumanSize}}</td>
             </tr>
         {{- end}}
         </tbody>
