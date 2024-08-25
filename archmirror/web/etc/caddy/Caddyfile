@@ -18,15 +18,6 @@
 	}
 }
 
-mime {
-	.html text/plain
-	.htm text/plain
-	.shtml text/plain
-	.shtml text/plain
-	.css text/plain
-	.js text/plain
-}
-
 http://{$ARCHMIRROR_DOMAIN}, {$ARCHMIRROR_DOMAIN} {
 	handle /archlinux-browse.css {
 		root * /etc/caddy/public_html
