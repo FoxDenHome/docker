@@ -1,6 +1,4 @@
 {
-	order webdav before file_server
-
 	servers {
 		listener_wrappers {
 			proxy_protocol {
@@ -18,42 +16,6 @@
 			tls
 		}
 	}
-}
-
-http://{$HOST_DOMAIN} {
-	reverse_proxy host.docker.internal:180
-}
-
-{$NAS_WEB_DOMAIN} {
-	handle /guest/* {
-		root * /mnt/nas
-		file_server
-	}
-
-	handle {	
-		root * /mnt/nas
-		file_server {
-			browse
-		}
-
-		forward_auth http://127.0.0.1:1042 {
-			uri /
-		}
-	}
-}
-
-{$DAV_DOMAIN} {
-	basicauth * {
-		import import/webdav.auth
-	}
-
-	webdav * {
-		root /mnt/dav/{http.auth.user.id}
-	}
-}
-
-{$DLDR_DOMAIN} {
-	reverse_proxy dldr:8112
 }
 
 {$ARCHMIRROR_DOMAIN} {
@@ -90,8 +52,4 @@ http://{$HOST_DOMAIN} {
 			Content-Disposition "attachment"
 		}
 	}
-}
-
-{$JELLYFIN_DOMAIN} {
-	reverse_proxy jellyfin:8096
 }
