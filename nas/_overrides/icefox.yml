@@ -16,7 +16,6 @@ services:
       DAV_DOMAIN: dav.doridian.net
       HOST_DOMAIN: icefox.doridian.net
       DLDR_DOMAIN: dldr.icefox.doridian.net
-      ARCHMIRROR_DOMAIN: archlinux.doridian.net
       JELLYFIN_DOMAIN: jellyfin.doridian.net
     volumes:
       - /mnt/zhdd/dav:/mnt/dav
