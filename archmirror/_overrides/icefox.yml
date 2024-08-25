@@ -9,3 +9,7 @@ services:
       ARCHMIRROR_DOMAIN: archlinux.doridian.net
     volumes:
       - /mnt/ztank/local/archmirror:/mnt/archmirror
+  refresh:
+    user: 1001:1001
+    volumes:
+      - /mnt/ztank/local/archmirror:/mnt/archmirror
