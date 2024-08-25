@@ -43,17 +43,16 @@ http://{$ARCHMIRROR_DOMAIN}, {$ARCHMIRROR_DOMAIN} {
 		header Strict-Transport-Security "max-age=31536000; preload; includeSubDomains"
 	}
 
-	mine {
-		.html text/plain
-		.htm text/plain
-		.shtml text/plain
-		.shtml text/plain
-		.css text/plain
-		.js text/plain
-	}
-
 	handle {
 		root * /mnt/archmirror
+		mime {
+			.html text/plain
+			.htm text/plain
+			.shtml text/plain
+			.shtml text/plain
+			.css text/plain
+			.js text/plain
+		}
 		file_server {
 			browse /etc/caddy/public_html/archlinux-browse.html
 			index []
