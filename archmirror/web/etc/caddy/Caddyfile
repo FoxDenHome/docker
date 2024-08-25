@@ -22,21 +22,25 @@ http://{$ARCHMIRROR_DOMAIN}, {$ARCHMIRROR_DOMAIN} {
 	handle /archlinux-browse.css {
 		root * /etc/caddy/public_html
 		file_server
+		header Strict-Transport-Security "max-age=31536000; preload; includeSubDomains"
 	}
 
 	handle /favicon.ico {
 		root * /etc/caddy/public_html
 		file_server
+		header Strict-Transport-Security "max-age=31536000; preload; includeSubDomains"
 	}
 
 	handle /.well-known {
 		root * /etc/caddy/public_html
 		file_server
+		header Strict-Transport-Security "max-age=31536000; preload; includeSubDomains"
 	}
 
 	handle /.well-known/* {
 		root * /etc/caddy/public_html
 		file_server
+		header Strict-Transport-Security "max-age=31536000; preload; includeSubDomains"
 	}
 
 	handle {
@@ -50,6 +54,7 @@ http://{$ARCHMIRROR_DOMAIN}, {$ARCHMIRROR_DOMAIN} {
 			X-Frame-Options "DENY"
 			Referrer-Policy "no-referrer"
 			Content-Disposition "attachment"
+			Strict-Transport-Security "max-age=31536000; preload; includeSubDomains"
 		}
 	}
 }
