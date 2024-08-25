@@ -2,11 +2,9 @@
 <html lang="en">
   <!--
     {{- if eq .Req.TLS nil}}
-    {{- .RespHeader.Set "Location" (print "https://" .Req.URL.Host .Req.URL.Path)}}
+    {{- .RespHeader.Set "Location" (print "https:///archlinux.doridian.net" .Req.URL.Path)}}
     {{- httpError 308}}
     {{- end}}
-
-    TLS: {{html .Req.TLS}}
   -->
   <head>
     <meta charset="UTF-8" />
