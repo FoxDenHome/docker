@@ -1,6 +1,5 @@
 services:
   web:
-    user: 10000:10000
     ports:
     - 23.239.97.11:80:80
     - 23.239.97.11:443:443
@@ -13,10 +12,8 @@ services:
     volumes:
       - /mnt/ztank/local/archmirror:/mnt/archmirror:ro
   refresh:
-    user: 10000:10000
     volumes:
       - /mnt/ztank/local/archmirror:/mnt/archmirror
   rsync:
-    user: 10000:10000
     volumes:
       - /mnt/ztank/local/archmirror:/mnt/archmirror:ro

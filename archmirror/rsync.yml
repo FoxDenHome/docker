@@ -1,5 +1,6 @@
 services:
   rsync:
+    user: 10000:10000
     build: rsync
     restart: always
     network_mode: service:web

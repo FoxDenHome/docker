@@ -1,5 +1,6 @@
 services:
   web:
+    user: 10000:10000
     build: web
     restart: always
     volumes:

@@ -1,5 +1,6 @@
 services:
   refresh:
+    user: 10000:10000
     build: refresh
     restart: always
     init: true
