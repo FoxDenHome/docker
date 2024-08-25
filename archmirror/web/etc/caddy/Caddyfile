@@ -18,7 +18,7 @@
 	}
 }
 
-{$ARCHMIRROR_DOMAIN} {
+http://{$ARCHMIRROR_DOMAIN}, {$ARCHMIRROR_DOMAIN} {
 	handle /archlinux-browse.css {
 		root * /etc/caddy/public_html
 		file_server
