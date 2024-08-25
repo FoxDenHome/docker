@@ -2,6 +2,7 @@ services:
   rsync:
     build: rsync
     restart: always
+    network_mode: service:web
     healthcheck:
       test: 'nc -z "$${HOSTNAME}" 873 || exit 1'
       interval: 60s
