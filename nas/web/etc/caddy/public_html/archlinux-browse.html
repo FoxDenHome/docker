@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <!--
-    {{ $csp := "default-src 'none'; img-src 'self'; object-src 'none'; base-uri 'none'; script-src 'none'; style-src 'self'; frame-ancestors 'none'; form-action 'none';" -}}
     {{- .RespHeader.Del "Content-Security-Policy" }}
-    {{- .RespHeader.Set "Content-Security-Policy" $csp -}}
     {{- .RespHeader.Del "Content-Disposition" }}
     {{- .RespHeader.Del "Referrer-Policy" }}
+
+    {{ $csp := "default-src 'none'; img-src 'self'; object-src 'none'; base-uri 'none'; script-src 'none'; style-src 'self'; frame-ancestors 'none'; form-action 'none';" -}}
+    {{- .RespHeader.Set "Content-Security-Policy" $csp -}}
   -->
   <head>
     <meta charset="UTF-8" />
