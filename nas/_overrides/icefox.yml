@@ -10,12 +10,14 @@ services:
     - '[2606:c700:4020:af::2]:443:443'
     links:
       - dldr:dldr
+      - jellyfin:jellyfin
     environment:
       NAS_WEB_DOMAIN: nas-ro.foxden.network
       DAV_DOMAIN: dav.doridian.net
       HOST_DOMAIN: icefox.doridian.net
       DLDR_DOMAIN: dldr.icefox.doridian.net
       ARCHMIRROR_DOMAIN: archlinux.doridian.net
+      JELLYFIN_DOMAIN: jellyfin.doridian.net
     volumes:
       - /mnt/zhdd/dav:/mnt/dav
       - /mnt/ztank/local/archmirror:/mnt/archmirror
@@ -38,11 +40,8 @@ services:
     hostname: jellyfin.doridian.net
     environment:
       - JELLYFIN_PublishedServerUrl=https://jellyfin.doridian.net
-    ports:
-    - 23.239.97.11:80:80
-    - 23.239.97.11:443:443
-    - '[2606:c700:4020:af::3]:80:80'
-    - '[2606:c700:4020:af::3]:443:443'
   jellyfin-web:
     environment:
-      - JELLYFIN_DOMAIN=jellyfin.doridian.net
+      - JELLYFIN_DOMAIN=http://jellyfin.doridian.net
+    profiles:
+      - do-not-deploy

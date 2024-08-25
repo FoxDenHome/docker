@@ -10,6 +10,7 @@ services:
       HOST_DOMAIN: bengalfox.foxden.network
       DLDR_DOMAIN: http://dldr.foxden.network
       ARCHMIRROR_DOMAIN: http://archlinux.foxden.network
+      JELLYFIN_DOMAIN: http://jellyfin.foxden.network
     volumes:
       - /mnt/zhdd/dav:/mnt/dav
   dldr:
