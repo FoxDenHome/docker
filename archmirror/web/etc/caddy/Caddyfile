@@ -19,6 +19,15 @@
 }
 
 http://{$ARCHMIRROR_DOMAIN}, {$ARCHMIRROR_DOMAIN} {
+	mime {
+		.html text/plain
+		.htm text/plain
+		.shtml text/plain
+		.shtml text/plain
+		.css text/plain
+		.js text/plain
+	}
+
 	handle /archlinux-browse.css {
 		root * /etc/caddy/public_html
 		file_server
@@ -45,14 +54,6 @@ http://{$ARCHMIRROR_DOMAIN}, {$ARCHMIRROR_DOMAIN} {
 
 	handle {
 		root * /mnt/archmirror
-		mime {
-			.html text/plain
-			.htm text/plain
-			.shtml text/plain
-			.shtml text/plain
-			.css text/plain
-			.js text/plain
-		}
 		file_server {
 			browse /etc/caddy/public_html/archlinux-browse.html
 			index []
