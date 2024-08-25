@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <!--
-    {{- .RespHeader.Del "Content-Security-Policy" }}
-    {{- .RespHeader.Del "Referrer-Policy" }}
-
-    {{ $csp := "default-src 'none'; img-src 'self'; object-src 'none'; base-uri 'none'; script-src 'none'; style-src 'self'; frame-ancestors 'none'; form-action 'none';" -}}
-    {{- .RespHeader.Set "Content-Security-Policy" $csp -}}
-
     {{- if eq .Req.URL.Scheme "http" }}
     {{- .RespHeader.Set "Location" (print "https://" .Req.URL.Host .Req.URL.Path) }}
     {{- httpError 308 }}
