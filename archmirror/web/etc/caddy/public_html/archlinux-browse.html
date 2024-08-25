@@ -2,7 +2,7 @@
 <html lang="en">
   <!--
     {{- if eq .Req.TLS nil}}
-    {{- .RespHeader.Set "Location" (print "https://archlinux.doridian.net" .Req.URL.Path)}}
+    {{- .RespHeader.Set "Location" (printf "https://archlinux.doridian.net%s" .Req.URL.Path)}}
     {{- httpError 308}}
     {{- end}}
   -->
