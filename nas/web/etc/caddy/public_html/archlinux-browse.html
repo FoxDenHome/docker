@@ -5,6 +5,7 @@
     {{- .RespHeader.Del "Content-Security-Policy" }}
     {{- .RespHeader.Set "Content-Security-Policy" $csp -}}
     {{- .RespHeader.Del "Content-Disposition" }}
+    {{- .RespHeader.Del "Referrer-Policy" }}
   -->
   <head>
     <meta charset="UTF-8" />
