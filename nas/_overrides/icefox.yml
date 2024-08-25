@@ -43,5 +43,3 @@ services:
   jellyfin-web:
     environment:
       - JELLYFIN_DOMAIN=http://jellyfin.doridian.net
-    profiles:
-      - do-not-deploy

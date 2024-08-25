@@ -106,9 +106,6 @@ class ComposeProject():
         self.files.add(file)
 
     def add_service(self, name, data):
-        if "profiles" in data:
-            return
-
         svc = self.services.get(name, None)
         if svc is None:
             svc = Service(
