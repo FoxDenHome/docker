@@ -1,0 +1,97 @@
+{
+	order webdav before file_server
+
+	servers {
+		listener_wrappers {
+			proxy_protocol {
+				timeout 5s
+				allow 10.1.0.0/23
+				allow 10.2.0.0/23
+				allow 10.3.0.0/23
+				allow 10.4.0.0/23
+				allow 10.5.0.0/23
+				allow 10.6.0.0/23
+				allow 10.7.0.0/23
+				allow 10.8.0.0/23
+				allow 10.9.0.0/23
+			}
+			tls
+		}
+	}
+}
+
+http://{$HOST_DOMAIN} {
+	reverse_proxy host.docker.internal:180
+}
+
+{$NAS_WEB_DOMAIN} {
+	handle /guest/* {
+		root * /mnt/nas
+		file_server
+	}
+
+	handle {	
+		root * /mnt/nas
+		file_server {
+			browse
+		}
+
+		forward_auth http://127.0.0.1:1042 {
+			uri /
+		}
+	}
+}
+
+{$DAV_DOMAIN} {
+	basicauth * {
+		import import/webdav.auth
+	}
+
+	webdav * {
+		root /mnt/dav/{http.auth.user.id}
+	}
+}
+
+{$DLDR_DOMAIN} {
+	reverse_proxy dldr:8112
+}
+
+{$ARCHMIRROR_DOMAIN} {
+	handle /archlinux-browse.css {
+		root * /etc/caddy/public_html
+		file_server
+	}
+
+	handle /favicon.ico {
+		root * /etc/caddy/public_html
+		file_server
+	}
+
+	handle /.well-known {
+		root * /etc/caddy/public_html
+		file_server
+	}
+
+	handle /.well-known/* {
+		root * /etc/caddy/public_html
+		file_server
+	}
+
+	handle {
+		root * /mnt/archmirror
+		file_server {
+			browse /etc/caddy/public_html/archlinux-browse.html
+		}
+		header {
+			Content-Security-Policy "default-src 'none'; img-src 'self'; object-src 'none'; base-uri 'none'; script-src 'none'; style-src 'none'; frame-ancestors 'none'; form-action 'none';"
+			X-Content-Type-Options "nosniff"
+			X-Frame-Options "DENY"
+			Referrer-Policy "no-referrer"
+			Content-Disposition "attachment"
+		}
+	}
+}
+
+{$JELLYFIN_DOMAIN} {
+	reverse_proxy jellyfin:8096
+}

@@ -1,0 +1,22 @@
+services:
+  web:
+    build: web
+    restart: always
+    volumes:
+      - /mnt/zhdd/nas:/mnt/nas:ro
+      - /mnt/zssd/nas/torrent:/mnt/nas/torrent:ro
+      - /mnt/zssd/nas/usenet:/mnt/nas/usenet:ro
+      - caddy_data:/data
+      - caddy_config:/config
+      - caddy_import:/etc/caddy/import
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    healthcheck:
+      test: 'nc -z "$${HOSTNAME}" 443 || exit 1'
+      interval: 60s
+      timeout: 10s
+
+volumes:
+  caddy_data: {}
+  caddy_config: {}
+  caddy_import: {}

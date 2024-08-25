@@ -5,6 +5,7 @@ roles:
 - syncthing
 - hashtopolis-agent
 - xmpp
+- archmirror
 network:
   driver: macvlan
   device: ''
