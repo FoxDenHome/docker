@@ -4,7 +4,7 @@ ENV PUID=10000
 ENV PGID=10000
 ENV NAS_WEB_DOMAIN=localhost
 
-RUN apk add --no-cache curl s6
+RUN apk add --no-cache curl s6 cronie
 
 RUN mkdir -p /mnt/archmirror
 
