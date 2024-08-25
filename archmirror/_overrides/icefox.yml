@@ -13,10 +13,10 @@ services:
     volumes:
       - /mnt/ztank/local/archmirror:/mnt/archmirror:ro
   refresh:
-    user: 1001:1001
+    user: 10000:10000
     volumes:
       - /mnt/ztank/local/archmirror:/mnt/archmirror
   rsync:
-    user: 1001:1001
+    user: 10000:10000
     volumes:
       - /mnt/ztank/local/archmirror:/mnt/archmirror:ro
