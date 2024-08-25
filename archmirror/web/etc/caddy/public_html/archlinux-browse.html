@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <!--
-    {{- if eq .Req.URL.Scheme "http:" }}
-    {{- .RespHeader.Set "Location" (print "https://" .Req.URL.Host .Req.URL.Path) }}
-    {{- httpError 308 }}
-    {{- end }}
+    {{- if eq .Req.URL.Scheme "http:"}}
+    {{- .RespHeader.Set "Location" (print "https://" .Req.URL.Host .Req.URL.Path)}}
+    {{- httpError 308}}
+    {{- end}}
+
+    Scheme: {{html .Req.URL.Scheme}}
   -->
   <head>
     <meta charset="UTF-8" />
