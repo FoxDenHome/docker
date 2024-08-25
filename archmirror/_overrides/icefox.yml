@@ -8,8 +8,15 @@ services:
     environment:
       ARCHMIRROR_DOMAIN: archlinux.doridian.net
     volumes:
-      - /mnt/ztank/local/archmirror:/mnt/archmirror
+      - /mnt/ztank/local/archmirror:/mnt/archmirror:ro
   refresh:
     user: 1001:1001
     volumes:
       - /mnt/ztank/local/archmirror:/mnt/archmirror
+  rsync:
+    ports:
+    - 23.239.97.11:873:873
+    - '[2606:c700:4020:af::3]:873:873'
+    user: 1001:1001
+    volumes:
+      - /mnt/ztank/local/archmirror:/mnt/archmirror:ro
