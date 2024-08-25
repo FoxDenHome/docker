@@ -3,6 +3,7 @@ services:
     user: 10000:10000
     build: rsync
     restart: always
+    init: true
     network_mode: service:web
     healthcheck:
       test: 'nc -z "$${HOSTNAME}" 873 || exit 1'
