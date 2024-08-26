@@ -71,6 +71,10 @@ h1 a:hover {
   color: white;
 }
 
+h1.browse {
+  text-align: start;
+}
+
 td {
   padding-top: 0.3em;
 }
@@ -86,7 +90,7 @@ table {
   width: 100%;
 }
 th {
-  text-align: left;
+  text-align: start;
   border-bottom: 1px solid #500050;
 }
 .numeric-cell {
