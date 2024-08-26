@@ -19,7 +19,7 @@
 }
 
 http://{$ARCHMIRROR_DOMAIN}, {$ARCHMIRROR_DOMAIN} {
-	handle /static/* {
+	handle_path /_static/* {
 		root * /etc/caddy/public_html
 		file_server
 		header Strict-Transport-Security "max-age=31536000; preload; includeSubDomains"
