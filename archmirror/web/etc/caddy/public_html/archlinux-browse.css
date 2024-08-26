@@ -7,11 +7,44 @@ body {
 a {
   color: fuchsia;
 }
+a span {
+  vertical-align: middle;
+}
 a:visited {
   color: purple;
 }
 a:hover {
   color: white;
+}
+
+a.browse {
+  text-decoration: none;
+}
+a.browse span.text {
+  text-decoration: underline;
+}
+a span.icon {
+  filter: invert(14%) sepia(72%) saturate(6393%) hue-rotate(297deg) brightness(123%) contrast(114%);
+}
+a:visited span.icon {
+  filter: invert(11%) sepia(73%) saturate(7165%) hue-rotate(296deg) brightness(68%) contrast(106%);
+}
+a:hover span.icon {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+}
+
+span.icon-directory {
+  background-image: url(directory.svg);
+}
+span.icon-file {
+  background-image: url(file.svg);
+}
+
+span.icon {
+  background-size: contain;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
 }
 
 .header-bottom {

@@ -11,10 +11,7 @@
       {{- end}}
     -->
     <link rel="canonical" href="{{html .Path}}{{- if .CanGoUp}}/{{- end}}">
-    <!--{{- if false}}-->
-    <link rel="stylesheet" href="archlinux-browse.css">
-    <!--{{- end}}-->
-    <link rel="stylesheet" href="/archlinux-browse.css">
+    <link rel="stylesheet" href="/static/archlinux-browse.css">
   </head>
   <body>
     <div class="header">
@@ -82,7 +79,7 @@
         <!--{{- if .CanGoUp}}-->
         <tr>
           <td>
-            <a href="..">.. (Up a directory)</a>
+            <a class="browse" href=".."><span class="icon icon-directory">&nbsp</span><span class="text">.. (Up a directory)</span></a>
           </td>
           <td></td>
           <td class="numeric-cell"></td>
@@ -92,9 +89,10 @@
         <tr>
           <td>
             <a
+              class="browse"
               href="{{html .URL}}"
               title='{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}'
-              >{{html .Name}}</a
+              ><span class="icon {{-if .IsDir}}icon-directory{{- else}}icon-file{{- end}}">&nbsp</span> <span class="text">{{html .Name}}</span></a
             >
           </td>
           <td>{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}</td>
