@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!--
-    {{- if eq .Req.TLS nil}}
-    {{- .RespHeader.Set "Location" (printf "https://archlinux.doridian.net%s" .Req.URL.Path)}}
-    {{- httpError 308}}
-    {{- end}}
-  -->
   <head>
     <meta charset="UTF-8" />
     <title>
       {{html .Path}}{{- if .CanGoUp}}/{{- end}} - Doridian's Arch Linux Mirror
     </title>
+    <!--
+      {{- if eq .Req.TLS nil}}
+      {{ print "--><meta http-equiv=\"refresh\" content=\"0; url=https://archlinux.doridian.net" .Path "\" /><!--" }}
+      {{- end}}
+    -->
     <link rel="canonical" href="{{html .Path}}{{- if .CanGoUp}}/{{- end}}" />
     <!--{{- if false}}-->
     <link rel="stylesheet" href="archlinux-browse.css" />
