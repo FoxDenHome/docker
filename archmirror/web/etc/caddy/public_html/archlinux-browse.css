@@ -120,3 +120,6 @@ td a {
 th a span.text {
   padding-right: 4pt;
 }
+th.numeric-cell a span.text {
+  padding-left: 4pt;
+}
