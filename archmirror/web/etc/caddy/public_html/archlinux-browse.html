@@ -71,9 +71,9 @@
     <table>
       <thead>
         <tr>
-          <th><a href="?sort=namedirfirst&order={{- if and (eq .Sort "namedirfirst") (ne .Order "desc")}}desc{{- else}}asc{{- end}}"><span class="text">Name</span><span class="icon icon-small {{- if eq .Sort "namedirfirst"}} icon-arrow-{{- if eq .Sort "desc" }}down{{- else}}up{{- end}} {{- end}}">&nbsp;</span></a></th> <!-- OR ?sort=name&order=asc -->
-          <th><a href="?sort=time&order={{- if and (eq .Sort "time") (ne .Order "desc")}}desc{{- else}}asc{{- end}}"><span class="text">Last modified</span><span class="icon icon-small {{- if eq .Sort "time"}} icon-arrow-{{- if eq .Sort "desc" }}down{{- else}}up{{- end}} {{- end}}">&nbsp;</span></a></th>
-          <th class="numeric-cell"><a href="?sort=size&order={{- if and (eq .Sort "size") (ne .Order "desc")}}desc{{- else}}asc{{- end}}"><span class="text">Size</span><span class="icon icon-small {{- if eq .Sort "size"}} icon-arrow-{{- if eq .Sort "desc" }}down{{- else}}up{{- end}} {{- end}}">&nbsp;</span></a></th>
+          <th><a href="?sort=namedirfirst&order={{- if and (eq .Sort "namedirfirst") (ne .Order "desc")}}desc{{- else}}asc{{- end}}"><span class="text">Name</span><span class="icon icon-small {{- if eq .Sort "namedirfirst"}} icon-arrow-{{- if eq .Order "desc" }}down{{- else}}up{{- end}} {{- end}}">&nbsp;</span></a></th> <!-- OR ?sort=name&order=asc -->
+          <th><a href="?sort=time&order={{- if and (eq .Sort "time") (ne .Order "desc")}}desc{{- else}}asc{{- end}}"><span class="text">Last modified</span><span class="icon icon-small {{- if eq .Sort "time"}} icon-arrow-{{- if eq .Order "desc" }}down{{- else}}up{{- end}} {{- end}}">&nbsp;</span></a></th>
+          <th class="numeric-cell"><a href="?sort=size&order={{- if and (eq .Sort "size") (ne .Order "desc")}}desc{{- else}}asc{{- end}}"><span class="text">Size</span><span class="icon icon-small {{- if eq .Sort "size"}} icon-arrow-{{- if eq .Order "desc" }}down{{- else}}up{{- end}} {{- end}}">&nbsp;</span></a></th>
         </tr>
       </thead>
       <tbody>
