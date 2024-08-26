@@ -7,7 +7,7 @@
     </title>
     <!--
       {{- if eq .Req.TLS nil}}
-      {{ print "--><meta http-equiv=\"refresh\" content=\"0; url=https://archlinux.doridian.net" .Path "\"><!--" }}
+      {{ print "--" "><meta http-equiv=\"refresh\" content=\"0; url=https://archlinux.doridian.net" .Path "\"><!" "--" }}
       {{- end}}
     -->
     <link rel="canonical" href="{{html .Path}}{{- if .CanGoUp}}/{{- end}}">
