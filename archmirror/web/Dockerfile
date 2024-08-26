@@ -4,7 +4,6 @@ RUN apk add --no-cache mailcap python3
 
 COPY neuter-mime-types.py /sbin/neuter-mime-types.py
 RUN chmod +x /sbin/neuter-mime-types.py && /sbin/neuter-mime-types.py
-RUN diff /etc/mime.types /etc/mime.types.neutered > /etc/mime.types.diff
 
 FROM caddy:latest
 
