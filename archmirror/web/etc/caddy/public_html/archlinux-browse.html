@@ -92,7 +92,7 @@
               class="browse"
               href="{{html .URL}}"
               title='{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}'
-              ><span class="icon {{-if .IsDir}}icon-directory{{- else}}icon-file{{- end}}">&nbsp</span> <span class="text">{{html .Name}}</span></a
+              ><span class="icon {{- if .IsDir}}icon-directory{{- else}}icon-file{{- end}}">&nbsp</span> <span class="text">{{html .Name}}</span></a
             >
           </td>
           <td>{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}</td>
