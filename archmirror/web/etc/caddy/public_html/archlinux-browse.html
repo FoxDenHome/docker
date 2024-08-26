@@ -71,16 +71,16 @@
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Last modified</th>
-          <th class="numeric-cell">Size</th>
+          <th><a href="?sort=namedirfirst&order={{- if and (eq .Sort "namedirfirst") (ne .Order "desc")}}desc{{- else}}asc{{- end}}"><span class="text">Name</span><span class="icon icon-small {{- if eq .Sort "namedirfirst"}} icon-arrow-{{- if eq .Sort "desc" }}down{{- else}}up{{- end}} {{- end}}">&nbsp;</span></a></th> <!-- OR ?sort=name&order=asc -->
+          <th><a href="?sort=time&order={{- if and (eq .Sort "time") (ne .Order "desc")}}desc{{- else}}asc{{- end}}"><span class="text">Last modified</span><span class="icon icon-small {{- if eq .Sort "time"}} icon-arrow-{{- if eq .Sort "desc" }}down{{- else}}up{{- end}} {{- end}}">&nbsp;</span></a></th>
+          <th class="numeric-cell"><a href="?sort=size&order={{- if and (eq .Sort "size") (ne .Order "desc")}}desc{{- else}}asc{{- end}}"><span class="text">Size</span><span class="icon icon-small {{- if eq .Sort "size"}} icon-arrow-{{- if eq .Sort "desc" }}down{{- else}}up{{- end}} {{- end}}">&nbsp;</span></a></th>
         </tr>
       </thead>
       <tbody>
         <!--{{- if .CanGoUp}}-->
         <tr>
           <td>
-            <a class="browse" href=".."><span class="icon icon-directory">&nbsp</span><span class="text">.. (Up a directory)</span></a>
+            <a href=".."><span class="icon icon-directory">&nbsp</span><span class="text">.. (Up a directory)</span></a>
           </td>
           <td></td>
           <td class="numeric-cell"></td>
@@ -90,10 +90,9 @@
         <tr>
           <td>
             <a
-              class="browse"
               href="{{html .URL}}"
               title='{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}'
-              ><span class="icon{{- if .IsDir}} icon-directory{{- else}} icon-file{{- end}}">&nbsp</span> <span class="text">{{html .Name}}</span></a
+              ><span class="icon {{- if .IsDir}} icon-directory {{- else}} icon-file {{- end}}">&nbsp</span> <span class="text">{{html .Name}}</span></a
             >
           </td>
           <td>{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}</td>

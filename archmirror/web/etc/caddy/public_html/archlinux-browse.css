@@ -1,9 +1,12 @@
+/* Core */
 body {
   background-color: black;
   color: fuchsia;
   font-family: Arial, Helvetica, sans-serif;
   padding: 2.5em;
 }
+
+/* Links */
 a {
   color: fuchsia;
 }
@@ -17,10 +20,10 @@ a:hover {
   color: white;
 }
 
-a.browse {
+a:has(span.icon) {
   text-decoration: none;
 }
-a.browse span.text {
+a:has(span.icon) span.text {
   text-decoration: underline;
 }
 a span.icon {
@@ -30,23 +33,37 @@ a:visited span.icon {
   filter: invert(11%) sepia(73%) saturate(7165%) hue-rotate(296deg) brightness(68%) contrast(106%);
 }
 a:hover span.icon {
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+  filter: invert(100%);
 }
 
+/* Icons */
 span.icon-directory {
   background-image: url(directory.svg);
 }
 span.icon-file {
   background-image: url(file.svg);
 }
+span.icon-arrow-up {
+  background-image: url(arrow-down.svg);
+  rotate: 180deg;
+}
+span.icon-arrow-down {
+  background-image: url(arrow-down.svg);
+}
 
 span.icon {
   background-size: contain;
-  width: 32px;
-  height: 32px;
+  width: 24pt;
+  height: 24pt;
   display: inline-block;
 }
 
+span.icon-small {
+  width: 20pt;
+  height: 20pt;
+}
+
+/* Header and heading */
 .header-bottom {
   margin-bottom: 0px;
 }
@@ -75,24 +92,31 @@ h1.pwd {
   text-align: start;
 }
 
-td {
-  padding-top: 0.3em;
+/* File table */
+table {
+  width: 100%;
 }
+.numeric-cell {
+  text-align: right;
+}
+
 th {
   padding-bottom: 0.3em;
+  text-align: start;
+  border-bottom: 1px solid #500050;
+}
+th a {
+  text-decoration: none;
+}
+
+td {
+  padding-top: 0.3em;
 }
 td a {
   width: 100%;
   display: block;
   user-select: text;
 }
-table {
-  width: 100%;
-}
-th {
-  text-align: start;
-  border-bottom: 1px solid #500050;
-}
-.numeric-cell {
-  text-align: right;
+th a span.text {
+  padding-right: 4pt;
 }
