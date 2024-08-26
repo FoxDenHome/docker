@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>
       {{html .Path}}{{- if .CanGoUp}}/{{- end}} - Doridian's Arch Linux Mirror
     </title>
     <!--
       {{- if eq .Req.TLS nil}}
-      {{ print "--><meta http-equiv=\"refresh\" content=\"0; url=https://archlinux.doridian.net" .Path "\" /><!--" }}
+      {{ print "--><meta http-equiv=\"refresh\" content=\"0; url=https://archlinux.doridian.net" .Path "\"><!--" }}
       {{- end}}
     -->
-    <link rel="canonical" href="{{html .Path}}{{- if .CanGoUp}}/{{- end}}" />
+    <link rel="canonical" href="{{html .Path}}{{- if .CanGoUp}}/{{- end}}">
     <!--{{- if false}}-->
-    <link rel="stylesheet" href="archlinux-browse.css" />
+    <link rel="stylesheet" href="archlinux-browse.css">
     <!--{{- end}}-->
-    <link rel="stylesheet" href="/archlinux-browse.css" />
+    <link rel="stylesheet" href="/archlinux-browse.css">
   </head>
   <body>
     <div class="header">
