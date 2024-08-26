@@ -34,10 +34,10 @@ a:hover span.icon {
 }
 
 span.icon-directory {
-  background-image: url(/_static/directory.svg);
+  background-image: url(directory.svg);
 }
 span.icon-file {
-  background-image: url(/_static/file.svg);
+  background-image: url(file.svg);
 }
 
 span.icon {
