@@ -11,6 +11,7 @@ services:
     - '[2606:c700:4020:af::3]:873:873'
     environment:
       ARCHMIRROR_DOMAIN: archlinux.doridian.net
+      ARCHMIRROR_SOURCE_ID: constant.com
     volumes:
       - /mnt/ztank/local/archmirror:/mnt/archmirror:ro
   refresh:
