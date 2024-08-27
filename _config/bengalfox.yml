@@ -11,6 +11,7 @@ roles:
 - hashtopolis-agent
 - ollama
 - fadumper
+- archmirror
 network:
   driver: sriov
   pvid: 2

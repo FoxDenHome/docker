@@ -1,0 +1,14 @@
+services:
+  web:
+    environment:
+      ARCHMIRROR_DOMAIN: archlinux.foxden.network
+    volumes:
+      - /mnt/zssd/docker/archmirror:/mnt/archmirror:ro
+  refresh:
+    environment:
+      ARCHMIRROR_SOURCE: archlinux.doridian.net
+    volumes:
+      - /mnt/zssd/docker/archmirror:/mnt/archmirror
+  rsync:
+    volumes:
+      - /mnt/zssd/docker/archmirror:/mnt/archmirror:ro
