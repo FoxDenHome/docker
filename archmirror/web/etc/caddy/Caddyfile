@@ -46,7 +46,7 @@
 	handle {
 		root * /mnt/archmirror
 		file_server {
-			browse /etc/caddy/public_html/archlinux-browse.html
+			browse /etc/caddy/public_html/browse.html
 			index []
 		}
 		header {
