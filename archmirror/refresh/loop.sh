@@ -1,4 +1,7 @@
 #!/bin/bash
+set -u
+
+echo "[LOOP] Upstream mirror: ${ARCHMIRROR_SOURCE}"
 
 while :; do
     # Sleep between 0 minutes and 60 minutes before starting the sync

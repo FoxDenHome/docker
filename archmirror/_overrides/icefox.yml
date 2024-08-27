@@ -14,6 +14,8 @@ services:
     volumes:
       - /mnt/ztank/local/archmirror:/mnt/archmirror:ro
   refresh:
+    environment:
+      ARCHMIRROR_SOURCE: arch.mirror.constant.com
     volumes:
       - /mnt/ztank/local/archmirror:/mnt/archmirror
   rsync:
