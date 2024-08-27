@@ -1,5 +1,10 @@
 services:
   web:
+    networks:
+      vlan3:
+        priority: 100
+        ipv4_address: 10.3.10.11
+        mac_address: ca:1b:f1:2d:6d:b3
     environment:
       ARCHMIRROR_DOMAIN: archlinux.foxden.network
     volumes:
