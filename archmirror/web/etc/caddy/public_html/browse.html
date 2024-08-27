@@ -27,14 +27,14 @@
       <ul>
         <li>
           HTTPS:
-          <a href="https://archlinux.doridian.net/"
-            >https://archlinux.doridian.net/</a
+          <a href="https://{{html (env "ARCHMIRROR_DOMAIN")}}/"
+            >https://{{html (env "ARCHMIRROR_DOMAIN")}}/</a
           >
         </li>
         <li>
           rsync:
-          <a href="rsync://archlinux.doridian.net/archlinux/"
-            >rsync://archlinux.doridian.net/archlinux/</a
+          <a href="rsync://{{html (env "ARCHMIRROR_DOMAIN")}}/archlinux/"
+            >rsync://{{html (env "ARCHMIRROR_DOMAIN")}}/archlinux/</a
           >
         </li>
       </ul>
