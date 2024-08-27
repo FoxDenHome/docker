@@ -5,11 +5,6 @@
     <title>
       {{html .Path}}{{- if .CanGoUp}}/{{- end}} - Doridian's Arch Linux Mirror
     </title>
-    <!--
-      {{- if eq .Req.TLS nil}}
-      {{ print "--" "><meta http-equiv=\"refresh\" content=\"0; url=https://archlinux.doridian.net" .Path "\"><!" "--" }}
-      {{- end}}
-    -->
     <link rel="canonical" href="{{html .Path}}{{- if .CanGoUp}}/{{- end}}">
     <link rel="stylesheet" href="/_static/archlinux-browse.css">
   </head>
@@ -34,12 +29,6 @@
           HTTPS:
           <a href="https://archlinux.doridian.net/"
             >https://archlinux.doridian.net/</a
-          >
-        </li>
-        <li>
-          HTTP:
-          <a href="http://archlinux.doridian.net/"
-            >http://archlinux.doridian.net/</a
           >
         </li>
         <li>

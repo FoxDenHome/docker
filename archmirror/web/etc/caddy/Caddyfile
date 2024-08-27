@@ -18,7 +18,7 @@
 	}
 }
 
-http://{$ARCHMIRROR_DOMAIN}, {$ARCHMIRROR_DOMAIN} {
+{$ARCHMIRROR_DOMAIN} {
 	handle_path /_static/* {
 		root * /etc/caddy/public_html
 		file_server
