@@ -10,6 +10,10 @@ services:
       ES_URL: http://elasticsearch:9200
       FA_COOKIE_A: ${FA_COOKIE_A}
       FA_COOKIE_B: ${FA_COOKIE_B}
+      PROXY_URL: ${PROXY_URL}
+      FETCHNEW_CONCURRENCY: ${FETCHNEW_CONCURRENCY}
+      FETCHNEW_PER_FETCH_LIMIT: ${FETCHNEW_PER_FETCH_LIMIT}
+      DOWNLOADFILES_CONCURRENCY: ${DOWNLOADFILES_CONCURRENCY}
     volumes:
       - /mnt/zhdd/furaffinity/data:/data
     healthcheck:
