@@ -75,7 +75,7 @@ services:
     restart: always
     network_mode: service:server
     environment:
-      AUTHENTIK_HOST: http://127.0.0.1:9000/
+      AUTHENTIK_HOST: http://127.0.0.1:80/
       AUTHENTIK_INSECURE: 'false'
       AUTHENTIK_HOST_BROWSER: ''
       AUTHENTIK_TOKEN: ${LDAP_AUTHENTIK_TOKEN}
