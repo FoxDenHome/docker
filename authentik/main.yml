@@ -41,7 +41,7 @@ services:
       AUTHENTIK_POSTGRESQL__NAME: authentik
       AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
       AUTHENTIK_LISTEN__METRICS: 127.0.0.1:9300
-      AUTHENTIK_LISTEN__HTTP: ':81'
+      AUTHENTIK_LISTEN__HTTP: 127.0.0.1:81
       AUTHENTIK_LISTEN__HTTPS: ':443'
     volumes:
       - media:/media
@@ -80,7 +80,7 @@ services:
     restart: always
     network_mode: service:server
     environment:
-      AUTHENTIK_HOST: http://127.0.0.1:80/
+      AUTHENTIK_HOST: http://127.0.0.1:81/
       AUTHENTIK_INSECURE: 'false'
       AUTHENTIK_HOST_BROWSER: ''
       AUTHENTIK_TOKEN: ${LDAP_AUTHENTIK_TOKEN}
