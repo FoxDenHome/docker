@@ -41,7 +41,7 @@ services:
       AUTHENTIK_POSTGRESQL__NAME: authentik
       AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
       AUTHENTIK_LISTEN__METRICS: 127.0.0.1:9300
-      AUTHENTIK_LISTEN__HTTP: ':80'
+      AUTHENTIK_LISTEN__HTTP: ':81'
       AUTHENTIK_LISTEN__HTTPS: ':443'
     volumes:
       - media:/media
@@ -51,6 +51,11 @@ services:
     depends_on:
       - postgresql
       - redis
+  certbot:
+    build: certbot-cron
+    network_mode: service:server
+    volumes:
+        - certs:/etc/letsencrypt
   worker:
     image: ghcr.io/goauthentik/server:2024.8.0
     restart: always
