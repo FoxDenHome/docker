@@ -8,6 +8,7 @@ roles:
 - scrypted
 - syncthing
 - website
+- authentik
 network:
   driver: bridge
   device: ''

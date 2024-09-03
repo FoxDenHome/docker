@@ -1,0 +1,8 @@
+services:
+    networks:
+      default:
+        priority: 1
+      vlan3:
+        priority: 100
+        ipv4_address: 10.1.14.1
+        mac_address: a6:92:b3:68:21:9d
