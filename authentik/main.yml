@@ -34,7 +34,6 @@ services:
     image: ghcr.io/goauthentik/server:2024.8.0
     restart: always
     command: server
-    userns_mode: host
     environment:
       AUTHENTIK_REDIS__HOST: redis
       AUTHENTIK_POSTGRESQL__HOST: postgresql
@@ -51,7 +50,7 @@ services:
       - redis
   worker:
     image: ghcr.io/goauthentik/server:2024.8.0
-    restart: unless-stopped
+    restart: always
     command: worker
     environment:
       AUTHENTIK_REDIS__HOST: redis
@@ -59,16 +58,7 @@ services:
       AUTHENTIK_POSTGRESQL__USER: authentik
       AUTHENTIK_POSTGRESQL__NAME: authentik
       AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
-    # `user: root` and the docker socket volume are optional.
-    # See more for the docker socket integration here:
-    # https://goauthentik.io/docs/outposts/integrations/docker
-    # Removing `user: root` also prevents the worker from fixing the permissions
-    # on the mounted folders, so when removing this make sure the folders have the correct UID/GID
-    # (1000:1000 by default)
-    user: root
-    userns_mode: host
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
       - media:/media
       - certs:/certs
       - custom-templates:/templates
@@ -77,6 +67,15 @@ services:
     depends_on:
       - postgresql
       - redis
+  ldap:
+    image: ghcr.io/goauthentik/ldap:2024.8.0
+    restart: always
+    command: /ldap
+    environment:
+      AUTHENTIK_HOST: http://server:9000/
+      AUTHENTIK_INSECURE: 'false'
+      AUTHENTIK_HOST_BROWSER: ''
+      SSL_CERT_DIR: /etc/ssl/certs
 
 volumes:
   database: {}
