@@ -41,8 +41,8 @@ services:
       AUTHENTIK_POSTGRESQL__NAME: authentik
       AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
       AUTHENTIK_LISTEN__METRICS: 127.0.0.1:9300
-      AUTHENTIK_LISTEN__HTTP: 80
-      AUTHENTIK_LISTEN__HTTPS: 443
+      AUTHENTIK_LISTEN__HTTP: ':80'
+      AUTHENTIK_LISTEN__HTTPS: ':443'
     volumes:
       - media:/media
       - custom-templates:/templates
@@ -81,8 +81,8 @@ services:
       AUTHENTIK_TOKEN: ${LDAP_AUTHENTIK_TOKEN}
       SSL_CERT_DIR: /etc/ssl/certs
       AUTHENTIK_LISTEN__METRICS: 127.0.0.1:9301
-      AUTHENTIK_LISTEN__LDAPS: 636
-      AUTHENTIK_LISTEN__LDAP: 389
+      AUTHENTIK_LISTEN__LDAPS: ':636'
+      AUTHENTIK_LISTEN__LDAP: ':389'
 volumes:
   database: {}
   redis: {}
