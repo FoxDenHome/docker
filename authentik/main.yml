@@ -70,8 +70,9 @@ services:
   ldap:
     image: ghcr.io/goauthentik/ldap:2024.8.0
     restart: always
+    network_mode: service:server
     environment:
-      AUTHENTIK_HOST: http://server:9000/
+      AUTHENTIK_HOST: http://127.0.0.1:9000/
       AUTHENTIK_INSECURE: 'false'
       AUTHENTIK_HOST_BROWSER: ''
       AUTHENTIK_TOKEN: ${LDAP_AUTHENTIK_TOKEN}
