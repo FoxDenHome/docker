@@ -4,5 +4,6 @@
 
 while :; do
     certbot renew --non-interactive
+    chown -R 1000:1000 /etc/letsencrypt
     sleep 24h
 done
