@@ -34,6 +34,7 @@ services:
     image: ghcr.io/goauthentik/server:2024.8.0
     restart: always
     command: server
+    userns_mode: host
     environment:
       AUTHENTIK_REDIS__HOST: redis
       AUTHENTIK_POSTGRESQL__HOST: postgresql
@@ -45,9 +46,6 @@ services:
       - custom-templates:/templates
     env_file:
       - .env
-    ports:
-      - "${COMPOSE_PORT_HTTP:-9000}:9000"
-      - "${COMPOSE_PORT_HTTPS:-9443}:9443"
     depends_on:
       - postgresql
       - redis
@@ -68,6 +66,7 @@ services:
     # on the mounted folders, so when removing this make sure the folders have the correct UID/GID
     # (1000:1000 by default)
     user: root
+    userns_mode: host
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - media:/media
