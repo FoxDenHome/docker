@@ -40,7 +40,7 @@ services:
       AUTHENTIK_POSTGRESQL__USER: authentik
       AUTHENTIK_POSTGRESQL__NAME: authentik
       AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
-      METRICS: 127.0.0.1:9300
+      AUTHENTIK_LISTEN__METRICS: 127.0.0.1:9300
     volumes:
       - media:/media
       - custom-templates:/templates
@@ -78,7 +78,7 @@ services:
       AUTHENTIK_HOST_BROWSER: ''
       AUTHENTIK_TOKEN: ${LDAP_AUTHENTIK_TOKEN}
       SSL_CERT_DIR: /etc/ssl/certs
-      METRICS: 127.0.0.1:9301
+      AUTHENTIK_LISTEN__METRICS: 127.0.0.1:9301
 
 volumes:
   database: {}
