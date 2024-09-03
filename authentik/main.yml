@@ -54,6 +54,7 @@ services:
   certbot:
     build: certbot-cron
     network_mode: service:server
+    init: true
     volumes:
         - certs:/etc/letsencrypt
   worker:
