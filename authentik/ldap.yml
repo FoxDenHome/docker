@@ -6,6 +6,7 @@ services:
     restart: always
     network_mode: service:server
     environment:
+      TZ: America/Los_Angeles
       AUTHENTIK_HOST: http://127.0.0.1:81/
       AUTHENTIK_INSECURE: 'false'
       AUTHENTIK_HOST_BROWSER: ''

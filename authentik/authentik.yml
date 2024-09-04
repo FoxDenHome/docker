@@ -6,6 +6,7 @@ services:
     restart: always
     command: server
     environment:
+      TZ: America/Los_Angeles
       AUTHENTIK_REDIS__HOST: redis
       AUTHENTIK_POSTGRESQL__HOST: postgresql
       AUTHENTIK_POSTGRESQL__USER: authentik
@@ -27,6 +28,7 @@ services:
     restart: always
     command: worker
     environment:
+      TZ: America/Los_Angeles
       AUTHENTIK_REDIS__HOST: redis
       AUTHENTIK_POSTGRESQL__HOST: postgresql
       AUTHENTIK_POSTGRESQL__USER: authentik
