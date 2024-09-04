@@ -1,7 +1,7 @@
 ---
 
 services:
-  ldap:
+  radius:
     image: ghcr.io/goauthentik/radius:2024.8.0
     restart: always
     network_mode: service:server
