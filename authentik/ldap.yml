@@ -2,7 +2,7 @@
 
 services:
   ldap:
-    image: ghcr.io/goauthentik/ldap:2024.6.4
+    image: ghcr.io/goauthentik/ldap:2024.8.0
     restart: always
     network_mode: service:server
     environment:
