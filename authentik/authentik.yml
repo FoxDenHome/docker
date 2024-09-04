@@ -2,7 +2,7 @@
 
 services:
   server:
-    image: ghcr.io/goauthentik/server:2024.8.0
+    image: ghcr.io/goauthentik/server:2024.6.4
     restart: always
     command: server
     environment:
@@ -23,7 +23,7 @@ services:
       - postgresql
       - redis
   worker:
-    image: ghcr.io/goauthentik/server:2024.8.0
+    image: ghcr.io/goauthentik/server:2024.6.4
     restart: always
     command: worker
     environment:
