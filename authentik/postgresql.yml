@@ -16,8 +16,7 @@ services:
       POSTGRES_PASSWORD: ${PG_PASS:?database password required}
       POSTGRES_USER: authentik
       POSTGRES_DB: authentik
-    env_file:
-      - .env
+      PG_PASS: ${PG_PASS}
 
 volumes:
   database: {}
