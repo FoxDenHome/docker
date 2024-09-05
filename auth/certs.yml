@@ -1,0 +1,12 @@
+---
+
+services:
+  certbot:
+    build: certbot-cron
+    network_mode: kanidm:server
+    init: true
+    volumes:
+        - certs:/etc/letsencrypt
+
+volumes:
+  certs: {}

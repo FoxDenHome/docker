@@ -1,0 +1,16 @@
+---
+
+services:
+  kanidm:
+    build: kanidm
+    restart: always
+    environment:
+      TZ: America/Los_Angeles
+    volumes:
+      - kanidm:/data
+      - certs:/certs:ro
+    env_file:
+      - .env
+
+volumes:
+  kanidm: {}
