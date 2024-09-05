@@ -5,6 +5,7 @@ services:
     image: ghcr.io/doridian/oauth-jit-radius/oauth-jit-radius:latest
     restart: always
     network_mode: service:server
+    user: 1000:1000
     environment:
       TZ: America/Los_Angeles
       TLS_CERT: /certs/live/auth.foxden.network/fullchain.pem
