@@ -7,5 +7,9 @@ services:
     network_mode: service:server
     environment:
       TZ: America/Los_Angeles
+      TLS_CERT: /certs/live/auth.foxden.network/fullchain.pem
+      TLS_KEY: /certs/live/auth.foxden.network/privkey.pem
+    volumes:
+      certs:/certs:ro
     env_file:
       - .env.foxradius

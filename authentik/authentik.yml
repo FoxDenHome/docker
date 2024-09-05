@@ -36,7 +36,7 @@ services:
       AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
     volumes:
       - media:/media
-      - certs:/certs
+      - certs:/certs:ro
       - custom-templates:/templates
     env_file:
       - .env
