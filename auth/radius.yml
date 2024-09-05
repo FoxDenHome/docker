@@ -4,7 +4,7 @@ services:
   radius:
     image: ghcr.io/doridian/oauth-jit-radius/oauth-jit-radius:latest
     restart: always
-    network_mode: kanidm:server
+    network_mode: service:kanidm
     user: 1000:1000
     environment:
       TZ: America/Los_Angeles

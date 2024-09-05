@@ -3,7 +3,7 @@
 services:
   certbot:
     build: certbot-cron
-    network_mode: kanidm:server
+    network_mode: service:kanidm
     init: true
     volumes:
         - certs:/etc/letsencrypt
