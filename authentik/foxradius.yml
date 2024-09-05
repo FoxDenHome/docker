@@ -10,6 +10,6 @@ services:
       TLS_CERT: /certs/live/auth.foxden.network/fullchain.pem
       TLS_KEY: /certs/live/auth.foxden.network/privkey.pem
     volumes:
-      certs:/certs:ro
+      - certs:/certs:ro
     env_file:
       - .env.foxradius
