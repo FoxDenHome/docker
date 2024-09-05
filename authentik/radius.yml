@@ -1,8 +1,8 @@
 ---
 
 services:
-  foxradius:
-    image: ghcr.io/doridian/foxradius/foxradius:latest
+  radius:
+    image: ghcr.io/doridian/oauth-jit-radius/oauth-jit-radius:latest
     restart: always
     network_mode: service:server
     environment:
