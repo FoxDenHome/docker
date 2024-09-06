@@ -6,7 +6,6 @@ services:
     restart: always
     network_mode: service:kanidm
     user: 1000:1000
-    hostname: auth.foxden.network
     environment:
       TZ: America/Los_Angeles
       TLS_CERT: /certs/live/auth.foxden.network/fullchain.pem
