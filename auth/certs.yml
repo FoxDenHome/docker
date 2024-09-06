@@ -5,6 +5,7 @@ services:
     build: certbot-cron
     network_mode: service:kanidm
     init: true
+    hostname: auth.foxden.network
     volumes:
         - certs:/etc/letsencrypt
 

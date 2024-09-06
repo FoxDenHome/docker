@@ -6,12 +6,13 @@ services:
     restart: always
     network_mode: service:kanidm
     user: 1000:1000
+    hostname: auth.foxden.network
     environment:
       TZ: America/Los_Angeles
       TLS_CERT: /certs/live/auth.foxden.network/fullchain.pem
       TLS_KEY: /certs/live/auth.foxden.network/privkey.pem
-      OAUTH_TOKEN_URL: http://127.0.0.1:81/application/o/token/
-      OAUTH_USERINFO_URL: http://127.0.0.1:81/application/o/userinfo/
+      OAUTH_TOKEN_URL: https://auth.foxden.network/application/o/token/
+      OAUTH_USERINFO_URL: https://auth.foxden.network/application/o/userinfo/
       OAUTH_SCOPES: 'openid profile radius_attributes'
     volumes:
       - certs:/certs:ro

@@ -4,6 +4,7 @@ services:
   kanidm:
     build: kanidm
     restart: always
+    hostname: auth.foxden.network
     environment:
       TZ: America/Los_Angeles
     volumes:
