@@ -10,9 +10,15 @@ services:
       TZ: America/Los_Angeles
       TLS_CERT: /certs/live/auth.foxden.network/fullchain.pem
       TLS_KEY: /certs/live/auth.foxden.network/privkey.pem
+      OAUTH_CLIENT_ID: radius
+      OAUTH_AUTH_URL: https://auth.foxden.network/ui/oauth2
       OAUTH_TOKEN_URL: https://auth.foxden.network/application/o/token/
-      OAUTH_USERINFO_URL: https://auth.foxden.network/application/o/userinfo/
+      OAUTH_USERINFO_URL: https://auth.foxden.network/oauth2/openid/radius/userinfo
       OAUTH_SCOPES: 'openid profile'
+      OAUTH_LOGIN_URL: https://auth.foxden.network:4444/login
+      OAUTH_REDIRECT_URL: https://auth.foxden.network:4444/redirect
+      OAUTH_SERVER_ADDR: 4444
+      RADIUS_TOKEN_EXPIRY: 60m
     volumes:
       - certs:/certs:ro
     env_file:
