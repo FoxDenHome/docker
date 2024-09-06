@@ -12,7 +12,7 @@ services:
       TLS_KEY: /certs/live/auth.foxden.network/privkey.pem
       OAUTH_TOKEN_URL: https://auth.foxden.network/application/o/token/
       OAUTH_USERINFO_URL: https://auth.foxden.network/application/o/userinfo/
-      OAUTH_SCOPES: 'openid profile radius_attributes'
+      OAUTH_SCOPES: 'openid profile'
     volumes:
       - certs:/certs:ro
     env_file:
