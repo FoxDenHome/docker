@@ -9,6 +9,7 @@ roles:
 - syncthing
 - website
 - authentik
+- auth
 network:
   driver: bridge
   device: ''
