@@ -17,7 +17,7 @@ services:
       OAUTH_SCOPES: 'openid profile'
       OAUTH_LOGIN_URL: https://auth.foxden.network:4444/login
       OAUTH_REDIRECT_URL: https://auth.foxden.network:4444/redirect
-      OAUTH_SERVER_ADDR: 4444
+      OAUTH_SERVER_ADDR: ':4444'
       RADIUS_TOKEN_EXPIRY: 60m
     volumes:
       - certs:/certs:ro
