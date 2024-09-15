@@ -6,7 +6,7 @@ services:
       - elasticsearch:elasticsearch
     environment:
       PUID: 10000
-      PGID: 1001
+      PGID: 10000
       ES_URL: http://elasticsearch:9200
       FA_COOKIE_A: ${FA_COOKIE_A}
       FA_COOKIE_B: ${FA_COOKIE_B}
