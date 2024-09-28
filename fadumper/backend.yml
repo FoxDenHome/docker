@@ -1,6 +1,6 @@
 services:
   backend:
-    image: ghcr.io/doridian/fadumper/backend:latest
+    build: backend
     restart: always
     links:
       - elasticsearch:elasticsearch
