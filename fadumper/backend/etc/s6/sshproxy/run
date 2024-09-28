@@ -2,4 +2,4 @@
 
 set -e
 
-exec s6-setuidgid '999:999' /usr/bin/ssh -N -i /config/icefox_ssh.key -D 127.0.0.1:5555 proxyuser@icefox.doridian.net
+exec s6-setuidgid '989:989' /usr/bin/ssh -N -i /config/icefox_ssh.key -D 127.0.0.1:5555 proxyuser@icefox.doridian.net
