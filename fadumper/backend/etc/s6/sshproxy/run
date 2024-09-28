@@ -2,6 +2,4 @@
 
 set -e
 
-useradd -u 999 -g 999 -s /bin/false proxyuser || true
-
 exec s6-setuidgid '999:999' /usr/bin/ssh -N -i /config/icefox_ssh.key -D 127.0.0.1:5555 proxyuser@icefox.doridian.net
