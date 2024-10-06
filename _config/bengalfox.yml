@@ -8,7 +8,6 @@ roles:
 - superfan
 - syncthing
 - hashtopolis
-- hashtopolis-agent
 - ollama
 - fadumper
 - archmirror

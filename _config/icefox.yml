@@ -3,7 +3,6 @@ roles:
 - gitbackup
 - nas
 - syncthing
-- hashtopolis-agent
 - xmpp
 - archmirror
 network:
