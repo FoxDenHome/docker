@@ -7,6 +7,7 @@ services:
       network.host: _site_
       network.bind_host: _site_
       xpack.security.enabled: 'false'
+      ingest.geoip.downloader.enabled: 'false'
     healthcheck:
       test: 'curl -s -f "http://$${HOSTNAME}:9200/_cat/health" >/dev/null || exit 1'
       interval: 60s
