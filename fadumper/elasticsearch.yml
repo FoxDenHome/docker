@@ -12,4 +12,4 @@ services:
       interval: 60s
       timeout: 10s
     volumes:
-    - /mnt/zssd/furaffinity/elasticsearch:/usr/share/elasticsearch/data
+    - /mnt/zssd/docker/furaffinity/elasticsearch:/usr/share/elasticsearch/data
