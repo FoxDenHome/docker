@@ -9,7 +9,6 @@ services:
       PGID: 10000
     volumes:
       - config:/config
-      - /mnt/zhdd/e621/data:/data
     healthcheck:
       test: 'curl -s -f "http://$${HOSTNAME}:8001/api/v1/healthcheck" >/dev/null || exit 1'
       interval: 60s

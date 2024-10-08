@@ -11,7 +11,6 @@ services:
       FA_COOKIE_A: ${FA_COOKIE_A}
       FA_COOKIE_B: ${FA_COOKIE_B}
     volumes:
-      - /mnt/zhdd/furaffinity/data:/data
       - backend_config:/config
     healthcheck:
       test: 'curl -s -f "http://$${HOSTNAME}:8001/api/v1/healthcheck" >/dev/null || exit 1'
