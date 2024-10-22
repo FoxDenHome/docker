@@ -1,6 +1,6 @@
 services:
   server:
-    image: ghcr.io/doridian/factorio-docker/factorio:stable
+    image: ghcr.io/doridian/factorio-docker/factorio:1.1.110
     restart: always
     environment:
       UPDATE_MODS_ON_START: 'true'
