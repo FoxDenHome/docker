@@ -4,10 +4,12 @@ set -u
 echo "[LOOP] Upstream mirror: ${ARCHMIRROR_SOURCE}"
 
 while :; do
-    # Sleep between 0 minutes and 60 minutes before starting the sync
-    NEXTSLEEP=$[RANDOM%60]
-    echo "[LOOP] Pre-Sleeping for ${NEXTSLEEP} minutes"
-    sleep ${NEXTSLEEP}m
+    if [ -z "${ARCHMIRROR_FORCE_SYNC-}" ]; then
+        # Sleep between 0 minutes and 60 minutes before starting the sync
+        NEXTSLEEP=$[RANDOM%60]
+        echo "[LOOP] Pre-Sleeping for ${NEXTSLEEP} minutes"
+        sleep ${NEXTSLEEP}m
+    fi
 
     echo '[LOOP] Running /sync.sh'
     /sync.sh
