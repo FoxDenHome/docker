@@ -3,10 +3,12 @@ services:
     build: aurbuild
     restart: always
     environment:
-      GPG_KEY_DATA: "${GPG_KEY_DATA}"
       GPG_KEY_ID: "${GPG_KEY_ID}"
+      GPG_KEY_PATH: /gpg/foxdenaur.asc
     volumes:
       - cache:/cache
+      - gpg:/gpg
 
 volumes:
   cache: {}
+  gpg: {}
