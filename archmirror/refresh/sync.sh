@@ -81,11 +81,11 @@ rsync_cmd() {
 	"${cmd[@]}" "$@"
 }
 
-export LASTUPDATE="$(curl -fLs "${lastupdate_url}")"
 export FORCE_SYNC="${ARCHMIRROR_FORCE_SYNC-}"
 
 while :;
 do
+	export LASTUPDATE="$(curl -fLs "${lastupdate_url}")"
 	#  only run when there are changes
 	if [ -f "${target}/lastupdate" ] && [ "${LASTUPDATE}" = "$(cat "${target}/lastupdate")" ]; then
 		if [ -z "${FORCE_SYNC}" ]; then
