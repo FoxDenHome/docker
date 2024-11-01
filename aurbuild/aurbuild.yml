@@ -6,7 +6,7 @@ services:
       GPG_KEY_ID: "${GPG_KEY_ID}"
       GPG_KEY_PATH: /gpg/foxdenaur.asc
     volumes:
-      - cache:/cache
+      - cache:/aur/cache
       - gpg:/gpg:ro
 
 volumes:
