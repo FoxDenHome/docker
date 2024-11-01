@@ -5,7 +5,7 @@ arm-linux-gnueabihf-linaro-bin
 dimland-git
 dino-plus-plus-git
 #kanidm
-ledmon
+intel-ledmon
 lgogdownloader
 liblxi
 lxi-tools
