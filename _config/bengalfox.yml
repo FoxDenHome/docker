@@ -11,6 +11,7 @@ roles:
 - ollama
 - fadumper
 - archmirror
+- aurbuild
 network:
   driver: sriov
   pvid: 2

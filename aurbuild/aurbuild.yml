@@ -1,0 +1,12 @@
+services:
+  aurbuild:
+    build: aurbuild
+    restart: always
+    environment:
+      GPG_KEY_DATA: "${GPG_KEY_DATA}"
+      GPG_KEY_ID: "${GPG_KEY_ID}"
+    volumes:
+      - cache:/cache
+
+volumes:
+  cache: {}
