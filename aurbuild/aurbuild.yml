@@ -7,7 +7,7 @@ services:
       GPG_KEY_PATH: /gpg/foxdenaur.asc
     volumes:
       - cache:/cache
-      - gpg:/gpg
+      - gpg:/gpg:ro
 
 volumes:
   cache: {}
