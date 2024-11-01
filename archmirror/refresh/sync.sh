@@ -87,6 +87,8 @@ if [ -z "${ARCHMIRROR_FORCE_SYNC-}" ]; then
 		rsync_cmd "$source_url/lastsync" "$target/lastsync"
 		exit 0
 	fi
+else
+	echo "ARCHMIRROR_FORCE_SYNC is set, forcing sync"
 fi
 
 rsync_cmd \
