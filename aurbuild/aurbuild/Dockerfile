@@ -6,8 +6,8 @@ RUN pacman -Syu --noconfirm --needed \
             libcanberra \
             gst-plugins-bad
 
-RUN pacman-key --init && \
-    pacman-key --recv-keys 6224F9941A8AA6D1 && \
-    pacman-key --lsign-key 6224F9941A8AA6D1
+USER aur
+RUN gpg --recv-keys 6224F9941A8AA6D1
+USER root
 
 COPY packages.txt /aur/packages.txt
