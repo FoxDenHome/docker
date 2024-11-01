@@ -1,6 +1,6 @@
 amdgpu_top
 arm-linux-gnueabihf-linaro-bin
-clementine
+#clementine
 #davinci-resolve
 dimland-git
 dino-plus-plus-git
