@@ -31,3 +31,11 @@ unixbench
 visual-studio-code-bin
 wezterm-git
 yay-bin
+fw-ectool-git
+fw-fanctrl-git
+fw-fanctrl-ui-git
+kopia-ui-bin
+kopia-ui-bin-wayland-hook
+qmk-hid
+spotify
+vesktop-bin
