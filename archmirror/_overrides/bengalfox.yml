@@ -8,6 +8,7 @@ services:
     environment:
       ARCHMIRROR_DOMAIN: archlinux.foxden.network
       ARCHMIRROR_SOURCE_ID: archlinux.doridian.net
+      ARCHMIRROR_FORCE_SYNC: true
     volumes:
       - /mnt/zssd/docker/archmirror:/mnt/archmirror:ro
   refresh:
