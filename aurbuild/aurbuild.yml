@@ -2,6 +2,7 @@ services:
   aurbuild:
     build: aurbuild
     restart: always
+    init: true
     environment:
       GPG_KEY_ID: "${GPG_KEY_ID}"
       GPG_KEY_PATH: /gpg/foxdenaur.asc
