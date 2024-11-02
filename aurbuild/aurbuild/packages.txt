@@ -11,7 +11,7 @@ liblxi
 lxi-tools
 mcelog
 mkinitcpio-clevis-hook
-#oh-my-zsh-git
+oh-my-zsh-git
 openseachest
 orca-slicer-bin
 perl-config-inifiles
