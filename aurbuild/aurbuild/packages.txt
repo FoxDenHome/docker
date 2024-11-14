@@ -39,3 +39,4 @@ kopia-ui-bin-wayland-hook
 qmk-hid
 spotify
 vesktop-bin
+uhubctl
