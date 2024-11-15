@@ -41,3 +41,4 @@ spotify
 vesktop-bin
 uhubctl
 framework-system-git
+https://github.com/Doridian/kanidm-aur.git
