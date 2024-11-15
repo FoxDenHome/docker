@@ -40,3 +40,4 @@ qmk-hid
 spotify
 vesktop-bin
 uhubctl
+framework-system-git
