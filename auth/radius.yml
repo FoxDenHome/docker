@@ -22,4 +22,4 @@ services:
     volumes:
       - certs:/certs:ro
     env_file:
-      - .env.foxradius
+      - .env.radius
