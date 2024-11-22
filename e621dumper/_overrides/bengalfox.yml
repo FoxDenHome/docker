@@ -9,6 +9,9 @@ services:
         priority: 100
         ipv4_address: 10.3.10.12
         mac_address: f2:6c:78:d6:dd:e6
+    environment:
+      URL_HOST: e621.foxden.network
+      URL_PROTOCOL: https
     volumes:
       - /mnt/zhdd/e621/data:/data
   caddy:

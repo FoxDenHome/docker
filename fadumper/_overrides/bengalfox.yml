@@ -9,6 +9,9 @@ services:
         priority: 100
         ipv4_address: 10.3.10.13
         mac_address: f2:6c:78:d6:de:e6
+    environment:
+      URL_HOST: furaffinity.foxden.network
+      URL_PROTOCOL: https
     volumes:
       - /mnt/zhdd/furaffinity/data:/data
   caddy:
