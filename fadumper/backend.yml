@@ -10,6 +10,7 @@ services:
       ES_URL: http://elasticsearch:9200
       FA_COOKIE_A: ${FA_COOKIE_A}
       FA_COOKIE_B: ${FA_COOKIE_B}
+      PORT: 127.0.0.1:8001
     volumes:
       - backend_config:/config
     healthcheck:

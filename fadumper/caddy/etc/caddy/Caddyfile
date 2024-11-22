@@ -1,0 +1,43 @@
+{
+	servers {
+		listener_wrappers {
+			proxy_protocol {
+				timeout 5s
+				allow 10.1.0.0/23
+				allow 10.2.0.0/23
+				allow 10.3.0.0/23
+				allow 10.4.0.0/23
+				allow 10.5.0.0/23
+				allow 10.6.0.0/23
+				allow 10.7.0.0/23
+				allow 10.8.0.0/23
+				allow 10.9.0.0/23
+			}
+			tls
+		}
+	}
+}
+
+{$FADUMPER_DOMAIN} {
+	handle /oauth2/* {
+		reverse_proxy 127.0.0.1:4180 {
+			header_up X-Real-IP {remote_host}
+			header_up X-Forwarded-Uri {uri}
+		}
+	}
+
+	handle {
+		forward_auth 127.0.0.1:4180 {
+			uri /oauth2/auth
+			header_up X-Real-IP {remote_host}
+			# Make sure to configure the --set-xauthrequest flag to enable this feature.
+			copy_headers X-Auth-Request-User X-Auth-Request-Email
+			@error status 401
+			handle_response @error {
+				redir * /oauth2/sign_in?rd={scheme}://{host}{uri}
+			}
+		}
+
+		reverse_proxy 127.0.0.1:8001
+	}
+}

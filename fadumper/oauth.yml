@@ -1,0 +1,18 @@
+services:
+  caddy:
+    build: caddy
+    restart: always
+    network_mode: service:backend
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+  oauth2-proxy:
+    build: oauth2-proxy
+    restart: always
+    network_mode: service:backend
+    environment:
+      OAUTH2_PROXY_COOKIE_SECRET: ${OAUTH2_PROXY_COOKIE_SECRET}
+
+volumes:
+  caddy_data: {}
+  caddy_config: {}

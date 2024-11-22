@@ -11,3 +11,6 @@ services:
         mac_address: f2:6c:78:d6:de:e6
     volumes:
       - /mnt/zhdd/furaffinity/data:/data
+  caddy:
+    environment:
+      FADUMPER_DOMAIN: furaffinity.foxden.network
