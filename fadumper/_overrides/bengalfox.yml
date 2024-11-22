@@ -5,9 +5,9 @@ services:
     networks:
       default:
         priority: 1
-      vlan2:
+      vlan3:
         priority: 100
-        ipv4_address: 10.2.11.22
+        ipv4_address: 10.3.10.13
         mac_address: f2:6c:78:d6:de:e6
     volumes:
       - /mnt/zhdd/furaffinity/data:/data

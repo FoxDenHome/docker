@@ -5,9 +5,9 @@ services:
     networks:
       default:
         priority: 1
-      vlan2:
+      vlan3:
         priority: 100
-        ipv4_address: 10.2.11.21
+        ipv4_address: 10.3.10.12
         mac_address: f2:6c:78:d6:dd:e6
     volumes:
       - /mnt/zhdd/e621/data:/data
