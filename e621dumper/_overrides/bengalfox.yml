@@ -11,3 +11,6 @@ services:
         mac_address: f2:6c:78:d6:dd:e6
     volumes:
       - /mnt/zhdd/e621/data:/data
+  caddy:
+    environment:
+      E621DUMPER_DOMAIN: e621.foxden.network
