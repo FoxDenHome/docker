@@ -42,3 +42,7 @@ vesktop-bin
 uhubctl
 framework-system-git
 kanidm
+libglibutil
+libgbinder
+python-gbinder
+waydroid
