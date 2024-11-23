@@ -61,7 +61,7 @@ services:
       vlan2:
         priority: 100
         ipv4_address: 10.2.11.3
-    mac_address: 00:16:3E:CA:7E:18
+        mac_address: 00:16:3E:CA:7E:18
     environment:
       PLEX_GID: 1001
     volumes:
