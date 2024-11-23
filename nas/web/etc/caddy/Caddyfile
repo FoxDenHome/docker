@@ -30,14 +30,28 @@ http://{$HOST_DOMAIN} {
 		file_server
 	}
 
-	handle {	
+	handle /oauth2/* {
+		reverse_proxy 127.0.0.1:4180 {
+			header_up X-Real-IP {remote_host}
+			header_up X-Forwarded-Uri {uri}
+		}
+	}
+
+	handle {
+		forward_auth 127.0.0.1:4180 {
+			uri /oauth2/auth
+			header_up X-Real-IP {remote_host}
+			# Make sure to configure the --set-xauthrequest flag to enable this feature.
+			copy_headers X-Auth-Request-User X-Auth-Request-Email
+			@error status 401
+			handle_response @error {
+				redir * /oauth2/sign_in?rd={scheme}://{host}{uri}
+			}
+		}
+
 		root * /mnt/nas
 		file_server {
 			browse
-		}
-
-		forward_auth http://127.0.0.1:1042 {
-			uri /
 		}
 	}
 }

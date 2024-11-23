@@ -74,3 +74,7 @@ services:
   jellyfin-web:
     environment:
       - JELLYFIN_DOMAIN=jellyfin.foxden.network
+  oauth2-proxy:
+    environment:
+      OAUTH2_PROXY_CLIENT_ID: nas-bengalfox
+      OAUTH2_PROXY_OIDC_ISSUER_URL: "https://auth.foxden.network/oauth2/openid/nas-bengalfox"
