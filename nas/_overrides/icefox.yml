@@ -12,7 +12,6 @@ services:
     - '[2606:c700:4020:af::2]:443:443/udp'
     links:
       - dldr:dldr
-      - jellyfin:jellyfin
     environment:
       NAS_WEB_DOMAIN: nas-ro.foxden.network
       DAV_DOMAIN: dav.doridian.net
@@ -46,14 +45,6 @@ services:
       PGID: 1001
     volumes:
       - /mnt/ztank/local/usenet:/downloads
-  jellyfin:
-    user: 10001:1001
-    hostname: jellyfin.doridian.net
-    environment:
-      - JELLYFIN_PublishedServerUrl=https://jellyfin.doridian.net
-  jellyfin-web:
-    environment:
-      - JELLYFIN_DOMAIN=http://jellyfin.doridian.net
   oauth2-proxy:
     environment:
       OAUTH2_PROXY_CLIENT_ID: nas-icefox
