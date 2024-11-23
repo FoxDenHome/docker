@@ -18,10 +18,20 @@ services:
       DAV_DOMAIN: dav.doridian.net
       HOST_DOMAIN: icefox.doridian.net
       DLDR_DOMAIN: dldr.icefox.doridian.net
-      JELLYFIN_DOMAIN: jellyfin.doridian.net
     volumes:
-      - /mnt/zhdd/dav:/mnt/dav
       - /mnt/ztank/local/archmirror:/mnt/archmirror
+      - /mnt/ztank/dav:/mnt/dav
+  plex:
+    environment:
+      PLEX_GID: 1001
+    ports:
+      - 32400:32400
+    volumes:
+      - /mnt/ztank/local/docker/plex/transcode:/transcode
+    healthcheck:
+      test: 'curl -s -f "http://$${HOSTNAME}:32400/web/index.html" >/dev/null'
+      interval: 60s
+      timeout: 10s
   dldr:
     environment:
       PUID: 1001
