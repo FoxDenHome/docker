@@ -46,3 +46,4 @@ libglibutil
 libgbinder
 python-gbinder
 waydroid
+zswap-disable-writeback
