@@ -52,3 +52,4 @@ python-dotmap
 python-print-color
 python-timeago
 meshtastic-python
+https://github.com/Doridian/linux-zen-dori
