@@ -9,6 +9,7 @@ services:
     volumes:
       - cache:/aur/cache
       - gpg:/gpg:ro
+      - /etc/pacman.d/mirrorlist:/etc/pacman.d/mirrorlist:ro
 
 volumes:
   cache: {}

@@ -2,4 +2,3 @@ services:
   aurbuild:
     volumes:
       - /mnt/zssd/docker/aurbuild:/aur/repo
-      - /etc/pacman.d/mirrorlist:/etc/pacman.d/mirrorlist:ro
