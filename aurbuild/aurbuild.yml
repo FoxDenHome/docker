@@ -10,6 +10,7 @@ services:
       - cache:/aur/cache
       - gpg:/gpg:ro
       - /etc/pacman.d/mirrorlist:/etc/pacman.d/mirrorlist:ro
+      - /etc/makepkg.conf:/etc/makepkg.conf:ro
 
 volumes:
   cache: {}
