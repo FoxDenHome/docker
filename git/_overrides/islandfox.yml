@@ -1,5 +1,5 @@
 services:
-  web:
+  forgejo:
     networks:
       default:
         priority: 1
