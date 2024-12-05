@@ -19,5 +19,5 @@
 }
 
 git.foxden.network {
-	reverse_proxy 127.0.0.1:3000
+	reverse_proxy forgejo:3000
 }

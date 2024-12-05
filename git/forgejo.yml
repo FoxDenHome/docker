@@ -1,0 +1,15 @@
+services:
+  forgejo:
+    image: codeberg.org/forgejo/forgejo:9
+    environment:
+      USER_UID: 1000
+      USER_GID: 1000
+      TZ: America/Los_Angeles
+    restart: always
+    volumes:
+      - forgejo_data:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+volumes:
+  forgejo_data: {}
