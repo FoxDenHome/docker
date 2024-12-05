@@ -2,8 +2,7 @@ services:
   web:
     build: web
     restart: always
-    links:
-      - forgejo:forgejo
+    network_mode: service:forgejo
     volumes:
       - web_data:/data
       - web_config:/config
