@@ -18,6 +18,10 @@
 	}
 }
 
+http:// {
+	# Dummy block as per https://caddyserver.com/docs/caddyfile/options#name
+}
+
 {$ARCHMIRROR_DOMAIN} {
 	header {
 		Content-Security-Policy "default-src 'none'; img-src 'self'; object-src 'none'; base-uri 'none'; script-src 'none'; style-src 'self'; frame-ancestors 'none'; form-action 'none';"

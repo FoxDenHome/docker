@@ -18,6 +18,10 @@
 	}
 }
 
+http:// {
+	# Dummy block as per https://caddyserver.com/docs/caddyfile/options#name
+}
+
 grafana.foxden.network {
 	reverse_proxy 127.0.0.1:3000
 }

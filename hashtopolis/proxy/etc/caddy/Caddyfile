@@ -18,6 +18,10 @@
 	}
 }
 
+http:// {
+	# Dummy block as per https://caddyserver.com/docs/caddyfile/options#name
+}
+
 htpl.foxden.network {
 	reverse_proxy backend:80
 }

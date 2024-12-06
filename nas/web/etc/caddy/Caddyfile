@@ -20,6 +20,10 @@
 	}
 }
 
+http:// {
+	# Dummy block as per https://caddyserver.com/docs/caddyfile/options#name
+}
+
 http://{$HOST_DOMAIN} {
 	reverse_proxy host.docker.internal:180
 }

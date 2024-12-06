@@ -18,6 +18,10 @@
 	}
 }
 
+http:// {
+	# Dummy block as per https://caddyserver.com/docs/caddyfile/options#name
+}
+
 {$E621DUMPER_DOMAIN} {
 	handle /oauth2/* {
 		reverse_proxy 127.0.0.1:4180 {
