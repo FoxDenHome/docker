@@ -54,3 +54,4 @@ python-timeago
 meshtastic-python
 https://github.com/Doridian/linux-zen-dori
 pam_pkcs11
+kopia-bin
