@@ -22,10 +22,10 @@ services:
     volumes:
       - /mnt/zssd/nas/torrent:/data
     environment:
-      PUID: 1001
+      PUID: 10000
       PGID: 1001
   dldr-prometheus:
-    user: 1001:1001
+    user: 10000:1001
   nzbget:
     networks:
       vlan2:
@@ -33,7 +33,7 @@ services:
         ipv4_address: 10.2.11.9
         mac_address: f2:73:89:cc:9e:e4
     environment:
-      PUID: 1001
+      PUID: 10000
       PGID: 1001
     volumes:
       - /mnt/zssd/nas/usenet:/downloads

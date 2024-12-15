@@ -34,15 +34,15 @@ services:
       retries: 3
   dldr:
     environment:
-      PUID: 1001
+      PUID: 10000
       PGID: 1001
     volumes:
       - /mnt/ztank/local/torrent:/data
   dldr-prometheus:
-    user: 1001:1001
+    user: 10000:1001
   nzbget:
     environment:
-      PUID: 1001
+      PUID: 10000
       PGID: 1001
     volumes:
       - /mnt/ztank/local/usenet:/downloads
