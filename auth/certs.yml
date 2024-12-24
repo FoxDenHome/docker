@@ -3,6 +3,7 @@
 services:
   certbot:
     build: certbot-cron
+    restart: always
     network_mode: service:kanidm
     init: true
     volumes:

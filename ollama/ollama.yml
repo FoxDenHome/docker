@@ -5,6 +5,7 @@ services:
     init: true
   web:
     init: true
+    restart: always
     image: ghcr.io/ivanfioravanti/chatbot-ollama:main
     links:
       - ollama:ollama
