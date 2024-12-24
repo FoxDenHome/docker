@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+exit(0)
+
 from subprocess import check_output
 import factorio_rcon
 
