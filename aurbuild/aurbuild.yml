@@ -7,11 +7,9 @@ services:
       GPG_KEY_ID: "${GPG_KEY_ID}"
       GPG_KEY_PATH: /gpg/foxdenaur.asc
     volumes:
-      - cache:/aur/cache
       - gpg:/gpg:ro
       - /etc/pacman.d/mirrorlist:/etc/pacman.d/mirrorlist:ro
       - /etc/makepkg.conf:/etc/makepkg.conf:ro
 
 volumes:
-  cache: {}
   gpg: {}

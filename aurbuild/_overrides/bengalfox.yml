@@ -1,4 +1,5 @@
 services:
   aurbuild:
     volumes:
-      - /mnt/zssd/docker/aurbuild:/aur/repo
+      - /mnt/zssd/docker/aurbuild/cache:/aur/cache
+      - /mnt/zssd/docker/aurbuild/repo:/aur/repo
