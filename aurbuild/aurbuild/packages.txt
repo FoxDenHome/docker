@@ -27,7 +27,6 @@ uefitool-bin
 unixbench
 visual-studio-code-bin
 wezterm-git
-yay-bin
 fw-ectool-git
 fw-fanctrl-git
 fw-fanctrl-ui-git
