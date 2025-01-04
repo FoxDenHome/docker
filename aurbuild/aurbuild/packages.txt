@@ -1,3 +1,4 @@
+yay-bin
 amdgpu_top
 arm-linux-gnueabihf-linaro-bin
 dimland-git
