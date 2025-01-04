@@ -1,10 +1,7 @@
 amdgpu_top
 arm-linux-gnueabihf-linaro-bin
-#clementine
-#davinci-resolve
 dimland-git
 dino-plus-plus-git
-#kanidm
 intel-ledmon
 lgogdownloader
 liblxi
