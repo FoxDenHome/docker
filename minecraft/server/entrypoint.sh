@@ -1,2 +1,2 @@
 #!/bin/sh
-exec java -Xmx8G -Xms8G -Djline.terminal=jline.UnsupportedTerminal -jar server.jar nogui
+java -Xmx8G -Xms8G -Djline.terminal=jline.UnsupportedTerminal -jar server.jar nogui < /dev/null
