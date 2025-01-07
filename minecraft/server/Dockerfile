@@ -1,4 +1,4 @@
-FROM amazoncorretto:8
+FROM amazoncorretto:21.0.5
 
 USER root
 COPY entrypoint.sh /entrypoint.sh
