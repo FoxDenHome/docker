@@ -1,0 +1,15 @@
+services:
+  server:
+    build: server
+    restart: always
+    stop_grace_period: 5m
+    networks:
+      vlan3:
+        priority: 100
+        ipv4_address: 10.3.10.8
+        mac_address: 36:16:0c:c9:e8:2b
+    volumes:
+      - data:/data
+
+volumes:
+  data: {}

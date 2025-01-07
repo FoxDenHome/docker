@@ -9,6 +9,7 @@ roles:
 - syncthing
 - website
 - auth
+- minecraft
 network:
   driver: bridge
   device: ''
