@@ -3,6 +3,7 @@ services:
     build: server
     restart: always
     stop_grace_period: 5m
+    init: true
     networks:
       vlan3:
         priority: 100
