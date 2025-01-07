@@ -1,4 +1,4 @@
-FROM amazoncorretto:23-headless
+FROM amazoncorretto:8
 
 USER root
 COPY entrypoint.sh /entrypoint.sh
