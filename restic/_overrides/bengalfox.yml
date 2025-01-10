@@ -9,4 +9,4 @@ services:
         ipv4_address: 10.2.11.12
         mac_address: a6:92:b3:68:dd:ad
     volumes:
-      - /mnt/zhdd/docker/rest-server:/data
+      - /mnt/zhdd/docker/restic:/data
