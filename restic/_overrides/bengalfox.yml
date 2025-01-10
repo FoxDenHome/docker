@@ -1,12 +1,12 @@
 services:
   web:
+    environment:
+      RESTSERVER_DOMAIN: restic.foxden.network
+  rest-server:
     networks:
       vlan3:
         priority: 100
         ipv4_address: 10.2.11.12
         mac_address: a6:92:b3:68:dd:ad
-    environment:
-      RESTSERVER_DOMAIN: restserver.foxden.network
-  rest-server:
     volumes:
       - /mnt/zhdd/docker/rest-server:/data

@@ -1,6 +1,5 @@
 FROM alpine
 
-ENV CGO_ENABLED 0
 ARG REST_SERVER_VERSION=0.13.0
 
 RUN mkdir -p /tmp/dl && \

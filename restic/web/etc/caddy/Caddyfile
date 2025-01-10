@@ -22,6 +22,6 @@ http:// {
 	# Dummy block as per https://caddyserver.com/docs/caddyfile/options#name
 }
 
-restic.foxden.network {
+{$RESTSERVER_DOMAIN} {
 	reverse_proxy 127.0.0.1:8000
 }
