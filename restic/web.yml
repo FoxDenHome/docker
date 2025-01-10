@@ -2,7 +2,7 @@ services:
   web:
     build: web
     restart: always
-    network_mode: service:forgejo
+    network_mode: service:rest-server
     volumes:
       - web_data:/data
       - web_config:/config
