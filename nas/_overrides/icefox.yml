@@ -21,7 +21,6 @@ services:
       DLDR_DOMAIN: dldr.icefox.doridian.net
     volumes:
       - /mnt/ztank/local/archmirror:/mnt/archmirror
-      - /mnt/ztank/dav:/mnt/dav
   plex:
     environment:
       PLEX_GID: 1001
