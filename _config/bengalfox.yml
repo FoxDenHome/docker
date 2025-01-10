@@ -12,6 +12,7 @@ roles:
 - fadumper
 - archmirror
 - aurbuild
+- rest-server
 network:
   driver: sriov
   pvid: 2

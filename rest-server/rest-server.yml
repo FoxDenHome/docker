@@ -1,0 +1,6 @@
+services:
+  rest-server:
+    build: rest-server
+    user: 1000:1000
+    restart: always
+    init: true
