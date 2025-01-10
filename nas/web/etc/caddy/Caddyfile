@@ -1,6 +1,4 @@
 {
-	order webdav before file_server
-
 	servers {
 		listener_wrappers {
 			proxy_protocol {
@@ -57,16 +55,6 @@ http://{$HOST_DOMAIN} {
 		file_server {
 			browse
 		}
-	}
-}
-
-{$DAV_DOMAIN} {
-	basicauth * {
-		import import/webdav.auth
-	}
-
-	webdav * {
-		root /mnt/dav/{http.auth.user.id}
 	}
 }
 

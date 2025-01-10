@@ -17,7 +17,6 @@ services:
       - dldr:dldr
     environment:
       NAS_WEB_DOMAIN: nas-ro.foxden.network
-      DAV_DOMAIN: dav.doridian.net
       HOST_DOMAIN: icefox.doridian.net
       DLDR_DOMAIN: dldr.icefox.doridian.net
     volumes:
