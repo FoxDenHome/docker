@@ -6,7 +6,6 @@ roles:
 - nas
 - netfix
 - superfan
-- syncthing
 - hashtopolis
 - ollama
 - fadumper
