@@ -31,8 +31,6 @@ wezterm-git
 fw-ectool-git
 fw-fanctrl-git
 fw-fanctrl-ui-git
-kopia-ui-bin
-kopia-ui-bin-wayland-hook
 qmk-hid
 spotify
 vesktop-bin
@@ -51,7 +49,6 @@ python-timeago
 meshtastic-python
 https://github.com/Doridian/linux-zen-dori
 pam_pkcs11
-kopia-bin
 python-term-image
 https://github.com/Doridian/mkinitcpio-sd-pcr7lock-hook
 nvm
