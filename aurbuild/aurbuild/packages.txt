@@ -55,3 +55,4 @@ kopia-bin
 python-term-image
 https://github.com/Doridian/mkinitcpio-sd-pcr7lock-hook
 nvm
+wluma
