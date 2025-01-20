@@ -13,38 +13,13 @@ https_ssl = {
 	key = "certs/foxden.network.key";
 }
 
-local _slidge_priv = {
-  roster = "both";
-  message = "outgoing";
-  iq = {
-    ["http://jabber.org/protocol/pubsub"] = "both";
-    ["http://jabber.org/protocol/pubsub#owner"] = "set";
-  };
-}
-
 VirtualHost "foxden.network"
-  modules_enabled = {"privilege", "discoitems"}
+  modules_enabled = {"discoitems"}
   disco_items = {
     { "upload.xmpp.foxden.network" },
     { "muc.xmpp.foxden.network" },
-    { "discord.xmpp.foxden.network" },
-    { "telegram.xmpp.foxden.network" },
     { "proxy.xmpp.foxden.network" },
     { "pubsub.xmpp.foxden.network" },
-  }
-  privileged_entities = {
-    ["telegram.xmpp.foxden.network"] = _slidge_priv,
-    ["discord.xmpp.foxden.network"] = _slidge_priv,
-  }
-
--- Dummy VHost to allow Slidge to function for some reason
-VirtualHost "xmpp.foxden.network"
-  allow_registration = false
-  modules_enabled = {"isolate_host", "privilege"}
-  isolate_except_domains = {"telegram.xmpp.foxden.network", "discord.xmpp.foxden.network"}
-  privileged_entities = {
-    ["telegram.xmpp.foxden.network"] = _slidge_priv,
-    ["discord.xmpp.foxden.network"] = _slidge_priv,
   }
 
 -- Set up a http file upload because proxy65 is not working in muc
