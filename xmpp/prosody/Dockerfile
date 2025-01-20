@@ -17,7 +17,7 @@ RUN download-prosody-modules.bash \
         discoitems \
         sasl2 \
         sasl_ssdp \
-        bind2 \
+        sasl2_bind2 \
  && apt-get update \
  && apt-get install -y --no-install-recommends lua-luaossl \
  && rm -rf '/usr/src/prosody-modules' '/usr/local/lib/prosody/custom-modules/mod_bookmarks.lua'
