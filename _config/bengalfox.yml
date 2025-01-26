@@ -12,7 +12,6 @@ roles:
 - archmirror
 - aurbuild
 - restic
-- hashtopolis-agent
 network:
   driver: sriov
   pvid: 2
