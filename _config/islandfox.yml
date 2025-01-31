@@ -10,6 +10,7 @@ roles:
 - website
 - auth
 - minecraft
+- query-finder
 network:
   driver: bridge
   device: ''
