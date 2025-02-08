@@ -4,12 +4,7 @@ services:
     restart: always
     init: true
     environment:
-      GPG_KEY_ID: "${GPG_KEY_ID}"
-      GPG_KEY_PATH: /gpg/foxdenaur.asc
+      GPG_KEY_ID: "723AB072D36DF76677DA5ACF41ADC5FF876838A8"
     volumes:
-      - gpg:/gpg:ro
       - /etc/pacman.d/mirrorlist:/etc/pacman.d/mirrorlist:ro
       - /etc/makepkg.conf:/etc/makepkg.conf:ro
-
-volumes:
-  gpg: {}
