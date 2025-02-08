@@ -8,3 +8,4 @@ services:
     volumes:
       - /etc/pacman.d/mirrorlist:/etc/pacman.d/mirrorlist:ro
       - /etc/makepkg.conf:/etc/makepkg.conf:ro
+      - /run/pcscd/pcscd.comm:/run/pcscd/pcscd.comm
