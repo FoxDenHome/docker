@@ -3,11 +3,9 @@ services:
     build: aurbuild
     restart: always
     init: true
-    devices:
-      - /dev/yk4:/dev/yk4
     volumes:
       - gpg:/gpg:ro
-      - /dev/bus/usb:/dev/bus/usb
+      - /run/pcscd:/run/pcscd
       - /etc/pacman.d/mirrorlist:/etc/pacman.d/mirrorlist:ro
       - /etc/makepkg.conf:/etc/makepkg.conf:ro
 
