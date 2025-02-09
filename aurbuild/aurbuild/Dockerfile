@@ -6,7 +6,9 @@ RUN pacman -Syu --noconfirm --needed \
             libcanberra \
             gst-plugins-bad \
             pcsclite \
-            ccid
+            ccid \
+            yubikey-manager \
+            nano
 
 ENV HOME=/root
 RUN gpg --recv-keys 6224F9941A8AA6D1 C85668DF69375001 4A2B758631E1FD91 723AB072D36DF76677DA5ACF41ADC5FF876838A8 && \
