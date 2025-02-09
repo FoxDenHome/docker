@@ -18,7 +18,7 @@ RUN pacman-key --init && \
 
 USER aur
 RUN gpg --recv-keys 6224F9941A8AA6D1 C85668DF69375001 4A2B758631E1FD91 6AD860EED4598027 "${GPG_KEY_ID}"
-COPY scdaemon.conf /home/aur/.gnupg/scdaemon.conf
+COPY --chown=aur:aur scdaemon.conf /home/aur/.gnupg/scdaemon.conf
 
 USER root
 COPY packages.txt /aur/packages.txt
