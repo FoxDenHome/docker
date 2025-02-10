@@ -8,7 +8,6 @@ lgogdownloader
 liblxi
 lxi-tools
 mcelog
-mkinitcpio-clevis-hook
 oh-my-zsh-git
 openseachest
 orca-slicer-bin
