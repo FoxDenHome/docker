@@ -31,7 +31,6 @@ fw-ectool-git
 fw-fanctrl-git
 fw-fanctrl-ui-git
 qmk-hid
-vesktop-bin
 uhubctl
 framework-system-git
 kanidm
