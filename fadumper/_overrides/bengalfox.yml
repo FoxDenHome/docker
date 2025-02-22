@@ -15,7 +15,6 @@ services:
     environment:
       URL_HOST: furaffinity.foxden.network
       URL_PROTOCOL: https
-      LOOPER_DISABLE: 'yes'
     volumes:
       - /mnt/zhdd/furaffinity/data:/data
   caddy:
