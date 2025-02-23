@@ -10,8 +10,8 @@ services:
         ipv4_address: 10.3.10.13
         mac_address: f2:6c:78:d6:de:e6
     extra_hosts:
-      - "icefox:23.239.97.10"
-      - "icefox.doridian.net:23.239.97.10"
+      - "icefox:65.21.120.225"
+      - "icefox.doridian.net:65.21.120.225"
     environment:
       URL_HOST: furaffinity.foxden.network
       URL_PROTOCOL: https
