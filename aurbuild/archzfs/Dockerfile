@@ -1,4 +1,4 @@
-FROM alpine:3-21
+FROM alpine:3.21
 
 RUN apk --no-cache add jq curl bash rsync
 
