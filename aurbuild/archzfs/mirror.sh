@@ -3,8 +3,8 @@ set -euo pipefail
 
 # Dependencies: jq, curl, bash, rsync
 # Config settings
-OUTDIR='/repo'
-TMPDIR='/repotmp'
+OUTDIR='/archzfs/repo'
+TMPDIR='/archzfs/tmp'
 # End of config settings
 
 rm -rf "${TMPDIR}"

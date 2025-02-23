@@ -6,5 +6,4 @@ services:
       - /mnt/zssd/docker/aurbuild/repo_new:/aur/repo_new
   archzfs:
     volumes:
-      - /mnt/zssd/docker/archzfs/tmp:/repotmp
-      - /mnt/zssd/docker/archzfs/repo:/repo
+      - /mnt/zssd/docker/archzfs:/archzfs
