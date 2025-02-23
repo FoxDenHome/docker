@@ -21,7 +21,7 @@ for info in "${FILE_INFO[@]}"; do
     filename="${OUTDIR}/$(basename "${url}")"
 
     updated_at_str="${info#*|}"
-    updated_at="$(date '+%s' --date "+${updated_at_str}")"
+    updated_at="$(date '+%s' --date "${updated_at_str}")"
     
     # Calculate old file modified time
     current_at='0'
