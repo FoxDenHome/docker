@@ -11,12 +11,12 @@ services:
     - '[2a01:4f9:3b:4960::3]:873:873'
     environment:
       ARCHMIRROR_DOMAIN: archlinux.doridian.net
-      ARCHMIRROR_SOURCE_ID: constant.com
+      ARCHMIRROR_SOURCE_ID: mirror.5i.fi
     volumes:
       - data:/mnt/archmirror:ro
   refresh:
     environment:
-      ARCHMIRROR_SOURCE: arch.mirror.constant.com
+      ARCHMIRROR_SOURCE: mirror.5i.fi
     volumes:
       - data:/mnt/archmirror
   rsync:
