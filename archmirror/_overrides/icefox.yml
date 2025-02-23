@@ -13,12 +13,15 @@ services:
       ARCHMIRROR_DOMAIN: archlinux.doridian.net
       ARCHMIRROR_SOURCE_ID: constant.com
     volumes:
-      - /mnt/ztank/local/archmirror:/mnt/archmirror:ro
+      - data:/mnt/archmirror:ro
   refresh:
     environment:
       ARCHMIRROR_SOURCE: arch.mirror.constant.com
     volumes:
-      - /mnt/ztank/local/archmirror:/mnt/archmirror
+      - data:/mnt/archmirror
   rsync:
     volumes:
-      - /mnt/ztank/local/archmirror:/mnt/archmirror:ro
+      - data:/mnt/archmirror:ro
+
+volumes:
+  data: {}
