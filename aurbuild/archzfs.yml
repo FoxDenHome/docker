@@ -1,0 +1,5 @@
+services:
+  archzfs:
+    build: archzfs
+    restart: always
+    init: true
