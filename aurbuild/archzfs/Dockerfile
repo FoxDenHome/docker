@@ -1,6 +1,6 @@
-FROM alpine:3.21
+FROM debian:bookworm-slim
 
-RUN apk --no-cache add jq curl bash rsync
+RUN apt-get -y update && apt-get -y install jq curl bash rsync
 
 COPY mirror.sh /mirror.sh
 COPY entrypoint.sh /entrypoint.sh
