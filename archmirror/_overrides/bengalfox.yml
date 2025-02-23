@@ -11,6 +11,7 @@ services:
     volumes:
       - /mnt/zssd/docker/archmirror:/mnt/archmirror:ro
       - /mnt/zssd/docker/aurbuild/repo:/mnt/archmirror/other/foxdenaur:ro
+      - /mnt/zssd/docker/archzfs/repo:/mnt/archmirror/other/archzfs:ro
   refresh:
     environment:
       ARCHMIRROR_SOURCE: archlinux.doridian.net
