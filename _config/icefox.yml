@@ -5,6 +5,7 @@ roles:
 - syncthing
 - xmpp
 - archmirror
+- snirouter
 network:
   driver: macvlan
   device: ''
