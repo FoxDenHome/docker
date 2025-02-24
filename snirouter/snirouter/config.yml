@@ -8,12 +8,17 @@ defaults:
       port: 443
 
 templates:
+  archmirror:
+    http:
+      host: 192.168.69.3
+    https:
+      host: 192.168.69.3
   xmpp:
     http:
       host: 192.168.69.4
     https:
       host: 192.168.69.4
-  nas-web:
+  nas:
     http:
       host: 192.168.69.5
     https:
@@ -46,11 +51,14 @@ hosts:
     template: xmpp
 
   nas-ro.foxden.network:
-    template: nas-web
+    template: nas
 
   syncthing.doridian.net:
     template: syncthing
 
   icefox.doridian.net:
     template: host
-# TODO: Fix rest-server SSL renewal
+
+  archlinux.doridian.net:
+    template: archmirror
+

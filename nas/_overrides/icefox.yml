@@ -16,8 +16,6 @@ services:
       snirouter:
         priority: 10
         ipv4_address: 192.168.69.5
-    volumes:
-      - /mnt/ztank/local/archmirror:/mnt/archmirror
   plex:
     environment:
       PLEX_GID: 1001

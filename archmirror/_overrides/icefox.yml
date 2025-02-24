@@ -14,6 +14,12 @@ services:
       ARCHMIRROR_SOURCE_ID: mirror.5i.fi
     volumes:
       - data:/mnt/archmirror:ro
+    networks:
+      default:
+        priority: 100
+      snirouter:
+        priority: 10
+        ipv4_address: 192.168.69.3
   refresh:
     environment:
       ARCHMIRROR_SOURCE: mirror.5i.fi
@@ -25,3 +31,8 @@ services:
 
 volumes:
   data: {}
+
+networks:
+  snirouter:
+    name: snirouter_ext
+    external: true
