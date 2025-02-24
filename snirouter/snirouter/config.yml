@@ -8,12 +8,38 @@ defaults:
       port: 9998
 
 templates:
-  host:
+  xmpp:
     http:
-      host: 172.17.0.1
+      host: 192.168.69.4
     https:
-      host: 172.17.0.1
+      host: 192.168.69.4
+  nas-web:
+    http:
+      host: 192.168.69.5
+    https:
+      host: 192.168.69.5
+  syncthing:
+    http:
+      host: 192.168.69.6
+    https:
+      host: 192.168.69.6
 
 hosts:
-  grafana.foxden.network:
-    template: grafana
+  xmpp.foxden.network:
+    template: xmpp
+  upload.xmpp.foxden.network:
+    template: xmpp
+  foxden.network:
+    template: xmpp
+
+  nas-ro.foxden.network:
+    template: nas-web
+  icefox.doridian.net:
+    template: nas-web
+  dldr.icefox.doridian.net:
+    template: nas-web
+
+  syncthing.doridian.net:
+    template: syncthing
+
+# TODO: Fix rest-server SSL renewal
