@@ -7,12 +7,9 @@ services:
     - 10.99.10.2:80:80
     - 10.99.10.2:443:443
     - 10.99.10.2:443:443/udp
-    #- 23.239.97.10:80:80
-    #- 23.239.97.10:443:443
-    #- 23.239.97.10:443:443/udp
-    #- '[2606:c700:4020:af::2]:80:80'
-    #- '[2606:c700:4020:af::2]:443:443'
-    #- '[2606:c700:4020:af::2]:443:443/udp'
+    - '[2a01:4f9:3b:4960::5]:80:80'
+    - '[2a01:4f9:3b:4960::5]:443:443'
+    - '[2a01:4f9:3b:4960::5]:443:443/udp'
     links:
       - dldr:dldr
     environment:
@@ -51,3 +48,5 @@ services:
     environment:
       OAUTH2_PROXY_CLIENT_ID: nas-icefox
       OAUTH2_PROXY_OIDC_ISSUER_URL: "https://auth.foxden.network/oauth2/openid/nas-icefox"
+
+# TODO: Fix IPv4 80/443
