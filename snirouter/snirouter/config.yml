@@ -26,8 +26,10 @@ templates:
   host:
     http:
       host: 192.168.69.254
+      port: 180
     https:
       host: 192.168.69.254
+      port: 180
 
 hosts:
   xmpp.foxden.network:
