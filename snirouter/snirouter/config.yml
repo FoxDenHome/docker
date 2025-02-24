@@ -1,0 +1,19 @@
+defaults:
+  backends:
+    http:
+      host: 127.0.0.1
+      port: 9999
+    https:
+      host: 127.0.0.1
+      port: 9998
+
+templates:
+  host:
+    http:
+      host: 172.17.0.1
+    https:
+      host: 172.17.0.1
+
+hosts:
+  grafana.foxden.network:
+    template: grafana

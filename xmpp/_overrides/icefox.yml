@@ -1,5 +1,11 @@
 services:
   prosody:
+    networks:
+      default:
+        priority: 100
+      snirouter:
+        priority: 10
+        ipv4_address: 192.168.69.4
     ports:
     - 65.21.120.225:5000:5000
     - 65.21.120.225:5222:5222

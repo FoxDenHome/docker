@@ -10,10 +10,13 @@ services:
   webdav:
     environment:
       SYNCTHING_DOMAIN: syncthing.doridian.net
+    networks:
+      default:
+        priority: 100
+      snirouter:
+        priority: 10
+        ipv4_address: 192.168.69.6
     ports:
-    #- 23.239.97.12:80:80
-    #- 23.239.97.12:443:443
-    #- 23.239.97.12:443:443/udp
     - '[2a01:4f9:3b:4960::6]:80:80'
     - '[2a01:4f9:3b:4960::6]:443:443'
     - '[2a01:4f9:3b:4960::6]:443:443/udp'
