@@ -10,7 +10,7 @@ services:
   webdav:
     environment:
       SYNCTHING_DOMAIN: syncthing.doridian.net
-    ports:
+    #ports:
     #- 23.239.97.12:80:80
     #- 23.239.97.12:443:443
     #- 23.239.97.12:443:443/udp
