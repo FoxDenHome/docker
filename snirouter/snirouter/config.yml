@@ -32,16 +32,20 @@ templates:
       port: 180
 
 hosts:
+  foxden.network:
+    template: xmpp
   xmpp.foxden.network:
     template: xmpp
   upload.xmpp.foxden.network:
     template: xmpp
-  foxden.network:
+  muc.xmpp.foxden.network:
+    template: xmpp
+  proxy.xmpp.foxden.network:
+    template: xmpp
+  pubsub.xmpp.foxden.network:
     template: xmpp
 
   nas-ro.foxden.network:
-    template: nas-web
-  dldr.icefox.doridian.net:
     template: nas-web
 
   syncthing.doridian.net:

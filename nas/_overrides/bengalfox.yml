@@ -7,7 +7,6 @@ services:
     environment:
       NAS_WEB_DOMAIN: nas.foxden.network
       HOST_DOMAIN: bengalfox.foxden.network
-      DLDR_DOMAIN: http://dldr.foxden.network
   dldr:
     networks:
       default:

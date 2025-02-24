@@ -57,7 +57,3 @@ http://{$HOST_DOMAIN} {
 		}
 	}
 }
-
-{$DLDR_DOMAIN} {
-	reverse_proxy dldr:8112
-}

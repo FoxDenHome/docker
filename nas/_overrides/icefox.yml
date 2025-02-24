@@ -7,12 +7,9 @@ services:
     - '[2a01:4f9:3b:4960::5]:80:80'
     - '[2a01:4f9:3b:4960::5]:443:443'
     - '[2a01:4f9:3b:4960::5]:443:443/udp'
-    links:
-      - dldr:dldr
     environment:
       NAS_WEB_DOMAIN: nas-ro.foxden.network
       HOST_DOMAIN: icefox.doridian.net
-      DLDR_DOMAIN: dldr.icefox.doridian.net
     networks:
       default:
         priority: 100
