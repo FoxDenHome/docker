@@ -94,14 +94,14 @@ class ComposeProject():
 
         data = yaml_loadfile(file)
 
-        if "networks" in data:
-            for network in sorted(data["networks"]):
-                self.provided_networks.add(network)
-
         if "services" in data:
             for service in sorted(data["services"]):
                 self.additional_config["services"][service] = {}
                 self.add_service(service, data["services"][service])
+
+        if "networks" in data:
+            for network in sorted(data["networks"]):
+                self.provided_networks.add(network)
 
         self.files.add(file)
 
