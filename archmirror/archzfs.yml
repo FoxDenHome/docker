@@ -3,3 +3,8 @@ services:
     build: archzfs
     restart: always
     init: true
+    volumes:
+      - archzfs:/archzfs
+
+volumes:
+ archzfs: {}

@@ -4,6 +4,3 @@ services:
       - /mnt/zssd/docker/aurbuild/cache:/aur/cache
       - /mnt/zssd/docker/aurbuild/repo:/aur/repo
       - /mnt/zssd/docker/aurbuild/repo_new:/aur/repo_new
-  archzfs:
-    volumes:
-      - /mnt/zssd/docker/archzfs:/archzfs

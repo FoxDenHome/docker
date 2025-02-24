@@ -6,6 +6,9 @@ services:
     volumes:
       - caddy_data:/data
       - caddy_config:/config
+      - src: archzfs
+        dst: /mnt/archmirror/other/archzfs
+        volumeSubpath: repo
     healthcheck:
       test: 'nc -z "$${HOSTNAME}" 443 || exit 1'
       interval: 60s
