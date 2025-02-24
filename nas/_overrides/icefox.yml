@@ -52,4 +52,8 @@ services:
       OAUTH2_PROXY_CLIENT_ID: nas-icefox
       OAUTH2_PROXY_OIDC_ISSUER_URL: "https://auth.foxden.network/oauth2/openid/nas-icefox"
 
+networks:
+  snirouter:
+    name: snirouter_ext
+    external: true
 # TODO: Fix IPv4 80/443
