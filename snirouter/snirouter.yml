@@ -6,7 +6,7 @@ services:
     networks:
       default:
         priority: 100
-      snirouter:
+      ext:
         priority: 10
         ipv4_address: 192.168.69.1
     healthcheck:
@@ -15,7 +15,7 @@ services:
       timeout: 10s
 
 networks:
-  snirouter:
+  ext:
     ipam:
       driver: default
       config:
