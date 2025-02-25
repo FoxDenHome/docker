@@ -2,6 +2,7 @@ services:
   web:
     environment:
       RESTSERVER_DOMAIN: 'icefox.doridian.net, icefox-ext.doridian.net'
+  rest-server:
     ports:
     - '[2a01:4f9:3b:4960::7]:80:80'
     - '[2a01:4f9:3b:4960::7]:443:443'
@@ -12,7 +13,6 @@ services:
       snirouter:
         priority: 10
         ipv4_address: 192.168.69.7
-  rest-server:
     volumes:
       - /mnt/ztank/restic:/data
 
