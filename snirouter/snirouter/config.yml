@@ -58,6 +58,8 @@ hosts:
 
   icefox.doridian.net:
     template: host
+  icefox-ext.doridian.net:
+    template: host
 
   archlinux.doridian.net:
     template: archmirror
