@@ -15,3 +15,8 @@ services:
   rest-server:
     volumes:
       - /mnt/ztank/restic:/data
+
+networks:
+  snirouter:
+    name: snirouter_ext
+    external: true
