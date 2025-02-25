@@ -2,6 +2,8 @@ services:
   kiwix:
     volumes:
       - /mnt/zhdd/kiwix:/data
+    ports:
+      - 10.99.10.2:8080:8080
   web:
     ports:
     - '[2a01:4f9:3b:4960::5]:80:80'
