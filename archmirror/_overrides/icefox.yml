@@ -16,6 +16,8 @@ services:
     volumes:
       - data:/mnt/archmirror:ro
     networks:
+      default:
+        priority: 100
       snirouter:
         priority: 10
         ipv4_address: 192.168.69.3
