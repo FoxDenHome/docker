@@ -1,7 +1,7 @@
 services:
   web:
     environment:
-      RESTSERVER_DOMAIN: 'icefox.doridian.net, icefox-ext.doridian.net'
+      RESTSERVER_DOMAIN: restic.doridian.net
   rest-server:
     ports:
     - '[2a01:4f9:3b:4960::7]:80:80'
