@@ -6,6 +6,7 @@ roles:
 - xmpp
 - archmirror
 - snirouter
+- restic
 network:
   driver: macvlan
   device: ''
