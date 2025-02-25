@@ -12,6 +12,7 @@ services:
 
 networks:
   ext:
+    internal: true
     ipam:
       driver: default
       config:
