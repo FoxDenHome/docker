@@ -157,7 +157,9 @@ class ComposeProject():
             raise Exception(
                 f"Missing network definitions for: {','.join(self.get_missing_networks())}")
 
-        compose_args = ["docker-compose"] if HOST_CONFIG.get("use_old_compose", False) else ["docker", "compose"]
+        use_old_compose = HOST_CONFIG.get("use_old_compose", False)
+
+        compose_args = ["docker-compose"] if use_old_compose else ["docker", "compose"]
         compose_args += ["-p", self.name,
                         "--project-directory", self.project_dir]
         for file in sorted(self.files):
@@ -172,7 +174,7 @@ class ComposeProject():
 
         for ct in sorted(self.checked_containers):
             print(f"Checking container {ct} in {self.name}")
-            if not Container(f"{self.name}-{ct}-1").restart_if_failed():
+            if not Container(f"{self.name}_{ct}_1" if use_old_compose else f"{self.name}-{ct}-1").restart_if_failed():
                 return self.deploy()
 
 def load_role(role, deploy):
