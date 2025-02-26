@@ -8,7 +8,6 @@ roles:
 - scrypted
 - syncthing
 - website
-- auth
 - minecraft
 - query-finder
 network:
