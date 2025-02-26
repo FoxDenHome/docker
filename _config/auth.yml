@@ -1,0 +1,10 @@
+roles:
+- auth
+network:
+  driver: macvlan
+  device: ''
+  pvid: 0
+  ula_base: 'fdd8:2353:cedf:'
+  dns:
+  - 10.77.77.1
+  - 10.77.77.2
