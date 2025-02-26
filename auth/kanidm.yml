@@ -10,8 +10,6 @@ services:
     volumes:
       - kanidm:/data
       - certs:/certs:ro
-    env_file:
-      - .env
 
 volumes:
   kanidm: {}
