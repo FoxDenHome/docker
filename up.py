@@ -157,7 +157,8 @@ class ComposeProject():
             raise Exception(
                 f"Missing network definitions for: {','.join(self.get_missing_networks())}")
 
-        compose_args = ["docker", "compose", "-p", self.name,
+        compose_args = ["docker-compose"] if HOST_CONFIG.get("use_old_compose", False) else ["docker", "compose"]
+        compose_args += ["-p", self.name,
                         "--project-directory", self.project_dir]
         for file in sorted(self.files):
             compose_args.append("-f")
