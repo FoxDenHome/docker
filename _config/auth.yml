@@ -1,4 +1,5 @@
 roles:
+- autoheal
 - auth
 use_old_compose: True
 network:
