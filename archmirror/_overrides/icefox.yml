@@ -24,6 +24,7 @@ services:
   refresh:
     environment:
       ARCHMIRROR_SOURCE: mirror.5i.fi
+      ARCHMIRROR_FORCE_SYNC: 'true'
     volumes:
       - data:/mnt/archmirror
   rsync:
