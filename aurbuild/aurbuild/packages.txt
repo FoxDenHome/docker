@@ -5,7 +5,7 @@ dimland-git
 dino-plus-plus-git
 intel-ledmon
 lgogdownloader
-liblxi
+!liblxi
 lxi-tools
 mcelog
 oh-my-zsh-git
