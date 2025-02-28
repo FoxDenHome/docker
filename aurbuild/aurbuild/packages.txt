@@ -49,5 +49,5 @@ https://github.com/Doridian/mkinitcpio-sd-pcr7lock-hook
 nvm
 wluma
 https://github.com/Doridian/fox
-linuxptp
+!linuxptp
 https://github.com/Doridian/linuxptp-client.git
